@@ -1,8 +1,8 @@
 
-document.getElementById("printStarDemoReceipt").addEventListener("click", printStarDemoReceipt);
+document.getElementById("PrintStarDemoReceipt").addEventListener("click", PrintStarDemoReceipt);
 
-function printStarDemoReceipt(){
+function PrintStarDemoReceipt(){
 
-   document.getElementById("textField").value="clicked";
+   document.getElementById("TextField").value="clicked";
 
 }
