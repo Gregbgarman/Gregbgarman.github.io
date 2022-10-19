@@ -3,6 +3,6 @@ document.getElementById("printStarDemoReceipt").addEventListener("click", printS
 
 function printStarDemoReceipt(){
 
-   document.getElementById("textfield").value="clicked";
+   document.getElementById("textField").value="clicked";
 
 }
