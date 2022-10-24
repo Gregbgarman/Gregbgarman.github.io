@@ -3,6 +3,6 @@ document.getElementById("PrintStarDemoReceipt").addEventListener("click", PrintS
 
 function PrintStarDemoReceipt(){
 
-   document.getElementById("TextField").value="clicked";
+   document.getElementById("TextField").value=EloStarPrinterManager.printStarDemoReceipt();
 
 }
