@@ -13,5 +13,5 @@ function ConnectPrinter(){
 }
 
 function searchStarPrinters(){
-   document.getElementById("TextField").value=EloStarPrinterManager.searchStarPrinters("LAN:");
+   document.getElementById("TextField").value=EloStarPrinterManager.searchStarPrinters("Bluetooth:");
 }
