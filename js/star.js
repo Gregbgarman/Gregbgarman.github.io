@@ -23,7 +23,8 @@ function getPort(){
 
 
 function searchPrinter(){
-   document.getElementById("TextField").value=EloStarPrinterManager.searchPrinter("USB:");
+    var target=document.getElementById("TextField").value;
+   document.getElementById("TextField").value=EloStarPrinterManager.searchPrinter(target);
 }
 
 function getFirmwareInfo(){
