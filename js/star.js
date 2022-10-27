@@ -4,7 +4,7 @@ document.getElementById("ConnectPrinter").addEventListener("click", ConnectPrint
 
 
 document.getElementById("getPort").addEventListener("click", getPort);
-document.getElementById("SearchPrinter").addEventListener("click", searchPrinter);
+document.getElementById("searchPrinter").addEventListener("click", searchPrinter);
 function getPort(){
    document.getElementById("TextField").value=EloStarPrinterManager.getPort();
 }
