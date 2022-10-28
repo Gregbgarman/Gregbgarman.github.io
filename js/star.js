@@ -12,8 +12,8 @@ document.getElementById("releasePort").addEventListener("click", releasePort);
 document.getElementById("ClearOutput").addEventListener("click", ClearOutput);
 
 function ClearOutput(){
-   document.getElementById("TextField").value="";
-   document.getElementById("SuccessField").value="";
+   document.getElementById("TextField").value='';
+   document.getElementById("SuccessField").value=' ';
 
 }
 
