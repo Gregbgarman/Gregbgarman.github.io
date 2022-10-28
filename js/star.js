@@ -12,8 +12,9 @@ document.getElementById("releasePort").addEventListener("click", releasePort);
 document.getElementById("ClearOutput").addEventListener("click", ClearOutput);
 
 function ClearOutput(){
-   document.getElementById("TextField").value="bingo";
-   document.getElementById("SuccessField").value=' ';
+   var blank = "";
+   document.getElementById("TextField").value=blank;
+   document.getElementById("SuccessField").value=blank;
 
 }
 
