@@ -1,7 +1,6 @@
 
 document.getElementById("PrintStarDemoReceipt").addEventListener("click", PrintStarDemoReceipt);
-document.getElementById("ConnectPrinter").addEventListener("click", ConnectPrinter);
-document.getElementById("getPort").addEventListener("click", getPort);
+document.getElementById("setPrinterPort").addEventListener("click", setPrinterPort);
 document.getElementById("searchPrinter").addEventListener("click", searchPrinter);
 
 
@@ -12,23 +11,21 @@ document.getElementById("getStarIOVersion").addEventListener("click", getStarIOV
 document.getElementById("releasePort").addEventListener("click", releasePort);
 
 
-
-function getPort(){
-   var target=document.getElementById("TextField").value;
-   if(target.length > 1 && target.charAt(0) == '[' && target.charAt(target.length-1) == ']') {
-        target = target.slice(1, -1).split(',')[0];
-    }
-   document.getElementById("TextField").value=EloStarPrinterManager.getPort(target,"",10000);
-}
-
-
 function searchPrinter(){
     var target=document.getElementById("TextField").value;
    document.getElementById("TextField").value=EloStarPrinterManager.searchPrinter(target);
 }
 
 function getFirmwareInfo(){
-      document.getElementById("TextField").value=EloStarPrinterManager.getFirmwareInformation();
+      var ObtainedPort=EloStarPrinterManager.getPort("",10000);
+      if (ObtainedPort == true){
+          document.getElementById("TextField").value=EloStarPrinterManager.getFirmwareInformation();
+          document.getElementById("SuccessField").value=EloStarPrinterManager.releasePort();
+      }
+      else{
+          document.getElementById("SuccessField").value="Error";
+      }
+      
 }
 
 function getPortName(){
@@ -44,7 +41,7 @@ function getStarIOVersion(){
 }
 
 function releasePort(){
-          document.getElementById("TextField").value=EloStarPrinterManager.releasePort();
+          document.getElementById("SuccessField").value=EloStarPrinterManager.releasePort();
 }
 
 
@@ -52,8 +49,12 @@ function PrintStarDemoReceipt(){
    document.getElementById("TextField").value=EloStarPrinterManager.printStarDemoReceipt();
 }
 
-function ConnectPrinter(){
-   document.getElementById("TextField").value=EloStarPrinterManager.ConnectPrinter();
+function setPrinterPort(){
+   var target=document.getElementById("TextField").value;
+   if(target.length > 1 && target.charAt(0) == '[' && target.charAt(target.length-1) == ']') {
+        target = target.slice(1, -1).split(',')[0];
+    }   
+   document.getElementById("TextField").value=EloStarPrinterManager.setPrinterPort(target);
 }
 
 
