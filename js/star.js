@@ -9,7 +9,13 @@ document.getElementById("getPortName").addEventListener("click", getPortName);
 document.getElementById("getPortSettings").addEventListener("click", getPortSettings);
 document.getElementById("getStarIOVersion").addEventListener("click", getStarIOVersion);
 document.getElementById("releasePort").addEventListener("click", releasePort);
+document.getElementById("ClearOutput").addEventListener("click", ClearOutput);
 
+function ClearOutput(){
+   document.getElementById("TextField").value="";
+   document.getElementById("SuccessField").value="";
+
+}
 
 function searchPrinter(){
     var target=document.getElementById("TextField").value;
