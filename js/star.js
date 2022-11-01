@@ -211,9 +211,9 @@ function PrintStarDemoReceipt(){
          return;
    }
    
-   var Commands = new Array(EloStarPrinterManager.getCommands());
+   var Commands = EloStarPrinterManager.getCommands();
    document.getElementById("SuccessField").value=typeof Commands;
-   return;
+   
    
    
    if (!EloStarPrinterManager.getPort("",10000)){
