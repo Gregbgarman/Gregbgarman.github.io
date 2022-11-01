@@ -212,7 +212,7 @@ function PrintStarDemoReceipt(){
    }
    
    var Commands = EloStarPrinterManager.getCommands();
-   document.getElementById("SuccessField").value=typeof Commands;
+   document.getElementById("TextField").value=Commands.length;
    
    
    
