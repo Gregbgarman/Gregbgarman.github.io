@@ -211,7 +211,7 @@ function PrintStarDemoReceipt(){
          return;
    }
    
-   var Commands = EloStarPrinterManager.getCommands();
+   var Commands = new Array(EloStarPrinterManager.getCommands());
    document.getElementById("SuccessField").value=typeof Commands;
    return;
    
