@@ -197,6 +197,37 @@ function PrintStarDemoReceipt(){
          return;
    }
    
+   if (!EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")){
+         console.error("Error:Could not append cut paper");
+         document.getElementById("SuccessField").value=false;
+         return;
+   }
+   
+   if (!EloStarPrinterManager.endDocument()){
+         console.error("Error:Could not end document");
+         document.getElementById("SuccessField").value=false;
+         return;
+   }
+   
+   var Commands = EloStarPrinterManager.getCommands();
+   
+   
+   if (!EloStarPrinterManager.getPort("",10000)){
+         document.getElementById("SuccessField").value=false;
+         return;
+   }
+   
+   if (!EloStarPrinterManager.writePort(Commands,0,Commands.length)){
+         document.getElementById("SuccessField").value=false;
+         return;
+   }
+   
+   if (!EloStarPrinterManager.releasePort()){
+    
+      return;
+   }
+   
+   
    document.getElementById("SuccessField").value=true;
    
 }
