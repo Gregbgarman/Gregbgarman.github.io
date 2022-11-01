@@ -8,8 +8,14 @@ document.getElementById("getFirmwareInfo").addEventListener("click", getFirmware
 document.getElementById("getPortName").addEventListener("click", getPortName);
 document.getElementById("getPortSettings").addEventListener("click", getPortSettings);
 document.getElementById("getStarIOVersion").addEventListener("click", getStarIOVersion);
-document.getElementById("releasePort").addEventListener("click", releasePort);
 document.getElementById("ClearOutput").addEventListener("click", ClearOutput);
+
+document.getElementById("PrintStarDemoReceiptR").addEventListener("click", PrintDemoReceiptR);
+
+function PrintDemoReceiptR(){
+   
+}
+
 
 function ClearOutput(){
    var blank = "";
@@ -53,7 +59,40 @@ function releasePort(){
 
 
 function PrintStarDemoReceipt(){
-   document.getElementById("TextField").value=EloStarPrinterManager.printStarDemoReceipt();
+   if (!EloStarPrinterManager.beginDocument()){
+       console.error("Error:Could not begin document");
+       return;
+   }
+   
+    if (!EloStarPrinterManager.appendCodePage("CP998")){
+       console.error("Error:Could not append codepage");
+       return;
+   }
+   
+   if (!EloStarPrinterManager.appendInternational("USA")){
+         console.error("Error:Could not append international");
+          return;
+   }
+   
+   if (!EloStarPrinterManager.appendCharacterSpace(0)){
+         console.error("Error:Could not append character space");
+          return;
+   }
+   
+   if (!EloStarPrinterManager.appendAlignment("","Center")){
+         console.error("Error:Could not append alignment");
+          return;
+   }
+   
+   var StringData = "
+   
+   
+    if (!EloStarPrinterManager.append("","Center")){
+         console.error("Error:Could not append alignment");
+          return;
+   }
+   
+   
 }
 
 function setPrinterPort(){
