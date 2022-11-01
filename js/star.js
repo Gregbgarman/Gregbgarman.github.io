@@ -17,6 +17,7 @@ function PrintDemoReceiptR(){
 }
 
 
+
 function ClearOutput(){
    var blank = "";
    document.getElementById("TextField").value=blank;
