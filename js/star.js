@@ -65,7 +65,7 @@ function PrintStarDemoReceipt(){
        return;
    }
    
-    if (!EloStarPrinterManager.appendCodePage("CP998")){
+    if (!EloStarPrinterManager.appendCodepage("CP998")){
        console.error("Error:Could not append codepage");
        document.getElementById("SuccessField").value=false;
        return;
