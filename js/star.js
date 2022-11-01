@@ -104,11 +104,6 @@ function PrintStarDemoReceipt(){
          return;
    }
    
-   if (!EloStarPrinterManager.appendInvert("","Left")){
-         console.error("Error:Could not append alignment");
-         document.getElementById("SuccessField").value=false;
-         return;
-   }
    
    StringData = "Date:MM/DD/YYYY    Time:HH:MM PM\n--------------------------------\n\n";
    
