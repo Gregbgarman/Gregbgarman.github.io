@@ -71,27 +71,119 @@ function PrintStarDemoReceipt(){
    
    if (!EloStarPrinterManager.appendInternational("USA")){
          console.error("Error:Could not append international");
-          return;
+         return;
    }
    
    if (!EloStarPrinterManager.appendCharacterSpace(0)){
          console.error("Error:Could not append character space");
-          return;
+         return;
    }
    
    if (!EloStarPrinterManager.appendAlignment("","Center")){
          console.error("Error:Could not append alignment");
-          return;
+         return;
    }
    
-   var StringData = "
+   var StringData = "Star Clothing Boutique\n123 Star Road\nCity, State 12345\n\n";
    
    
-    if (!EloStarPrinterManager.append("","Center")){
+   if (!EloStarPrinterManager.append(StringData)){
+         console.error("Error:Could not append data");
+         return;
+   }
+   
+   if (!EloStarPrinterManager.appendAlignment("","Left")){
          console.error("Error:Could not append alignment");
-          return;
+         return;
    }
    
+   if (!EloStarPrinterManager.appendInvert("","Left")){
+         console.error("Error:Could not append alignment");
+         return;
+   }
+   
+   StringData = "Date:MM/DD/YYYY    Time:HH:MM PM\n--------------------------------\n\n";
+   
+   if (!EloStarPrinterManager.append(StringData)){
+         console.error("Error:Could not append data");
+         return;
+   }
+   
+   StringData = "SKU         Description    Total\n" +
+                        "300678566   PLAIN T-SHIRT  10.99\n" +
+                        "300692003   BLACK DENIM    29.99\n" +
+                        "300651148   BLUE DENIM     29.99\n" +
+                        "300642980   STRIPED DRESS  49.99\n" +
+                        "300638471   BLACK BOOTS    35.99\n" +
+                        "\n" +
+                        "Subtotal                  156.95\n" +
+                        "Tax                         0.00\n" +
+                        "--------------------------------\n"
+   if (!EloStarPrinterManager.append(StringData)){
+         console.error("Error:Could not append data");
+         return;
+   }
+   
+   StringData= "Total     ";
+   if (!EloStarPrinterManager.append(StringData)){
+         console.error("Error:Could not append data");
+         return;
+   }
+   
+   StringData = "   $156.95\n";
+   if (!EloStarPrinterManager.appendMultiple(StringData,2,2)){
+         console.error("Error:Could not append multiple");
+         return;
+   }
+   
+   StringData = "--------------------------------\n" +
+                        "\n" +
+                        "Charge\n" +
+                        "156.95\n" +
+                        "Visa XXXX-XXXX-XXXX-0123\n" +
+                        "\n";
+   if (!EloStarPrinterManager.append(StringData)){
+         console.error("Error:Could not append data");
+         return;
+   }
+   
+   StringData = "Refunds and Exchanges\n";
+   if (!EloStarPrinterManager.appendInvert(StringData)){
+         console.error("Error:Could not append Invert");
+         return;
+   }
+   
+   StringData= "Within ";
+   if (!EloStarPrinterManager.append(StringData)){
+         console.error("Error:Could not append data");
+         return;
+   }
+   
+   StringData="30 days";
+   if (!EloStarPrinterManager.appendUnderLine(StringData)){
+         console.error("Error:Could not append underline");
+         return;
+   }
+   
+   StringData = " with receipt\n" + "And tags attached\n" +
+                        "\n";
+   if (!EloStarPrinterManager.append(StringData)){
+         console.error("Error:Could not append data");
+         return;
+   }
+   
+   if (!EloStarPrinterManager.appendAlignment("","Center")){
+         console.error("Error:Could not append alignment");
+         return;
+   }
+   
+   
+   if (!EloStarPrinterManager.appendBarcode("{BStar.","Code128","Mode2",40,true)){
+         console.error("Error:Could not create barcode");
+         return;
+   }
+   
+   document.getElementById("SuccessField").value=true;
    
 }
 
