@@ -61,26 +61,31 @@ function releasePort(){
 function PrintStarDemoReceipt(){
    if (!EloStarPrinterManager.beginDocument()){
        console.error("Error:Could not begin document");
+       document.getElementById("SuccessField").value=false;
        return;
    }
    
     if (!EloStarPrinterManager.appendCodePage("CP998")){
        console.error("Error:Could not append codepage");
+       document.getElementById("SuccessField").value=false;
        return;
    }
    
    if (!EloStarPrinterManager.appendInternational("USA")){
          console.error("Error:Could not append international");
+         document.getElementById("SuccessField").value=false;
          return;
    }
    
    if (!EloStarPrinterManager.appendCharacterSpace(0)){
          console.error("Error:Could not append character space");
+         document.getElementById("SuccessField").value=false;
          return;
    }
    
    if (!EloStarPrinterManager.appendAlignment("","Center")){
          console.error("Error:Could not append alignment");
+         document.getElementById("SuccessField").value=false;
          return;
    }
    
@@ -89,16 +94,19 @@ function PrintStarDemoReceipt(){
    
    if (!EloStarPrinterManager.append(StringData)){
          console.error("Error:Could not append data");
+         document.getElementById("SuccessField").value=false;
          return;
    }
    
    if (!EloStarPrinterManager.appendAlignment("","Left")){
          console.error("Error:Could not append alignment");
+         document.getElementById("SuccessField").value=false;
          return;
    }
    
    if (!EloStarPrinterManager.appendInvert("","Left")){
          console.error("Error:Could not append alignment");
+         document.getElementById("SuccessField").value=false;
          return;
    }
    
@@ -106,6 +114,7 @@ function PrintStarDemoReceipt(){
    
    if (!EloStarPrinterManager.append(StringData)){
          console.error("Error:Could not append data");
+         document.getElementById("SuccessField").value=false;
          return;
    }
    
@@ -121,18 +130,21 @@ function PrintStarDemoReceipt(){
                         "--------------------------------\n"
    if (!EloStarPrinterManager.append(StringData)){
          console.error("Error:Could not append data");
+         document.getElementById("SuccessField").value=false;
          return;
    }
    
    StringData= "Total     ";
    if (!EloStarPrinterManager.append(StringData)){
          console.error("Error:Could not append data");
+         document.getElementById("SuccessField").value=false;
          return;
    }
    
    StringData = "   $156.95\n";
    if (!EloStarPrinterManager.appendMultiple(StringData,2,2)){
          console.error("Error:Could not append multiple");
+         document.getElementById("SuccessField").value=false;
          return;
    }
    
@@ -144,24 +156,28 @@ function PrintStarDemoReceipt(){
                         "\n";
    if (!EloStarPrinterManager.append(StringData)){
          console.error("Error:Could not append data");
+         document.getElementById("SuccessField").value=false;
          return;
    }
    
    StringData = "Refunds and Exchanges\n";
    if (!EloStarPrinterManager.appendInvert(StringData)){
          console.error("Error:Could not append Invert");
+         document.getElementById("SuccessField").value=false;
          return;
    }
    
    StringData= "Within ";
    if (!EloStarPrinterManager.append(StringData)){
          console.error("Error:Could not append data");
+         document.getElementById("SuccessField").value=false;
          return;
    }
    
    StringData="30 days";
    if (!EloStarPrinterManager.appendUnderLine(StringData)){
          console.error("Error:Could not append underline");
+         document.getElementById("SuccessField").value=false;
          return;
    }
    
@@ -169,17 +185,20 @@ function PrintStarDemoReceipt(){
                         "\n";
    if (!EloStarPrinterManager.append(StringData)){
          console.error("Error:Could not append data");
+         document.getElementById("SuccessField").value=false;
          return;
    }
    
    if (!EloStarPrinterManager.appendAlignment("","Center")){
          console.error("Error:Could not append alignment");
+         document.getElementById("SuccessField").value=false;
          return;
    }
    
    
    if (!EloStarPrinterManager.appendBarcode("{BStar.","Code128","Mode2",40,true)){
          console.error("Error:Could not create barcode");
+         document.getElementById("SuccessField").value=false;
          return;
    }
    
