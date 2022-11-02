@@ -216,7 +216,7 @@ function PrintStarDemoReceipt(){
    
    
    
-   if (!EloStarPrinterManager.getPort("",20000)){
+   if (!EloStarPrinterManager.getPort("",10000)){
          document.getElementById("SuccessField").value=false;
          return;
    }
