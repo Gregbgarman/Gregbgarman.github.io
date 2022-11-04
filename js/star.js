@@ -267,7 +267,11 @@ function PrintDemoReceipt4(){
    }
    
    
-   EloStarPrinterManager.appendAlignment("Center");
+        if (!EloStarPrinterManager.appendAlignment("Center")){
+            
+           return;
+        }
+   
         EloStarPrinterManager.append("The Food Shack\n123 Rainbow Road\nKnoxville, TN 12312\n");
         EloStarPrinterManager.appendLineFeed("",1);
         EloStarPrinterManager.appendAlignment("Left");
