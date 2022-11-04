@@ -327,7 +327,7 @@ function PrintDemoReceipt4(){
 function PrintDemoReceipt3(){
    
         EloStarPrinterManager.beginDocument()
-        EloStarPrinterManager.appendCodePage("CP998");
+        EloStarPrinterManager.appendCodepage("CP998");
         EloStarPrinterManager.appendInternational("USA");
         EloStarPrinterManager.appendAlignment("","Center");
         EloStarPrinterManager.appendLineFeed("",1);
