@@ -267,14 +267,14 @@ function PrintDemoReceipt4(){
    }
    
    
-        if (!EloStarPrinterManager.appendAlignment("Center")){
+        if (!EloStarPrinterManager.appendAlignment("","Center")){
             
            return;
         }
    
         EloStarPrinterManager.append("The Food Shack\n123 Rainbow Road\nKnoxville, TN 12312\n");
         EloStarPrinterManager.appendLineFeed("",1);
-        EloStarPrinterManager.appendAlignment("Left");
+        EloStarPrinterManager.appendAlignment("","Left");
         EloStarPrinterManager.append("Table 109\nGreg\n10:30AM    06/21/22\n---------------------------------\n");
         EloStarPrinterManager.appendAlignment("Guest No 1\n", "Center");
         EloStarPrinterManager.appendAlignment("Left");
@@ -282,7 +282,7 @@ function PrintDemoReceipt4(){
         EloStarPrinterManager.appendAlignment("Guest No 2\n", "Center");
         EloStarPrinterManager.appendAlignment("1 cheese pizza                 5.00\n1 milkshake                    1.75\n\n---------------------------------\n","Left");
         EloStarPrinterManager.appendAlignment("Subtotal    17.00\nTax          1.20\n","Right");
-        EloStarPrinterManager.appendAlignment("Right");
+        EloStarPrinterManager.appendAlignment("","Right");
         EloStarPrinterManager.appendMultiple("Total    18.20\n\n",2,2);
 
         EloStarPrinterManager.appendAlignment("Let us know how we did!\nTake our survey within ", "Left");
