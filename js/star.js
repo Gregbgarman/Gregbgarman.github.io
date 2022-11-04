@@ -277,7 +277,7 @@ function PrintDemoReceipt4(){
         EloStarPrinterManager.appendAlignment("","Left");
         EloStarPrinterManager.append("Table 109\nGreg\n10:30AM    06/21/22\n---------------------------------\n");
         EloStarPrinterManager.appendAlignment("Guest No 1\n", "Center");
-        EloStarPrinterManager.appendAlignment("Left");
+        EloStarPrinterManager.appendAlignment("","Left");
         EloStarPrinterManager.append("1 ice cream sundae             4.50\n1 soda pop                     1.75\n1 french fries                 4.00\n");
         EloStarPrinterManager.appendAlignment("Guest No 2\n", "Center");
         EloStarPrinterManager.appendAlignment("1 cheese pizza                 5.00\n1 milkshake                    1.75\n\n---------------------------------\n","Left");
