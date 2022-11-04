@@ -383,8 +383,11 @@ function printimage() {
         EloStarPrinterManager.appendInternational("USA");
         EloStarPrinterManager.appendAlignment("","Center");
    
-   document.getElementById("textField").value = EloStarPrinterManager.appendBitmap(image,true);
-           EloStarPrinterManager.appendUnitFeed("",32);
+           if (!EloStarPrinterManager.appendBitmap(image,true)){
+              document.getElementById("SuccessField").value=false;
+              document.getElementById("TextField").value=false;
+           }
+          
 
         EloStarPrinterManager.appendCutPaper("PartialCutWithFeed");
         EloStarPrinterManager.endDocument();
