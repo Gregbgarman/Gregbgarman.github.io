@@ -12,6 +12,9 @@ document.getElementById("ClearOutput").addEventListener("click", ClearOutput);
 
 document.getElementById("PrintStarDemoReceiptR").addEventListener("click", PrintDemoReceiptR);
 
+document.getElementById("PrintStarDemoReceipt4").addEventListener("click", PrintDemoReceipt4);
+
+
 function PrintDemoReceiptR(){
    
 }
@@ -242,6 +245,80 @@ function setPrinterPort(){
         target = target.slice(1, -1).split(',')[0];
     }   
    document.getElementById("SuccessField").value=EloStarPrinterManager.setPrinterPort(target);
+}
+
+function PrintDemoReceipt4(){
+    if (!EloStarPrinterManager.beginDocument()){
+       console.error("Error:Could not begin document");
+       document.getElementById("SuccessField").value=false;
+       return;
+   }
+   
+    if (!EloStarPrinterManager.appendCodepage("CP998")){
+       console.error("Error:Could not append codepage");
+       document.getElementById("SuccessField").value=false;
+       return;
+   }
+   
+   if (!EloStarPrinterManager.appendInternational("USA")){
+         console.error("Error:Could not append international");
+         document.getElementById("SuccessField").value=false;
+         return;
+   }
+   
+   
+   EloStarPrinterManager.appendAlignment("Center");
+        EloStarPrinterManager.append("The Food Shack\n123 Rainbow Road\nKnoxville, TN 12312\n");
+        EloStarPrinterManager.appendLineFeed("",1);
+        EloStarPrinterManager.appendAlignment("Left");
+        EloStarPrinterManager.append("Table 109\nGreg\n10:30AM    06/21/22\n---------------------------------\n");
+        EloStarPrinterManager.appendAlignment("Guest No 1\n", "Center");
+        EloStarPrinterManager.appendAlignment("Left");
+        EloStarPrinterManager.append("1 ice cream sundae             4.50\n1 soda pop                     1.75\n1 french fries                 4.00\n");
+        EloStarPrinterManager.appendAlignment("Guest No 2\n", "Center");
+        EloStarPrinterManager.appendAlignment("1 cheese pizza                 5.00\n1 milkshake                    1.75\n\n---------------------------------\n","Left");
+        EloStarPrinterManager.appendAlignment("Subtotal    17.00\nTax          1.20\n","Right");
+        EloStarPrinterManager.appendAlignment("Right");
+        EloStarPrinterManager.appendMultiple("Total    18.20\n\n",2,2);
+
+        EloStarPrinterManager.appendAlignment("Let us know how we did!\nTake our survey within ", "Left");
+        EloStarPrinterManager.appendUnderLine("10 days");
+        EloStarPrinterManager.append(" and get entered\nto ");
+        EloStarPrinterManager.appendInvert("win a prize!");
+
+        EloStarPrinterManager.append(" Scan the Qr code below to start!\n\n");
+        EloStarPrinterManager.appendQrCode("https://www.elotouch.com/", "No2", "Q", 5);
+        EloStarPrinterManager.appendUnitFeed("",10);
+
+        EloStarPrinterManager.appendCutPaper("PartialCutWithFeed");
+        EloStarPrinterManager.endDocument();
+   
+        var Commands = EloStarPrinterManager.getCommands();
+         document.getElementById("TextField").value=Commands.length;
+   
+   
+   
+   if (!EloStarPrinterManager.getPort("",10000)){
+         document.getElementById("SuccessField").value=false;
+         return;
+   }
+   
+   if (!EloStarPrinterManager.writePort(Commands,0,Commands.length)){
+         document.getElementById("SuccessField").value=false;
+         return;
+   }
+   
+   if (!EloStarPrinterManager.releasePort()){
+    
+      return;
+   }
+   
+   
+   document.getElementById("SuccessField").value=true;
+
+   
+   
+   
 }
 
 
