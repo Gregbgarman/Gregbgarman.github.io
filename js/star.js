@@ -17,7 +17,7 @@ document.getElementById("PrintStarDemoReceipt4").addEventListener("click", Print
 
 document.getElementById("printimage").addEventListener("click", printimage);
 
-
+let x=10
 
 function PrintDemoReceiptR(){
    
@@ -30,6 +30,9 @@ function ClearOutput(){
    var blank = "";
    document.getElementById("TextField").value=blank;
    document.getElementById("SuccessField").value=blank;
+   
+   x+=5
+      document.getElementById("SuccessField").value=x
 
 }
 
