@@ -12,11 +12,9 @@ document.getElementById("checkStarFirmware").addEventListener("click", checkStar
 document.getElementById("checkStarModelName").addEventListener("click", checkStarModelName);
 document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter);
 
-function queryStarPrinterList(){
-    document.getElementById("textField").value="pressed"
-   
-   var target=document.getElementById("textField").value
-   document.getElementById("textField").value=EloStarPrinterManager.searchPrinter(target)
+function queryStarPrinterList(){   
+   var target=document.getElementById("textField").value;
+   document.getElementById("textField").value=EloStarPrinterManager.searchPrinter(target);
 }
 
 function setStarPrinter(){
