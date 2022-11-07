@@ -31,6 +31,7 @@ function printStarBarcode(){
     if (StarPrinterPort === ""){
         return  
     }
+     document.getElementById("textField").value=2
    
     EloStarPrinterManager.beginDocument(StarPrinterPort)
     EloStarPrinterManager.appendBarcode("86340975318", "UPCE", "Mode1", 40, true);
