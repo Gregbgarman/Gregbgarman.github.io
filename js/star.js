@@ -33,7 +33,6 @@ function printStarBarcode(){
     }
    
     EloStarPrinterManager.beginDocument(StarPrinterPort)
-    EloStarPrinterManager.appendAlignment("","Center")
     EloStarPrinterManager.appendBarcode("86340975318", "UPCE", "Mode1", 40, true);
     EloStarPrinterManager.appendUnitFeed("",30)
     EloStarPrinterManager.appendBarcode("86340975318", "UPCE", "Mode2", 50, true)
