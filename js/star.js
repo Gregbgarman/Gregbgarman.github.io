@@ -177,7 +177,7 @@ function getReceipt1Data(){
         EloStarPrinterManager.append("The Food Shack\n123 Rainbow Road\nKnoxville, TN 12312\n");
         EloStarPrinterManager.appendLineFeed("",1);
         EloStarPrinterManager.appendAlignment("","Left");
-        EloStarPrinterManager.append("Table 109\nGreg\n10:30AM    06/21/22\n---------------------------------\n");
+        EloStarPrinterManager.append("Table 109\nServer Greg\n10:30AM    06/21/22\n---------------------------------\n");
         EloStarPrinterManager.appendAlignment("Guest No 1\n", "Center");
         EloStarPrinterManager.appendAlignment("","Left");
         EloStarPrinterManager.append("1 ice cream sundae             4.50\n1 soda pop                     1.75\n1 french fries                 4.00\n");
