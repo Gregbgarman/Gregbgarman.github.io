@@ -46,7 +46,7 @@ function printStarDemoReceipt1(){
         return
    }
    
-   if (!EloStarPrinterManager.writePort(ActivePort_Key,Commands,0,Commands.length)){
+   if (!EloStarPrinterManager.writePort(ActivePort_Key,ReceiptData,0,ReceiptData.length)){
       document.getElementById("textField").value="write port fail"
       return
    }
