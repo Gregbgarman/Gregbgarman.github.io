@@ -37,7 +37,7 @@ function printStarDemoReceipt1(){
     }
      
    let ActivePort_Key = EloStarPrinterManager.getPort(StarPrinterPort,"",10000)
-   document.getElementById("TextField").value=ActivePort_Key
+   document.getElementById("textField").value=ActivePort_Key
    
    let PrinterStatus_Key = EloStarPrinterManager.beginCheckedBlock(ActivePort_Key)
    
