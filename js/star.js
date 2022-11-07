@@ -18,7 +18,7 @@ function queryStarPrinterList(){
 }
 
 function setStarPrinter(){
-   let target=document.getElementById("TextField").value
+   let target=document.getElementById("textField").value
    if(target.length > 1 && target.charAt(0) == '[' && target.charAt(target.length-1) == ']') {
         StarPrinterPort = target.slice(1, -1).split(',')[0]
     }   
