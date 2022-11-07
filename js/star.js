@@ -1,24 +1,24 @@
 let StarPrinterPort=""
 
-document.getElementById("queryStarPrinterList").addEventListener("click", queryStarPrinterList);
-document.getElementById("setStarPrinter").addEventListener("click", setStarPrinter);
-document.getElementById("printStarBarcode").addEventListener("click", printStarBarcode);
-document.getElementById("printStarDemoReceipt1").addEventListener("click", printStarDemoReceipt1);
-document.getElementById("printStarDemoReceipt2").addEventListener("click", printStarDemoReceipt2);
-document.getElementById("printStarImage").addEventListener("click", printStarImage);
-document.getElementById("checkStarPrinterPaper").addEventListener("click", checkStarPrinterPaper);
-document.getElementById("checkStarPrinterOnline").addEventListener("click",checkStarPrinterOnline);
-document.getElementById("checkStarFirmware").addEventListener("click", checkStarFirmware);
-document.getElementById("checkStarModelName").addEventListener("click", checkStarModelName);
-document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter);
+document.getElementById("queryStarPrinterList").addEventListener("click", queryStarPrinterList)
+document.getElementById("setStarPrinter").addEventListener("click", setStarPrinter)
+document.getElementById("printStarBarcode").addEventListener("click", printStarBarcode)
+document.getElementById("printStarDemoReceipt1").addEventListener("click", printStarDemoReceipt1)
+document.getElementById("printStarDemoReceipt2").addEventListener("click", printStarDemoReceipt2)
+document.getElementById("printStarImage").addEventListener("click", printStarImage)
+document.getElementById("checkStarPrinterPaper").addEventListener("click", checkStarPrinterPaper)
+document.getElementById("checkStarPrinterOnline").addEventListener("click",checkStarPrinterOnline)
+document.getElementById("checkStarFirmware").addEventListener("click", checkStarFirmware)
+document.getElementById("checkStarModelName").addEventListener("click", checkStarModelName)
+document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter)
 
 function queryStarPrinterList(){   
-   var target=document.getElementById("textField").value;
-   document.getElementById("textField").value=EloStarPrinterManager.searchPrinter(target);
+   var target=document.getElementById("textField").value
+   document.getElementById("textField").value=EloStarPrinterManager.searchPrinter(target)
 }
 
 function setStarPrinter(){
-   var target=document.getElementById("TextField").value;
+   let target=document.getElementById("TextField").value
    if(target.length > 1 && target.charAt(0) == '[' && target.charAt(target.length-1) == ']') {
         StarPrinterPort = target.slice(1, -1).split(',')[0]
     }   
@@ -31,7 +31,47 @@ function printStarBarcode(){
 }
 
 function printStarDemoReceipt1(){
+     let ReceiptData = getReceipt1Data()
+     if (ReceiptData === false){
+         return  
+     }
      
+   let ActivePort_Key = EloStarPrinterManager.getPort(StarPrinterPort,"",10000)
+   document.getElementById("TextField").value=ActivePort_Key
+   
+   let PrinterStatus_Key = EloStarPrinterManager.beginCheckedBlock(ActivePort_Key)
+   
+   if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 1){
+        document.getElementById("textField").value="offline status fail"
+        return
+   }
+   
+   if (!EloStarPrinterManager.writePort(ActivePort_Key,Commands,0,Commands.length)){
+      document.getElementById("textField").value="write port fail"
+      return
+   }
+   
+   if (!EloStarPrinterManager.setEndCheckedBlockTimeoutMillis(ActivePort_Key,30000)){
+      document.getElementById("textField").value="setendchkmillis fail"
+      return
+   }
+   
+   PrinterStatus_Key = EloStarPrinterManager.endCheckedBlock(ActivePort_Key)
+   if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 1 || EloStarPrinterManager.receiptPaperEmptyStatus(PrinterStatus_Key) === 1 ||
+       EloStarPrinterManager.coverOpenStatus(PrinterStatus_Key) === 1){
+       document.getElementById("textField").value="final check fail"
+       return  
+   }
+   
+   if (!EloStarPrinterManager.releasePort(ActivePort_Key)){
+      document.getElementById("textField").value="release fail"
+      return
+   }
+   
+   
+   document.getElementById("textField").value="print success"
+   
+   
 }
 
 function printStarDemoReceipt2(){
@@ -61,6 +101,59 @@ function checkStarModelName(){
 
 function forgetStarPrinter(){
    
+}
+
+
+function getReceipt1Data(){
+    if (!EloStarPrinterManager.beginDocument()){
+       console.error("Error:Could not begin document")      
+       return false
+   }
+   
+    if (!EloStarPrinterManager.appendCodepage("CP998")){
+       console.error("Error:Could not append codepage")
+       return false;
+   }
+   
+   if (!EloStarPrinterManager.appendInternational("USA")){
+         console.error("Error:Could not append international")        
+         return false
+   }
+   
+   
+   if (!EloStarPrinterManager.appendAlignment("","Center")){
+          console.error("Error:Could not append international")
+          return false
+    }
+   
+        EloStarPrinterManager.append("The Food Shack\n123 Rainbow Road\nKnoxville, TN 12312\n");
+        EloStarPrinterManager.appendLineFeed("",1);
+        EloStarPrinterManager.appendAlignment("","Left");
+        EloStarPrinterManager.append("Table 109\nGreg\n10:30AM    06/21/22\n---------------------------------\n");
+        EloStarPrinterManager.appendAlignment("Guest No 1\n", "Center");
+        EloStarPrinterManager.appendAlignment("","Left");
+        EloStarPrinterManager.append("1 ice cream sundae             4.50\n1 soda pop                     1.75\n1 french fries                 4.00\n");
+        EloStarPrinterManager.appendAlignment("Guest No 2\n", "Center");
+        EloStarPrinterManager.appendAlignment("1 cheese pizza                 5.00\n1 milkshake                    1.75\n\n---------------------------------\n","Left");
+        EloStarPrinterManager.appendAlignment("Subtotal    17.00\nTax          1.20\n","Right");
+        EloStarPrinterManager.appendAlignment("","Right");
+        EloStarPrinterManager.appendMultiple("Total    18.20\n\n",2,2);
+
+        EloStarPrinterManager.appendAlignment("Let us know how we did!\nTake our survey within ", "Left");
+        EloStarPrinterManager.appendUnderLine("10 days");
+        EloStarPrinterManager.append(" and get entered\nto ");
+        EloStarPrinterManager.appendInvert("win a prize!");
+
+        EloStarPrinterManager.append(" Scan the Qr code below to start!\n\n");
+        EloStarPrinterManager.appendQrCode("https://www.elotouch.com/", "No2", "Q", 5);
+        EloStarPrinterManager.appendUnitFeed("",10);
+
+        EloStarPrinterManager.appendCutPaper("PartialCutWithFeed");
+        EloStarPrinterManager.endDocument();
+   
+        let Commands = EloStarPrinterManager.getCommands();
+        return Commands
+    
 }
 
 
