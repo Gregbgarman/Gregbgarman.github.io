@@ -57,7 +57,7 @@ function getStarIOVersion(){
 
 function PrintStarDemoReceipt(){
    
-   if (SelectedPrinterPort === ""){
+   if (SelectedStarPort === ""){
       document.getElementById("TextField").value="choose port";
       return
    }
