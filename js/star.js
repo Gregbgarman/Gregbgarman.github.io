@@ -64,6 +64,8 @@ function setPrinterPort(){
 
 
 function PrintStarDemoReceipt(){
+   ClearOutput();
+   
    
    EloStarPrinterManager.beginDocument(StarPrinterPort);
     
