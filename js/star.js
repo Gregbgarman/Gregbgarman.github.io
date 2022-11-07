@@ -17,7 +17,7 @@ document.getElementById("PrintStarDemoReceipt4").addEventListener("click", Print
 
 document.getElementById("printimage").addEventListener("click", printimage);
 
-let SelectedStarPort=""
+let StarPrinterPort=""
 
 function PrintDemoReceiptR(){
    
@@ -218,7 +218,7 @@ function PrintStarDemoReceipt(){
    document.getElementById("TextField").value=Commands.length;
    
    
-   let ActivePort_Key=EloStarPrinterManager.getPort(SelectedStarPort,"",10000)
+   let ActivePort_Key = EloStarPrinterManager.getPort(StarPrinterPort,"",10000)
    let PrinterStatus_Key = EloStarPrinterManager.beginCheckedBlock(ActivePort_Key)
    if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 1){
         document.getElementById("TextField").value=false;
