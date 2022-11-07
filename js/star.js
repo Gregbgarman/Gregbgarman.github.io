@@ -13,6 +13,8 @@ document.getElementById("checkStarModelName").addEventListener("click", checkSta
 document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter)
 
 function queryStarPrinterList(){
+    document.getElementById("textField").value="pressed"
+   
    var target=document.getElementById("textField").value
    document.getElementById("textField").value=EloStarPrinterManager.searchPrinter(target)
 }
