@@ -13,7 +13,7 @@ document.getElementById("checkStarModelName").addEventListener("click", checkSta
 document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter)
 
 function queryStarPrinterList(){   
-   var target=document.getElementById("textField").value
+   let target=document.getElementById("textField").value
    document.getElementById("textField").value=EloStarPrinterManager.searchPrinter(target)
 }
 
@@ -31,10 +31,10 @@ function printStarBarcode(){
 }
 
 function printStarDemoReceipt1(){
-     let ReceiptData = getReceipt1Data()
-     if (ReceiptData === false){
+    let ReceiptData = getReceipt1Data()
+    if (ReceiptData === false){
          return  
-     }
+    }
      
    let ActivePort_Key = EloStarPrinterManager.getPort(StarPrinterPort,"",10000)
    document.getElementById("TextField").value=ActivePort_Key
@@ -67,11 +67,7 @@ function printStarDemoReceipt1(){
       document.getElementById("textField").value="release fail"
       return
    }
-   
-   
    document.getElementById("textField").value="print success"
-   
-   
 }
 
 function printStarDemoReceipt2(){
