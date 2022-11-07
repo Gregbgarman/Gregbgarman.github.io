@@ -221,6 +221,7 @@ function PrintStarDemoReceipt(){
    
    
    let ActivePort_Key = EloStarPrinterManager.getPort(StarPrinterPort,"",10000)
+   document.getElementById("TextField").value=ActivePort_Key;
     if (!EloStarPrinterManager.writePort(ActivePort_Key,Commands,"",10000)){
       document.getElementById("SuccessField").value="write port fail";
       return
