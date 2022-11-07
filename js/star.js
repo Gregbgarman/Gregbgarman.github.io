@@ -17,7 +17,7 @@ document.getElementById("PrintStarDemoReceipt4").addEventListener("click", Print
 
 document.getElementById("printimage").addEventListener("click", printimage);
 
-let x=10
+let SelectedStarPort=""
 
 function PrintDemoReceiptR(){
    
@@ -30,10 +30,6 @@ function ClearOutput(){
    var blank = "";
    document.getElementById("TextField").value=blank;
    document.getElementById("SuccessField").value=blank;
-   
-   x+=5
-      document.getElementById("SuccessField").value=x
-
 }
 
 function searchPrinter(){
@@ -42,14 +38,7 @@ function searchPrinter(){
 }
 
 function getFirmwareInfo(){
-      var ObtainedPort=EloStarPrinterManager.getPort("",10000);
-      if (ObtainedPort == true){
-          document.getElementById("TextField").value=EloStarPrinterManager.getFirmwareInformation();
-          document.getElementById("SuccessField").value=EloStarPrinterManager.releasePort();
-      }
-      else{
-          document.getElementById("SuccessField").value="Error";
-      }
+     
       
 }
 
@@ -65,12 +54,15 @@ function getStarIOVersion(){
           document.getElementById("TextField").value=EloStarPrinterManager.getStarIOVersion();
 }
 
-function releasePort(){
-          document.getElementById("SuccessField").value=EloStarPrinterManager.releasePort();
-}
-
 
 function PrintStarDemoReceipt(){
+   
+   if (StarPrinterPort === ""){
+      document.getElementById("TextField").value="choose port";
+      return
+   }
+   
+   
    if (!EloStarPrinterManager.beginDocument()){
        console.error("Error:Could not begin document");
        document.getElementById("SuccessField").value=false;
@@ -221,23 +213,36 @@ function PrintStarDemoReceipt(){
          return;
    }
    
-   var Commands = EloStarPrinterManager.getCommands();
+   let Commands = EloStarPrinterManager.getCommands();
    document.getElementById("TextField").value=Commands.length;
    
    
-   
-   if (!EloStarPrinterManager.getPort("",10000)){
-         document.getElementById("SuccessField").value=false;
-         return;
+   let ActivePort_Key=EloStarPrinterManager.getPort(SelectedStarPort,"",10000)
+   let PrinterStatus_Key = EloStarPrinterManager.beginCheckedBlock(ActivePort_Key)
+   if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 1){
+        document.getElementById("TextField").value=false;
+        document.getElementById("SuccessField").value="offline status fail";
    }
    
-   if (!EloStarPrinterManager.writePort(Commands,0,Commands.length)){
-         document.getElementById("SuccessField").value=false;
-         return;
+   if (!EloStarPrinterManager.writePort(ActivePort_Key,Commands,"",10000)){
+      document.getElementById("SuccessField").value="write port fail";
+      return
    }
    
-   if (!EloStarPrinterManager.releasePort()){
-    
+   if (!EloStarPrinterManager.setEndCheckedBlockTimeoutMillis(ActivePort_Key,30000)){
+      document.getElementById("SuccessField").value="setendchkmillis fail";
+      return
+   }
+   
+   PrinterStatus_Key = EloStarPrinterManager.endCheckedBlock(ActivePort_Key)
+   if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 1 || EloStarPrinterManager.receiptPaperEmptyStatus(PrinterStatus_Key) === 1 ||
+       EloStarPrinterManager.coverOpenStatus(PrinterStatus_Key) === 1){
+       document.getElementById("SuccessField").value="final check fail";
+       return  
+   }
+   
+   if (!EloStarPrinterManager.releasePort(ActivePort_Key)){
+      document.getElementById("SuccessField").value="release fail";
       return;
    }
    
@@ -249,9 +254,9 @@ function PrintStarDemoReceipt(){
 function setPrinterPort(){
    var target=document.getElementById("TextField").value;
    if(target.length > 1 && target.charAt(0) == '[' && target.charAt(target.length-1) == ']') {
-        target = target.slice(1, -1).split(',')[0];
+        StarPrinterPort = target.slice(1, -1).split(',')[0];
     }   
-   document.getElementById("SuccessField").value=EloStarPrinterManager.setPrinterPort(target);
+   document.getElementById("SuccessField").value=true
 }
 
 function PrintDemoReceipt4(){
