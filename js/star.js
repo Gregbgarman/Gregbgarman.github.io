@@ -105,7 +105,7 @@ function forgetStarPrinter(){
 
 
 function getReceipt1Data(){
-    if (!EloStarPrinterManager.beginDocument()){
+    if (!EloStarPrinterManager.beginDocument(StarPrinterPort)){
        console.error("Error:Could not begin document")      
        return false
    }
