@@ -1,3 +1,5 @@
+let StarPrinterPort=""
+
 
 document.getElementById("PrintStarDemoReceipt").addEventListener("click", PrintStarDemoReceipt);
 document.getElementById("setPrinterPort").addEventListener("click", setPrinterPort);
@@ -17,7 +19,7 @@ document.getElementById("PrintStarDemoReceipt4").addEventListener("click", Print
 
 document.getElementById("printimage").addEventListener("click", printimage);
 
-let StarPrinterPort=""
+
 
 function PrintDemoReceiptR(){
    
