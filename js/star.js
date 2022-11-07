@@ -59,11 +59,8 @@ function PrintStarDemoReceipt(){
    
   
    
-   if (!EloStarPrinterManager.beginDocument(SelectedStarPort)){
-       console.error("Error:Could not begin document");
-       document.getElementById("SuccessField").value=false;
-       return;
-   }
+   EloStarPrinterManager.beginDocument(SelectedStarPort);
+ 
    
     if (!EloStarPrinterManager.appendCodepage("CP998")){
        console.error("Error:Could not append codepage");
