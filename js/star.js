@@ -33,6 +33,7 @@ function printStarBarcode(){
     }
      document.getElementById("textField").value = 3
    
+      EloStarPrinterManager.beginDocument(StarPrinterPort)
      EloStarPrinterManager.appendBarcode(("86340975318").getBytes(StandardCharsets.US_ASCII), ICommandBuilder.BarcodeSymbology.UPCA, ICommandBuilder.BarcodeWidth.Mode1, 60, true);
      EloStarPrinterManager.appendUnitFeed(30);
      EloStarPrinterManager.appendBarcode(("85187751062").getBytes(StandardCharsets.US_ASCII), ICommandBuilder.BarcodeSymbology.UPCA, ICommandBuilder.BarcodeWidth.Mode2, 40, true);
