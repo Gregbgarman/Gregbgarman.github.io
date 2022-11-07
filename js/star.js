@@ -36,7 +36,44 @@ function printStarDemoReceipt1(){
     if (ReceiptData === false){
          return  
     }
-     
+    printReceiptData(ReceiptData)
+}
+
+function printStarDemoReceipt2(){
+    let ReceiptData = getReceipt2Data()
+    if (ReceiptData === false){
+         return  
+    }
+    printReceiptData(ReceiptData)
+}
+
+function printStarImage(){
+
+}
+
+function checkStarPrinterPaper(){
+   
+}
+
+function checkStarPrinterOnline(){
+   
+}
+
+function checkStarFirmware(){
+   
+}
+
+function checkStarModelName(){
+   
+   
+}
+
+function forgetStarPrinter(){
+   
+}
+
+function printReceiptData(ReceiptData){
+   
    let ActivePort_Key = EloStarPrinterManager.getPort(StarPrinterPort,"",10000)
    document.getElementById("textField").value=ActivePort_Key
    
@@ -68,38 +105,33 @@ function printStarDemoReceipt1(){
       document.getElementById("textField").value="release fail"
       return
    }
-   document.getElementById("textField").value="print success"
+   document.getElementById("textField").value="print success"   
 }
 
-function printStarDemoReceipt2(){
-   
+function getReceipt2Data(){
+        EloStarPrinterManager.beginDocument(StarPrinterPort)
+        EloStarPrinterManager.appendCodepage("CP998");
+        EloStarPrinterManager.appendInternational("USA");
+        EloStarPrinterManager.appendAlignment("","Center");
+        EloStarPrinterManager.appendLineFeed("",1);
+        EloStarPrinterManager.append("THE STORE 123 (555) 555 5555\nSTORE DIRECTOR John Smith\n\n7/01/07 16:58 6153 05 0191 134\nST# 21 OP# 001 TE# 01 TR# 747\n------------------------------\n");
+        EloStarPrinterManager.append("400 OHEIDA 3PK SPRINGF  9.99 R\n410 3 CUP BLK TEAPOT    9.99 R\n445 EMERIL GRIDDLE/PAN 17.99 R\n438 CANDYMAKER ASSORT   4.99 R\n474 TRIPOD              8.99 R\n433 BLK LOGO PRNTED ZO  7.99 R\n458 AQUA MICROTERRY SC  6.99 R\n493 30L BLK FF DRESS   16.99 R\n407 LEVITATING DESKTOP  7.99 R\n441 **Blue Overprint P  2.99 R\n476 REPOSE 4PCPM CHOC   5.49 R\n476 REPOSE 4PCPM CHOC   5.49 R\n461 WESTGATE BLACK 25  59.99 R\n------------------------------\n");
+        EloStarPrinterManager.append("SUBTOTAL                160.38\nSUBTOTAL                160.38\n");
+        EloStarPrinterManager.appendMultiple("TOTAL    174.81\n", 2, 2);
+        EloStarPrinterManager.appendLineFeed("",2);
+        EloStarPrinterManager.append("CASH                    200.00\nCHANGE                   25.19\n------------------------------\n");
+        EloStarPrinterManager.append("Purchased item total number\nSign Up and Save !\nWith Preferred Saving Card\n");
+        EloStarPrinterManager.appendLineFeed("",2);
+
+        EloStarPrinterManager.appendBarcode("86340975318", "UPCA", "Mode1", 40, true);
+        EloStarPrinterManager.appendUnitFeed("",32);
+
+        EloStarPrinterManager.appendCutPaper("PartialCutWithFeed");
+        EloStarPrinterManager.endDocument();
+
+        let Commands = EloStarPrinterManager.getCommands();
+        return Commands
 }
-
-function printStarImage(){
-
-}
-
-function checkStarPrinterPaper(){
-   
-}
-
-function checkStarPrinterOnline(){
-   
-}
-
-function checkStarFirmware(){
-   
-}
-
-function checkStarModelName(){
-   
-   
-}
-
-function forgetStarPrinter(){
-   
-}
-
 
 function getReceipt1Data(){
     if (!EloStarPrinterManager.beginDocument(StarPrinterPort)){
