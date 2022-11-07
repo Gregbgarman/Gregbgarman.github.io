@@ -40,7 +40,7 @@ function printStarBarcode(){
      EloStarPrinterManager.appendUnitFeed("",30);
      EloStarPrinterManager.appendBarcode("17523099544", "UPCA", "Mode3", 40, true);
      EloStarPrinterManager.appendUnitFeed("",30);
-     EloStarPrinterManager.appendQrCode("https://www.elotouch.com/".getBytes(), ICommandBuilder.QrCodeModel.No2, ICommandBuilder.QrCodeLevel.Q, 5);
+     EloStarPrinterManager.appendQrCode("https://www.elotouch.com/", "No2", "Q", 5);
      EloStarPrinterManager.appendUnitFeed("",10);
    
     EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
