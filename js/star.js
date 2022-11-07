@@ -14,6 +14,7 @@ document.getElementById("forgetStarPrinter").addEventListener("click", forgetSta
 
 function queryStarPrinterList(){   
    let target=document.getElementById("textField").value
+   target+=":"
    document.getElementById("textField").value=EloStarPrinterManager.searchPrinter(target)
 }
 
