@@ -1,16 +1,16 @@
 let StarPrinterPort=""
 
-document.getElementById("queryStarPrinterList").addEventListener("click", queryStarPrinterList)
-document.getElementById("setStarPrinter").addEventListener("click", setStarPrinter)
-document.getElementById("printStarBarcode").addEventListener("click", printStarBarcode)
-document.getElementById("printStarDemoReceipt1").addEventListener("click", printStarDemoReceipt1)
-document.getElementById("printStarDemoReceipt2").addEventListener("click", printStarDemoReceipt2)
-document.getElementById("printStarImage").addEventListener("click", printStarImage)
-document.getElementById("checkStarPrinterPaper").addEventListener("click", checkStarPrinterPaper)
-document.getElementById("checkStarPrinterOnline").addEventListener("click",checkStarPrinterOnline)
-document.getElementById("checkStarFirmware").addEventListener("click", checkStarFirmware)
-document.getElementById("checkStarModelName").addEventListener("click", checkStarModelName)
-document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter)
+document.getElementById("queryStarPrinterList").addEventListener("click", queryStarPrinterList);
+document.getElementById("setStarPrinter").addEventListener("click", setStarPrinter);
+document.getElementById("printStarBarcode").addEventListener("click", printStarBarcode);
+document.getElementById("printStarDemoReceipt1").addEventListener("click", printStarDemoReceipt1);
+document.getElementById("printStarDemoReceipt2").addEventListener("click", printStarDemoReceipt2);
+document.getElementById("printStarImage").addEventListener("click", printStarImage);
+document.getElementById("checkStarPrinterPaper").addEventListener("click", checkStarPrinterPaper);
+document.getElementById("checkStarPrinterOnline").addEventListener("click",checkStarPrinterOnline);
+document.getElementById("checkStarFirmware").addEventListener("click", checkStarFirmware);
+document.getElementById("checkStarModelName").addEventListener("click", checkStarModelName);
+document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter);
 
 function queryStarPrinterList(){
     document.getElementById("textField").value="pressed"
