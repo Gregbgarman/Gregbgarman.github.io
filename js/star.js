@@ -28,7 +28,21 @@ function setStarPrinter(){
 
 
 function printStarBarcode(){
-     
+    if (StarPrinterPort === ""){
+        return  
+    }
+   
+    EloStarPrinterManager.beginDocument(StarPrinterPort)
+    EloStarPrinterManager.appendAlignment("","Center")
+    EloStarPrinterManager.appendBarcode("01234596326", "UPCE", "Mode1", 40, true)
+    EloStarPrinterManger.appendBarcode("09521596326", "UPCE", "Mode2", 50, true)
+    EloStarPrinterManager.appendQrCode("https://www.elotouch.com/", "No2", "Q", 5)
+    EloStarPrinterManager.appendUnitFeed("",10)
+    EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
+    EloStarPrinterManager.endDocument()
+    
+   let ReceiptData = EloStarPrinterManager.getCommands() 
+   printReceiptData(ReceiptData)
 }
 
 function printStarDemoReceipt1(){
@@ -123,7 +137,7 @@ function getReceipt2Data(){
         EloStarPrinterManager.append("Purchased item total number\nSign Up and Save !\nWith Preferred Saving Card\n");
         EloStarPrinterManager.appendLineFeed("",2);
 
-        EloStarPrinterManager.appendBarcode("86340975318", "UPCA", "Mode1", 40, true);
+        EloStarPrinterManager.appendBarcode("86340975318", "UPCE", "Mode1", 40, true);
         EloStarPrinterManager.appendUnitFeed("",32);
 
         EloStarPrinterManager.appendCutPaper("PartialCutWithFeed");
