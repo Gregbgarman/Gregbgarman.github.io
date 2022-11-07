@@ -256,7 +256,7 @@ function setPrinterPort(){
    if(target.length > 1 && target.charAt(0) == '[' && target.charAt(target.length-1) == ']') {
         StarPrinterPort = target.slice(1, -1).split(',')[0];
     }   
-   document.getElementById("SuccessField").value=true
+   document.getElementById("SuccessField").value=StarPrinterPort
 }
 
 function PrintDemoReceipt4(){
