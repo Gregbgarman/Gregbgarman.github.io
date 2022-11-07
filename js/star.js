@@ -54,13 +54,19 @@ function getStarIOVersion(){
           document.getElementById("TextField").value=EloStarPrinterManager.getStarIOVersion();
 }
 
+function setPrinterPort(){
+   var target=document.getElementById("TextField").value;
+   if(target.length > 1 && target.charAt(0) == '[' && target.charAt(target.length-1) == ']') {
+        StarPrinterPort = target.slice(1, -1).split(',')[0];
+    }   
+   document.getElementById("SuccessField").value=StarPrinterPort
+}
+
 
 function PrintStarDemoReceipt(){
    
-  
-   
-   EloStarPrinterManager.beginDocument(SelectedStarPort);
- 
+   EloStarPrinterManager.beginDocument(StarPrinterPort);
+    
    
     if (!EloStarPrinterManager.appendCodepage("CP998")){
        console.error("Error:Could not append codepage");
@@ -244,13 +250,7 @@ function PrintStarDemoReceipt(){
    
 }
 
-function setPrinterPort(){
-   var target=document.getElementById("TextField").value;
-   if(target.length > 1 && target.charAt(0) == '[' && target.charAt(target.length-1) == ']') {
-        StarPrinterPort = target.slice(1, -1).split(',')[0];
-    }   
-   document.getElementById("SuccessField").value=StarPrinterPort
-}
+
 
 function PrintDemoReceipt4(){
     if (!EloStarPrinterManager.beginDocument()){
