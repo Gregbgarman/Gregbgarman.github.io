@@ -1,26 +1,71 @@
 let StarPrinterPort=""
 
+document.getElementById("queryStarPrinterList").addEventListener("click", queryStarPrinterList)
+document.getElementById("setStarPrinter").addEventListener("click", setStarPrinter)
+document.getElementById("printStarBarcode").addEventListener("click", printStarBarcode)
+document.getElementById("printStarDemoReceipt1").addEventListener("click", printStarDemoReceipt1)
+document.getElementById("printStarDemoReceipt2").addEventListener("click", printStarDemoReceipt2)
+document.getElementById("printStarImage").addEventListener("click", printStarImage)
+document.getElementById("checkStarPrinterPaper").addEventListener("click", checkStarPrinterPaper)
+document.getElementById("checkStarPrinterOnline").addEventListener("click",checkStarPrinterOnline)
+document.getElementById("checkStarFirmware").addEventListener("click", checkStarFirmware)
+document.getElementById("checkStarModelName").addEventListener("click", checkStarModelName)
+document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter)
 
-document.getElementById("PrintStarDemoReceipt").addEventListener("click", PrintStarDemoReceipt);
-document.getElementById("setPrinterPort").addEventListener("click", setPrinterPort);
-document.getElementById("searchPrinter").addEventListener("click", searchPrinter);
+function queryStarPrinterList(){
+   var target=document.getElementById("textField").value
+   document.getElementById("textField").value=EloStarPrinterManager.searchPrinter(target)
+}
+
+function setStarPrinter(){
+   var target=document.getElementById("TextField").value;
+   if(target.length > 1 && target.charAt(0) == '[' && target.charAt(target.length-1) == ']') {
+        StarPrinterPort = target.slice(1, -1).split(',')[0]
+    }   
+   document.getElementById("textField").value=true
+}
 
 
-document.getElementById("getFirmwareInfo").addEventListener("click", getFirmwareInfo);
-document.getElementById("getPortName").addEventListener("click", getPortName);
-document.getElementById("getPortSettings").addEventListener("click", getPortSettings);
-document.getElementById("getStarIOVersion").addEventListener("click", getStarIOVersion);
-document.getElementById("ClearOutput").addEventListener("click", ClearOutput);
+function printStarBarcode(){
+     
+}
 
-document.getElementById("PrintStarDemoReceiptR").addEventListener("click", PrintDemoReceiptR);
+function printStarDemoReceipt1(){
+     
+}
 
-document.getElementById("PrintStarDemoReceipt3").addEventListener("click", PrintDemoReceipt3);
-document.getElementById("PrintStarDemoReceipt4").addEventListener("click", PrintDemoReceipt4);
+function printStarDemoReceipt2(){
+   
+}
 
-document.getElementById("printimage").addEventListener("click", printimage);
+function printStarImage(){
+
+}
+
+function checkStarPrinterPaper(){
+   
+}
+
+function checkStarPrinterOnline(){
+   
+}
+
+function checkStarFirmware(){
+   
+}
+
+function checkStarModelName(){
+   
+   
+}
+
+function forgetStarPrinter(){
+   
+}
 
 
 
+/*
 function PrintDemoReceiptR(){
    
 }
@@ -425,6 +470,8 @@ function printimage() {
    
    document.getElementById("SuccessField").value=true;
 }  
+
+*/
    
 
 
