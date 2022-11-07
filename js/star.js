@@ -35,13 +35,13 @@ function printStarBarcode(){
    
       EloStarPrinterManager.beginDocument(StarPrinterPort)
      EloStarPrinterManager.appendBarcode(("86340975318").getBytes(StandardCharsets.US_ASCII), ICommandBuilder.BarcodeSymbology.UPCA, ICommandBuilder.BarcodeWidth.Mode1, 60, true);
-     EloStarPrinterManager.appendUnitFeed(30);
+     EloStarPrinterManager.appendUnitFeed("",30);
      EloStarPrinterManager.appendBarcode(("85187751062").getBytes(StandardCharsets.US_ASCII), ICommandBuilder.BarcodeSymbology.UPCA, ICommandBuilder.BarcodeWidth.Mode2, 40, true);
-     EloStarPrinterManager.appendUnitFeed(30);
+     EloStarPrinterManager.appendUnitFeed("",30);
      EloStarPrinterManager.appendBarcode(("17523099544").getBytes(StandardCharsets.US_ASCII), ICommandBuilder.BarcodeSymbology.UPCA, ICommandBuilder.BarcodeWidth.Mode3, 40, true);
-     EloStarPrinterManager.appendUnitFeed(30);
+     EloStarPrinterManager.appendUnitFeed("",30);
      EloStarPrinterManager.appendQrCode("https://www.elotouch.com/".getBytes(), ICommandBuilder.QrCodeModel.No2, ICommandBuilder.QrCodeLevel.Q, 5);
-     EloStarPrinterManager.appendUnitFeed(10);
+     EloStarPrinterManager.appendUnitFeed("",10);
    
     EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
     EloStarPrinterManager.endDocument()
