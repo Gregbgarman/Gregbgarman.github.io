@@ -31,11 +31,11 @@ function printStarBarcode(){
     if (StarPrinterPort === ""){
         return  
     }
-     document.getElementById("textField").value=2
+     document.getElementById("textField").value = 3
    
     EloStarPrinterManager.beginDocument(StarPrinterPort)
     EloStarPrinterManager.appendBarcode("86340975318", "UPCE", "Mode1", 40, true);
-    //EloStarPrinterManager.appendUnitFeed("",30)
+    EloStarPrinterManager.appendUnitFeed("",32)
     //EloStarPrinterManager.appendBarcode("86340975318", "UPCE", "Mode2", 50, true)
     //EloStarPrinterManager.appendUnitFeed("",30)
     //EloStarPrinterManager.appendQrCode("https://www.elotouch.com/", "No2", "Q", 5)
