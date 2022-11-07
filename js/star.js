@@ -57,11 +57,7 @@ function getStarIOVersion(){
 
 function PrintStarDemoReceipt(){
    
-   if (SelectedStarPort === ""){
-      document.getElementById("TextField").value="choose port";
-      return
-   }
-   
+  
    
    if (!EloStarPrinterManager.beginDocument(SelectedStarPort)){
        console.error("Error:Could not begin document");
