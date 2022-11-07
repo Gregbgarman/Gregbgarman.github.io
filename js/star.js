@@ -221,16 +221,19 @@ function PrintStarDemoReceipt(){
    
    
    let ActivePort_Key = EloStarPrinterManager.getPort(StarPrinterPort,"",10000)
+    if (!EloStarPrinterManager.writePort(ActivePort_Key,Commands,"",10000)){
+      document.getElementById("SuccessField").value="write port fail";
+      return
+   }
+   /*
+   
    let PrinterStatus_Key = EloStarPrinterManager.beginCheckedBlock(ActivePort_Key)
    if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 1){
         document.getElementById("TextField").value=false;
         document.getElementById("SuccessField").value="offline status fail";
    }
    
-   if (!EloStarPrinterManager.writePort(ActivePort_Key,Commands,"",10000)){
-      document.getElementById("SuccessField").value="write port fail";
-      return
-   }
+  
    
    if (!EloStarPrinterManager.setEndCheckedBlockTimeoutMillis(ActivePort_Key,30000)){
       document.getElementById("SuccessField").value="setendchkmillis fail";
@@ -243,7 +246,7 @@ function PrintStarDemoReceipt(){
        document.getElementById("SuccessField").value="final check fail";
        return  
    }
-   
+   */
    if (!EloStarPrinterManager.releasePort(ActivePort_Key)){
       document.getElementById("SuccessField").value="release fail";
       return;
