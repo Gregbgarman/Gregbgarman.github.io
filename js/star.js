@@ -35,7 +35,7 @@ function printStarBarcode(){
     EloStarPrinterManager.beginDocument(StarPrinterPort)
     EloStarPrinterManager.appendAlignment("","Center")
     EloStarPrinterManager.appendBarcode("01234596326", "UPCE", "Mode1", 40, true)
-    EloStarPrinterManger.appendBarcode("09521596326", "UPCE", "Mode2", 50, true)
+    EloStarPrinterManager.appendBarcode("09521596326", "UPCE", "Mode2", 50, true)
     EloStarPrinterManager.appendQrCode("https://www.elotouch.com/", "No2", "Q", 5)
     EloStarPrinterManager.appendUnitFeed("",10)
     EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
