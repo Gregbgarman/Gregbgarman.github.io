@@ -63,7 +63,7 @@ function PrintStarDemoReceipt(){
    }
    
    
-   if (!EloStarPrinterManager.beginDocument()){
+   if (!EloStarPrinterManager.beginDocument(SelectedStarPort)){
        console.error("Error:Could not begin document");
        document.getElementById("SuccessField").value=false;
        return;
