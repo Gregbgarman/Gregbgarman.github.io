@@ -101,10 +101,10 @@ function checkStarPrinterPaper(){
    let ActivePort_Key = EloStarPrinterManager.getPort("",10000)
    let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(ActivePort_Key)
     if (EloStarPrinterManager.receiptPaperEmptyStatus(PrinterStatus_Key) === 1){
-        document.getElementById("textField").value="Has paper"
+        document.getElementById("textField").value="No paper"
    }
    else{
-     document.getElementById("textField").value="No paper"
+     document.getElementById("textField").value="Has paper"
    }
    
    EloStarPrinterManager.releasePort(ActivePort_Key)
@@ -114,10 +114,10 @@ function checkStarPrinterOnline(){
    let ActivePort_Key = EloStarPrinterManager.getPort("",10000)
    let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(ActivePort_Key)
     if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 1){
-        document.getElementById("textField").value="Is online"
+        document.getElementById("textField").value="Is offline"
    }
    else{
-     document.getElementById("textField").value="Is offline"
+     document.getElementById("textField").value="Is Online"
    }
    
    EloStarPrinterManager.releasePort(ActivePort_Key)
