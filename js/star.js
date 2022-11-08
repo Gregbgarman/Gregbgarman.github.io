@@ -188,7 +188,10 @@ function getReceipt2Data(){
         EloStarPrinterManager.append("THE STORE 123 (555) 555 5555\nSTORE DIRECTOR John Smith\n\n7/01/07 16:58 6153 05 0191 134\nST# 21 OP# 001 TE# 01 TR# 747\n------------------------------\n");
         EloStarPrinterManager.append("400 OHEIDA 3PK SPRINGF  9.99 R\n410 3 CUP BLK TEAPOT    9.99 R\n445 EMERIL GRIDDLE/PAN 17.99 R\n438 CANDYMAKER ASSORT   4.99 R\n474 TRIPOD              8.99 R\n433 BLK LOGO PRNTED ZO  7.99 R\n458 AQUA MICROTERRY SC  6.99 R\n493 30L BLK FF DRESS   16.99 R\n407 LEVITATING DESKTOP  7.99 R\n441 **Blue Overprint P  2.99 R\n476 REPOSE 4PCPM CHOC   5.49 R\n476 REPOSE 4PCPM CHOC   5.49 R\n461 WESTGATE BLACK 25  59.99 R\n------------------------------\n");
         EloStarPrinterManager.append("SUBTOTAL                160.38\nSUBTOTAL                160.38\n");
-        EloStarPrinterManager.appendMultiple("TOTAL    174.81\n", 2, 2);
+        EloStarPrinterManager.appendMultiple(2, 2);
+        EloStarPrinterManager.append("TOTAL    174.81\n")
+        EloStarPrinterManager.appendMultiple(0, 0);
+   
         EloStarPrinterManager.appendLineFeed(2);
         EloStarPrinterManager.append("CASH                    200.00\nCHANGE                   25.19\n------------------------------\n");
         EloStarPrinterManager.append("Purchased item total number\nSign Up and Save !\nWith Preferred Saving Card\n");
