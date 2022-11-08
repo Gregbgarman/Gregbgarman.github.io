@@ -245,7 +245,9 @@ function getReceipt1Data(){
    
    
         EloStarPrinterManager.append("Subtotal    17.00\nTax          1.20\n")
-        EloStarPrinterManager.appendMultiple("Total    18.20\n\n",2,2);
+        EloStarPrinterManager.appendMultiple(2,2)
+        EloStarPrinterManager.append("Total    18.20\n\n")
+        EloStarPrinterManager.appendMultiple(0,0)
       
         EloStarPrinterManager.appendAlignment("Left")
       
