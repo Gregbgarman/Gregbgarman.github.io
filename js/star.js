@@ -230,16 +230,25 @@ function getReceipt1Data(){
         EloStarPrinterManager.appendLineFeed(1);
         EloStarPrinterManager.appendAlignment("Left");
         EloStarPrinterManager.append("Table 109\nServer Greg\n10:30AM    06/21/22\n---------------------------------\n");
-        EloStarPrinterManager.appendAlignment("Guest No 1\n", "Center");
-        EloStarPrinterManager.appendAlignment("Left");
+        EloStarPrinterManager.appendAlignment("Center")
+        EloStarPrinterManager.append("Guest No 1\n")
+        EloStarPrinterManager.appendAlignment("Left")
         EloStarPrinterManager.append("1 ice cream sundae             4.50\n1 soda pop                     1.75\n1 french fries                 4.00\n");
-        EloStarPrinterManager.appendAlignment("Guest No 2\n", "Center");
-        EloStarPrinterManager.appendAlignment("1 cheese pizza                 5.00\n1 milkshake                    1.75\n\n---------------------------------\n","Left");
-        EloStarPrinterManager.appendAlignment("Subtotal    17.00\nTax          1.20\n","Right");
+        EloStarPrinterManager.appendAlignment("Center");
+        EloStarPrinterManager.append("Guest No 2\n")
+        EloStarPrinterManager.appendAlignment("Left");
+        EloStarPrinterManager.append("1 cheese pizza                 5.00\n1 milkshake                    1.75\n\n---------------------------------\n");
+      
         EloStarPrinterManager.appendAlignment("Right");
-        EloStarPrinterManager.appendMultiple("Total    18.20\n\n",2,2);
+        EloStarPrinterManager.append("Subtotal    17.00\nTax          1.20\n")
+        EloStarPrinterManager.appendAlignment("Right");
+        EloStarPrinterManager.appendMultiple(2,2);
+        EloStarPrinterManager.append("Total    18.20\n\n")
+        EloStarPrinterManager.appendAlignment("Left")
+      
 
-        EloStarPrinterManager.appendAlignment("Let us know how we did!\nTake our survey within ", "Left");
+       
+        EloStarPrinterManager.append("Let us know how we did!\nTake our survey within ")
         EloStarPrinterManager.appendUnderLine("10 days");
         EloStarPrinterManager.append(" and get entered\nto ");
         EloStarPrinterManager.appendInvert("win a prize!");
