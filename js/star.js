@@ -92,7 +92,7 @@ function printStarImage(){
 }
 
 function checkStarPrinterPaper(){
-   let ActivePort_Key = EloStarPrinterManager.getPort(StarPrinterPort,"",10000)
+   let ActivePort_Key = EloStarPrinterManager.getPort("",10000)
    let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(ActivePort_Key)
     if (EloStarPrinterManager.receiptPaperEmptyStatus(PrinterStatus_Key) === 1){
         document.getElementById("textField").value="Has paper"
@@ -105,7 +105,7 @@ function checkStarPrinterPaper(){
 }
 
 function checkStarPrinterOnline(){
-   let ActivePort_Key = EloStarPrinterManager.getPort(StarPrinterPort,"",10000)
+   let ActivePort_Key = EloStarPrinterManager.getPort("",10000)
    let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(ActivePort_Key)
     if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 1){
         document.getElementById("textField").value="Is online"
@@ -118,7 +118,7 @@ function checkStarPrinterOnline(){
 }
 
 function checkStarFirmware(){
-    let ActivePort_Key = EloStarPrinterManager.getPort(StarPrinterPort,"",10000)
+    let ActivePort_Key = EloStarPrinterManager.getPort("",10000)
     let result = EloStarPrinterManager.getFirmwareInformation(ActivePort_Key)
     document.getElementById("textField").value=result
     EloStarPrinterManager.releasePort(ActivePort_Key)
@@ -133,7 +133,7 @@ function checkStarModelName(){
 
 function printReceiptData(ReceiptData){
    
-   let ActivePort_Key = EloStarPrinterManager.getPort(StarPrinterPort,"",10000)
+   let ActivePort_Key = EloStarPrinterManager.getPort("",10000)
    document.getElementById("textField").value=ActivePort_Key
    
    let PrinterStatus_Key = EloStarPrinterManager.beginCheckedBlock(ActivePort_Key)
