@@ -10,6 +10,8 @@ document.getElementById("checkStarPrinterOnline").addEventListener("click",check
 document.getElementById("checkStarFirmware").addEventListener("click", checkStarFirmware)
 document.getElementById("checkStarModelName").addEventListener("click", checkStarModelName)
 
+let ChosePrinterPort=false
+
 function queryStarPrinterList(){   
    let target=document.getElementById("textField").value
    target+=":"
@@ -21,7 +23,9 @@ function setStarPrinter(){
    if(target.length > 1 && target.charAt(0) == '[' && target.charAt(target.length-1) == ']') {
         target = target.slice(1, -1).split(',')[0]    
     }
-   document.getElementById("textField").value=EloStarPrinterManager.setPrinterPort(target)
+    ChosePrinterPort=EloStarPrinterManager.setPrinterPort(target)
+    document.getElementById("textField").value=ChosePrinterPort
+  
 }
 
 
