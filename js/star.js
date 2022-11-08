@@ -44,6 +44,8 @@ function printStarBarcode(){
 }
 
 function printStarDemoReceipt1(){
+    
+   
     let ReceiptData = getReceipt1Data()
     if (ReceiptData === false){
          return  
@@ -215,7 +217,7 @@ function getReceipt1Data(){
    }
    
    
-   if (!EloStarPrinterManager.appendAlignment("","Center")){
+   if (!EloStarPrinterManager.appendAlignment("Center")){
           console.error("Error:Could not append international")
           return false
     }
