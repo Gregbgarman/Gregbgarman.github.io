@@ -77,12 +77,13 @@ function printStarRasterReceipt(){
                 "\n" + "CASH                    200.00\nCHANGE                   25.19\n------------------------------\n"
                 + "Purchased item total number\nSign Up and Save !\nWith Preferred Saving Card\n";
    
+    EloStarPrinterManager.beginDocument()
     
     if (!EloStarPrinterManager.appendRasterData(ReceiptString, 20, false)){
          document.getElementById("textField").value="append raster fail"
          return  
     }
-     EloStarPrinterManager.beginDocument()
+     
      EloStarPrinterManager.appendBarcode("86340975318","UPCA", "Mode1", 60, true)
      EloStarPrinterManager.appendUnitFeed(30)
      EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")       
