@@ -199,7 +199,7 @@ function getReceipt2Data(){
 }
 
 function getReceipt1Data(){
-    if (!EloStarPrinterManager.beginDocument(StarPrinterPort)){
+    if (!EloStarPrinterManager.beginDocument()){
        console.error("Error:Could not begin document")      
        return false
    }
