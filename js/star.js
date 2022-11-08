@@ -240,10 +240,13 @@ function getReceipt1Data(){
         EloStarPrinterManager.append("1 cheese pizza                 5.00\n1 milkshake                    1.75\n\n---------------------------------\n");
       
         EloStarPrinterManager.appendAlignment("Right");
+       
+   
+   
+   
         EloStarPrinterManager.append("Subtotal    17.00\nTax          1.20\n")
-        EloStarPrinterManager.appendAlignment("Right");
-        EloStarPrinterManager.appendMultiple(2,2);
-        EloStarPrinterManager.append("Total    18.20\n\n")
+        EloStarPrinterManager.appendMultiple("Total    18.20\n\n",2,2);
+      
         EloStarPrinterManager.appendAlignment("Left")
       
 
