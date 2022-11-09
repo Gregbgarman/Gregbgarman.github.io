@@ -10,7 +10,25 @@ document.getElementById("checkStarPrinterOnline").addEventListener("click",check
 document.getElementById("checkStarFirmware").addEventListener("click", checkStarFirmware)
 document.getElementById("checkStarModelName").addEventListener("click", checkStarModelName)
 
+document.getElementById("dummy").addEventListener("click", dummy)
+
+
 let ChosePrinterPort=false
+
+function dummy(){
+    EloStarPrinterManager.beginDocument()
+    EloStarPrinterManager.appendCodepage("CP998");
+    EloStarPrinterManager.appendInternational("USA");
+    EloStarPrinterManager.appendAlignment("Center");
+    EloStarPrinterManager.append("hello world")
+    EloStarPrinterManager.endDocument()
+    let commands = EloStarPrinterManager.GetCommands()
+     document.getElementById("textField").value=commands.length
+    EloStarPrinterManager.PrintCommands()
+   
+}
+
+
 
 function queryStarPrinterList(){   
    let target=document.getElementById("textField").value
