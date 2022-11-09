@@ -24,7 +24,7 @@ function dummy(){
     EloStarPrinterManager.endDocument()
     let commands = EloStarPrinterManager.GetCommands()
      document.getElementById("textField").value=commands.length
-    EloStarPrinterManager.PrintCommands(Commands)
+    EloStarPrinterManager.PrintCommands(commands)
    
 }
 
