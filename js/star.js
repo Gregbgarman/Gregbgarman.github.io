@@ -11,9 +11,15 @@ document.getElementById("checkStarFirmware").addEventListener("click", checkStar
 document.getElementById("checkStarModelName").addEventListener("click", checkStarModelName)
 
 document.getElementById("dummy").addEventListener("click", dummy)
+document.getElementById("searchall").addEventListener("click", searchall)
 
 
 let ChosePrinterPort=false
+
+function searchall(){
+   document.getElementById("textField").value = EloStarPrinterManager.searchPrinterAll()
+}
+
 
 function dummy(){
     EloStarPrinterManager.beginDocument()
