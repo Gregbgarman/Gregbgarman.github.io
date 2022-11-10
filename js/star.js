@@ -17,7 +17,14 @@ document.getElementById("searchall").addEventListener("click", searchall)
 let ChosePrinterPort=false
 
 function searchall(){
-   document.getElementById("textField").value = EloStarPrinterManager.searchPrinterAll()
+   let mystring=""
+   mystring+=EloStarPrinterManager.searchPrinter("USB:")
+   mystring+="::"
+   mystring+=EloStarPrinterManager.searchPrinter("BT:")
+   mystring+="::"
+   mystring+=EloStarPrinterManager.searchPrinter("TCP:")
+   
+   document.getElementById("textField").value = mystring
 }
 
 
