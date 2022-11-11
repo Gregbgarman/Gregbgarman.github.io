@@ -16,6 +16,13 @@ document.getElementById("searchall").addEventListener("click", searchall)
 
 let ChosePrinterPort=false
 
+function queryStarPrinterList(){   
+   let target=document.getElementById("textField").value
+   target+=":"
+   document.getElementById("textField").value=EloStarPrinterManager.searchPrinter(target)
+}
+
+
 function searchall(){
    let mystring=""
    mystring+=EloStarPrinterManager.searchPrinter("USB:")
@@ -48,11 +55,7 @@ function dummy(){
 
 
 
-function queryStarPrinterList(){   
-   let target=document.getElementById("textField").value
-   target+=":"
-   document.getElementById("textField").value=EloStarPrinterManager.searchPrinter(target)
-}
+
 
 function setStarPrinter(){
    let target=document.getElementById("textField").value
