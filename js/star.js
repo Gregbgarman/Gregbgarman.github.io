@@ -67,11 +67,11 @@ function printStarBarcode(){
    
      EloStarPrinterManager.beginDocument()
      EloStarPrinterManager.appendBarcode("012345678901", "JAN13", "Mode1", 40, true);
-     EloStarPrinterManager.appendUnitFeed(30);
+     EloStarPrinterManager.appendUnitFeed(50);
      EloStarPrinterManager.appendBarcode("0123456789", "Code39", "Mode1", 40, true);
-     EloStarPrinterManager.appendUnitFeed(30);
+     EloStarPrinterManager.appendUnitFeed(50);
      EloStarPrinterManager.appendBarcode("0123456789", "ITF", "Mode1", 40, true);
-     EloStarPrinterManager.appendUnitFeed(30);
+     EloStarPrinterManager.appendUnitFeed(50);
     
    
    
