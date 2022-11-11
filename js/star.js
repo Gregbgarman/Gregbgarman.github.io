@@ -61,6 +61,21 @@ function setStarPrinter(){
 
 
 function printStarBarcode(){
+  
+     
+   
+   
+     EloStarPrinterManager.beginDocument()
+     EloStarPrinterManager.appendBarcode("012345678901", "JAN13", "Mode1", 40, true);
+     EloStarPrinterManager.appendUnitFeed(30);
+     EloStarPrinterManager.appendBarcode("0123456789", "Code39", "Mode1", 40, true);
+     EloStarPrinterManager.appendUnitFeed(30);
+     EloStarPrinterManager.appendBarcode("0123456789", "ITF", "Mode1", 40, true);
+     EloStarPrinterManager.appendUnitFeed(30);
+    
+   
+   
+  /* 
      EloStarPrinterManager.beginDocument()
      EloStarPrinterManager.appendBarcode("86340975318", "UPCA", "Mode1", 60, true);
      EloStarPrinterManager.appendUnitFeed(30);
@@ -70,7 +85,7 @@ function printStarBarcode(){
      EloStarPrinterManager.appendUnitFeed(30);
      EloStarPrinterManager.appendQrCode("https://www.elotouch.com/", "No2", "Q", 5);
      EloStarPrinterManager.appendUnitFeed(10);
-   
+   */
     EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
     EloStarPrinterManager.endDocument()
     
