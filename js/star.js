@@ -46,9 +46,11 @@ function dummy(){
     EloStarPrinterManager.appendAlignment("Center");
     EloStarPrinterManager.append("hello world")
     EloStarPrinterManager.endDocument()
+   
     var commands = EloStarPrinterManager.GetCommands()
-     document.getElementById("textField").value=commands.length
-    EloStarPrinterManager.PrintCommands(commands)
+    
+ //    document.getElementById("textField").value=commands.length
+ //   EloStarPrinterManager.PrintCommands(commands)
     
    
 }
