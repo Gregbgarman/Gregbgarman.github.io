@@ -49,7 +49,7 @@ function dummy(){
    
     var commands = new Uint8Array(EloStarPrinterManager.GetCommands())
     
- //    document.getElementById("textField").value=commands.length
+     document.getElementById("textField").value=commands.length
  //   EloStarPrinterManager.PrintCommands(commands)
     
    
