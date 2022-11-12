@@ -46,7 +46,7 @@ function dummy(){
     EloStarPrinterManager.appendAlignment("Center");
     EloStarPrinterManager.append("hello world")
     EloStarPrinterManager.endDocument()
-    let commands = new Uint8Array(EloStarPrinterManager.GetCommands())
+    var commands = EloStarPrinterManager.GetCommands()
      document.getElementById("textField").value=commands.length
     EloStarPrinterManager.PrintCommands(commands)
     
