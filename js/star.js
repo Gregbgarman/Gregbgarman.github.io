@@ -36,10 +36,10 @@ function searchall(){
 
 
 function dummy(){
-    let x = EloStarPrinterManager.arraytest()
-    document.getElementById("textField").value=x
+   // let x = EloStarPrinterManager.arraytest()
+   // document.getElementById("textField").value=x
     
-   /*
+   
     EloStarPrinterManager.beginDocument()
     EloStarPrinterManager.appendCodepage("CP998");
     EloStarPrinterManager.appendInternational("USA");
@@ -49,7 +49,7 @@ function dummy(){
     let commands = EloStarPrinterManager.GetCommands()
      document.getElementById("textField").value=commands.length
     EloStarPrinterManager.PrintCommands(commands)
-    */
+    
    
 }
 
