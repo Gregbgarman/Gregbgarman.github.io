@@ -47,7 +47,7 @@ function dummy(){
     EloStarPrinterManager.append("hello world")
     EloStarPrinterManager.endDocument()
    
-    var commands = EloStarPrinterManager.GetCommands()
+    var commands = new Uint8Array(EloStarPrinterManager.GetCommands())
     
  //    document.getElementById("textField").value=commands.length
  //   EloStarPrinterManager.PrintCommands(commands)
