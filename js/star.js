@@ -247,7 +247,7 @@ function checkStarPrinterOnline(){
 }
 
 function checkStarFirmware(){
-    let ActivePort_Key = EloStarPrinterManager.getPort(PortName,"",10000)
+    let ActivePort_Key = EloStarPrinterManager.getPort(PrinterPort,"",10000)
     let result = EloStarPrinterManager.getFirmwareInformation(ActivePort_Key)
     document.getElementById("textField").value=result
     EloStarPrinterManager.releasePort(ActivePort_Key)
