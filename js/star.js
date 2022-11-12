@@ -1,5 +1,3 @@
-let PrinterPort=""
-
 document.getElementById("queryStarPrinterList").addEventListener("click", queryStarPrinterList)
 document.getElementById("setStarPrinter").addEventListener("click", setStarPrinter)
 document.getElementById("printStarBarcode").addEventListener("click", printStarBarcode)
@@ -17,7 +15,7 @@ document.getElementById("searchall").addEventListener("click", searchall)
 
 
 let ChosePrinterPort=false
-
+let PrinterPort=""
 
 
 function queryStarPrinterList(){   
