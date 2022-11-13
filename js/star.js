@@ -10,8 +10,7 @@ document.getElementById("checkStarPrinterOnline").addEventListener("click",check
 document.getElementById("checkStarFirmware").addEventListener("click", checkStarFirmware)
 document.getElementById("checkStarModelName").addEventListener("click", checkStarModelName)
 
-document.getElementById("dummy").addEventListener("click", dummy)
-document.getElementById("searchall").addEventListener("click", searchall)
+
 
 
 let ChosePrinterPort=false
@@ -35,72 +34,17 @@ function queryStarPrinterList(){
 }
 
 
-function searchall(){
-   let mystring=""
-   mystring+=EloStarPrinterManager.searchPrinter("USB:")
-   mystring+="::"
-   mystring+=EloStarPrinterManager.searchPrinter("BT:")
-   mystring+="::"
-   mystring+=EloStarPrinterManager.searchPrinter("TCP:")
-   
-   document.getElementById("textField").value = mystring
-}
-
-
-function dummy(){
-   // let x = EloStarPrinterManager.arraytest()
-   // document.getElementById("textField").value=x
-    
-   
-    EloStarPrinterManager.beginDocument()
-    EloStarPrinterManager.appendCodepage("CP998");
-    EloStarPrinterManager.appendInternational("USA");
-    EloStarPrinterManager.appendAlignment("Center");
-    EloStarPrinterManager.append("hello world")
-    EloStarPrinterManager.endDocument()
-   
-    var commands = new Uint8Array(EloStarPrinterManager.GetCommands())
-    
-     document.getElementById("textField").value=commands.length
- //   EloStarPrinterManager.PrintCommands(commands)
-    
-   
-}
-
-
-
-
-
-function setStarPrinter(){
-   
-   
-   let target=document.getElementById("textField").value
-   if(target.length > 1 && target.charAt(0) == '[' && target.charAt(target.length-1) == ']') {
-        target = target.slice(1, -1).split(',')[0]    
-    }
-    PrinterPort=target
-    document.getElementById("textField").value=true
-  
-}
-
-
 function printStarBarcode(){
   
-     
-   
-   
      EloStarPrinterManager.beginDocument(PrinterPort)
      EloStarPrinterManager.appendBarcode("0123456789", "Code39", "Mode1", 40, true);
      EloStarPrinterManager.appendUnitFeed(50);
      EloStarPrinterManager.appendBarcode("{B0123456789", "Code128", "Mode1", 40, true);
      EloStarPrinterManager.appendUnitFeed(50);
      EloStarPrinterManager.appendBarcode("17523099544", "UPCA", "Mode3", 40, true);
-     EloStarPrinterManager.appendUnitFeed(50);
-     EloStarPrinterManager.appendQrCode("https://www.elotouch.com/", "No2", "Q", 5);
-     EloStarPrinterManager.appendUnitFeed(10);
-   
-    EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
-    EloStarPrinterManager.endDocument()
+     EloStarPrinterManager.appendUnitFeed(50) 
+     EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
+     EloStarPrinterManager.endDocument()
     
    let ReceiptData = EloStarPrinterManager.getCommands() 
    printReceiptData(ReceiptData)
