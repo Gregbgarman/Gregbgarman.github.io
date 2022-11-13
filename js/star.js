@@ -13,28 +13,56 @@ document.getElementById("checkStarModelName").addEventListener("click", checkSta
 
 
 
-let ChosePrinterPort=false
+let PortsDetected = false
 let PrinterPort=""
+let SearchResult = ""
 
 
 function queryStarPrinterList(){ 
    let target=document.getElementById("textField").value
-   let result = ""
-   if (target === ""){     //if nothing entered in test field box, search possible connections: USB->BT->TCP
-      result = EloStarPrinterManager.searchPrinter("USB:")
-      if (result === "[]"){
-          result = EloStarPrinterManager.searchPrinter("BT:")       
-          if (result === "[]"){
-             result = EloStarPrinterManager.searchPrinter("TCP:")
+   PortsDetected = false
+   /*
+    *  If nothing entered in test field box, search possible connections 
+    *  until find one in order: USB->BT->TCP
+    */
+   
+   if (target === ""){     
+      SearchResult = EloStarPrinterManager.searchPrinter("USB:")
+      if (SearchResult === "[]"){
+          SearchResult = EloStarPrinterManager.searchPrinter("BT:")       
+          if (SearchResult === "[]"){
+             SearchResult = EloStarPrinterManager.searchPrinter("TCP:")
           }
       }
    }
    else{
        target+=":"
-       result = EloStarPrinterManager.searchPrinter(target)
+       SearchResult = EloStarPrinterManager.searchPrinter(target)
    }
-   document.getElementById("textField").value=result
+   if (SearchResult !== "[]"){
+       PortsDetected = true  
+   }
+   document.getElementById("textField").value = SearchResult
 }
+
+function setStarPrinter(){       //run queryStarPrinters First
+   if (!PortsDetected){
+      document.getElementById("textField").value = false
+      return
+   }
+   
+   
+   let target=document.getElementById("textField").value
+   if(target.length > 1 && target.charAt(0) == '[' && target.charAt(target.length-1) == ']') {
+        target = target.slice(1, -1).split(',')[0]
+        PrinterPort = target
+        document.getElementById("textField").value = true
+    }
+    else{
+        document.getElementById("textField").value = false
+    }
+}
+
 
 
 function printStarBarcode(){
