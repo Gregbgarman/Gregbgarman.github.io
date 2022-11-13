@@ -12,10 +12,7 @@ document.getElementById("checkStarMacAddress").addEventListener("click", checkSt
 document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter)
 
 
-
-let PortsDetected = false
 let PrinterPortName=""
-let SearchResult = ""
 
 
 function forgetStarPrinter(){
@@ -41,7 +38,7 @@ function checkStarMacAddress(){
 
 function queryStarPrinterList(){ 
    let target=document.getElementById("textField").value
-   PortsDetected = false
+   let SearchResult = ""
    /*
     *  If nothing entered in test field box, search possible connections 
     *  until find one in the order: USB->BT->TCP
