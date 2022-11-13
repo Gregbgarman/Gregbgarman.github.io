@@ -18,7 +18,6 @@ let PrinterPort=""
 
 
 function queryStarPrinterList(){ 
-   console.error("gregor: query star printer list");
    let target=document.getElementById("textField").value
    if (target === ""){     //if nothing entered in test field box, search possible connections: USB->BT->TCP
       target = EloStarPrinterManager.searchPrinter("USB:")
@@ -29,9 +28,11 @@ function queryStarPrinterList(){
           }
       }
    }
-   
-   target+=":"
-   document.getElementById("textField").value=EloStarPrinterManager.searchPrinter(target)
+   else{
+       target+=":"
+       target = target = EloStarPrinterManager.searchPrinter("target")
+   }
+   document.getElementById("textField").value=target
 }
 
 
