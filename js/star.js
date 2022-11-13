@@ -242,17 +242,15 @@ function checkStarModelName(){
 
 function printReceiptData(ReceiptData_Key){
    
-   let ActivePort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
-   document.getElementById("textField").value=ActivePort_Key
-   
+   let ActivePort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)   
    let PrinterStatus_Key = EloStarPrinterManager.beginCheckedBlock(ActivePort_Key)
    
-   if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 1){
+   if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) !== 0){
         document.getElementById("textField").value="offline status fail"
         return
    }
    
-    if (EloStarPrinterManager.receiptPaperEmptyStatus(PrinterStatus_Key) ===1){
+    if (EloStarPrinterManager.receiptPaperEmptyStatus(PrinterStatus_Key) !==0){
           document.getElementById("textField").value="no paper found"
           return
     }
@@ -271,19 +269,19 @@ function printReceiptData(ReceiptData_Key){
    PrinterStatus_Key = EloStarPrinterManager.endCheckedBlock(ActivePort_Key)
    if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 1 || EloStarPrinterManager.receiptPaperEmptyStatus(PrinterStatus_Key) === 1 ||
        EloStarPrinterManager.coverOpenStatus(PrinterStatus_Key) === 1){
-       document.getElementById("textField").value="final check fail"
+       document.getElementById("textField").value="status check fail"
        return  
    }
    
    if (!EloStarPrinterManager.releasePort(ActivePort_Key)){
-      document.getElementById("textField").value="release fail"
+      document.getElementById("textField").value="release port fail"
       return
    }
    document.getElementById("textField").value="print success"   
 }
 
 function getReceipt2Data(){
-        EloStarPrinterManager.beginDocument(PrinterPort)
+        EloStarPrinterManager.beginDocument(PrinterPortName)
         EloStarPrinterManager.appendCodepage("CP998");
         EloStarPrinterManager.appendInternational("USA");
         EloStarPrinterManager.appendAlignment("Center");
@@ -311,7 +309,7 @@ function getReceipt2Data(){
 }
 
 function getReceipt1Data(){
-    if (!EloStarPrinterManager.beginDocument(PrinterPort)){
+    if (!EloStarPrinterManager.beginDocument(PrinterPortName)){
        console.error("Error:Could not begin document")      
        return false
    }
@@ -344,26 +342,18 @@ function getReceipt1Data(){
         EloStarPrinterManager.append("Guest No 2\n")
         EloStarPrinterManager.appendAlignment("Left");
         EloStarPrinterManager.append("1 cheese pizza                 5.00\n1 milkshake                    1.75\n\n---------------------------------\n");
-      
-        EloStarPrinterManager.appendAlignment("Right");
-       
-   
-   
-   
+        EloStarPrinterManager.appendAlignment("Right"); 
         EloStarPrinterManager.append("Subtotal    17.00\nTax          1.20\n")
         EloStarPrinterManager.appendMultiple(2,2)
         EloStarPrinterManager.append("Total    18.20\n\n")
         EloStarPrinterManager.appendMultiple(0,0)
-      
         EloStarPrinterManager.appendAlignment("Left")
-      
-
-       
+   
         EloStarPrinterManager.append("Let us know how we did!\nTake our survey within ")
         EloStarPrinterManager.appendUnderLine("10 days");
         EloStarPrinterManager.append(" and get entered\nto ");
-        EloStarPrinterManager.appendInvert("win a prize!");
-
+        EloStarPrinterManager.appendInvert("win a prize!")
+   
         EloStarPrinterManager.append(" Scan the Qr code below to start!\n\n");
         EloStarPrinterManager.appendQrCode("https://www.elotouch.com/", "No2", "Q", 5);
         EloStarPrinterManager.appendUnitFeed(10);
