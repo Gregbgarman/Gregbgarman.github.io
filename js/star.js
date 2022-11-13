@@ -318,7 +318,7 @@ function getReceipt2Data(){
         EloStarPrinterManager.append("Purchased item total number\nSign Up and Save !\nWith Preferred Saving Card\n");
         EloStarPrinterManager.appendLineFeed(2);
 
-        EloStarPrinterManager.appendBarcode("17523099544", "UPCA", "Mode2", 40, false);
+        EloStarPrinterManager.appendBarcode("17523099544", "UPCA", "Mode2", 60, false);
         EloStarPrinterManager.appendUnitFeed(32);
 
         EloStarPrinterManager.appendCutPaper("PartialCutWithFeed");
