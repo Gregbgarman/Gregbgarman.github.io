@@ -63,7 +63,7 @@ function setStarPrinter(){       //run queryStarPrinters First
     PrinterPortName = target
     let OnlineStatus = IsStarPrinterOnline()
     if (OnlineStatus){
-     document.getElementById("textField").value = "Printer Online"
+     document.getElementById("textField").value = "Printer Ready"
     }
  
     else{
