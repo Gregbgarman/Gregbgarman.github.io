@@ -64,10 +64,12 @@ function setStarPrinter(){       //run queryStarPrinters First
     let OnlineStatus = IsStarPrinterOnline()
     if (OnlineStatus){
      document.getElementById("textField").value = "Printer Ready"
+     document.getElementById("printerAvailable").innerHTML = "Printer is Connected";
     }
  
     else{
      document.getElementById("textField").value = "No Printer found"
+     document.getElementById("printerAvailable").innerHTML = "Printer is Disconnected";
     }
      
 }
