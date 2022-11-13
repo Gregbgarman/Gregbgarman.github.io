@@ -59,8 +59,8 @@ function setStarPrinter(){       //run queryStarPrinters First
    let target=document.getElementById("textField").value
    if(target.length > 1 && target.charAt(0) == '[' && target.charAt(target.length-1) == ']') {
         target = target.slice(1, -1).split(',')[0]
-        PrinterPortName = target
     }
+    PrinterPortName = target
     let OnlineStatus = IsStarPrinterOnline()
     if (OnlineStatus){
      document.getElementById("textField").value = "Printer Online"
