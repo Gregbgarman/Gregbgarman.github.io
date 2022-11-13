@@ -20,7 +20,7 @@ let PrinterPort=""
 function queryStarPrinterList(){ 
    console.error("gregor: query star printer list");
    let target=document.getElementById("textField").value
-   if (target === " "){     //if nothing entered in test field box, search possible connections: USB->BT->TCP
+   if (target === "f"){     //if nothing entered in test field box, search possible connections: USB->BT->TCP
       console.error("gregor: block 1");
       target = EloStarPrinterManager.searchPrinter("USB")
       if (target === "[]"){
