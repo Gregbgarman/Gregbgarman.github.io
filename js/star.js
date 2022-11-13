@@ -23,7 +23,7 @@ function queryStarPrinterList(){
    PortsDetected = false
    /*
     *  If nothing entered in test field box, search possible connections 
-    *  until find one in order: USB->BT->TCP
+    *  until find one in the order: USB->BT->TCP
     */
    
    if (target === ""){     
