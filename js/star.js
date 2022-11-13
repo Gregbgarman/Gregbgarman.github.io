@@ -216,7 +216,7 @@ function checkStarPrinterOnline(){
     if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 0){
         document.getElementById("textField").value="Is online"
    }
-   else if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 0){
+   else if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 1){
      document.getElementById("textField").value="Is offline"
    }
    else{
