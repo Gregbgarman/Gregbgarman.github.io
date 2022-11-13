@@ -83,7 +83,7 @@ function printStarBarcode(){
      EloStarPrinterManager.appendUnitFeed(50);
      EloStarPrinterManager.appendBarcode("{B0123456789", "Code128", "Mode1", 40, true);
      EloStarPrinterManager.appendUnitFeed(50);
-     EloStarPrinterManager.appendBarcode("17523099544", "UPCA", "Mode3", 40, true);
+     EloStarPrinterManager.appendBarcode("17523099544", "UPCA", "Mode3", 70, true);
      EloStarPrinterManager.appendUnitFeed(50)
      EloStarPrinterManager.appendBarcode("01234500006", "UPCE", "Mode2", 40, true);
      EloStarPrinterManager.appendUnitFeed(50)
