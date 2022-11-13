@@ -20,20 +20,18 @@ let PrinterPort=""
 function queryStarPrinterList(){ 
    console.error("gregor: query star printer list");
    let target=document.getElementById("textField").value
-   if (target === "[]"){     //if nothing entered in test field box, search possible connections: USB->BT->TCP
-      document.getElementById("textField").value=true
-      console.error("gregor: block 1");
-      target = EloStarPrinterManager.searchPrinter("USB")
+   if (target === ""){     //if nothing entered in test field box, search possible connections: USB->BT->TCP
+      target = EloStarPrinterManager.searchPrinter("USB:")
       if (target === "[]"){
-          target = EloStarPrinterManager.searchPrinter("BT")       
+          target = EloStarPrinterManager.searchPrinter("BT:")       
           if (target === "[]"){
-             target = EloStarPrinterManager.searchPrinter("TCP")
+             target = EloStarPrinterManager.searchPrinter("TCP:")
           }
       }
    }
    
    target+=":"
- //  document.getElementById("textField").value=EloStarPrinterManager.searchPrinter(target)
+   document.getElementById("textField").value=EloStarPrinterManager.searchPrinter(target)
 }
 
 
