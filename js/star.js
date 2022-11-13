@@ -21,6 +21,7 @@ function queryStarPrinterList(){
    console.error("gregor: query star printer list");
    let target=document.getElementById("textField").value
    if (target === "f"){     //if nothing entered in test field box, search possible connections: USB->BT->TCP
+      document.getElementById("textField").value=true
       console.error("gregor: block 1");
       target = EloStarPrinterManager.searchPrinter("USB")
       if (target === "[]"){
@@ -32,7 +33,7 @@ function queryStarPrinterList(){
    }
    
    target+=":"
-   document.getElementById("textField").value=EloStarPrinterManager.searchPrinter(target)
+ //  document.getElementById("textField").value=EloStarPrinterManager.searchPrinter(target)
 }
 
 
