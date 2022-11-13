@@ -10,12 +10,22 @@ document.getElementById("checkStarPrinterOnline").addEventListener("click",check
 document.getElementById("checkStarFirmware").addEventListener("click", checkStarFirmware)
 document.getElementById("checkStarModelName").addEventListener("click", checkStarModelName)
 
+document.getElementById("dummy").addEventListener("click", dummy)
+
 
 
 
 let PortsDetected = false
 let PrinterPortName=""
 let SearchResult = ""
+
+
+function dummy(){
+ let target=document.getElementById("textField").value
+ document.getElementById("textField").value = EloStarPrinterManager.setPaperSize(target)
+   
+   
+}
 
 
 function queryStarPrinterList(){ 
