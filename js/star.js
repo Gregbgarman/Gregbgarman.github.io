@@ -61,7 +61,15 @@ function setStarPrinter(){       //run queryStarPrinters First
         target = target.slice(1, -1).split(',')[0]
         PrinterPortName = target
     }
-     document.getElementById("textField").value = true
+    let OnlineStatus = IsStarPrinterOnline()
+    if (OnlineStatus){
+     document.getElementById("textField").value = "Printer Online"
+    }
+ 
+    else{
+     document.getElementById("textField").value = "No Printer found"
+    }
+     
 }
 
 
@@ -221,6 +229,10 @@ function checkStarPrinterPaper(){
 }
 
 function checkStarPrinterOnline(){
+ document.getElementById("textField").value = IsStarPrinterOnline()
+}
+
+function IsStarPrinterOnline(){
    let IsOnline = false
    let ActivePort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
    let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(ActivePort_Key)
@@ -228,9 +240,9 @@ function checkStarPrinterOnline(){
         IsOnline = true
    }  
    EloStarPrinterManager.releasePort(ActivePort_Key)
-   document.getElementById("textField").value = IsOnline
    return IsOnline
 }
+
 
 function checkStarFirmware(){
     let ActivePort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
