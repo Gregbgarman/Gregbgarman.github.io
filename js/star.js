@@ -19,8 +19,13 @@ let SearchResult = ""
 
 
 function forgetStarPrinter(){
-     PrinterPortName = ""
-     document.getElementById("textField").value = "success"
+     if (PrinterPortName !== ""){
+         PrinterPortName = ""
+         document.getElementById("textField").value = "success"
+     }
+     else{
+          document.getElementById("textField").value = "No set printer" 
+     } 
 }
 
 function checkStarMacAddress(){
