@@ -21,7 +21,7 @@ let SearchResult = ""
 
 
 function dummy(){
- let target=document.getElementById("textField").value
+ let target=parseInt(document.getElementById("textField").value)
  document.getElementById("textField").value = EloStarPrinterManager.setPaperSize(target)
    
    
@@ -61,6 +61,7 @@ function setStarPrinter(){       //run queryStarPrinters First
         target = target.slice(1, -1).split(',')[0]
         PrinterPortName = target
     }
+     document.getElementById("textField").value = true
 }
 
 
