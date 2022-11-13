@@ -8,10 +8,8 @@ document.getElementById("printStarImage").addEventListener("click", printStarIma
 document.getElementById("checkStarPrinterPaper").addEventListener("click", checkStarPrinterPaper)
 document.getElementById("checkStarPrinterOnline").addEventListener("click",checkStarPrinterOnline)
 document.getElementById("checkStarFirmware").addEventListener("click", checkStarFirmware)
-document.getElementById("checkStarModelName").addEventListener("click", checkStarModelName)
-
-document.getElementById("dummy").addEventListener("click", dummy)
-
+document.getElementById("checkStarMacAddress").addEventListener("click", checkStarMacAddress)
+document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter)
 
 
 
@@ -20,11 +18,19 @@ let PrinterPortName=""
 let SearchResult = ""
 
 
-function dummy(){
- let target=parseInt(document.getElementById("textField").value)
- document.getElementById("textField").value = EloStarPrinterManager.setPaperSize(target)
-   
-   
+function forgetStarPrinter(){
+     PrinterPortName = ""
+     document.getElementById("textField").value = "success"
+}
+
+function checkStarMacAddress(){
+     let MacAddress = EloStarPrinterManager.getMacAddress(PrinterPortName)
+     if (MacAddress === ""){
+         document.getElementById("textField").value = "failed"
+     }
+     else{
+         document.getElementById("textField").value = MacAddress
+     }
 }
 
 
