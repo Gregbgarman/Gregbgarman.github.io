@@ -21,11 +21,11 @@ let PrinterPort=""
 function queryStarPrinterList(){ 
    let target=document.getElementById("textField").value
    if (target === ""){     //if nothing entered in test field box, search possible connections: USB->BT->TCP
-      target = EloStarPrinterManager.searchPrinter("USB:")
+      target = EloStarPrinterManager.searchPrinter("USB")
       if (target === "[]"){
-          target = EloStarPrinterManager.searchPrinter("BT:")       
+          target = EloStarPrinterManager.searchPrinter("BT")       
           if (target === "[]"){
-             target = EloStarPrinterManager.searchPrinter("BT:")
+             target = EloStarPrinterManager.searchPrinter("TCP")
           }
       }
    }
