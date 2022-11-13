@@ -116,7 +116,7 @@ function printStarRasterReceipt(){
    
     EloStarPrinterManager.beginDocument(PrinterPortName)
     
-    if (!EloStarPrinterManager.appendRasterData(ReceiptString, 20, false)){
+    if (!EloStarPrinterManager.appendRasterData(ReceiptString, 25, false)){
          document.getElementById("textField").value="append raster fail"
          return  
     }
