@@ -46,15 +46,11 @@ function queryStarPrinterList(){
 }
 
 function setStarPrinter(){       //run queryStarPrinters First
-   
-   
    let target=document.getElementById("textField").value
    if(target.length > 1 && target.charAt(0) == '[' && target.charAt(target.length-1) == ']') {
         target = target.slice(1, -1).split(',')[0]
         PrinterPortName = target
     }
-    
-    
 }
 
 
@@ -211,19 +207,15 @@ function checkStarPrinterPaper(){
 }
 
 function checkStarPrinterOnline(){
+   let IsOnline = false
    let ActivePort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
    let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(ActivePort_Key)
     if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 0){
-        document.getElementById("textField").value="Is online"
-   }
-   else if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 1){
-     document.getElementById("textField").value="Is offline"
-   }
-   else{
-     document.getElementById("textField").value="Error"
-   }
-   
+        IsOnline = true
+   }  
    EloStarPrinterManager.releasePort(ActivePort_Key)
+   document.getElementById("textField").value = IsOnline
+   return IsOnline
 }
 
 function checkStarFirmware(){
