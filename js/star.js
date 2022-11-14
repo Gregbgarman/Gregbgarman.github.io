@@ -126,7 +126,6 @@ function printStarRasterReceipt(){
   
    
     EloStarPrinterManager.beginDocument(PrinterPortName)
-    EloStarPrinterManager.appendAlignment("Center");
     if (!EloStarPrinterManager.appendRasterData(ReceiptString, 25, 832, false)){
          document.getElementById("textField").value="append raster fail"
          return  
