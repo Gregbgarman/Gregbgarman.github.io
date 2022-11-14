@@ -42,16 +42,14 @@ function setStarPrinter(){       //run queryStarPrinters First
    if(portname.length > 1 && portname.charAt(0) == '[' && portname.charAt(portname.length-1) == ']') {
         portname = portname.slice(1, -1).split(',')[0]
     }
-  
-    if (IsStarPrinterOnline(portname)){
-      PrinterPortName = portname      //store in global variable to use throughout program
+    PrinterPortName = portname      // **stored in global variable to use throughout program**
+   
+    if (IsStarPrinterOnline()){
       document.getElementById("textField").value = "Printer Online"
-      document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Connected"
     }
  
     else{
       document.getElementById("textField").value = "No Printer found"
-      document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Disconnected"
     }
 }
 
@@ -98,7 +96,6 @@ function printStarBarcode(){
 }
 
 function printStarDemoReceipt1(){
-    
     let ReceiptData = getReceipt1Data()
     if (ReceiptData === false){
          return  
@@ -167,16 +164,20 @@ function checkStarPrinterPaper(){
 }
 
 function checkStarPrinterOnline(){
- document.getElementById("textField").value = IsStarPrinterOnline(PrinterPortName)
+ document.getElementById("textField").value = IsStarPrinterOnline()
 }
 
-function IsStarPrinterOnline(portname){
+function IsStarPrinterOnline(){
    let IsOnline = false
-   let ActivePort_Key = EloStarPrinterManager.getPort(portname,"",10000)
+   let ActivePort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
    let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(ActivePort_Key)
     if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 0){
         IsOnline = true
-   }  
+        document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Connected"
+   }
+   else{
+         document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Disconnected"
+   }
    EloStarPrinterManager.releasePort(ActivePort_Key)
    return IsOnline
 }
