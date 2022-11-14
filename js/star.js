@@ -13,7 +13,7 @@ document.getElementById("forgetStarPrinter").addEventListener("click", forgetSta
 
 
 let PrinterPortName=""        //Acquired from searching for printers and used very often throughout program
-
+document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Disconnected";
 
 function queryStarPrinterList(){             //enter either USB, BT, or TCP in test field box. Or leave blank to search USB -> BT -> TCP 
    let target=document.getElementById("textField").value
@@ -42,26 +42,24 @@ function setStarPrinter(){       //run queryStarPrinters First
    if(portname.length > 1 && portname.charAt(0) == '[' && portname.charAt(portname.length-1) == ']') {
         portname = portname.slice(1, -1).split(',')[0]
     }
-   
-     document.getElementById("textField").value=EloStarPrinterManager.setPrinterPort(portname)
-   
-   /*
-    PrinterPortName = portname     //store in global variable to use throughout program
-    
-    if (IsStarPrinterOnline()){
-     document.getElementById("textField").value = "Printer Online"
+  
+    if (IsStarPrinterOnline(portname)){
+      PrinterPortName = portname      //store in global variable to use throughout program
+      document.getElementById("textField").value = "Printer Online"
+      document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Connected"
     }
  
     else{
-     document.getElementById("textField").value = "No Printer found"
+      document.getElementById("textField").value = "No Printer found"
+      document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Disconnected"
     }
-    */
 }
 
 function forgetStarPrinter(){
      if (PrinterPortName !== ""){
          PrinterPortName = ""
          document.getElementById("textField").value = "success"
+         document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Disconnected";
      }
      else{
           document.getElementById("textField").value = "No set printer" 
@@ -69,9 +67,7 @@ function forgetStarPrinter(){
 }
 
 function checkStarMacAddress(){
-     //let MacAddress = EloStarPrinterManager.getMacAddress(PrinterPortName)
-     
-   let MacAddress = EloStarPrinterManager.getTheMacAddress()
+     let MacAddress = EloStarPrinterManager.getMacAddress(PrinterPortName)
      if (MacAddress === ""){
          document.getElementById("textField").value = "failed"
      }
@@ -130,8 +126,6 @@ function printStarRasterReceipt(){
                 "\n" + "CASH                    200.00\nCHANGE                   25.19\n------------------------------\n"
                 + "Purchased item total number\nSign Up and Save !\nWith Preferred Saving Card\n";
    
-  
-   
     EloStarPrinterManager.beginDocument(PrinterPortName)
     if (!EloStarPrinterManager.appendRasterData(ReceiptString, 23, 832, false)){
          document.getElementById("textField").value="append raster fail"
@@ -173,12 +167,12 @@ function checkStarPrinterPaper(){
 }
 
 function checkStarPrinterOnline(){
- document.getElementById("textField").value = IsStarPrinterOnline()
+ document.getElementById("textField").value = IsStarPrinterOnline(PrinterPortName)
 }
 
-function IsStarPrinterOnline(){
+function IsStarPrinterOnline(portname){
    let IsOnline = false
-   let ActivePort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
+   let ActivePort_Key = EloStarPrinterManager.getPort(portname,"",10000)
    let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(ActivePort_Key)
     if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 0){
         IsOnline = true
@@ -197,8 +191,7 @@ function checkStarFirmware(){
     }
     else{
        document.getElementById("textField").value=result
-    }
-   
+    } 
 }
 
 function printReceiptData(ReceiptData_Key){
