@@ -126,13 +126,13 @@ function printStarRasterReceipt(){
   
    
     EloStarPrinterManager.beginDocument(PrinterPortName)
-    
+    EloStarPrinterManager.appendAlignment("Center");
     if (!EloStarPrinterManager.appendRasterData(ReceiptString, 25, 832, false)){
          document.getElementById("textField").value="append raster fail"
          return  
     }
-     
-     EloStarPrinterManager.appendBarcode("86340975318","UPCA", "Mode1", 60, true)
+    
+     EloStarPrinterManager.appendBarcode("17523099544", "UPCA", "Mode3", 70, false);
      EloStarPrinterManager.appendUnitFeed(30)
      EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")       
      EloStarPrinterManager.endDocument();
