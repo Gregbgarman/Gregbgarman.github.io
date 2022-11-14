@@ -43,7 +43,7 @@ function setStarPrinter(){       //run queryStarPrinters First
         portname = portname.slice(1, -1).split(',')[0]
     }
    
-     document.getElementById("textField").value=EloStarPrinterManager.setPrinterPort(portName)
+     document.getElementById("textField").value=EloStarPrinterManager.setPrinterPort(portname)
    
    /*
     PrinterPortName = portname     //store in global variable to use throughout program
