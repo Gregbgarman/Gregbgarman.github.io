@@ -42,6 +42,10 @@ function setStarPrinter(){       //run queryStarPrinters First
    if(portname.length > 1 && portname.charAt(0) == '[' && portname.charAt(portname.length-1) == ']') {
         portname = portname.slice(1, -1).split(',')[0]
     }
+   
+     document.getElementById("textField").value=EloStarPrinterManager.setPrinterPort(portName)
+   
+   /*
     PrinterPortName = portname     //store in global variable to use throughout program
     
     if (IsStarPrinterOnline()){
@@ -51,6 +55,7 @@ function setStarPrinter(){       //run queryStarPrinters First
     else{
      document.getElementById("textField").value = "No Printer found"
     }
+    */
 }
 
 function forgetStarPrinter(){
@@ -64,7 +69,9 @@ function forgetStarPrinter(){
 }
 
 function checkStarMacAddress(){
-     let MacAddress = EloStarPrinterManager.getMacAddress(PrinterPortName)
+     //let MacAddress = EloStarPrinterManager.getMacAddress(PrinterPortName)
+     
+   let MacAddress = EloStarPrinterManager.getTheMacAddress()
      if (MacAddress === ""){
          document.getElementById("textField").value = "failed"
      }
