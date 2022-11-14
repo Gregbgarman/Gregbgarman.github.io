@@ -12,37 +12,12 @@ document.getElementById("checkStarMacAddress").addEventListener("click", checkSt
 document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter)
 
 
-let PrinterPortName=""
+let PrinterPortName=""        //Acquired from searching for printers and used very often throughout program
 
 
-function forgetStarPrinter(){
-     if (PrinterPortName !== ""){
-         PrinterPortName = ""
-         document.getElementById("textField").value = "success"
-     }
-     else{
-          document.getElementById("textField").value = "No set printer" 
-     } 
-}
-
-function checkStarMacAddress(){
-     let MacAddress = EloStarPrinterManager.getMacAddress(PrinterPortName)
-     if (MacAddress === ""){
-         document.getElementById("textField").value = "failed"
-     }
-     else{
-         document.getElementById("textField").value = MacAddress
-     }
-}
-
-function queryStarPrinterList(){ 
+function queryStarPrinterList(){             //enter either USB, BT, or TCP in test field box. Or leave blank to search USB -> BT -> TCP 
    let target=document.getElementById("textField").value
    let SearchResult = ""
-   
-   /*  If nothing entered in test field box, search possible connections 
-    *  until find one in the order: USB->BT->TCP
-    */
-   
    if (target === ""){     
       SearchResult = EloStarPrinterManager.searchPrinter("USB:")
       if (SearchResult === "[]"){
@@ -63,24 +38,40 @@ function queryStarPrinterList(){
 }
 
 function setStarPrinter(){       //run queryStarPrinters First
-   let target=document.getElementById("textField").value
-   if(target.length > 1 && target.charAt(0) == '[' && target.charAt(target.length-1) == ']') {
-        target = target.slice(1, -1).split(',')[0]
+   let portname=document.getElementById("textField").value
+   if(portname.length > 1 && portname.charAt(0) == '[' && portname.charAt(portname.length-1) == ']') {
+        portname = portname.slice(1, -1).split(',')[0]
     }
-    PrinterPortName = target
+    PrinterPortName = portname     //store in global variable to use throughout program
     
-    let OnlineStatus = IsStarPrinterOnline()
-    if (OnlineStatus){
+    if (IsStarPrinterOnline()){
      document.getElementById("textField").value = "Printer Online"
     }
  
     else{
      document.getElementById("textField").value = "No Printer found"
     }
-     
 }
 
+function forgetStarPrinter(){
+     if (PrinterPortName !== ""){
+         PrinterPortName = ""
+         document.getElementById("textField").value = "success"
+     }
+     else{
+          document.getElementById("textField").value = "No set printer" 
+     } 
+}
 
+function checkStarMacAddress(){
+     let MacAddress = EloStarPrinterManager.getMacAddress(PrinterPortName)
+     if (MacAddress === ""){
+         document.getElementById("textField").value = "failed"
+     }
+     else{
+         document.getElementById("textField").value = MacAddress
+     }
+}
 
 function printStarBarcode(){
      EloStarPrinterManager.beginDocument(PrinterPortName)
@@ -256,8 +247,13 @@ function IsStarPrinterOnline(){
 function checkStarFirmware(){
     let ActivePort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
     let result = EloStarPrinterManager.getFirmwareInformation(ActivePort_Key)
-    document.getElementById("textField").value=result
     EloStarPrinterManager.releasePort(ActivePort_Key)
+    if (result === ""){
+         document.getElementById("textField").value="failed"
+    }
+    else{
+       document.getElementById("textField").value=result
+    }
    
 }
 
