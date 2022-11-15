@@ -8,7 +8,6 @@ document.getElementById("printStarImage").addEventListener("click", printStarIma
 document.getElementById("checkStarPrinterPaper").addEventListener("click", checkStarPrinterPaper)
 document.getElementById("checkStarPrinterOnline").addEventListener("click",checkStarPrinterOnline)
 document.getElementById("checkStarFirmware").addEventListener("click", checkStarFirmware)
-document.getElementById("checkStarMacAddress").addEventListener("click", checkStarMacAddress)
 document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter)
 
 
@@ -62,16 +61,6 @@ function forgetStarPrinter(){
      else{
           document.getElementById("textField").value = "No set printer" 
      } 
-}
-
-function checkStarMacAddress(){
-     let MacAddress = EloStarPrinterManager.getMacAddress(PrinterPortName)
-     if (MacAddress === ""){
-         document.getElementById("textField").value = "failed"
-     }
-     else{
-         document.getElementById("textField").value = MacAddress
-     }
 }
 
 function printStarBarcode(){
