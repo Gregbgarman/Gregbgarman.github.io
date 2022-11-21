@@ -279,7 +279,7 @@ function getReceipt1Data(){
         EloStarPrinterManager.appendAlignment("Left")
    
         EloStarPrinterManager.append("1\tcheese pizza\t5.00\n")
-        EloStarPrinterManager.append("1\tmilkshake\t1.75\n")
+        EloStarPrinterManager.append("1\tmilkshake\t1.75\n\n---------------------------------\n")
    
         //EloStarPrinterManager.append("1 cheese pizza                 5.00\n1 milkshake                    1.75\n\n---------------------------------\n");
         EloStarPrinterManager.appendAlignment("Right")
