@@ -265,9 +265,9 @@ function getReceipt1Data(){
         EloStarPrinterManager.append("Guest No 1\n")
         EloStarPrinterManager.appendAlignment("Left")
    
-        EloStarPrinterManager.appendHorizontalTabPosition([1,31])
-        EloStarPrinterManager.append("1\tice cream sundae\t4.50\n");
-        EloStarPrinterManager.append("1\tsauce sundae\t4.99\n");
+        EloStarPrinterManager.appendHorizontalTabPosition([31])
+        EloStarPrinterManager.append("1 ice cream sundae\t4.50\n");
+        EloStarPrinterManager.append("1 sauce sundae\t4.99\n");
 
 
    
