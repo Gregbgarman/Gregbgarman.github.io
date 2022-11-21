@@ -266,20 +266,23 @@ function getReceipt1Data(){
         EloStarPrinterManager.appendAlignment("Left")
    
         EloStarPrinterManager.appendHorizontalTabPosition([2,31])
-       // works EloStarPrinterManager.append("1 ice cream sundae\t4.50\n");
-       EloStarPrinterManager.append("1\tice cream sundae\t4.50\n");
-
-        EloStarPrinterManager.append("1 sauce sundae\t4.99\n");
-
+       // works EloStarPrinterManager.append("1 ice cream sundae\t4.50\n")
+        EloStarPrinterManager.append("1\tice cream sundae\t4.50\n")
+        EloStarPrinterManager.append("1\tsoda pop\t1.75\n")
+        EloStarPrinterManager.append("1\tfrench fries\t4.00\n")
 
    
    
-        EloStarPrinterManager.append("1 ice cream sundae             4.50\n1 soda pop                     1.75\n1 french fries                 4.00\n");
-        EloStarPrinterManager.appendAlignment("Center");
+       // EloStarPrinterManager.append("1 ice cream sundae             4.50\n1 soda pop                     1.75\n1 french fries                 4.00\n");
+        EloStarPrinterManager.appendAlignment("Center")
         EloStarPrinterManager.append("Guest No 2\n")
-        EloStarPrinterManager.appendAlignment("Left");
-        EloStarPrinterManager.append("1 cheese pizza                 5.00\n1 milkshake                    1.75\n\n---------------------------------\n");
-        EloStarPrinterManager.appendAlignment("Right"); 
+        EloStarPrinterManager.appendAlignment("Left")
+   
+        EloStarPrinterManager.append("1\tcheese pizza\t5.00\n")
+        EloStarPrinterManager.append("1\tmilkshake\t1.75\n")
+   
+        //EloStarPrinterManager.append("1 cheese pizza                 5.00\n1 milkshake                    1.75\n\n---------------------------------\n");
+        EloStarPrinterManager.appendAlignment("Right")
         EloStarPrinterManager.append("Subtotal    17.00\nTax          1.20\n")
         EloStarPrinterManager.appendMultiple(2,2)
         EloStarPrinterManager.append("Total    18.20\n\n")
@@ -287,8 +290,8 @@ function getReceipt1Data(){
         EloStarPrinterManager.appendAlignment("Left")
    
         EloStarPrinterManager.append("Let us know how we did!\nTake our survey within ")
-        EloStarPrinterManager.appendUnderLine("10 days");
-        EloStarPrinterManager.append(" and get entered\nto ");
+        EloStarPrinterManager.appendUnderLine("10 days")
+        EloStarPrinterManager.append(" and get entered\nto ")
         EloStarPrinterManager.appendInvert("win a prize!")
    
         EloStarPrinterManager.append(" Scan the Qr code below to start!\n\n")
