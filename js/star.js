@@ -303,8 +303,4 @@ function getReceipt1Data(){
     
 }
 
-document.getElementById("TestFunction").addEventListener("click", TestFunction)
-function TestFunction(){
- EloStarPrinterManager.TestFunction(PrinterPortName)  
-   
-}
+
