@@ -64,10 +64,11 @@ function forgetStarPrinter(){
 }
 
 function printStarBarcode(){
-     EloStarPrinterManager.beginDocument(PrinterPortName)
+     EloStarPrinterManager.beginDocument("AutoSwitch:")
      EloStarPrinterManager.appendBarcode("0123456789", "Code39", "Mode1", 40, false);
      EloStarPrinterManager.appendLineFeed(1);
  
+   /*
      EloStarPrinterManager.appendBarcode("{B0123456789", "Code128", "Mode1", 40, true);
      EloStarPrinterManager.appendLineFeed(1);
 
@@ -76,7 +77,7 @@ function printStarBarcode(){
 
      EloStarPrinterManager.appendBarcode("01234500006", "UPCE", "Mode2", 40, true);
      EloStarPrinterManager.appendLineFeed(1);
-
+*/
      EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
      EloStarPrinterManager.endDocument()
     
