@@ -11,6 +11,7 @@ document.getElementById("checkStarFirmware").addEventListener("click", checkStar
 document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter)
 
 
+
 let PrinterPortName=""        //Acquired from searching for printers and used very often throughout program
 document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Disconnected";
 
@@ -300,4 +301,10 @@ function getReceipt1Data(){
         let ReceiptData_Key = EloStarPrinterManager.getCommands()
         return ReceiptData_Key
     
+}
+
+document.getElementById("TestFunction").addEventListener("click", TestFunction)
+function TestFunction(){
+ EloStarPrinterManager.TestFunction(PrinterPortName)  
+   
 }
