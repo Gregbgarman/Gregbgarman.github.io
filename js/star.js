@@ -68,7 +68,7 @@ function printStarBarcode(){
      EloStarPrinterManager.appendBarcode("0123456789", "Code39", "Mode1", 40, false);
      EloStarPrinterManager.appendLineFeed(1);
  
-   /*
+   
      EloStarPrinterManager.appendBarcode("{B0123456789", "Code128", "Mode1", 40, true);
      EloStarPrinterManager.appendLineFeed(1);
 
@@ -77,7 +77,7 @@ function printStarBarcode(){
 
      EloStarPrinterManager.appendBarcode("01234500006", "UPCE", "Mode2", 40, true);
      EloStarPrinterManager.appendLineFeed(1);
-*/
+
      EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
      EloStarPrinterManager.endDocument()
     
@@ -187,7 +187,7 @@ function checkStarFirmware(){
 
 function printReceiptData(ReceiptData_Key){
    
-   let ActivePort_Key = EloStarPrinterManager.getPort("AutoSwitch:","",10000)   
+   let ActivePort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)   
    let PrinterStatus_Key = EloStarPrinterManager.beginCheckedBlock(ActivePort_Key)
    
    if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) !== 0){
