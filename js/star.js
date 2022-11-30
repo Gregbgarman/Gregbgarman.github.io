@@ -141,7 +141,7 @@ function printStarImage(){
 }
 
 function checkStarPrinterPaper(){
-   let ActivePort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
+   let ActivePort_Key = EloStarPrinterManager.getPort("BT:","",10000)
    let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(ActivePort_Key)
     if (EloStarPrinterManager.receiptPaperEmptyStatus(PrinterStatus_Key) === 0){
         document.getElementById("textField").value="Has paper"
