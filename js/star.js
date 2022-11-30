@@ -64,7 +64,7 @@ function forgetStarPrinter(){
 }
 
 function printStarBarcode(){
-     EloStarPrinterManager.beginDocument("AutoSwitch:")
+     EloStarPrinterManager.beginDocument(PrinterPortName)
      EloStarPrinterManager.appendBarcode("0123456789", "Code39", "Mode1", 40, false);
      EloStarPrinterManager.appendLineFeed(1);
  
@@ -187,7 +187,7 @@ function checkStarFirmware(){
 
 function printReceiptData(ReceiptData_Key){
    
-   let ActivePort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)   
+   let ActivePort_Key = EloStarPrinterManager.getPort("AutoSwitch:","",10000)   
    let PrinterStatus_Key = EloStarPrinterManager.beginCheckedBlock(ActivePort_Key)
    
    if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) !== 0){
