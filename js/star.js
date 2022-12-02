@@ -18,7 +18,7 @@ document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Disconne
 function queryStarPrinterList(){             //enter either USB, BT, or TCP in test field box. Or leave blank to search USB -> BT -> TCP 
    let target=document.getElementById("textField").value
    let SearchResult = ""
-   if (target === ""){     
+   if (target === "" || target === "[]"){     
       SearchResult = EloStarPrinterManager.searchPrinter("USB:")
       if (SearchResult === "[]"){
           SearchResult = EloStarPrinterManager.searchPrinter("BT:")       
