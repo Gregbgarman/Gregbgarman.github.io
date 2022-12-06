@@ -280,7 +280,7 @@ function getReceipt1Commands(){     //adding printer commands used for generatin
     EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
     EloStarPrinterManager.endDocument()
    
-    let PrinterCommands_Key = EloStarPrinterManager.getCommands()
+    let PrinterCommands_Key = EloStarPrinterManager.getCommands()       //PrinterCommands_key will be passed into writeport and tells printer how to print
     return PrinterCommands_Key
     
 }
@@ -310,6 +310,6 @@ function getReceipt2Commands(){     //adding printer commands used for generatin
     EloStarPrinterManager.appendCutPaper("PartialCutWithFeed");
     EloStarPrinterManager.endDocument();
 
-    let PrinterCommands_Key = EloStarPrinterManager.getCommands();
+    let PrinterCommands_Key = EloStarPrinterManager.getCommands();          //PrinterCommands_key will be passed into writeport and tells printer how to print
     return PrinterCommands_Key
 }
