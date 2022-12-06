@@ -87,19 +87,19 @@ function printStarBarcode(){
 }
 
 function printStarDemoReceipt1(){
-    let ReceiptData = getReceipt1Data()
-    if (ReceiptData === false){
+    let ReceiptCommands = getReceipt1Commands()
+    if (ReceiptCommands === false){
          return  
     }
-    printReceiptData(ReceiptData)
+    printReceipt(ReceiptCommands)
 }
 
 function printStarDemoReceipt2(){
-    let ReceiptData = getReceipt2Data()
-    if (ReceiptData === false){
+    let ReceiptCommands = getReceipt2Commands()
+    if (ReceiptCommands === false){
          return  
     }
-    printReceiptData(ReceiptData)
+    printReceipt(ReceiptCommands)
 }
 
 function printStarRasterReceipt(){
@@ -126,7 +126,7 @@ function printStarRasterReceipt(){
      EloStarPrinterManager.endDocument();
      let PrinterCommands_Key = EloStarPrinterManager.getCommands();
    
-     printReceiptData(PrinterCommands_Key)
+     printReceipt(PrinterCommands_Key)
    
 }
 
@@ -186,7 +186,7 @@ function checkStarFirmware(){
     } 
 }
 
-function printReceiptData(PrinterCommands_Key){
+function printReceipt(PrinterCommands_Key){
    
    let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)   
    let PrinterStatus_Key = EloStarPrinterManager.beginCheckedBlock(OpenPort_Key)
@@ -227,7 +227,7 @@ function printReceiptData(PrinterCommands_Key){
 
 
 
-function getReceipt1Data(){
+function getReceipt1Commands(){
         EloStarPrinterManager.beginDocument(PrinterPortName)
         EloStarPrinterManager.appendCodepage("CP998")
         EloStarPrinterManager.appendInternational("USA")
@@ -277,7 +277,7 @@ function getReceipt1Data(){
     
 }
 
-function getReceipt2Data(){
+function getReceipt2Commands(){
         EloStarPrinterManager.beginDocument(PrinterPortName)
         EloStarPrinterManager.appendCodepage("CP998");
         EloStarPrinterManager.appendInternational("USA");
