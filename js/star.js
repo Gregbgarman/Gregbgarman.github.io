@@ -9,11 +9,11 @@ document.getElementById("checkStarPrinterPaper").addEventListener("click", check
 document.getElementById("checkStarPrinterOnline").addEventListener("click",checkStarPrinterOnline)
 document.getElementById("checkStarFirmware").addEventListener("click", checkStarFirmware)
 document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter)
+document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Disconnected"
 
 
 
 let PrinterPortName=""        //Acquired from searching for printers and used very often throughout program
-document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Disconnected";
 
 function queryStarPrinterList(){             //enter either USB, BT, or TCP in test field box. Or leave blank to search USB -> BT -> TCP 
    let target=document.getElementById("textField").value
@@ -69,7 +69,6 @@ function printStarBarcode(){        //Will print several barcodes
      EloStarPrinterManager.appendBarcode("0123456789", "Code39", "Mode1", 40, false);
      EloStarPrinterManager.appendLineFeed(1);
  
-   
      EloStarPrinterManager.appendBarcode("{B0123456789", "Code128", "Mode1", 40, true);
      EloStarPrinterManager.appendLineFeed(1);
 
@@ -157,9 +156,11 @@ function checkStarPrinterPaper(){         //checking if printer has paper
    EloStarPrinterManager.releasePort(OpenPort_Key)
 }
 
+
 function checkStarPrinterOnline(){
- document.getElementById("textField").value = IsStarPrinterOnline()
+   document.getElementById("textField").value = IsStarPrinterOnline()
 }
+
 
 function IsStarPrinterOnline(){        //checking if printer is online
    let IsOnline = false
@@ -234,12 +235,12 @@ function printReceipt(PrinterCommands_Key){     //printing receipt.
 
 function getReceipt1Commands(){     //adding printer commands used for generating receipt1
    
-        EloStarPrinterManager.beginDocument(PrinterPortName)
-        EloStarPrinterManager.appendCodepage("CP998")
-        EloStarPrinterManager.appendInternational("USA")
-        EloStarPrinterManager.appendAlignment("Center")
+   EloStarPrinterManager.beginDocument(PrinterPortName)
+   EloStarPrinterManager.appendCodepage("CP998")
+   EloStarPrinterManager.appendInternational("USA")
+   EloStarPrinterManager.appendAlignment("Center")
  
-        EloStarPrinterManager.append("The Food Shack\n123 Rainbow Road\nKnoxville, TN 12312\n");
+   EloStarPrinterManager.append("The Food Shack\n123 Rainbow Road\nKnoxville, TN 12312\n");
         EloStarPrinterManager.appendLineFeed(1);
         EloStarPrinterManager.appendAlignment("Left");
         EloStarPrinterManager.append("Table 109\nServer Greg\n10:30AM    06/21/22\n---------------------------------\n");
