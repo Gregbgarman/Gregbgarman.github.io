@@ -83,7 +83,7 @@ function printStarBarcode(){
      EloStarPrinterManager.endDocument()
     
      let PrinterCommands_Key = EloStarPrinterManager.getCommands() 
-     printReceiptData(PrinterCommands_Key)
+     printReceipt(PrinterCommands_Key)
 }
 
 function printStarDemoReceipt1(){
@@ -138,7 +138,7 @@ function printStarImage(){
      EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")       
      EloStarPrinterManager.endDocument();
      let PrinterCommands_Key = EloStarPrinterManager.getCommands();   
-     printReceiptData(PrinterCommands_Key)                                      
+     printReceipt(PrinterCommands_Key)                                      
 }
 
 function checkStarPrinterPaper(){
