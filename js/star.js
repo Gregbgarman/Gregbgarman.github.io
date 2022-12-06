@@ -82,8 +82,8 @@ function printStarBarcode(){
      EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
      EloStarPrinterManager.endDocument()
     
-     let ReceiptData_Key = EloStarPrinterManager.getCommands() 
-     printReceiptData(ReceiptData_Key)
+     let PrinterCommands_Key = EloStarPrinterManager.getCommands() 
+     printReceiptData(PrinterCommands_Key)
 }
 
 function printStarDemoReceipt1(){
@@ -124,9 +124,9 @@ function printStarRasterReceipt(){
      EloStarPrinterManager.appendUnitFeed(30)
      EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")       
      EloStarPrinterManager.endDocument();
-     let ReceiptData_Key = EloStarPrinterManager.getCommands();
+     let PrinterCommands_Key = EloStarPrinterManager.getCommands();
    
-     printReceiptData(ReceiptData_Key)
+     printReceiptData(PrinterCommands_Key)
    
 }
 
@@ -137,13 +137,13 @@ function printStarImage(){
      EloStarPrinterManager.appendBitmapWithAlignment(image,true,"Center")
      EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")       
      EloStarPrinterManager.endDocument();
-     let ReceiptData_Key = EloStarPrinterManager.getCommands();   
-     printReceiptData(ReceiptData_Key)                                      
+     let PrinterCommands_Key = EloStarPrinterManager.getCommands();   
+     printReceiptData(PrinterCommands_Key)                                      
 }
 
 function checkStarPrinterPaper(){
-   let ActivePort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
-   let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(ActivePort_Key)
+   let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
+   let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(OpenPort_Key)
     if (EloStarPrinterManager.receiptPaperEmptyStatus(PrinterStatus_Key) === 0){
         document.getElementById("textField").value="Has paper"
    }
@@ -151,7 +151,7 @@ function checkStarPrinterPaper(){
      document.getElementById("textField").value="No paper"
    }
    
-   EloStarPrinterManager.releasePort(ActivePort_Key)
+   EloStarPrinterManager.releasePort(OpenPort_Key)
 }
 
 function checkStarPrinterOnline(){
@@ -160,8 +160,8 @@ function checkStarPrinterOnline(){
 
 function IsStarPrinterOnline(){
    let IsOnline = false
-   let ActivePort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
-   let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(ActivePort_Key)
+   let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
+   let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(OpenPort_Key)
     if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 0){
         IsOnline = true
         document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Connected"
@@ -169,15 +169,15 @@ function IsStarPrinterOnline(){
    else{
          document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Disconnected"
    }
-   EloStarPrinterManager.releasePort(ActivePort_Key)
+   EloStarPrinterManager.releasePort(OpenPort_Key)
    return IsOnline
 }
 
 
 function checkStarFirmware(){
-    let ActivePort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
-    let result = EloStarPrinterManager.getFirmwareInformation(ActivePort_Key)
-    EloStarPrinterManager.releasePort(ActivePort_Key)
+    let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
+    let result = EloStarPrinterManager.getFirmwareInformation(OpenPort_Key)
+    EloStarPrinterManager.releasePort(OpenPort_Key)
     if (result === ""){
          document.getElementById("textField").value="failed"
     }
@@ -186,10 +186,10 @@ function checkStarFirmware(){
     } 
 }
 
-function printReceiptData(ReceiptData_Key){
+function printReceiptData(PrinterCommands_Key){
    
-   let ActivePort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)   
-   let PrinterStatus_Key = EloStarPrinterManager.beginCheckedBlock(ActivePort_Key)
+   let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)   
+   let PrinterStatus_Key = EloStarPrinterManager.beginCheckedBlock(OpenPort_Key)
    
    if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) !== 0){
         document.getElementById("textField").value="offline status fail"
@@ -201,24 +201,24 @@ function printReceiptData(ReceiptData_Key){
           return
     }
    
-   if (!EloStarPrinterManager.writePort(ActivePort_Key,ReceiptData_Key,0)){
+   if (!EloStarPrinterManager.writePort(OpenPort_Key,PrinterCommands_Key,0)){
       document.getElementById("textField").value="write port fail"
       return
    }
    
-   if (!EloStarPrinterManager.setEndCheckedBlockTimeoutMillis(ActivePort_Key,30000)){
+   if (!EloStarPrinterManager.setEndCheckedBlockTimeoutMillis(OpenPort_Key,30000)){
       document.getElementById("textField").value="setendchkmillis fail"
       return
    }
    
-   PrinterStatus_Key = EloStarPrinterManager.endCheckedBlock(ActivePort_Key)
+   PrinterStatus_Key = EloStarPrinterManager.endCheckedBlock(OpenPort_Key)
    if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 1 || EloStarPrinterManager.receiptPaperEmptyStatus(PrinterStatus_Key) === 1 ||
        EloStarPrinterManager.coverOpenStatus(PrinterStatus_Key) === 1){
        document.getElementById("textField").value="status check fail"
        return  
    }
    
-   if (!EloStarPrinterManager.releasePort(ActivePort_Key)){
+   if (!EloStarPrinterManager.releasePort(OpenPort_Key)){
       document.getElementById("textField").value="release port fail"
       return
    }
@@ -272,8 +272,8 @@ function getReceipt1Data(){
         EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
         EloStarPrinterManager.endDocument()
    
-        let ReceiptData_Key = EloStarPrinterManager.getCommands()
-        return ReceiptData_Key
+        let PrinterCommands_Key = EloStarPrinterManager.getCommands()
+        return PrinterCommands_Key
     
 }
 
@@ -301,8 +301,6 @@ function getReceipt2Data(){
         EloStarPrinterManager.appendCutPaper("PartialCutWithFeed");
         EloStarPrinterManager.endDocument();
 
-        let ReceiptData_Key = EloStarPrinterManager.getCommands();
-        return ReceiptData_Key
+        let PrinterCommands_Key = EloStarPrinterManager.getCommands();
+        return PrinterCommands_Key
 }
-
-
