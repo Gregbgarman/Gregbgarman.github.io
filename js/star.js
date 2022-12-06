@@ -16,41 +16,41 @@ document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Disconne
 let PrinterPortName=""        //Acquired from searching for printers and used very often throughout program
 
 function queryStarPrinterList(){             //enter either USB, BT, or TCP in test field box. Or leave blank to search USB -> BT -> TCP 
-   let target=document.getElementById("textField").value
-   let SearchResult = ""
-   if (target === "" || target === "[]"){     
-      SearchResult = EloStarPrinterManager.searchPrinter("USB:")
-      if (SearchResult === "[]"){
-          SearchResult = EloStarPrinterManager.searchPrinter("BT:")       
-          if (SearchResult === "[]"){
-             SearchResult = EloStarPrinterManager.searchPrinter("TCP:")
-          }
-      }
-   }
-   else{
-       target+=":"
-       SearchResult = EloStarPrinterManager.searchPrinter(target)
-   }
-   if (SearchResult !== "[]"){
-       PortsDetected = true  
-   }
-   document.getElementById("textField").value = SearchResult
+    let target=document.getElementById("textField").value
+    let SearchResult = ""
+    if (target === "" || target === "[]"){     
+       SearchResult = EloStarPrinterManager.searchPrinter("USB:")
+       if (SearchResult === "[]"){
+           SearchResult = EloStarPrinterManager.searchPrinter("BT:")       
+           if (SearchResult === "[]"){
+              SearchResult = EloStarPrinterManager.searchPrinter("TCP:")
+           }
+       }
+    }
+    else{
+        target+=":"
+        SearchResult = EloStarPrinterManager.searchPrinter(target)
+    }
+    if (SearchResult !== "[]"){
+        PortsDetected = true  
+    }
+    document.getElementById("textField").value = SearchResult
 }
 
 function setStarPrinter(){       //Simply stores a printer port in the PrinterPortName variable. Run queryStarPrinters First
-   let portname=document.getElementById("textField").value
-   if(portname.length > 1 && portname.charAt(0) == '[' && portname.charAt(portname.length-1) == ']') {
+    let portname=document.getElementById("textField").value
+    if(portname.length > 1 && portname.charAt(0) == '[' && portname.charAt(portname.length-1) == ']') {
         portname = portname.slice(1, -1).split(',')[0]
-    }
-    PrinterPortName = portname      // **stored in global variable to use throughout program**
+     }
+     PrinterPortName = portname      // **stored in global variable to use throughout program**
    
-    if (IsStarPrinterOnline()){
-      document.getElementById("textField").value = "Printer Online"
-    }
+     if (IsStarPrinterOnline()){
+       document.getElementById("textField").value = "Printer Online"
+     }
  
-    else{
+     else{
       document.getElementById("textField").value = "No Printer found"
-    }
+     }
 }
 
 function forgetStarPrinter(){          //clears the stored PrinterPortName
@@ -144,37 +144,38 @@ function printImage(){        //prints ELO image. Requires a bitmap to work.
 
 function checkStarPrinterPaper(){         //checking if printer has paper
    
-   let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
-   let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(OpenPort_Key)
+    let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
+    let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(OpenPort_Key)
     if (EloStarPrinterManager.receiptPaperEmptyStatus(PrinterStatus_Key) === 0){
         document.getElementById("textField").value="Has paper"
-   }
-   else{
-     document.getElementById("textField").value="No paper"
-   }
+    }
+    else{
+      document.getElementById("textField").value="No paper"
+    }
    
-   EloStarPrinterManager.releasePort(OpenPort_Key)
+    EloStarPrinterManager.releasePort(OpenPort_Key)
 }
 
 
 function checkStarPrinterOnline(){
-   document.getElementById("textField").value = IsStarPrinterOnline()
+    document.getElementById("textField").value = IsStarPrinterOnline()
 }
 
 
 function IsStarPrinterOnline(){        //checking if printer is online
-   let IsOnline = false
-   let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
-   let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(OpenPort_Key)
+    let IsOnline = false
+    let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
+    let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(OpenPort_Key)
     if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 0){
         IsOnline = true
         document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Connected"
-   }
-   else{
+    }
+    else{
          document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Disconnected"
-   }
-   EloStarPrinterManager.releasePort(OpenPort_Key)
-   return IsOnline
+    }
+    
+    EloStarPrinterManager.releasePort(OpenPort_Key)
+    return IsOnline
 }
 
 
@@ -193,20 +194,20 @@ function checkStarFirmware(){       //retrieving printer firmware
 
 function printReceipt(PrinterCommands_Key){     //printing receipt. 
    
-   let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)          //step 1. Obtain an open port to write to
-   let PrinterStatus_Key = EloStarPrinterManager.beginCheckedBlock(OpenPort_Key)       //step 2. begin checked block and obtain status
+    let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)          //step 1. Obtain an open port to write to
+    let PrinterStatus_Key = EloStarPrinterManager.beginCheckedBlock(OpenPort_Key)       //step 2. begin checked block and obtain status
    
-   if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) !== 0){                  //perform several status checks
+    if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) !== 0){                  //perform several status checks
         document.getElementById("textField").value="offline status fail"
         return
-   }
+    }
    
     if (EloStarPrinterManager.receiptPaperEmptyStatus(PrinterStatus_Key) !==0){
           document.getElementById("textField").value="no paper found"
           return
     }
    
-   if (!EloStarPrinterManager.writePort(OpenPort_Key,PrinterCommands_Key,0)){             //step 3. Pass printer commands and open port to write port
+   if (!EloStarPrinterManager.writePort(OpenPort_Key,PrinterCommands_Key,0)){             //step 3. Pass printer commands and open port to write port (printing step)
       document.getElementById("textField").value="write port fail"
       return
    }
@@ -235,80 +236,80 @@ function printReceipt(PrinterCommands_Key){     //printing receipt.
 
 function getReceipt1Commands(){     //adding printer commands used for generating receipt1
    
-   EloStarPrinterManager.beginDocument(PrinterPortName)
-   EloStarPrinterManager.appendCodepage("CP998")
-   EloStarPrinterManager.appendInternational("USA")
-   EloStarPrinterManager.appendAlignment("Center")
+    EloStarPrinterManager.beginDocument(PrinterPortName)
+    EloStarPrinterManager.appendCodepage("CP998")
+    EloStarPrinterManager.appendInternational("USA")
+    EloStarPrinterManager.appendAlignment("Center")
  
-   EloStarPrinterManager.append("The Food Shack\n123 Rainbow Road\nKnoxville, TN 12312\n");
-        EloStarPrinterManager.appendLineFeed(1);
-        EloStarPrinterManager.appendAlignment("Left");
-        EloStarPrinterManager.append("Table 109\nServer Greg\n10:30AM    06/21/22\n---------------------------------\n");
-        EloStarPrinterManager.appendAlignment("Center")
-        EloStarPrinterManager.append("Guest No 1\n")
-        EloStarPrinterManager.appendAlignment("Left")
+    EloStarPrinterManager.append("The Food Shack\n123 Rainbow Road\nKnoxville, TN 12312\n");
+    EloStarPrinterManager.appendLineFeed(1);
+    EloStarPrinterManager.appendAlignment("Left");
+    EloStarPrinterManager.append("Table 109\nServer Greg\n10:30AM    06/21/22\n---------------------------------\n");
+    EloStarPrinterManager.appendAlignment("Center")
+    EloStarPrinterManager.append("Guest No 1\n")
+    EloStarPrinterManager.appendAlignment("Left")
    
-        EloStarPrinterManager.appendHorizontalTabPosition([2,31])
-        EloStarPrinterManager.append("1\tice cream sundae\t4.50\n")
-        EloStarPrinterManager.append("1\tsoda pop\t1.75\n")
-        EloStarPrinterManager.append("1\tfrench fries\t4.00\n")
+    EloStarPrinterManager.appendHorizontalTabPosition([2,31])
+    EloStarPrinterManager.append("1\tice cream sundae\t4.50\n")
+    EloStarPrinterManager.append("1\tsoda pop\t1.75\n")
+    EloStarPrinterManager.append("1\tfrench fries\t4.00\n")
 
-        EloStarPrinterManager.appendAlignment("Center")
-        EloStarPrinterManager.append("Guest No 2\n")
-        EloStarPrinterManager.appendAlignment("Left")
+    EloStarPrinterManager.appendAlignment("Center")
+    EloStarPrinterManager.append("Guest No 2\n")
+    EloStarPrinterManager.appendAlignment("Left")
    
-        EloStarPrinterManager.append("1\tcheese pizza\t5.00\n")
-        EloStarPrinterManager.append("1\tmilkshake\t1.75\n\n---------------------------------\n")
+    EloStarPrinterManager.append("1\tcheese pizza\t5.00\n")
+    EloStarPrinterManager.append("1\tmilkshake\t1.75\n\n---------------------------------\n")
    
-        EloStarPrinterManager.appendAlignment("Right")
-        EloStarPrinterManager.append("Subtotal    17.00\nTax          1.20\n")
-        EloStarPrinterManager.appendMultiple(2,2)
-        EloStarPrinterManager.append("Total    18.20\n\n")
-        EloStarPrinterManager.appendMultiple(0,0)
-        EloStarPrinterManager.appendAlignment("Left")
+    EloStarPrinterManager.appendAlignment("Right")
+    EloStarPrinterManager.append("Subtotal    17.00\nTax          1.20\n")
+    EloStarPrinterManager.appendMultiple(2,2)
+    EloStarPrinterManager.append("Total    18.20\n\n")
+    EloStarPrinterManager.appendMultiple(0,0)
+    EloStarPrinterManager.appendAlignment("Left")
    
-        EloStarPrinterManager.append("Let us know how we did!\nTake our survey within ")
-        EloStarPrinterManager.appendUnderLine("10 days")
-        EloStarPrinterManager.append(" and get entered\nto ")
-        EloStarPrinterManager.appendInvert("win a prize!")
+    EloStarPrinterManager.append("Let us know how we did!\nTake our survey within ")
+    EloStarPrinterManager.appendUnderLine("10 days")
+    EloStarPrinterManager.append(" and get entered\nto ")
+    EloStarPrinterManager.appendInvert("win a prize!")
    
-        EloStarPrinterManager.append(" Scan the Qr code below to start!\n\n")
-        EloStarPrinterManager.appendQrCode("https://www.elotouch.com/", "No2", "Q", 5)
-        EloStarPrinterManager.appendUnitFeed(10);
+    EloStarPrinterManager.append(" Scan the Qr code below to start!\n\n")
+    EloStarPrinterManager.appendQrCode("https://www.elotouch.com/", "No2", "Q", 5)
+    EloStarPrinterManager.appendUnitFeed(10);
 
-        EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
-        EloStarPrinterManager.endDocument()
+    EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
+    EloStarPrinterManager.endDocument()
    
-        let PrinterCommands_Key = EloStarPrinterManager.getCommands()
-        return PrinterCommands_Key
+    let PrinterCommands_Key = EloStarPrinterManager.getCommands()
+    return PrinterCommands_Key
     
 }
 
 function getReceipt2Commands(){     //adding printer commands used for generating receipt2
    
-        EloStarPrinterManager.beginDocument(PrinterPortName)
-        EloStarPrinterManager.appendCodepage("CP998");
-        EloStarPrinterManager.appendInternational("USA");
-        EloStarPrinterManager.appendAlignment("Center");
-        EloStarPrinterManager.appendLineFeed(1);
-        EloStarPrinterManager.append("THE STORE 123 (555) 555 5555\nSTORE DIRECTOR John Smith\n\n7/01/07 16:58 6153 05 0191 134\nST# 21 OP# 001 TE# 01 TR# 747\n------------------------------\n");
-        EloStarPrinterManager.append("400 OHEIDA 3PK SPRINGF  9.99 R\n410 3 CUP BLK TEAPOT    9.99 R\n445 EMERIL GRIDDLE/PAN 17.99 R\n438 CANDYMAKER ASSORT   4.99 R\n474 TRIPOD              8.99 R\n433 BLK LOGO PRNTED ZO  7.99 R\n458 AQUA MICROTERRY SC  6.99 R\n493 30L BLK FF DRESS   16.99 R\n407 LEVITATING DESKTOP  7.99 R\n441 **Blue Overprint P  2.99 R\n476 REPOSE 4PCPM CHOC   5.49 R\n476 REPOSE 4PCPM CHOC   5.49 R\n461 WESTGATE BLACK 25  59.99 R\n------------------------------\n");
-        EloStarPrinterManager.append("SUBTOTAL                160.38\n");
-        EloStarPrinterManager.appendMultiple(2, 2);
-        EloStarPrinterManager.append("TOTAL    174.81\n")
-        EloStarPrinterManager.appendMultiple(0, 0);
+    EloStarPrinterManager.beginDocument(PrinterPortName)
+    EloStarPrinterManager.appendCodepage("CP998");
+    EloStarPrinterManager.appendInternational("USA");
+    EloStarPrinterManager.appendAlignment("Center");
+    EloStarPrinterManager.appendLineFeed(1);
+    EloStarPrinterManager.append("THE STORE 123 (555) 555 5555\nSTORE DIRECTOR John Smith\n\n7/01/07 16:58 6153 05 0191 134\nST# 21 OP# 001 TE# 01 TR# 747\n------------------------------\n");
+    EloStarPrinterManager.append("400 OHEIDA 3PK SPRINGF  9.99 R\n410 3 CUP BLK TEAPOT    9.99 R\n445 EMERIL GRIDDLE/PAN 17.99 R\n438 CANDYMAKER ASSORT   4.99 R\n474 TRIPOD              8.99 R\n433 BLK LOGO PRNTED ZO  7.99 R\n458 AQUA MICROTERRY SC  6.99 R\n493 30L BLK FF DRESS   16.99 R\n407 LEVITATING DESKTOP  7.99 R\n441 **Blue Overprint P  2.99 R\n476 REPOSE 4PCPM CHOC   5.49 R\n476 REPOSE 4PCPM CHOC   5.49 R\n461 WESTGATE BLACK 25  59.99 R\n------------------------------\n");
+    EloStarPrinterManager.append("SUBTOTAL                160.38\n");
+    EloStarPrinterManager.appendMultiple(2, 2);
+    EloStarPrinterManager.append("TOTAL    174.81\n")
+    EloStarPrinterManager.appendMultiple(0, 0);
    
-        EloStarPrinterManager.appendLineFeed(2);
-        EloStarPrinterManager.append("CASH                    200.00\nCHANGE                   25.19\n------------------------------\n");
-        EloStarPrinterManager.append("Purchased item total number\nSign Up and Save !\nWith Preferred Saving Card\n");
-        EloStarPrinterManager.appendLineFeed(2);
+    EloStarPrinterManager.appendLineFeed(2);
+    EloStarPrinterManager.append("CASH                    200.00\nCHANGE                   25.19\n------------------------------\n");
+    EloStarPrinterManager.append("Purchased item total number\nSign Up and Save !\nWith Preferred Saving Card\n");
+    EloStarPrinterManager.appendLineFeed(2);
 
-        EloStarPrinterManager.appendBarcode("17523099544", "UPCA", "Mode2", 60, false);
-        EloStarPrinterManager.appendUnitFeed(32);
+    EloStarPrinterManager.appendBarcode("17523099544", "UPCA", "Mode2", 60, false);
+    EloStarPrinterManager.appendUnitFeed(32);
 
-        EloStarPrinterManager.appendCutPaper("PartialCutWithFeed");
-        EloStarPrinterManager.endDocument();
+    EloStarPrinterManager.appendCutPaper("PartialCutWithFeed");
+    EloStarPrinterManager.endDocument();
 
-        let PrinterCommands_Key = EloStarPrinterManager.getCommands();
-        return PrinterCommands_Key
+    let PrinterCommands_Key = EloStarPrinterManager.getCommands();
+    return PrinterCommands_Key
 }
