@@ -150,7 +150,7 @@ function checkStarPrinterPaper(){         //checking if printer has paper
         document.getElementById("textField").value="Has paper"
     }
     else{
-      document.getElementById("textField").value="No paper"
+      document.getElementById("textField").value="No paper detected"
     }
    
     EloStarPrinterManager.releasePort(OpenPort_Key)
