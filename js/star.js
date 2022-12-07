@@ -207,7 +207,7 @@ function printReceipt(PrinterCommands_Key){     //printing receipt.
           return
     }
    
-   if (!EloStarPrinterManager.writePort(OpenPort_Key,PrinterCommands_Key,0)){             //step 3. Pass printer commands and open port to write port (printing step)
+   if (!EloStarPrinterManager.writePort(OpenPort_Key,PrinterCommands_Key,0)){             //step 3. Write to open port (Printing step)
       document.getElementById("textField").value="write port fail"
       return
    }
@@ -280,7 +280,7 @@ function getReceipt1Commands(){     //adding printer commands used for generatin
     EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
     EloStarPrinterManager.endDocument()
    
-    let PrinterCommands_Key = EloStarPrinterManager.getCommands()       //PrinterCommands_key will be passed into writeport and tells printer how to print
+    let PrinterCommands_Key = EloStarPrinterManager.getCommands()       //PrinterCommands_key will be passed into writeport to print receipt
     return PrinterCommands_Key
     
 }
@@ -310,6 +310,6 @@ function getReceipt2Commands(){     //adding printer commands used for generatin
     EloStarPrinterManager.appendCutPaper("PartialCutWithFeed");
     EloStarPrinterManager.endDocument();
 
-    let PrinterCommands_Key = EloStarPrinterManager.getCommands();          //PrinterCommands_key will be passed into writeport and tells printer how to print
+    let PrinterCommands_Key = EloStarPrinterManager.getCommands();          //PrinterCommands_key will be passed into writeport to print receipt
     return PrinterCommands_Key
 }
