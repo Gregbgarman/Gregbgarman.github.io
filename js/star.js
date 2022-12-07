@@ -35,9 +35,7 @@ function queryStarPrinterList(){             //enter either USB, BT, or TCP in t
         document.getElementById("textField").value = "Invalid entry"
         return
     }
-    if (SearchResult !== "[]"){
-        PortsDetected = true  
-    }
+    
     document.getElementById("textField").value = SearchResult
 }
 
