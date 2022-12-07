@@ -207,7 +207,7 @@ function printReceipt(ReceiptData_Key){     //printing receipt.
           return
     }
    
-   if (!EloStarPrinterManager.writePort(OpenPort_Key,PrinterCommands_Key,0)){             //step 3. Write to open port (Printing step)
+   if (!EloStarPrinterManager.writePort(OpenPort_Key,ReceiptData_Key,0)){                 //step 3. Write to open port (Printing step)
       document.getElementById("textField").value="write port fail"
       return
    }
