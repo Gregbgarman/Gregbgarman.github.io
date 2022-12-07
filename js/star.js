@@ -27,14 +27,14 @@ function queryStarPrinterList(){             //enter either USB, BT, or TCP in t
            }
        }
     }
-    else if (target == "USB" || target == "BT" || target == "TCP"){
+    else {
         target+=":"
         SearchResult = EloStarPrinterManager.searchPrinter(target)
     }
-    else{
-        document.getElementById("textField").value = "Invalid entry"
-        return
-    }
+   // else{
+   //     document.getElementById("textField").value = "Invalid entry"
+    //    return
+   // }
     
     document.getElementById("textField").value = SearchResult
 }
