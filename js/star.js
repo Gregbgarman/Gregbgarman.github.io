@@ -51,7 +51,8 @@ function setStarPrinter(){       //Simply stores a printer port in the PrinterPo
      }
  
      else{
-      document.getElementById("textField").value = "No Printer found"
+       document.getElementById("textField").value = "No Printer found"
+       PrinterPortName = ""
      }
 }
 
