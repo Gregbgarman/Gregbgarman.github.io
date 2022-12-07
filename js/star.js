@@ -81,24 +81,24 @@ function printStarBarcode(){        //Will print several barcodes
      EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
      EloStarPrinterManager.endDocument()
     
-     let PrinterCommands_Key = EloStarPrinterManager.getCommands() 
-     printReceipt(PrinterCommands_Key)
+     let ReceiptData_Key = EloStarPrinterManager.getCommands() 
+     printReceipt(ReceiptData_Key)
 }
 
 function printStarDemoReceipt1(){
-    let ReceiptCommands = getReceipt1Commands()
-    if (ReceiptCommands === false){
+    let ReceiptData= getReceipt1Data()
+    if (ReceiptData === false){
          return  
     }
-    printReceipt(ReceiptCommands)
+    printReceipt(ReceiptData)
 }
 
 function printStarDemoReceipt2(){
-    let ReceiptCommands = getReceipt2Commands()
-    if (ReceiptCommands === false){
+    let ReceiptData = getReceipt2Data()
+    if (ReceiptData === false){
          return  
     }
-    printReceipt(ReceiptCommands)
+    printReceipt(ReceiptData)
 }
 
 function printStarRasterReceipt(){     //Converts text into an image and prints
@@ -124,9 +124,9 @@ function printStarRasterReceipt(){     //Converts text into an image and prints
      EloStarPrinterManager.appendUnitFeed(30)
      EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")       
      EloStarPrinterManager.endDocument();
-     let PrinterCommands_Key = EloStarPrinterManager.getCommands();
+     let ReceiptData_Key = EloStarPrinterManager.getCommands();
    
-     printReceipt(PrinterCommands_Key)
+     printReceipt(ReceiptData_Key)
    
 }
 
@@ -138,8 +138,8 @@ function printImage(){        //prints ELO image. Requires a bitmap to work.
      EloStarPrinterManager.appendBitmapWithAlignment(image,true,"Center")
      EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")       
      EloStarPrinterManager.endDocument();
-     let PrinterCommands_Key = EloStarPrinterManager.getCommands();   
-     printReceipt(PrinterCommands_Key)                                      
+     let ReceiptData_Key = EloStarPrinterManager.getCommands();   
+     printReceipt(ReceiptData_Key)                                      
 }
 
 function checkStarPrinterPaper(){         //checking if printer has paper
@@ -192,7 +192,7 @@ function checkStarFirmware(){       //retrieving printer firmware
     } 
 }
 
-function printReceipt(PrinterCommands_Key){     //printing receipt. 
+function printReceipt(ReceiptData_Key){     //printing receipt. 
    
     let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)          //step 1. Obtain an open port to write to
     let PrinterStatus_Key = EloStarPrinterManager.beginCheckedBlock(OpenPort_Key)       //step 2. begin checked block and obtain status
@@ -234,7 +234,7 @@ function printReceipt(PrinterCommands_Key){     //printing receipt.
 }
 
 
-function getReceipt1Commands(){     //adding printer commands used for generating receipt1
+function getReceipt1Data(){     //adding printer commands used for generating receipt1
    
     EloStarPrinterManager.beginDocument(PrinterPortName)
     EloStarPrinterManager.appendCodepage("CP998")
@@ -280,12 +280,12 @@ function getReceipt1Commands(){     //adding printer commands used for generatin
     EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
     EloStarPrinterManager.endDocument()
    
-    let PrinterCommands_Key = EloStarPrinterManager.getCommands()       //PrinterCommands_key will be passed into writeport to print receipt
-    return PrinterCommands_Key
+    let ReceiptData_Key = EloStarPrinterManager.getCommands()       //ReceiptData_Key will be passed into writeport to print receipt
+    return ReceiptData_Key
     
 }
 
-function getReceipt2Commands(){     //adding printer commands used for generating receipt2
+function getReceipt2Data(){     //adding printer commands used for generating receipt2
    
     EloStarPrinterManager.beginDocument(PrinterPortName)
     EloStarPrinterManager.appendCodepage("CP998");
@@ -310,6 +310,6 @@ function getReceipt2Commands(){     //adding printer commands used for generatin
     EloStarPrinterManager.appendCutPaper("PartialCutWithFeed");
     EloStarPrinterManager.endDocument();
 
-    let PrinterCommands_Key = EloStarPrinterManager.getCommands();          //PrinterCommands_key will be passed into writeport to print receipt
-    return PrinterCommands_Key
+    let ReceiptData_Key = EloStarPrinterManager.getCommands();          //ReceiptData_Key will be passed into writeport to print receipt
+    return ReceiptData_Key
 }
