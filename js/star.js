@@ -86,7 +86,8 @@ function printStarBarcode(){        //Will print several barcodes
 
 function printStarDemoReceipt1(){
     let ReceiptData= getReceipt1Data()
-    if (ReceiptData === false){
+    if (ReceiptData === ""){
+         document.getElementById("textField").value = "Error creating receipt data"
          return  
     }
     printReceipt(ReceiptData)
@@ -94,7 +95,8 @@ function printStarDemoReceipt1(){
 
 function printStarDemoReceipt2(){
     let ReceiptData = getReceipt2Data()
-    if (ReceiptData === false){
+    if (ReceiptData === ""){
+         document.getElementById("textField").value = "Error creating receipt data"
          return  
     }
     printReceipt(ReceiptData)
