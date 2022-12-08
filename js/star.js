@@ -9,7 +9,7 @@ document.getElementById("checkStarPrinterPaper").addEventListener("click", check
 document.getElementById("checkStarPrinterOnline").addEventListener("click",checkStarPrinterOnline)
 document.getElementById("checkStarFirmware").addEventListener("click", checkStarFirmware)
 document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter)
-document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Disconnected"
+document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
 
 
 
@@ -43,11 +43,13 @@ function setStarPrinter(){       //Simply stores a printer port in the PrinterPo
      PrinterPortName = portname      // **stored in global variable to use throughout program**
    
      if (IsStarPrinterOnline()){
+       document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Connected"
        document.getElementById("textField").value = "Printer Online"
      }
  
      else{
-       document.getElementById("textField").value = "No Printer found"
+       document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
+       document.getElementById("textField").value = "No Printer Found"
        PrinterPortName = ""
      }
 }
@@ -166,13 +168,14 @@ function checkStarPrinterOnline(){
 function IsStarPrinterOnline(){        //checking if printer is online
     let IsOnline = false
     let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
+    
+    if (OpenPort_Key === ""){           //error with obtaining an open port
+        return IsOnline
+    }
+        
     let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(OpenPort_Key)
     if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 0){
         IsOnline = true
-        document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Connected"
-    }
-    else{
-         document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Disconnected"
     }
     
     EloStarPrinterManager.releasePort(OpenPort_Key)
