@@ -50,14 +50,13 @@ function setStarPrinter(){       //Simply stores a printer port in the PrinterPo
      else{
        document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
        document.getElementById("textField").value = "Printer Offline"
-       PrinterPortName = ""
      }
 }
 
 function forgetStarPrinter(){          //clears the stored PrinterPortName
      if (PrinterPortName !== ""){
          PrinterPortName = ""
-         document.getElementById("textField").value = "success"
+         document.getElementById("textField").value = true
          document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Disconnected";
      }
      else{
@@ -170,7 +169,7 @@ function IsStarPrinterOnline(){        //checking if printer is online
     let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
     
     if (OpenPort_Key === ""){           //error with obtaining an open port
-        return IsOnline
+        return false
     }
         
     let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(OpenPort_Key)
@@ -199,6 +198,12 @@ function checkStarFirmware(){       //retrieving printer firmware
 function printReceipt(ReceiptData_Key){     //printing receipt. 
    
     let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)          //step 1. Obtain an open port to write to
+    
+    if (OpenPort_Key === ""){                                                           
+        document.getElementById("textField").value="open port fail"
+        return
+    }
+    
     let PrinterStatus_Key = EloStarPrinterManager.beginCheckedBlock(OpenPort_Key)       //step 2. begin checked block and obtain status
    
     if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) !== 0){                  //perform several status checks
