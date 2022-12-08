@@ -1,14 +1,17 @@
 /*
 This is a sample website containing code examples of how a Star printer could be used with EloStarPrinterManager.
 
-**There is no formal connection process with Star printers via software.** Rather, Star printer ports are detected and then are written to once they
-are opened. The connection process is done ahead of time by connecting via a USB cable, pairing with bluetooth in the Android settings app, or
-connecting the Star printer to the same LAN as the Elo device.
+**There is no formal connection process with Star printers via software.** The connection process is done ahead of time by connecting via a USB cable,
+pairing with bluetooth in the Android settings app, or connecting the Star printer to the same LAN as the Elo device. Then in the software, Star printer
+ports are searched for and detected and are then written to once they get opened.
 
-For this sample website, queryStarPrinterList() will detect a printer port and
-then that port is saved in global variable <PrinterPortName> and used for the duration of the program. This variable is passed into 
-EloStarPrinterManager.getPort() to retrieve an open port which will then be written to after receipt data has been
-created. See printreceipt() for printing flow sample and getReceipt1Data()/getReceipt2Data() for receipt creation sample.
+The messages on this sample website "Star Printer Connected" and "Star Printer Disconnected" are an indication of whether a detected port confirms
+the online status of a Star printer and that it can print on command. 
+
+For this sample website, queryStarPrinterList() will detect a printer port and then that port is saved in global variable <PrinterPortName> and 
+used for the duration of the program. This variable is passed into EloStarPrinterManager.getPort() to retrieve an open port which will then 
+be written to after receipt data has been created. See printreceipt() for printing flow sample and getReceipt1Data()/getReceipt2Data() for 
+receipt creation sample.
 */
 
 
