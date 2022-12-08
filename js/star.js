@@ -69,7 +69,7 @@ function forgetStarPrinter(){          //clears the stored PrinterPortName
      if (PrinterPortName !== ""){
          PrinterPortName = ""
          document.getElementById("textField").value = true
-         document.getElementById("StarPrinterAvailable").innerHTML = "Printer is Disconnected";
+         document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected";
      }
      else{
           document.getElementById("textField").value = "No set printer" 
