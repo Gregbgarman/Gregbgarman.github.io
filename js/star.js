@@ -2,7 +2,8 @@
 This is a sample website containing code examples of how a Star printer could be used with EloStarPrinterManager.
 
 **There is no formal connection process with Star printers via software.** Rather, Star printer ports are detected and then are written to once they
-are opened.
+are opened. The connection process is done ahead of time by connecting via a USB cable, pairing with bluetooth in the Android settings app, and
+connecting the Star printer to the same LAN as the Elo device.
 
 For this sample website, queryStarPrinterList() will detect a printer port and
 then that port is saved in global variable <PrinterPortName> and used for the duration of the program. This variable is passed into 
