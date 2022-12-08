@@ -49,7 +49,7 @@ function setStarPrinter(){       //Simply stores a printer port in the PrinterPo
  
      else{
        document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
-       document.getElementById("textField").value = "No Printer Found"
+       document.getElementById("textField").value = "Printer Offline"
        PrinterPortName = ""
      }
 }
