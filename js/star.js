@@ -1,8 +1,11 @@
 /*
 This is a sample website containing code examples of how a Star printer could be used with EloStarPrinterManager.
 
-There is no formal connection process with Star printers. For this sample website, queryStarPrinterList() will detect a printer port and
-then that port is saved in a global variable to be used for the duration of the program. This variable is passed into 
+**There is no formal connection process with Star printers via software.** Rather, Star printer ports are detected and then are written to once they
+are opened.
+
+For this sample website, queryStarPrinterList() will detect a printer port and
+then that port is saved in global variable <PrinterPortName> and used for the duration of the program. This variable is passed into 
 EloStarPrinterManager.getPort() to retrieve an open port which will then be written to after receipt data has been
 created. See printreceipt() for printing flow sample and getReceipt1Data()/getReceipt2Data() for receipt creation sample.
 */
