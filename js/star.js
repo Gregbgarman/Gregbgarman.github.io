@@ -1,3 +1,13 @@
+/*
+This is a sample website containing code examples of how a Star printer could be used with EloStarPrinterManager.
+
+There is no formal connection process with Star printers. For this sample website, queryStarPrinterList() will detect a printer port and
+then that port is saved in a global variable to be used for the duration of the program. This variable is passed into 
+EloStarPrinterManager.getPort() to retrieve an open port which will then be written to after receipt data has been
+created. See printreceipt() for printing flow sample and getReceipt1Data()/getReceipt2Data() for receipt creation sample.
+*/
+
+
 document.getElementById("queryStarPrinterList").addEventListener("click", queryStarPrinterList)
 document.getElementById("setStarPrinter").addEventListener("click", setStarPrinter)
 document.getElementById("printStarBarcode").addEventListener("click", printStarBarcode)
@@ -10,7 +20,6 @@ document.getElementById("checkStarPrinterOnline").addEventListener("click",check
 document.getElementById("checkStarFirmware").addEventListener("click", checkStarFirmware)
 document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter)
 document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
-
 
 
 let PrinterPortName=""        //Acquired from searching for printers and used very often throughout program
