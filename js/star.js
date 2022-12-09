@@ -190,7 +190,7 @@ function IsStarPrinterOnline(){        //checking if printer is online
     let IsOnline = false
     let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
     
-    if (OpenPort_Key === ""){           //error with obtaining an open port
+    if (OpenPort_Key === ""){           //error with opening port
         return false
     }
         
@@ -208,7 +208,7 @@ function checkStarFirmware(){       //retrieving printer firmware
    
     let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
     
-    if (OpenPort_Key === ""){           //error with obtaining an open port
+    if (OpenPort_Key === ""){           //error with opening port
         document.getElementById("textField").value="open port fail"
         return
     }
@@ -278,9 +278,9 @@ function printReceipt(ReceiptData_Key){     //printing receipt.
 }
 
 
-function getReceipt1Data(){     //adding printer commands used for generating receipt1
+function getReceipt1Data(){     //adding printer commands used for generating sample receipt1
    
-    EloStarPrinterManager.beginDocument(PrinterPortName)
+    EloStarPrinterManager.beginDocument(PrinterPortName)        //always begin new receipt creation with beginDocument
     EloStarPrinterManager.appendCodepage("CP998")
     EloStarPrinterManager.appendInternational("USA")
     EloStarPrinterManager.appendAlignment("Center")
@@ -322,16 +322,16 @@ function getReceipt1Data(){     //adding printer commands used for generating re
     EloStarPrinterManager.appendUnitFeed(10);
 
     EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
-    EloStarPrinterManager.endDocument()
+    EloStarPrinterManager.endDocument()                             //always end receipt creation with endDocument
    
-    let ReceiptData_Key = EloStarPrinterManager.getCommands()       //ReceiptData_Key will be passed into writeport to print receipt
+    let ReceiptData_Key = EloStarPrinterManager.getCommands()       //ReceiptData_Key will be passed into writePort to print receipt
     return ReceiptData_Key
     
 }
 
-function getReceipt2Data(){     //adding printer commands used for generating receipt2
+function getReceipt2Data(){     //adding printer commands used for generating sample receipt2
    
-    EloStarPrinterManager.beginDocument(PrinterPortName)
+    EloStarPrinterManager.beginDocument(PrinterPortName)        //always begin new receipt creation with beginDocument
     EloStarPrinterManager.appendCodepage("CP998");
     EloStarPrinterManager.appendInternational("USA");
     EloStarPrinterManager.appendAlignment("Center");
@@ -352,7 +352,7 @@ function getReceipt2Data(){     //adding printer commands used for generating re
     EloStarPrinterManager.appendUnitFeed(32);
 
     EloStarPrinterManager.appendCutPaper("PartialCutWithFeed");
-    EloStarPrinterManager.endDocument();
+    EloStarPrinterManager.endDocument();                                //always end receipt creation with endDocument
 
     let ReceiptData_Key = EloStarPrinterManager.getCommands();          //ReceiptData_Key will be passed into writeport to print receipt
     return ReceiptData_Key
