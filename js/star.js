@@ -11,7 +11,7 @@ the online status of a Star printer and that it can print on command.
 For this sample website, queryStarPrinterList() will detect a printer port and then that port is saved in global variable <PrinterPortName> and 
 used for the duration of the program. This variable is passed into EloStarPrinterManager.getPort() to retrieve an open port which will then 
 be written to after receipt data has been created. See printreceipt() for printing flow sample and getReceipt1Data()/getReceipt2Data() for 
-receipt creation sample.
+receipt data creation sample.
 */
 
 
