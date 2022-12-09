@@ -270,7 +270,7 @@ function printReceipt(ReceiptData_Key){     //printing receipt.
        return  
    }
    
-   if (!EloStarPrinterManager.releasePort(OpenPort_Key)){                                 //step 7 (final step). Release open port
+   if (!EloStarPrinterManager.releasePort(OpenPort_Key)){                                 //step 7 (final step). Close open port
       document.getElementById("textField").value="release port fail"
       return
    }
