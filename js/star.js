@@ -163,6 +163,12 @@ function printImage(){        //prints Elo image. Requires a bitmap for printing
 function checkStarPrinterPaper(){         //checking if printer has paper
    
     let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
+    
+    if (OpenPort_Key === ""){           //error with obtaining an open port
+        document.getElementById("textField").value="open port fail"
+        return
+    }
+    
     let PrinterStatus_Key = EloStarPrinterManager.retrieveStatus(OpenPort_Key)
     if (EloStarPrinterManager.receiptPaperEmptyStatus(PrinterStatus_Key) === 0){
         document.getElementById("textField").value="Has paper"
@@ -201,14 +207,22 @@ function IsStarPrinterOnline(){        //checking if printer is online
 function checkStarFirmware(){       //retrieving printer firmware
    
     let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)
+    
+    if (OpenPort_Key === ""){           //error with obtaining an open port
+        document.getElementById("textField").value="open port fail"
+        return
+    }
+    
     let result = EloStarPrinterManager.getFirmwareInformation(OpenPort_Key)
-    EloStarPrinterManager.releasePort(OpenPort_Key)
+    
     if (result === ""){
          document.getElementById("textField").value="failed"
     }
     else{
        document.getElementById("textField").value=result
-    } 
+    }
+    
+    EloStarPrinterManager.releasePort(OpenPort_Key)
 }
 
 function printReceipt(ReceiptData_Key){     //printing receipt. 
@@ -224,30 +238,35 @@ function printReceipt(ReceiptData_Key){     //printing receipt.
    
     if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) !== 0){                  //perform several status checks
         document.getElementById("textField").value="offline status fail"
+        EloStarPrinterManager.releasePort(OpenPort_Key)
         return
     }
    
     if (EloStarPrinterManager.receiptPaperEmptyStatus(PrinterStatus_Key) !==0){
-          document.getElementById("textField").value="no paper found"
-          return
+        document.getElementById("textField").value="no paper found"
+        EloStarPrinterManager.releasePort(OpenPort_Key)
+        return
     }
    
    if (!EloStarPrinterManager.writePort(OpenPort_Key,ReceiptData_Key,0)){                 //step 3. Write to open port (Printing step)
       document.getElementById("textField").value="write port fail"
+      EloStarPrinterManager.releasePort(OpenPort_Key)
       return
    }
    
    if (!EloStarPrinterManager.setEndCheckedBlockTimeoutMillis(OpenPort_Key,30000)){       //step 4. set end checked block timeout
       document.getElementById("textField").value="setendchkmillis fail"
+      EloStarPrinterManager.releasePort(OpenPort_Key)
       return
    }
    
    PrinterStatus_Key = EloStarPrinterManager.endCheckedBlock(OpenPort_Key)                //step 5. end checked block and obtain status
    
-   if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 1 ||                 
+   if (EloStarPrinterManager.offlineStatus(PrinterStatus_Key) === 1 ||             
        EloStarPrinterManager.receiptPaperEmptyStatus(PrinterStatus_Key) === 1 ||
        EloStarPrinterManager.coverOpenStatus(PrinterStatus_Key) === 1){                   //perform several status checks
        document.getElementById("textField").value="status check fail"
+       EloStarPrinterManager.releasePort(OpenPort_Key)
        return  
    }
    
