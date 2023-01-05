@@ -280,7 +280,10 @@ function printReceipt(ReceiptData_Key){     //printing receipt.
 
 function getReceipt1Data(){     //adding printer commands used for generating sample receipt1
    
-    EloStarPrinterManager.beginDocument("StarPRNT")        //always begin new receipt creation with beginDocument
+    if (!EloStarPrinterManager.beginDocument("StarPRNT")){        //always begin new receipt creation with beginDocument
+        document.getElementById("textField").value="begin document fail"
+        return
+    }
     EloStarPrinterManager.appendCodepage("CP998")
     EloStarPrinterManager.appendInternational("USA")
     EloStarPrinterManager.appendAlignment("Center")
