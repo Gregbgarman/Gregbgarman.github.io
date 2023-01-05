@@ -227,7 +227,7 @@ function checkStarFirmware(){       //retrieving printer firmware
 
 function printReceipt(ReceiptData_Key){     //printing receipt. 
    
-    let OpenPort_Key = EloStarPrinterManager.getPort("AutoSwitch:","",10000)          //step 1. Obtain an open port to write to
+    let OpenPort_Key = EloStarPrinterManager.getPort(PrinterPortName,"",10000)          //step 1. Obtain an open port to write to
     
     if (OpenPort_Key === ""){                                                           
         document.getElementById("textField").value="open port fail"
@@ -280,7 +280,7 @@ function printReceipt(ReceiptData_Key){     //printing receipt.
 
 function getReceipt1Data(){     //adding printer commands used for generating sample receipt1
    
-    if (!EloStarPrinterManager.beginDocument("StarPRNT")){        //always begin new receipt creation with beginDocument
+    if (!EloStarPrinterManager.beginDocument(PrinterPortName)){        //always begin new receipt creation with beginDocument
         document.getElementById("textField").value="begin document fail"
         return
     }
