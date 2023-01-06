@@ -280,7 +280,7 @@ function printReceipt(ReceiptData_Key){     //printing receipt.
 
 function getReceipt1Data(){     //adding printer commands used for generating sample receipt1
    
-    if (!EloStarPrinterManager.beginDocument(PrinterPortName)){        //always begin new receipt creation with beginDocument
+    if (!EloStarPrinterManager.beginDocument("StarPRNT")){        //always begin new receipt creation with beginDocument
         document.getElementById("textField").value="begin document fail"
         return
     }
