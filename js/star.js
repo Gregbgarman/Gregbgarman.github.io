@@ -100,7 +100,7 @@ function printStarBarcode(){        //Will print several barcodes
      EloStarPrinterManager.appendPdf417WithAlignment("Pdf sample", 0, 1, "ECC0", 2 ,2, "Center")
      EloStarPrinterManager.appendLineFeed(1)
     
-     EloStarPrinterManager.appendPdf417("Pdf sample", 0, 1, "ECC0", 4 ,2)
+     EloStarPrinterManager.appendPdf417WithAbsolutePosition("Pdf sample", 0, 1, "ECC0", 2 ,2, 40)
      EloStarPrinterManager.appendLineFeed(1)
     
     
