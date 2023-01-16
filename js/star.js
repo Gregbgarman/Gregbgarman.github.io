@@ -73,7 +73,7 @@ function forgetStarPrinter(){          //clears the stored PrinterPortName
      if (PrinterPortName !== ""){
          PrinterPortName = ""
          document.getElementById("textField").value = true
-         document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected";
+         document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
      }
      else{
           document.getElementById("textField").value = "No set printer" 
@@ -82,18 +82,28 @@ function forgetStarPrinter(){          //clears the stored PrinterPortName
 
 function printStarBarcode(){        //Will print several barcodes
      EloStarPrinterManager.beginDocument(PrinterPortName)
-     EloStarPrinterManager.appendBarcode("0123456789", "Code39", "Mode1", 40, false);
-     EloStarPrinterManager.appendLineFeed(1);
+     EloStarPrinterManager.appendBarcode("0123456789", "Code39", "Mode1", 40, false)
+     EloStarPrinterManager.appendLineFeed(1)
  
-     EloStarPrinterManager.appendBarcode("{B0123456789", "Code128", "Mode1", 40, true);
-     EloStarPrinterManager.appendLineFeed(1);
+     EloStarPrinterManager.appendBarcode("{B0123456789", "Code128", "Mode1", 40, true)
+     EloStarPrinterManager.appendLineFeed(1)
 
-     EloStarPrinterManager.appendBarcode("17523099544", "UPCA", "Mode3", 70, true);
-     EloStarPrinterManager.appendLineFeed(1);
+     EloStarPrinterManager.appendBarcode("17523099544", "UPCA", "Mode3", 70, true)
+     EloStarPrinterManager.appendLineFeed(1)
 
-     EloStarPrinterManager.appendBarcode("01234500006", "UPCE", "Mode2", 40, true);
-     EloStarPrinterManager.appendLineFeed(1);
+     EloStarPrinterManager.appendBarcode("01234500006", "UPCE", "Mode2", 40, true)
+     EloStarPrinterManager.appendLineFeed(1)
 
+     EloStarPrinterManager.appendPdf417("Pdf sample", 0, 1, "ECC0", 4 ,2)
+     EloStarPrinterManager.appendLineFeed(1)
+    
+     EloStarPrinterManager.appendPdf417WithAlignment("Pdf sample", 0, 1, "ECC0", 2 ,2, "Center")
+     EloStarPrinterManager.appendLineFeed(1)
+    
+     EloStarPrinterManager.appendPdf417("Pdf sample", 0, 1, "ECC0", 4 ,2)
+     EloStarPrinterManager.appendLineFeed(1)
+    
+    
      EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
      EloStarPrinterManager.endDocument()
     
@@ -138,11 +148,11 @@ function printStarRasterReceipt(){     //Converts text into an image and prints
          return  
     }
     
-     EloStarPrinterManager.appendBarcode("17523099544", "UPCA", "Mode3", 70, false);
+     EloStarPrinterManager.appendBarcode("17523099544", "UPCA", "Mode3", 70, false)
      EloStarPrinterManager.appendUnitFeed(30)
      EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")       
-     EloStarPrinterManager.endDocument();
-     let ReceiptData_Key = EloStarPrinterManager.getCommands();
+     EloStarPrinterManager.endDocument()
+     let ReceiptData_Key = EloStarPrinterManager.getCommands()
    
      printReceipt(ReceiptData_Key)
    
@@ -156,7 +166,7 @@ function printImage(){        //prints Elo image. Requires a bitmap for printing
      EloStarPrinterManager.appendBitmapWithAlignment(Eloimage,true,"Center")
      EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")       
      EloStarPrinterManager.endDocument();
-     let ReceiptData_Key = EloStarPrinterManager.getCommands();   
+     let ReceiptData_Key = EloStarPrinterManager.getCommands()   
      printReceipt(ReceiptData_Key)                                      
 }
 
@@ -288,10 +298,10 @@ function getReceipt1Data(){     //adding printer commands used for generating sa
     EloStarPrinterManager.appendInternational("USA")
     EloStarPrinterManager.appendAlignment("Center")
  
-    EloStarPrinterManager.append("The Food Shack\n123 Rainbow Road\nKnoxville, TN 12312\n");
-    EloStarPrinterManager.appendLineFeed(1);
-    EloStarPrinterManager.appendAlignment("Left");
-    EloStarPrinterManager.append("Table 109\nServer Greg\n10:30AM    06/21/22\n---------------------------------\n");
+    EloStarPrinterManager.append("The Food Shack\n123 Rainbow Road\nKnoxville, TN 12312\n")
+    EloStarPrinterManager.appendLineFeed(1)
+    EloStarPrinterManager.appendAlignment("Left")
+    EloStarPrinterManager.append("Table 109\nServer Greg\n10:30AM    06/21/22\n---------------------------------\n")
     EloStarPrinterManager.appendAlignment("Center")
     EloStarPrinterManager.append("Guest No 1\n")
     EloStarPrinterManager.appendAlignment("Left")
@@ -335,28 +345,28 @@ function getReceipt1Data(){     //adding printer commands used for generating sa
 function getReceipt2Data(){     //adding printer commands used for generating sample receipt2
    
     EloStarPrinterManager.beginDocument(PrinterPortName)        //always begin new receipt creation with beginDocument
-    EloStarPrinterManager.appendCodepage("CP998");
-    EloStarPrinterManager.appendInternational("USA");
-    EloStarPrinterManager.appendAlignment("Center");
-    EloStarPrinterManager.appendLineFeed(1);
+    EloStarPrinterManager.appendCodepage("CP998")
+    EloStarPrinterManager.appendInternational("USA")
+    EloStarPrinterManager.appendAlignment("Center")
+    EloStarPrinterManager.appendLineFeed(1)
     EloStarPrinterManager.append("THE STORE 123 (555) 555 5555\nSTORE DIRECTOR John Smith\n\n7/01/07 16:58 6153 05 0191 134\nST# 21 OP# 001 TE# 01 TR# 747\n------------------------------\n");
     EloStarPrinterManager.append("400 OHEIDA 3PK SPRINGF  9.99 R\n410 3 CUP BLK TEAPOT    9.99 R\n445 EMERIL GRIDDLE/PAN 17.99 R\n438 CANDYMAKER ASSORT   4.99 R\n474 TRIPOD              8.99 R\n433 BLK LOGO PRNTED ZO  7.99 R\n458 AQUA MICROTERRY SC  6.99 R\n493 30L BLK FF DRESS   16.99 R\n407 LEVITATING DESKTOP  7.99 R\n441 **Blue Overprint P  2.99 R\n476 REPOSE 4PCPM CHOC   5.49 R\n476 REPOSE 4PCPM CHOC   5.49 R\n461 WESTGATE BLACK 25  59.99 R\n------------------------------\n");
-    EloStarPrinterManager.append("SUBTOTAL                160.38\n");
+    EloStarPrinterManager.append("SUBTOTAL                160.38\n")
     EloStarPrinterManager.appendMultiple(2, 2);
     EloStarPrinterManager.append("TOTAL    174.81\n")
-    EloStarPrinterManager.appendMultiple(0, 0);
+    EloStarPrinterManager.appendMultiple(0, 0)
    
-    EloStarPrinterManager.appendLineFeed(2);
-    EloStarPrinterManager.append("CASH                    200.00\nCHANGE                   25.19\n------------------------------\n");
-    EloStarPrinterManager.append("Purchased item total number\nSign Up and Save !\nWith Preferred Saving Card\n");
-    EloStarPrinterManager.appendLineFeed(2);
+    EloStarPrinterManager.appendLineFeed(2)
+    EloStarPrinterManager.append("CASH                    200.00\nCHANGE                   25.19\n------------------------------\n")
+    EloStarPrinterManager.append("Purchased item total number\nSign Up and Save !\nWith Preferred Saving Card\n")
+    EloStarPrinterManager.appendLineFeed(2)
 
-    EloStarPrinterManager.appendBarcode("17523099544", "UPCA", "Mode2", 60, false);
-    EloStarPrinterManager.appendUnitFeed(32);
+    EloStarPrinterManager.appendBarcode("17523099544", "UPCA", "Mode2", 60, false)
+    EloStarPrinterManager.appendUnitFeed(32)
 
-    EloStarPrinterManager.appendCutPaper("PartialCutWithFeed");
-    EloStarPrinterManager.endDocument();                                //always end receipt creation with endDocument
+    EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
+    EloStarPrinterManager.endDocument()                                //always end receipt creation with endDocument
 
-    let ReceiptData_Key = EloStarPrinterManager.getCommands();          //ReceiptData_Key will be passed into writeport to print receipt
+    let ReceiptData_Key = EloStarPrinterManager.getCommands()          //ReceiptData_Key will be passed into writeport to print receipt
     return ReceiptData_Key
 }
