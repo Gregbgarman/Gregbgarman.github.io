@@ -94,6 +94,8 @@ function printStarBarcode(){        //Will print several barcodes
      EloStarPrinterManager.appendBarcode("01234500006", "UPCE", "Mode2", 40, true)
      EloStarPrinterManager.appendLineFeed(1)
 
+    /*
+      ** Pdf417 examples **
      EloStarPrinterManager.appendPdf417("Pdf sample", 0, 1, "ECC0", 4 ,2)
      EloStarPrinterManager.appendLineFeed(1)
     
@@ -102,7 +104,7 @@ function printStarBarcode(){        //Will print several barcodes
     
      EloStarPrinterManager.appendPdf417WithAbsolutePosition("Pdf sample", 0, 1, "ECC0", 2 ,2, 40)
      EloStarPrinterManager.appendLineFeed(1)
-    
+     */
     
      EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
      EloStarPrinterManager.endDocument()
