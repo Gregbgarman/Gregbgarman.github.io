@@ -8,7 +8,7 @@ document.getElementById("showScanCode").addEventListener("click", showScanCode)
 
 
 function showScanCode(){
-     //document.getElementById("appmodeqrcode")
+     document.getElementById("appmodeqrcode").style.visibility = 'visible'
 }
 
 function initService(){
