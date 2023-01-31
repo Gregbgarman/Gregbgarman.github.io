@@ -7,7 +7,7 @@ document.getElementById("readData").addEventListener("click", startService)
 
 
 function startService(){
-     EloSocketMobileManager.startService()
+     document.getElementById("textField").value = EloSocketMobileManager.startService()
 }
 
 function initScanner(){
