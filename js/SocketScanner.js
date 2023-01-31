@@ -9,9 +9,10 @@ document.getElementById("showScanCode").addEventListener("click", showScanCode)
 let CodeShown = false
 
 function showScanCode(){
-        
+          document.getElementById("textField").value = "clicked2"
+
      if (!CodeShown){                   
-         document.getElementById("appmodeqrcode").style.visibility = 'visible'
+         document.getElementById("appmodeqrcode").visibility = 'visible'
          document.getElementById("showScanCode").innerHTML="Hide Pair Code"
          CodeShown = true
      }
