@@ -10,6 +10,7 @@ val CodeShown = false
 
 function showScanCode(){
      if (!CodeShown){
+          document.getElementById("textField").value = "clicked"
          document.getElementById("appmodeqrcode").style.visibility = 'visible'
          document.getElementById("showScanCode").innerHTML="Hide Pair Code"
          CodeShown = true
