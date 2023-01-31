@@ -3,10 +3,13 @@ document.getElementById("initScanner").addEventListener("click", initScanner)
 document.getElementById("runScanner").addEventListener("click", runScanner)
 document.getElementById("readData").addEventListener("click", readData)
 document.getElementById("initService").addEventListener("click", initService)
-
 document.getElementById("showScanCode").addEventListener("click", showScanCode)
+document.getElementById("disconnectScanner").addEventListener("click", disconnectScanner)
+
+
 
 let CodeShown = false
+document.getElementById("scannerAvailable").innerHTML="Socket Scanner is Disconnected"
 
 function showScanCode(){
      if (!CodeShown){                   
@@ -27,7 +30,15 @@ function initService(){
 }
 
 function initScanner(){
-    EloSocketMobileManager.initScanner()
+    let success = EloSocketMobileManager.initScanner()
+    if (success){
+        document.getElementById("scannerAvailable").innerHTML="Socket Scanner is Connected"
+    }
+    else{
+       document.getElementById("scannerAvailable").innerHTML="Socket Scanner is Disconnected"  
+    }
+     document.getElementById("textField").value = success
+     
 }
 
 //function initSocketCam(){
@@ -36,6 +47,14 @@ function initScanner(){
 
 function runScanner(){
   EloSocketMobileManager.runScanner()
+}
+
+function disconnectScanner(){
+    let success = EloSocketMobileManager.disconnectScanner()
+    if (success){
+        document.getElementById("scannerAvailable").innerHTML="Socket Scanner is Disconnected"
+    }  
+    document.getElementById("textField").value = success
 }
 
 function readData(){
