@@ -15,7 +15,7 @@ function showScanCode(){
          CodeShown = true
      }
      else{
-         document.getElementById("appmodeqrcode").style.visibility = 'invisible'
+         document.getElementById("appmodeqrcode").style.visibility = 'hidden'
          document.getElementById("showScanCode").innerHTML="Show Pair Code"
          CodeShown = false
      }
