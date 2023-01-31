@@ -25,7 +25,10 @@ function showScanCode(){
          document.getElementById("showScanCode").innerHTML="Show Pair Code"
          PairCodeShown = false
      }
-     
+}
+
+function connectBluetooth(){
+      document.getElementById("textField").value = EloSocketMobileManager.connectBluetooth()   
 }
 
 function initService(){
