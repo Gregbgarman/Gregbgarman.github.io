@@ -6,7 +6,7 @@ document.getElementById("initService").addEventListener("click", initService)
 
 document.getElementById("showScanCode").addEventListener("click", showScanCode)
 
-val CodeShown = false
+let CodeShown = false
 
 function showScanCode(){
      if (!CodeShown){
