@@ -2,12 +2,12 @@ document.getElementById("initScanner").addEventListener("click", initScanner)
 //document.getElementById("initSocketCam").addEventListener("click", initSocketCam)
 document.getElementById("runScanner").addEventListener("click", runScanner)
 document.getElementById("readData").addEventListener("click", readData)
-document.getElementById("startService").addEventListener("click", startService)
+document.getElementById("initService").addEventListener("click", initService)
 
 
 
-function startService(){
-     document.getElementById("textField").value = EloSocketMobileManager.startService()
+function initService(){
+     document.getElementById("textField").value = EloSocketMobileManager.initService()
 }
 
 function initScanner(){
