@@ -50,6 +50,7 @@ function initScanner(){
 
 function runScanner(){
    document.getElementById("textField").value = EloSocketMobileManager.runScanner()
+   document.getElementById("textField").value = EloSocketMobileManager.readData()
 }
 
 function disconnectScanner(){
