@@ -6,6 +6,8 @@ document.getElementById("initService").addEventListener("click", initService)
 document.getElementById("showScanCode").addEventListener("click", showScanCode)
 document.getElementById("disconnectScanner").addEventListener("click", disconnectScanner)
 
+document.getElementById("connectBluetooth").addEventListener("click", connectBluetooth)
+
 
 
 let PairCodeShown = false
