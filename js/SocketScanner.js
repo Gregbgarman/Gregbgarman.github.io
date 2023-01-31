@@ -8,10 +8,10 @@ document.getElementById("showScanCode").addEventListener("click", showScanCode)
 
 let CodeShown = false
 
- document.getElementById("textField").value = "attempt4"
+
 
 function showScanCode(){
-         
+ document.getElementById("textField").value = "attempt4"         
 
      if (!CodeShown){                   
          document.getElementById("appmodeqrcode").style.visibility = 'visible'
