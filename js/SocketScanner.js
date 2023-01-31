@@ -8,11 +8,7 @@ document.getElementById("showScanCode").addEventListener("click", showScanCode)
 
 let CodeShown = false
 
-
-
 function showScanCode(){
- document.getElementById("textField").value = "attempt4"         
-
      if (!CodeShown){                   
          document.getElementById("appmodeqrcode").style.visibility = 'visible'
          document.getElementById("showScanCode").innerHTML="Hide Pair Code"
