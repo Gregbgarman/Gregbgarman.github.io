@@ -46,7 +46,7 @@ function initScanner(){
 //}
 
 function runScanner(){
-  EloSocketMobileManager.runScanner()
+   document.getElementById("textField").value = EloSocketMobileManager.runScanner()
 }
 
 function disconnectScanner(){
