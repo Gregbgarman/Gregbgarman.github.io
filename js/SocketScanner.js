@@ -4,7 +4,12 @@ document.getElementById("runScanner").addEventListener("click", runScanner)
 document.getElementById("readData").addEventListener("click", readData)
 document.getElementById("initService").addEventListener("click", initService)
 
+document.getElementById("showScanCode").addEventListener("click", showScanCode)
 
+
+function showScanCode(){
+     //document.getElementById("appmodeqrcode")
+}
 
 function initService(){
      document.getElementById("textField").value = EloSocketMobileManager.initService()
