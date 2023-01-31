@@ -8,22 +8,22 @@ document.getElementById("disconnectScanner").addEventListener("click", disconnec
 
 
 
-let CodeShown = false
+let PairCodeShown = false
 let ConnectMessage = "Scanner Connected"
 let DisconnectMessage = "Scanner Disconnected"
 
 document.getElementById("scannerAvailable").innerHTML = ConnectMessage
 
 function showScanCode(){
-     if (!CodeShown){                   
+     if (!PairCodeShown){                   
          document.getElementById("appmodeqrcode").style.visibility = 'visible'
          document.getElementById("showScanCode").innerHTML="Hide Pair Code"
-         CodeShown = true
+         PairCodeShown = true
      }
      else{                        
          document.getElementById("appmodeqrcode").style.visibility = 'hidden'
          document.getElementById("showScanCode").innerHTML="Show Pair Code"
-         CodeShown = false
+         PairCodeShown = false
      }
      
 }
