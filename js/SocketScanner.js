@@ -6,9 +6,20 @@ document.getElementById("initService").addEventListener("click", initService)
 
 document.getElementById("showScanCode").addEventListener("click", showScanCode)
 
+val CodeShown = false
 
 function showScanCode(){
-     document.getElementById("appmodeqrcode").style.visibility = 'visible'
+     if (!CodeShown){
+         document.getElementById("appmodeqrcode").style.visibility = 'visible'
+         document.getElementById("showScanCode").innerHTML="Hide Pair Code"
+         CodeShown = true
+     }
+     else{
+         document.getElementById("appmodeqrcode").style.visibility = 'invisible'
+         document.getElementById("showScanCode").innerHTML="Show Pair Code"
+         CodeShown = false
+     }
+     
 }
 
 function initService(){
