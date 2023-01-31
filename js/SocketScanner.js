@@ -9,7 +9,10 @@ document.getElementById("disconnectScanner").addEventListener("click", disconnec
 
 
 let CodeShown = false
-document.getElementById("scannerAvailable").innerHTML="Socket Scanner is Disconnected"
+let ConnectMessage = "Scanner Connected"
+let DisconnectMessage = "Scanner Disconnected"
+
+document.getElementById("scannerAvailable").innerHTML = ConnectMessage
 
 function showScanCode(){
      if (!CodeShown){                   
@@ -32,10 +35,10 @@ function initService(){
 function initScanner(){
     let success = EloSocketMobileManager.initScanner()
     if (success){
-        document.getElementById("scannerAvailable").innerHTML="Socket Scanner is Connected"
+        document.getElementById("scannerAvailable").innerHTML = ConnectMessage
     }
     else{
-       document.getElementById("scannerAvailable").innerHTML="Socket Scanner is Disconnected"  
+       document.getElementById("scannerAvailable").innerHTML = DisconnectMessage 
     }
      document.getElementById("textField").value = success
      
@@ -52,7 +55,7 @@ function runScanner(){
 function disconnectScanner(){
     let success = EloSocketMobileManager.disconnectScanner()
     if (success){
-        document.getElementById("scannerAvailable").innerHTML="Socket Scanner is Disconnected"
+        document.getElementById("scannerAvailable").innerHTML = DisconnectMessage
     }  
     document.getElementById("textField").value = success
 }
