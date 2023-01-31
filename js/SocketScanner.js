@@ -12,7 +12,7 @@ let PairCodeShown = false
 let ConnectMessage = "Scanner Connected"
 let DisconnectMessage = "Scanner Disconnected"
 
-document.getElementById("scannerAvailable").innerHTML = ConnectMessage
+document.getElementById("scannerAvailable").innerHTML = DisconnectMessage
 
 function showScanCode(){
      if (!PairCodeShown){                   
