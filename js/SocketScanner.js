@@ -9,7 +9,6 @@ document.getElementById("disconnectScanner").addEventListener("click", disconnec
 document.getElementById("connectBluetooth").addEventListener("click", connectBluetooth)
 
 document.getElementById("enableSocketCam").addEventListener("click", enableSocketCam)
-document.getElementById("initSocketCam").addEventListener("click", initSocketCam)
 
 
 let PairCodeShown = false
@@ -61,9 +60,7 @@ function initScanner(){
      
 }
 
-function initSocketCam(){
-  EloSocketMobileManager.initSocketCam()
-}
+
 
 function runScanner(){
    document.getElementById("textField").value = EloSocketMobileManager.runScanner()
