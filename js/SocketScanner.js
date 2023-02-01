@@ -49,9 +49,9 @@ function initScanner(){
      
 }
 
-//function initSocketCam(){
- // EloSocketMobileManager.initSocketCam()
-//}
+function initSocketCam(){
+  EloSocketMobileManager.initSocketCam()
+}
 
 function runScanner(){
    document.getElementById("textField").value = EloSocketMobileManager.runScanner()
