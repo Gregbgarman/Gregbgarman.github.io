@@ -8,6 +8,8 @@ document.getElementById("disconnectScanner").addEventListener("click", disconnec
 
 document.getElementById("connectBluetooth").addEventListener("click", connectBluetooth)
 
+document.getElementById("enableSocketCam").addEventListener("click", enableSocketCam)
+document.getElementById("initSocketCam").addEventListener("click", initSocketCam)
 
 
 let PairCodeShown = false
@@ -15,6 +17,16 @@ let ConnectMessage = "Scanner Connected"
 let DisconnectMessage = "Scanner Disconnected"
 
 document.getElementById("scannerAvailable").innerHTML = DisconnectMessage
+
+
+function enableSocketCam(){
+     document.getElementById("textField").value = EloSocketMobileManager.enableSocketCam()
+}
+
+function initSocketCam(){
+     document.getElementById("textField").value = EloSocketMobileManager.initSocketCam()
+}
+
 
 function showScanCode(){
      if (!PairCodeShown){                   
