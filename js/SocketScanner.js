@@ -82,3 +82,7 @@ function disconnectScanner(){
 function readData(){
   document.getElementById("textField").value = EloSocketMobileManager.readData()
 }
+
+function PostScanData(Data){
+     document.getElementById("textField").value = Data
+}
