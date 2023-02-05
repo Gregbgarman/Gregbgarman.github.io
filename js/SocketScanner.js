@@ -48,7 +48,7 @@ function showScanCode(){
      }
      else{                        
          document.getElementById("appmodeqrcode").style.visibility = 'hidden'
-         document.getElementById("showScanCode").innerHTML="1.Show Pair Code"
+         document.getElementById("showScanCode").innerHTML="1.Show Pair Code below"
          PairCodeShown = false
      }
 }
