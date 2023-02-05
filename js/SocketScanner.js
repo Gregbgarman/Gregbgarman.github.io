@@ -95,10 +95,10 @@ function readData(){
   document.getElementById("textField").value = EloSocketMobileManager.readData()
 }
 
-function PostScanData(Data){
+function PostScanData(Data){        //use this function in development
      document.getElementById("textField").value = Data
 }
 
-function getFoundBluetoothDevice(Data){
+function getFoundBluetoothDevice(Data){     //use this function in development
      document.getElementById("textField").value = Data
 }
