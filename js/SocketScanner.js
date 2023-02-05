@@ -64,7 +64,13 @@ function searchBluetooth(){
 }
 
 function connectBluetooth(){
-      document.getElementById("textField").value = EloSocketMobileManager.connectBluetooth()   
+    let success =  EloSocketMobileManager.connectBluetooth()
+    if (success){
+        document.getElementById("textField").value = "Success" 
+    }
+    else{
+        document.getElementById("textField").value =  "Failed"
+    }
 }
 
 function initService(){
