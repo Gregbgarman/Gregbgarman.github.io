@@ -1,14 +1,13 @@
-document.getElementById("initScanner").addEventListener("click", initScanner)
+document.getElementById("enableScanning").addEventListener("click", enableScanning)
 document.getElementById("initSocketCam").addEventListener("click", initSocketCam)
 document.getElementById("runScanner").addEventListener("click", runScanner)
 document.getElementById("readData").addEventListener("click", readData)
 document.getElementById("initService").addEventListener("click", initService)
 document.getElementById("showScanCode").addEventListener("click", showScanCode)
-document.getElementById("disconnectScanner").addEventListener("click", disconnectScanner)
+document.getElementById("disableScanning").addEventListener("click", disableScanning)
 
 document.getElementById("connectBluetooth").addEventListener("click", connectBluetooth)
 
-document.getElementById("enableSocketCam").addEventListener("click", enableSocketCam)
 document.getElementById("disableSocketCam").addEventListener("click", disableSocketCam)
 
 document.getElementById("searchBluetooth").addEventListener("click", searchBluetooth)
@@ -22,15 +21,26 @@ let DisconnectMessage = "Scanner Disconnected"
 document.getElementById("scannerAvailable").innerHTML = DisconnectMessage
 
 function disableSocketCam(){
-    document.getElementById("textField").value = EloSocketMobileManager.disableSocketCam()
+    let success1 = EloSocketMobileManager.disableSocketCamExtension()
+     if (success1){
+         let success2 = EloSocketMobileManager.deactivateSocketCamExtension()
+         document.getElementById("textField").value = success2
+     }
+     else{
+         document.getElementById("textField").value = "false"
+     }   
 }
 
-function enableSocketCam(){
-     document.getElementById("textField").value = EloSocketMobileManager.enableSocketCam()
-}
 
 function initSocketCam(){
-     document.getElementById("textField").value = EloSocketMobileManager.initSocketCam()
+     let success1 = EloSocketMobileManager.enableSocketCamExtension()
+     if (success1){
+         let success2 = EloSocketMobileManager.activateSocketCamExtension()
+         document.getElementById("textField").value = success2
+     }
+     else{
+         document.getElementById("textField").value = "false"
+     }     
 }
 
 
@@ -65,16 +75,9 @@ function initService(){
      document.getElementById("textField").value = EloSocketMobileManager.initService()
 }
 
-function initScanner(){
-    let success = EloSocketMobileManager.initScanner()
-    if (success){
-        document.getElementById("scannerAvailable").innerHTML = ConnectMessage
-    }
-    else{
-       document.getElementById("scannerAvailable").innerHTML = DisconnectMessage 
-    }
-     document.getElementById("textField").value = success
-     
+function enableScanning(){
+    let success = EloSocketMobileManager.enableScanning()
+    document.getElementById("textField").value = success
 }
 
 
@@ -83,11 +86,8 @@ function runScanner(){
    document.getElementById("textField").value = EloSocketMobileManager.runScanner()
 }
 
-function disconnectScanner(){
-    let success = EloSocketMobileManager.disconnectScanner()
-    if (success){
-        document.getElementById("scannerAvailable").innerHTML = DisconnectMessage
-    }  
+function disableScanning(){
+    let success = EloSocketMobileManager.disableScanning()
     document.getElementById("textField").value = success
 }
 
