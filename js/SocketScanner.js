@@ -1,16 +1,18 @@
-document.getElementById("enableScanning").addEventListener("click", enableScanning)
-document.getElementById("initSocketCam").addEventListener("click", initSocketCam)
-document.getElementById("runScanner").addEventListener("click", runScanner)
-document.getElementById("readData").addEventListener("click", readData)
-document.getElementById("initService").addEventListener("click", initService)
 document.getElementById("showScanCode").addEventListener("click", showScanCode)
+document.getElementById("searchBluetooth").addEventListener("click", searchBluetooth)
+document.getElementById("connectBluetooth").addEventListener("click", connectBluetooth)
+document.getElementById("initService").addEventListener("click", initService)
+document.getElementById("enableScanning").addEventListener("click", enableScanning)
+document.getElementById("runScanner").addEventListener("click", runScanner)
+
+document.getElementById("initSocketCam").addEventListener("click", initSocketCam)
+document.getElementById("disableSocketCam").addEventListener("click", disableSocketCam)
 document.getElementById("disableScanning").addEventListener("click", disableScanning)
 
-document.getElementById("connectBluetooth").addEventListener("click", connectBluetooth)
 
-document.getElementById("disableSocketCam").addEventListener("click", disableSocketCam)
 
-document.getElementById("searchBluetooth").addEventListener("click", searchBluetooth)
+
+
 
 
 
@@ -80,8 +82,6 @@ function enableScanning(){
     document.getElementById("textField").value = success
 }
 
-
-
 function runScanner(){
    document.getElementById("textField").value = EloSocketMobileManager.runScanner()
 }
@@ -89,10 +89,6 @@ function runScanner(){
 function disableScanning(){
     let success = EloSocketMobileManager.disableScanning()
     document.getElementById("textField").value = success
-}
-
-function readData(){
-  document.getElementById("textField").value = EloSocketMobileManager.readData()
 }
 
 function PostScanData(Data){        //use this function in development
