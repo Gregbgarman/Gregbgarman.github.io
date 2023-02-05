@@ -11,6 +11,8 @@ document.getElementById("connectBluetooth").addEventListener("click", connectBlu
 document.getElementById("enableSocketCam").addEventListener("click", enableSocketCam)
 document.getElementById("disableSocketCam").addEventListener("click", disableSocketCam)
 
+document.getElementById("searchBluetooth").addEventListener("click", searchBluetooth)
+
 
 
 let PairCodeShown = false
@@ -43,6 +45,16 @@ function showScanCode(){
          document.getElementById("showScanCode").innerHTML="Show Pair Code"
          PairCodeShown = false
      }
+}
+
+function searchBluetooth(){
+    let success = EloSocketMobileManager.searchBluetooth()
+    if(success){
+        document.getElementById("textField").value = "searching..."
+    }
+    else{
+        document.getElementById("textField").value = "search failed"
+    }
 }
 
 function connectBluetooth(){
@@ -84,5 +96,9 @@ function readData(){
 }
 
 function PostScanData(Data){
+     document.getElementById("textField").value = Data
+}
+
+function getFoundBluetoothDevice(Data){
      document.getElementById("textField").value = Data
 }
