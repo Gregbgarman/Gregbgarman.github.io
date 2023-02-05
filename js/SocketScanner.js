@@ -10,12 +10,6 @@ document.getElementById("disableSocketCam").addEventListener("click", disableSoc
 document.getElementById("disableScanning").addEventListener("click", disableScanning)
 
 
-
-
-
-
-
-
 let PairCodeShown = false
 let ConnectMessage = "Scanner Connected"
 let DisconnectMessage = "Scanner Disconnected"
@@ -54,7 +48,7 @@ function showScanCode(){
      }
      else{                        
          document.getElementById("appmodeqrcode").style.visibility = 'hidden'
-         document.getElementById("showScanCode").innerHTML="Show Pair Code"
+         document.getElementById("showScanCode").innerHTML="1.Show Pair Code"
          PairCodeShown = false
      }
 }
