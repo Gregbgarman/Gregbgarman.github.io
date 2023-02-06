@@ -6,6 +6,7 @@ document.getElementById("enableScanning").addEventListener("click", enableScanni
 document.getElementById("runScanner").addEventListener("click", runScanner)
 
 document.getElementById("initSocketCam").addEventListener("click", initSocketCam)
+document.getElementById("activateSocketCam").addEventListener("click", activateSocketCam)
 document.getElementById("disableSocketCam").addEventListener("click", disableSocketCam)
 document.getElementById("disableScanning").addEventListener("click", disableScanning)
 
@@ -29,14 +30,13 @@ function disableSocketCam(){
 
 
 function initSocketCam(){
-     let success1 = EloSocketMobileManager.enableSocketCamExtension()
-     if (success1){
-         let success2 = EloSocketMobileManager.activateSocketCamExtension()
-         document.getElementById("textField").value = success2
-     }
-     else{
-         document.getElementById("textField").value = "false"
-     }     
+     let success = EloSocketMobileManager.enableSocketCamExtension()     
+     document.getElementById("textField").value = success         
+}
+
+function activateSocketCam(){
+     let success = EloSocketMobileManager.activateSocketCamExtension()
+     document.getElementById("textField").value = success
 }
 
 
