@@ -30,13 +30,13 @@ function disableSocketCam(){
 
 
 function initSocketCam(){
-     let success = EloSocketMobileManager.enableSocketCamExtension()     
-     document.getElementById("textField").value = success         
+   //  let success = EloSocketMobileManager.enableSocketCamExtension()     
+   //  document.getElementById("textField").value = success         
 }
 
 function activateSocketCam(){
-     let success = EloSocketMobileManager.activateSocketCamExtension()
-     document.getElementById("textField").value = success
+   //  let success = EloSocketMobileManager.activateSocketCamExtension()
+   //  document.getElementById("textField").value = success
 }
 
 
