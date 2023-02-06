@@ -66,7 +66,7 @@ function searchBluetooth(){
 function connectBluetooth(){
     let success =  EloSocketMobileManager.connectBluetooth()
     if (success){
-        document.getElementById("textField").value = "Success" 
+        document.getElementById("textField").value = "Connecting..." 
     }
     else{
         document.getElementById("textField").value =  "Failed"
