@@ -100,5 +100,10 @@ function PostScanData(Data){        //use this function in development
 }
 
 function getFoundBluetoothDevice(Data){     //use this function in development
-     document.getElementById("textField").value = Data
+     if (Data === ""){
+          document.getElementById("textField").value = "No device found"
+     }
+     else{
+         document.getElementById("textField").value = Data
+     }    
 }
