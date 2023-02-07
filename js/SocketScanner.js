@@ -108,9 +108,18 @@ function disableScanning(){
     }   
 }
 
-function PostScanData(Data){        //use this function in development
+
+
+function registerScanningListener(){
+    EloSocketMobileManager.registerScanningListener("ScanDataCallback")    
+}
+
+function ScanDataCallback(Data){       
      document.getElementById("textField").value = Data
 }
+
+
+
 
 function getFoundBluetoothDevice(Data){     //use this function in development               
      if (Data === ""){
