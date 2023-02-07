@@ -6,9 +6,9 @@ document.getElementById("enableScanning").addEventListener("click", enableScanni
 document.getElementById("runScanner").addEventListener("click", runScanner)
 document.getElementById("disableScanning").addEventListener("click", disableScanning)
 
-//document.getElementById("initSocketCam").addEventListener("click", initSocketCam)
-//document.getElementById("activateSocketCam").addEventListener("click", activateSocketCam)
-//document.getElementById("disableSocketCam").addEventListener("click", disableSocketCam)
+document.getElementById("initSocketCam").addEventListener("click", initSocketCam)
+document.getElementById("activateSocketCam").addEventListener("click", activateSocketCam)
+document.getElementById("disableSocketCam").addEventListener("click", disableSocketCam)
 
 
 
