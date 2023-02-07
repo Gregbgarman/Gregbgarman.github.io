@@ -13,6 +13,7 @@ document.getElementById("disableSocketCam").addEventListener("click", disableSoc
 
 
 let PairCodeShown = false
+let BluetoothDevices = ""
 
 document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
 
@@ -53,6 +54,7 @@ function showScanCode(){
 }
 
 function searchBluetooth(){
+    BluetoothDevices = ""
     let success = EloSocketMobileManager.searchBluetooth()
     if(success){
         document.getElementById("textField").value = "searching..."
@@ -104,7 +106,7 @@ function PostScanData(Data){        //use this function in development
 
 function getFoundBluetoothDevice(Data){     //use this function in development
     
-     let BluetoothDevices = ""          //try an array after this
+               //try an array after this
      
      if (Data === ""){
           document.getElementById("textField").value = "No device found"
