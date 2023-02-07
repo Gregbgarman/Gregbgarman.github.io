@@ -4,11 +4,12 @@ document.getElementById("connectBluetooth").addEventListener("click", connectBlu
 document.getElementById("initService").addEventListener("click", initService)
 document.getElementById("enableScanning").addEventListener("click", enableScanning)
 document.getElementById("runScanner").addEventListener("click", runScanner)
-
-document.getElementById("initSocketCam").addEventListener("click", initSocketCam)
-document.getElementById("activateSocketCam").addEventListener("click", activateSocketCam)
-document.getElementById("disableSocketCam").addEventListener("click", disableSocketCam)
 document.getElementById("disableScanning").addEventListener("click", disableScanning)
+
+//document.getElementById("initSocketCam").addEventListener("click", initSocketCam)
+//document.getElementById("activateSocketCam").addEventListener("click", activateSocketCam)
+//document.getElementById("disableSocketCam").addEventListener("click", disableSocketCam)
+
 
 
 let PairCodeShown = false
