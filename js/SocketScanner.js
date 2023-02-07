@@ -83,17 +83,23 @@ function initService(){
 }
 
 function enableScanning(){      //if this is true and return of client list is not !== '[]' then say Scanner Ready
-    let success = EloSocketMobileManager.enableScanning()
-    if (success){           
-        document.getElementById("scannerAvailable").innerHTML = "Scanner Ready"    
-    }
+    let success1 = EloSocketMobileManager.setClientListener()
+    let success2 = EloSocketMobileManager.connectClient()
     
-    //if set listener and set callback but no device found, just say - no device found
+    let DeviceList = EloSocketMobileManager.getDeviceClientList()
     
+    if (success1 && success2){
+        if ( DeviceList !== "[]"){
+            document.getElementById("scannerAvailable").innerHTML = "Scanner Ready"
+        }
+        else{
+            document.getElementById("textField").value =  "no device found"
+        }
+    }     
 }
 
 function runScanner(){
-   document.getElementById("textField").value = EloSocketMobileManager.runScanner()
+   document.getElementById("textField").value = EloSocketMobileManager.triggerScanner()
 }
 
 function disableScanning(){
