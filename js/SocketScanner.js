@@ -102,10 +102,14 @@ function PostScanData(Data){        //use this function in development
 }
 
 function getFoundBluetoothDevice(Data){     //use this function in development
+    
+     let BluetoothDevices = ""          //try an array after this
+     
      if (Data === ""){
           document.getElementById("textField").value = "No device found"
      }
      else{
-         document.getElementById("textField").value = Data
+         BluetoothDevices += Data
+         document.getElementById("textField").value = BluetoothDevices
      }    
 }
