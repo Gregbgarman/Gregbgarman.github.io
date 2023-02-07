@@ -12,9 +12,8 @@ document.getElementById("disableScanning").addEventListener("click", disableScan
 
 
 let PairCodeShown = false
-let UnavailableMessage = "Scanner Unavailable"
 
-document.getElementById("scannerAvailable").innerHTML = "Scanner Available"
+document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
 
 function disableSocketCam(){
     let success1 = EloSocketMobileManager.disableSocketCamExtension()
@@ -79,7 +78,7 @@ function initService(){
 function enableScanning(){
     let success = EloSocketMobileManager.enableScanning()
     if (success){
-        document.getElementById("textField").value = "Scanning Available"    
+        document.getElementById("textField").value = "Scanner Ready"    
     }    
 }
 
@@ -90,7 +89,7 @@ function runScanner(){
 function disableScanning(){
     let success = EloSocketMobileManager.disableScanning()
     if (success){
-         document.getElementById("textField").value = "Scanning Unavailable"     
+         document.getElementById("textField").value = "Scanner Unavailable"     
     }   
 }
 
