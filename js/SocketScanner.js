@@ -12,10 +12,9 @@ document.getElementById("disableScanning").addEventListener("click", disableScan
 
 
 let PairCodeShown = false
-let AvailableMessage = "Scanning Available"
-let UnavailableMessage = "Scanning Unavailable"
+let UnavailableMessage = "Scanner Unavailable"
 
-document.getElementById("scannerAvailable").innerHTML = DisconnectMessage
+document.getElementById("scannerAvailable").innerHTML = "Scanner Available"
 
 function disableSocketCam(){
     let success1 = EloSocketMobileManager.disableSocketCamExtension()
