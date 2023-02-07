@@ -115,5 +115,6 @@ function getFoundBluetoothDevice(Data){     //use this function in development
     
          BluetoothDevices.push(Data)
          document.getElementById("textField").value = BluetoothDevices.toString()
-     }    
+     }
+    document.getElementById("textField").value = "sauce"
 }
