@@ -76,9 +76,9 @@ function initService(){
      document.getElementById("textField").value = EloSocketMobileManager.initService()
 }
 
-function enableScanning(){
+function enableScanning(){      //if this is true and return of client list is not !== '[]' then say Scanner Ready
     let success = EloSocketMobileManager.enableScanning()
-    if (success){
+    if (success){           
         document.getElementById("textField").value = "Scanner Ready"    
     }    
 }
