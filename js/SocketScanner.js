@@ -54,6 +54,7 @@ function showScanCode(){
 }
 
 function searchBluetooth(){
+    document.getElementById("textField").value = "searching..."
     BluetoothDevices = []
     let success = EloSocketMobileManager.searchBluetooth()
     if(success){
@@ -104,10 +105,7 @@ function PostScanData(Data){        //use this function in development
      document.getElementById("textField").value = Data
 }
 
-function getFoundBluetoothDevice(Data){     //use this function in development
-    
-               //try an array after this
-     
+function getFoundBluetoothDevice(Data){     //use this function in development               
      if (Data === ""){
           document.getElementById("textField").value = "No device found"
      }
