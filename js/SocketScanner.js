@@ -63,7 +63,8 @@ function searchBluetooth(){
 }
 
 function connectBluetooth(){
-    let success =  EloSocketMobileManager.connectBluetooth()
+    let BTDevice = document.getElementById("textField").value
+    let success =  EloSocketMobileManager.connectBluetooth(BTDevice)
     if (success){
         document.getElementById("textField").value = "Connecting...Wait for beep" 
     }
@@ -109,6 +110,7 @@ function getFoundBluetoothDevice(Data){     //use this function in development
           document.getElementById("textField").value = "No device found"
      }
      else{
+    
          BluetoothDevices += Data
          document.getElementById("textField").value = BluetoothDevices
      }    
