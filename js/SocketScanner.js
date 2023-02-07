@@ -109,7 +109,7 @@ function disableScanning(){
 }
 
 
-
+////*****////
 function registerScanningListener(){
     EloSocketMobileManager.registerScanningListener("ScanDataCallback")    
 }
@@ -117,11 +117,16 @@ function registerScanningListener(){
 function ScanDataCallback(Data){       
      document.getElementById("textField").value = Data
 }
+////****////
 
 
 
+function registerBTDeviceFoundListener(){
+    EloSocketMobileManager.registerBTDeviceFoundListener("BTDeviceCallback")
+}
 
-function getFoundBluetoothDevice(Data){     //use this function in development               
+
+function BTDeviceCallback(Data){          
      if (Data === ""){
           document.getElementById("textField").value = "No device found"
      }
