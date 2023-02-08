@@ -6,7 +6,7 @@ document.getElementById("enableScanning").addEventListener("click", enableScanni
 document.getElementById("runScanner").addEventListener("click", runScanner)
 document.getElementById("disableScanning").addEventListener("click", disableScanning)
 
-document.getElementById("getBatteryLevel").addEventListener("click", registerBatteryListener)
+document.getElementById("getBatteryLevel").addEventListener("click", getBatteryLevel)
 document.getElementById("isDeviceConnected").addEventListener("click", isDeviceConnected)
 
 
@@ -76,7 +76,7 @@ function initService(){
 }
 
 function enableScanning(){      
-    let success1 = EloSocketMobileManager.setClientListener()
+    let success1 = EloSocketMobileManager.setClientListener("DeviceStateCallback")   //also see function on line 89 to receive information.
     let success2 = EloSocketMobileManager.connectClient()
     if (success1 && success2){
         document.getElementById("textField").value =  "Scanning enabled"
@@ -85,6 +85,14 @@ function enableScanning(){
         document.getElementById("textField").value =  "Failed"
     }
 }
+
+function DeviceStateCallback(Data){
+    let DeviceState = Data
+    
+   
+}
+
+
 
 function isDeviceConnected(){
     let DeviceList = EloSocketMobileManager.getDeviceClientList()
@@ -127,12 +135,13 @@ function registerBTSearchListener(){
     EloSocketMobileManager.registerBTSearchListener("BTSearchCallback")
 }
 
-function BTSearchCallback(Data){          
-     if (Data === " "){
-          document.getElementById("textField").value = "No device found"        //FIGURE THIS OUT
+function BTSearchCallback(Data){      //runs when a bluetooth device is found. Will return " " if no device found at end of BT search
+     let BTDeviceFound = Data
+     if (BTDeviceFound === " "){
+          document.getElementById("textField").value = "No device found"        
      }
      else{    
-         BluetoothDevices.push(Data)
+         BluetoothDevices.push(BTDeviceFound)
          document.getElementById("textField").value = BluetoothDevices.toString()
      }
 }
@@ -142,6 +151,7 @@ function registerBatteryListener(){
 }
 
 function BatteryCallback(Data){
+    let BatteryChargePercentage = Data
     document.getElementById("textField").value = Data + "%"
 }
 
