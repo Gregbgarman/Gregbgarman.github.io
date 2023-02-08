@@ -23,16 +23,7 @@ let BluetoothDevices = []
 
 document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
 
-function disableSocketCam(){
-    let success1 = EloSocketMobileManager.disableSocketCamExtension()
-     if (success1){
-         let success2 = EloSocketMobileManager.deactivateSocketCamExtension()
-         document.getElementById("textField").value = success2
-     }
-     else{
-         document.getElementById("textField").value = "false"
-     }   
-}
+
 
 function getBatteryLevel(){
     //set callback here
@@ -161,4 +152,15 @@ function activateSocketCam(){
      let success = EloSocketMobileManager.activateSocketCamExtension()
      document.getElementById("textField").value = success
 }
+function disableSocketCam(){
+    let success1 = EloSocketMobileManager.disableSocketCamExtension()
+     if (success1){
+         let success2 = EloSocketMobileManager.deactivateSocketCamExtension()
+         document.getElementById("textField").value = success2
+     }
+     else{
+         document.getElementById("textField").value = "false"
+     }   
+}
+
 */
