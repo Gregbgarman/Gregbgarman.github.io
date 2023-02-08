@@ -140,7 +140,7 @@ function registerBTSearchListener(){
 
 
 function BTSearchCallback(Data){          
-     if (Data === ""){
+     if (Data === " "){
           document.getElementById("textField").value = "No device found"
      }
      else{
