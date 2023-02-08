@@ -99,7 +99,7 @@ function isDeviceConnected(){
     if (DeviceList !== "[]"){
             registerScanningListener()
             document.getElementById("scannerAvailable").innerHTML = "Scanner Ready"
-            document.getElementById("textField").value =  ""
+            document.getElementById("textField").value =  "true"
         }
         else{
             document.getElementById("textField").value =  "no device found"
