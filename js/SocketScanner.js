@@ -24,20 +24,6 @@ let BluetoothDevices = []
 document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
 
 
-
-function getBatteryLevel(){
-    let BatteryLevel = EloSocketMobileManager.getDeviceBatteryLevel()
-    if (BatteryLevel === -1){
-          document.getElementById("textField").value = "Error finding battery %"
-    }
-    else{
-         document.getElementById("textField").value = BatteryLevel.toString() + "%"      
-    }       
-}
-
-
-
-
 function showScanCode(){
      if (!PairCodeShown){                   
          document.getElementById("appmodeqrcode").style.visibility = 'visible'
@@ -81,7 +67,7 @@ function initService(){
 }
 
 function enableScanning(){      
-    let success1 = EloSocketMobileManager.setClientListener()   //also see function on line 89 to receive information.
+    let success1 = EloSocketMobileManager.setClientListener("DeviceStateCallback)   //also see function on line 89 to receive information.
     let success2 = EloSocketMobileManager.connectClient()
     if (success1 && success2){
         document.getElementById("textField").value =  "Scanning enabled"
@@ -93,7 +79,19 @@ function enableScanning(){
 
 function DeviceStateCallback(Data){
     let DeviceState = Data
+    if (DeviceState === "DEVICESTATE_GONE"){
+        
+    }
+    else if (DeviceState === "DEVICESTATE_AVAILABLE"){
     
+    }
+    else if (DeviceState === "DEVICESTATE_OPEN"){
+    
+    }
+    else if (DeviceState === "DEVICESTATE_READY"){
+          registerScanningListener()
+         document.getElementById("scannerAvailable").innerHTML = "Scanner Ready"
+    }
    
 }
 
@@ -111,6 +109,16 @@ function isDeviceConnected(){
 
 function runScanner(){
    document.getElementById("textField").value = EloSocketMobileManager.triggerScanner()
+}
+
+function getBatteryLevel(){
+    let BatteryLevel = EloSocketMobileManager.getDeviceBatteryLevel()
+    if (BatteryLevel === -1){
+          document.getElementById("textField").value = "Error finding battery %"
+    }
+    else{
+         document.getElementById("textField").value = BatteryLevel.toString() + "%"      
+    }       
 }
 
 function disableScanning(){
@@ -148,17 +156,8 @@ function BTSearchCallback(Data){      //runs when a bluetooth device is found. W
          document.getElementById("textField").value = BluetoothDevices.toString()
      }
 }
-////*****////
-function registerBatteryListener(){
-    EloSocketMobileManager.registerBatteryListener("BatteryCallback")
-}
 
-function BatteryCallback(Data){
-    let BatteryChargePercentage = Data
-    document.getElementById("textField").value = Data + "%"
-}
 
-////*****////
 
 
 
