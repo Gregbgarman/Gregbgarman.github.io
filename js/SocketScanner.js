@@ -78,7 +78,7 @@ function initService(){
 }
 
 function enableScanning(){      
-    let success1 = EloSocketMobileManager.setClientListener("DeviceStateCallback")   //also see function on line 89 to receive information.
+    let success1 = EloSocketMobileManager.setClientListener()   //also see function on line 89 to receive information.
     let success2 = EloSocketMobileManager.connectClient()
     if (success1 && success2){
         document.getElementById("textField").value =  "Scanning enabled"
