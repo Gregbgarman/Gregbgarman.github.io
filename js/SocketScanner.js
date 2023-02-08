@@ -26,10 +26,13 @@ document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
 
 
 function getBatteryLevel(){
-     document.getElementById("textField").value = "skjld"
     let BatteryLevel = EloSocketMobileManager.getDeviceBatteryLevel()
-    document.getElementById("textField").value = BatteryLevel.toString() + "%"
-    
+    if (BatteryLevel === -1){
+          document.getElementById("textField").value = "Error finding battery %"
+    }
+    else{
+         document.getElementById("textField").value = BatteryLevel.toString() + "%"      
+    }       
 }
 
 
