@@ -106,7 +106,8 @@ function disconnectCaptureClient(){
     let success = EloSocketMobileManager.disconnectCaptureClient()
     if (success){
          document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"     
-    }   
+    }
+     document.getElementById("textField").value = success
 }
 
 
