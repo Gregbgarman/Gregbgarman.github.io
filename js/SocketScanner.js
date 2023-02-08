@@ -26,7 +26,8 @@ document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
 
 
 function getBatteryLevel(){
-    //set callback here
+    let BatteryLevel = EloSocketMobileManager.getBatteryLevel()
+    document.getElementById("textField").value = BatteryLevel
     
 }
 
