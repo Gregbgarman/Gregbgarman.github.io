@@ -65,7 +65,7 @@ function showScanCode(){
 }
 
 function searchBluetooth(){
-    registerBTDeviceFoundListener()
+    registerBTSearchListener()
     document.getElementById("textField").value = "searching..."
     BluetoothDevices = []
     let BTAddress = "60:8A:10:64:A9:68"       //Find this on the handheld scanner to improve bluetooth pairing     
@@ -133,8 +133,8 @@ function ScanDataCallback(Data){
 
 
 
-function registerBTDeviceFoundListener(){
-    EloSocketMobileManager.registerBTDeviceFoundListener("BTDeviceCallback")
+function registerBTSearchListener(){
+    EloSocketMobileManager.registerBTDeviceFoundListener("BTSearchCallback")
 }
 
 
