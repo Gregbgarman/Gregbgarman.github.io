@@ -6,6 +6,10 @@ document.getElementById("enableScanning").addEventListener("click", enableScanni
 document.getElementById("runScanner").addEventListener("click", runScanner)
 document.getElementById("disableScanning").addEventListener("click", disableScanning)
 
+document.getElementById("getBatteryLevel").addEventListener("click", getBatteryLevel)
+
+
+
 //document.getElementById("initSocketCam").addEventListener("click", initSocketCam)
 //document.getElementById("activateSocketCam").addEventListener("click", activateSocketCam)
 //document.getElementById("disableSocketCam").addEventListener("click", disableSocketCam)
@@ -27,6 +31,13 @@ function disableSocketCam(){
          document.getElementById("textField").value = "false"
      }   
 }
+
+function getBatteryLevel(){
+    //set callback here
+    
+}
+
+
 
 
 function initSocketCam(){
@@ -54,6 +65,7 @@ function showScanCode(){
 }
 
 function searchBluetooth(){
+    registerBTDeviceFoundListener()
     document.getElementById("textField").value = "searching..."
     BluetoothDevices = []
     let BTAddress = "60:8A:10:64:A9:68"       //Find this on the handheld scanner to improve bluetooth pairing     
