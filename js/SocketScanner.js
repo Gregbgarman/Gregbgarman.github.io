@@ -40,17 +40,6 @@ function getBatteryLevel(){
 
 
 
-function initSocketCam(){
-     let success = EloSocketMobileManager.enableSocketCamExtension()     
-     document.getElementById("textField").value = success         
-}
-
-function activateSocketCam(){    
-     let success = EloSocketMobileManager.activateSocketCamExtension()
-     document.getElementById("textField").value = success
-}
-
-
 function showScanCode(){
      if (!PairCodeShown){                   
          document.getElementById("appmodeqrcode").style.visibility = 'visible'
@@ -101,8 +90,9 @@ function enableScanning(){      //if this is true and return of client list is n
     let DeviceList = EloSocketMobileManager.getDeviceClientList()
     
     if (success1 && success2){
-        if ( DeviceList !== "[]"){
+        if (DeviceList !== "[]"){
             document.getElementById("scannerAvailable").innerHTML = "Scanner Ready"
+            document.getElementById("textField").value =  ""
         }
         else{
             document.getElementById("textField").value =  "no device found"
@@ -124,7 +114,7 @@ function disableScanning(){
 
 ////*****////
 function registerScanningListener(){
-    EloSocketMobileManager.registerScanningListener("ScanDataCallback")    
+    EloSocketMobileManager.registerScanningListener("ScanDataCallback")     //parameter needs to match the function name below  
 }
 
 function ScanDataCallback(Data){       
@@ -133,19 +123,35 @@ function ScanDataCallback(Data){
 ////****////
 
 
-
+////*****////
 function registerBTSearchListener(){
     EloSocketMobileManager.registerBTSearchListener("BTSearchCallback")
 }
-
 
 function BTSearchCallback(Data){          
      if (Data === " "){
           document.getElementById("textField").value = "No device found"
      }
-     else{
-    
+     else{    
          BluetoothDevices.push(Data)
          document.getElementById("textField").value = BluetoothDevices.toString()
      }
 }
+////*****////
+
+
+
+
+
+
+/*
+function initSocketCam(){
+     let success = EloSocketMobileManager.enableSocketCamExtension()     
+     document.getElementById("textField").value = success         
+}
+
+function activateSocketCam(){    
+     let success = EloSocketMobileManager.activateSocketCamExtension()
+     document.getElementById("textField").value = success
+}
+*/
