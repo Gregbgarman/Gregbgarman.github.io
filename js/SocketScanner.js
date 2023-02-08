@@ -97,8 +97,6 @@ function DeviceStateCallback(Data){
    
 }
 
-
-
 function isDeviceConnected(){
     let DeviceList = EloSocketMobileManager.getDeviceClientList()
     if (DeviceList !== "[]"){
