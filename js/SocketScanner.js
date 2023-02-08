@@ -134,7 +134,7 @@ function ScanDataCallback(Data){
 
 
 function registerBTSearchListener(){
-    EloSocketMobileManager.registerBTDeviceFoundListener("BTSearchCallback")
+    EloSocketMobileManager.registerBTSearchListener("BTSearchCallback")
 }
 
 
