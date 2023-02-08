@@ -6,7 +6,7 @@ document.getElementById("enableScanning").addEventListener("click", enableScanni
 document.getElementById("runScanner").addEventListener("click", runScanner)
 document.getElementById("disableScanning").addEventListener("click", disableScanning)
 
-document.getElementById("getBatteryLevel").addEventListener("click", getBatteryLevel)
+document.getElementById("getBatteryLevel").addEventListener("click", registerBatteryListener)
 document.getElementById("isDeviceConnected").addEventListener("click", isDeviceConnected)
 
 
@@ -137,9 +137,20 @@ function BTSearchCallback(Data){
      }
 }
 ////*****////
+function registerBatteryListener(){
+    EloSocketMobileManager.registerBatteryListener("BatteryCallback")
+}
+
+function BatteryCallback(Data){
+    document.getElementById("textField").value = Data + "%"
+}
+
+////*****////
 
 
 
+
+////*****////
 
 
 
