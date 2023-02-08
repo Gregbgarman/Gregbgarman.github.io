@@ -67,7 +67,7 @@ function connectBluetooth(){
         document.getElementById("textField").value = "Connecting...Wait for beep" 
     }
     else{
-        document.getElementById("textField").value =  "Failed"
+        document.getElementById("textField").value =  "Failed. Try again"
     }
 }
 
