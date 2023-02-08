@@ -129,7 +129,7 @@ function registerBTSearchListener(){
 
 function BTSearchCallback(Data){          
      if (Data === " "){
-          document.getElementById("textField").value = "No device found"
+          document.getElementById("textField").value = "No device found"        //FIGURE THIS OUT
      }
      else{    
          BluetoothDevices.push(Data)
