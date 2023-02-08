@@ -7,6 +7,8 @@ document.getElementById("runScanner").addEventListener("click", runScanner)
 document.getElementById("disableScanning").addEventListener("click", disableScanning)
 
 document.getElementById("getBatteryLevel").addEventListener("click", getBatteryLevel)
+document.getElementById("isDeviceConnected").addEventListener("click", isDeviceConnected)
+
 
 
 
@@ -82,22 +84,27 @@ function initService(){
      document.getElementById("textField").value = EloSocketMobileManager.initService()
 }
 
-function enableScanning(){      //if this is true and return of client list is not !== '[]' then say Scanner Ready
+function enableScanning(){      
     let success1 = EloSocketMobileManager.setClientListener()
     let success2 = EloSocketMobileManager.connectClient()
-    registerScanningListener()
-    
-    let DeviceList = EloSocketMobileManager.getDeviceClientList()
-    
     if (success1 && success2){
-        if (DeviceList !== "[]"){
+        document.getElementById("textField").value =  "Scanning enabled"
+    }
+    else{
+        document.getElementById("textField").value =  "Failed"
+    }
+}
+
+function isDeviceConnected(){
+    let DeviceList = EloSocketMobileManager.getDeviceClientList()
+    if (DeviceList !== "[]"){
+            registerScanningListener()
             document.getElementById("scannerAvailable").innerHTML = "Scanner Ready"
             document.getElementById("textField").value =  ""
         }
         else{
             document.getElementById("textField").value =  "no device found"
         }
-    }     
 }
 
 function runScanner(){
