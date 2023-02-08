@@ -96,6 +96,7 @@ function initService(){
 function enableScanning(){      //if this is true and return of client list is not !== '[]' then say Scanner Ready
     let success1 = EloSocketMobileManager.setClientListener()
     let success2 = EloSocketMobileManager.connectClient()
+    registerScanningListener()
     
     let DeviceList = EloSocketMobileManager.getDeviceClientList()
     
@@ -138,7 +139,7 @@ function registerBTSearchListener(){
 }
 
 
-function BTDeviceCallback(Data){          
+function BTSearchCallback(Data){          
      if (Data === ""){
           document.getElementById("textField").value = "No device found"
      }
