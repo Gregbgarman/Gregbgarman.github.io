@@ -102,7 +102,7 @@ function runScanner(){
    document.getElementById("textField").value = EloSocketMobileManager.triggerScanner()
 }
 
-function disconnectCaptureClient(){
+function disableScanning(){
     let success = EloSocketMobileManager.disconnectCaptureClient()
     if (success){
          document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"     
