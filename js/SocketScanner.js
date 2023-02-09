@@ -68,14 +68,11 @@ function initService(){
 }
 
 function enableScanning(){      
-    let success1 = EloSocketMobileManager.setClientListener("DeviceStateCallback")   //also see function on line 89 to receive information.
+    let success1 = EloSocketMobileManager.setClientListener("DeviceStateCallback")
     let success2 = EloSocketMobileManager.connectClient()
-    if (success1 && success2){
-        document.getElementById("textField").value =  "Waiting for device..."        //waiting for callback to signal device is ready
-    }
-    else{
-        document.getElementById("textField").value =  "Failed"
-    }
+    if (!success1 || !success2){
+        document.getElementById("textField").value =  "Failed" 
+    }    
 }
 
 function DeviceStateCallback(Data){
@@ -92,8 +89,7 @@ function DeviceStateCallback(Data){
     else if (DeviceState === "DEVICESTATE_READY"){
          registerScanningListener()
          document.getElementById("scannerAvailable").innerHTML = "Scanner Ready"
-    }
-   
+    }   
 }
 
 /*
