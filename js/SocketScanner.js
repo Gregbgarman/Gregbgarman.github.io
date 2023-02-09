@@ -71,7 +71,7 @@ function enableScanning(){
     let success1 = EloSocketMobileManager.setClientListener("DeviceStateCallback")   //also see function on line 89 to receive information.
     let success2 = EloSocketMobileManager.connectClient()
     if (success1 && success2){
-        document.getElementById("textField").value =  "Scanning enabled"
+        document.getElementById("textField").value =  "Waiting for device..."        //waiting for callback to signal device is ready
     }
     else{
         document.getElementById("textField").value =  "Failed"
@@ -125,11 +125,12 @@ function getBatteryLevel(){
 }
 
 function disableScanning(){
+     //let the mdevice close function change the main message, and just have a error closing client message if disconnectcaptuerclient fails
     let success = EloSocketMobileManager.disconnectCaptureClient()
     if (success){
          document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"     
     }
-     document.getElementById("textField").value = success
+     //document.getElementById("textField").value = success
 }
 
 
