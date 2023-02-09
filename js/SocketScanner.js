@@ -84,13 +84,13 @@ function DeviceStateCallback(Data){
         document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
     }
     else if (DeviceState === "DEVICESTATE_AVAILABLE"){
-    
+        EloSocketMobileManager.openScanner()       //should put device into a ready state
     }
     else if (DeviceState === "DEVICESTATE_OPEN"){
     
     }
     else if (DeviceState === "DEVICESTATE_READY"){
-          registerScanningListener()
+         registerScanningListener()
          document.getElementById("scannerAvailable").innerHTML = "Scanner Ready"
     }
    
@@ -125,12 +125,12 @@ function getBatteryLevel(){
 }
 
 function disableScanning(){
-     //let the mdevice close function change the main message, and just have a error closing client message if disconnectcaptuerclient fails
+    
+    EloSocketMobileManager.closeScanner()         //this should set the scanner to unavailable   
     let success = EloSocketMobileManager.disconnectCaptureClient()
-    if (success){
-         document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"     
+    if (!success){
+         document.getElementById("textField").value = "Failed to close client"    
     }
-     //document.getElementById("textField").value = success
 }
 
 
