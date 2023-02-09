@@ -96,6 +96,7 @@ function DeviceStateCallback(Data){
    
 }
 
+/*
 function isDeviceConnected(){
     let DeviceList = EloSocketMobileManager.getDeviceClientList()
     if (DeviceList !== "[]"){
@@ -107,6 +108,7 @@ function isDeviceConnected(){
             document.getElementById("textField").value =  "no device found"
         }
 }
+*/
 
 function runScanner(){
    document.getElementById("textField").value = EloSocketMobileManager.triggerScanner()
