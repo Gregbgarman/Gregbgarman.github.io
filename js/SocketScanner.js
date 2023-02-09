@@ -80,7 +80,7 @@ function enableScanning(){
 function DeviceStateCallback(Data){
     let DeviceState = Data
     if (DeviceState === "DEVICESTATE_GONE"){
-        
+        document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
     }
     else if (DeviceState === "DEVICESTATE_AVAILABLE"){
     
