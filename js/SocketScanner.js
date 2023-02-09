@@ -7,7 +7,8 @@ document.getElementById("runScanner").addEventListener("click", runScanner)
 document.getElementById("disableScanning").addEventListener("click", disableScanning)
 
 document.getElementById("getBatteryLevel").addEventListener("click", getBatteryLevel)
-document.getElementById("isDeviceConnected").addEventListener("click", isDeviceConnected)
+
+//document.getElementById("isDeviceConnected").addEventListener("click", isDeviceConnected)
 
 
 
