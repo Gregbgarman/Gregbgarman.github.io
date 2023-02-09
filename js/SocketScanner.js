@@ -67,12 +67,15 @@ function initService(){
      document.getElementById("textField").value = EloSocketMobileManager.initService()
 }
 
-function enableScanning(){      
+function enableScanning(){   
     let success1 = EloSocketMobileManager.setClientListener("DeviceStateCallback")
     let success2 = EloSocketMobileManager.connectClient()
-    if (!success1 || !success2){
-        document.getElementById("textField").value =  "Failed" 
-    }    
+    if (success1 && success2){
+       document.getElementById("textField").value =  "Waiting for device" 
+    }
+    else{
+       document.getElementById("textField").value =  "Failed"   
+    }
 }
 
 function DeviceStateCallback(Data){
@@ -89,6 +92,7 @@ function DeviceStateCallback(Data){
     else if (DeviceState === "DEVICESTATE_READY"){
          registerScanningListener()
          document.getElementById("scannerAvailable").innerHTML = "Scanner Ready"
+         document.getElementById("textField").value =  ""
     }   
 }
 
