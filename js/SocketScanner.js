@@ -84,16 +84,20 @@ function enableScanning(){
 function DeviceStateCallback(Data){
     let DeviceState = Data
     if (DeviceState === "DEVICESTATE_GONE"){
+        // Scanner is gone
         document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
         document.getElementById("textField").value =  ""
     }
     else if (DeviceState === "DEVICESTATE_AVAILABLE"){
+        // Scanner is connected to the service. You can choose to open the device or not. 
         EloSocketMobileManager.openScanner()       //should put device into a ready state
     }
     else if (DeviceState === "DEVICESTATE_OPEN"){
-    
+         // Scanner is open, but you do not have control of it. It may be in the process of
+         // opening or another application may have opened the scanner.
     }
     else if (DeviceState === "DEVICESTATE_READY"){
+         // Scanner is ready. Configure scanner
          registerScanningListener()
          document.getElementById("scannerAvailable").innerHTML = "Scanner Ready"
          document.getElementById("textField").value =  ""
