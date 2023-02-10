@@ -82,6 +82,7 @@ function DeviceStateCallback(Data){
     let DeviceState = Data
     if (DeviceState === "DEVICESTATE_GONE"){
         document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
+        document.getElementById("textField").value =  ""
     }
     else if (DeviceState === "DEVICESTATE_AVAILABLE"){
         EloSocketMobileManager.openScanner()       //should put device into a ready state
