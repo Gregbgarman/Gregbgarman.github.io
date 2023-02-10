@@ -5,18 +5,7 @@ document.getElementById("initService").addEventListener("click", initService)
 document.getElementById("enableScanning").addEventListener("click", enableScanning)
 document.getElementById("runScanner").addEventListener("click", runScanner)
 document.getElementById("disableScanning").addEventListener("click", disableScanning)
-
 document.getElementById("getBatteryLevel").addEventListener("click", getBatteryLevel)
-
-//document.getElementById("isDeviceConnected").addEventListener("click", isDeviceConnected)
-
-
-
-
-//document.getElementById("initSocketCam").addEventListener("click", initSocketCam)
-//document.getElementById("activateSocketCam").addEventListener("click", activateSocketCam)
-//document.getElementById("disableSocketCam").addEventListener("click", disableSocketCam)
-
 
 
 let PairCodeShown = false
@@ -24,6 +13,9 @@ let BluetoothDevices = []
 
 document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
 
+function initService(){
+     document.getElementById("textField").value = EloSocketMobileManager.initService()
+}
 
 function showScanCode(){
      if (!PairCodeShown){                   
@@ -63,10 +55,6 @@ function connectBluetooth(){
     }
 }
 
-function initService(){
-     document.getElementById("textField").value = EloSocketMobileManager.initService()
-}
-
 function enableScanning(){   
     let success1 = EloSocketMobileManager.setClientListener("DeviceStateCallback")
     let success2 = EloSocketMobileManager.connectClient()
@@ -97,19 +85,6 @@ function DeviceStateCallback(Data){
     }   
 }
 
-/*
-function isDeviceConnected(){
-    let DeviceList = EloSocketMobileManager.getDeviceClientList()
-    if (DeviceList !== "[]"){
-            registerScanningListener()
-            document.getElementById("scannerAvailable").innerHTML = "Scanner Ready"
-            document.getElementById("textField").value =  "true"
-        }
-        else{
-            document.getElementById("textField").value =  "no device found"
-        }
-}
-*/
 
 function runScanner(){
    document.getElementById("textField").value = EloSocketMobileManager.triggerScanner()
@@ -126,7 +101,6 @@ function getBatteryLevel(){
 }
 
 function disableScanning(){
-    
     EloSocketMobileManager.closeScanner()         //this should set the scanner to unavailable   
     let success = EloSocketMobileManager.disconnectCaptureClient()
     if (!success){
@@ -161,35 +135,3 @@ function BTSearchCallback(Data){      //runs when a bluetooth device is found. W
          document.getElementById("textField").value = BluetoothDevices.toString()
      }
 }
-
-
-
-
-
-
-////*****////
-
-
-
-/*
-function initSocketCam(){
-     let success = EloSocketMobileManager.enableSocketCamExtension()     
-     document.getElementById("textField").value = success         
-}
-
-function activateSocketCam(){    
-     let success = EloSocketMobileManager.activateSocketCamExtension()
-     document.getElementById("textField").value = success
-}
-function disableSocketCam(){
-    let success1 = EloSocketMobileManager.disableSocketCamExtension()
-     if (success1){
-         let success2 = EloSocketMobileManager.deactivateSocketCamExtension()
-         document.getElementById("textField").value = success2
-     }
-     else{
-         document.getElementById("textField").value = "false"
-     }   
-}
-
-*/
