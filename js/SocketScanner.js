@@ -9,7 +9,7 @@ Once the mentioned service is running, the handheld scanner may connecct to the 
 scanning a particular QR code to make the Socket Mobile device discoverable, then it can be connected to. Following buttons 2-4, in order,
 on this website achieves this goal.
 
-After the scanner is connected to the Elo device, scanning may be enabled, and barcodes can be read.
+After the scanner is connected to the Elo device, scanning may be enabled, and barcodes can then be read.
 */
 
 
@@ -46,17 +46,33 @@ function showScanCode(){
 }
 
 function searchBluetooth(){
-    registerBTSearchListener()
+    registerBTSearchListener()                                        //see function below
     document.getElementById("textField").value = "searching..."
     BluetoothDevices = []
-    let BTAddress = "60:8A:10:64:A9:68"       //Find this on the handheld scanner to improve bluetooth pairing     
-    let success = EloSocketMobileManager.searchBluetooth(BTAddress)
+    let BTAddress = "60:8A:10:64:A9:68"       //Find this on the handheld scanner to improve bluetooth pairing. If can't find, pass blank string "" as parameter     
+    let success = EloSocketMobileManager.searchBluetooth("")         //will find devices with "Socket" in their name when pass a blank string
     if(success){
         document.getElementById("textField").value = "searching..."
     }
     else{
         document.getElementById("textField").value = "search failed"
     }
+}
+
+                                       //setting BT search listener to receive discovered device(s) as soon as they are found
+function registerBTSearchListener(){
+    EloSocketMobileManager.registerBTSearchListener("BTSearchCallback")
+}
+
+function BTSearchCallback(Data){      //runs when bluetooth device is found. Will return " " if no device found at end of BT search
+     let BTDeviceFound = Data
+     if (BTDeviceFound === " "){
+          document.getElementById("textField").value = "No device found"        
+     }
+     else{    
+         BluetoothDevices.push(BTDeviceFound)
+         document.getElementById("textField").value = BluetoothDevices.toString()
+     }
 }
 
 function connectBluetooth(){
@@ -140,18 +156,3 @@ function ScanDataCallback(Data){
 ////****////
 
 
-////*****////
-function registerBTSearchListener(){
-    EloSocketMobileManager.registerBTSearchListener("BTSearchCallback")
-}
-
-function BTSearchCallback(Data){      //runs when a bluetooth device is found. Will return " " if no device found at end of BT search
-     let BTDeviceFound = Data
-     if (BTDeviceFound === " "){
-          document.getElementById("textField").value = "No device found"        
-     }
-     else{    
-         BluetoothDevices.push(BTDeviceFound)
-         document.getElementById("textField").value = BluetoothDevices.toString()
-     }
-}
