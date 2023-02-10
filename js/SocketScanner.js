@@ -1,3 +1,18 @@
+/*
+This is a sample website containing code examples of how a Socket Mobile handheld scanner could be used with EloSocketMobileManager.
+
+**A prerequisite of using a Socket Mobile handheld scanner is that the Socket Mobile Companion app must be installed on the Elo device. 
+However, this app will never have to be opened manually. Its purpose is to manage a service required for the scanner to connect to an 
+Android device over bluetooth. That service will be started by pressing the "Init Capture Service" on this sample website.
+
+Once the mentioned service is running, the handheld scanner may connecct to the Elo device over bluetooth. The process involves first 
+scanning a particular QR code to make the Socket Mobile device discoverable, then it can be connected to. Following buttons 2-4, in order,
+on this website achieves this goal.
+
+After the scanner is connected to the Elo device, scanning may be enabled, and barcodes can be read.
+*/
+
+
 document.getElementById("showScanCode").addEventListener("click", showScanCode)
 document.getElementById("searchBluetooth").addEventListener("click", searchBluetooth)
 document.getElementById("connectBluetooth").addEventListener("click", connectBluetooth)
