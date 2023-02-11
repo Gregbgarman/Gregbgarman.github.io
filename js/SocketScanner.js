@@ -38,10 +38,12 @@ document.getElementById("enableScanning").addEventListener("click", enableScanni
 document.getElementById("runScanner").addEventListener("click", runScanner)
 document.getElementById("disableScanning").addEventListener("click", disableScanning)
 document.getElementById("getBatteryLevel").addEventListener("click", getBatteryLevel)
+document.getElementById("rejectScans").addEventListener("click", rejectScans)
 
 
 let PairCodeShown = false
 let BluetoothDevices = []
+let RejectAllScans = false
 
 document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
 
@@ -177,13 +179,31 @@ function registerScanningListener(){                                  //setting 
 }
 
 function ScanDataCallback(Data){                           //when a barcode is scanned, its output will be received here.
-     document.getElementById("textField").value = Data
+     if(!RejectAllScans){
+         EloSocketMobileManager.acceptData();
+         document.getElementById("textField").value = Data
+     }
+     else{
+        EloSocketMobileManager.rejectData();
+        document.getElementById("textField").value = "data rejected"
+     }
 }
 ////****////
 
 
 function runScanner(){
    document.getElementById("textField").value = EloSocketMobileManager.triggerScanner()
+}
+
+function rejectScans(){
+   if (!RejectAllScans){
+         RejectAllScans = true;
+         document.getElementById("rejectScans").innerHTML="Reject Scans"
+   }
+   else{
+       RejectAllScans = false;
+       document.getElementById("rejectScans").innerHTML="Accept Scans"
+   }
 }
 
 function getBatteryLevel(){
