@@ -112,7 +112,7 @@ function connectBluetooth(){
 
 function enableScanning(){   
     let success1 = EloSocketMobileManager.setClientListener("DeviceStateCallback")        //set listener to receive device state changes (see below) 
-    let success2 = EloSocketMobileManager.connectClient()
+    let success2 = EloSocketMobileManager.connectClient("ClientConnStateCallback")        //set listener to receive capture client connection state changes
     if (success1 && success2){
        document.getElementById("textField").value =  "Waiting for device" 
     }
@@ -120,6 +120,25 @@ function enableScanning(){
        document.getElementById("textField").value =  "Failed"   
     }
 }
+
+function ClientConnStateCallback(Data){
+   if (Data === "CONNECTING"){
+        
+   }
+   else if (Data === "CONNECTED"){
+       // client is now usable
+   }
+   else if (Data === "DISCONNECTING"){
+        // only called when shutting down gracefully
+   }
+   else if (Data === "DISCONNECTED"){
+        // successfully disconnected
+   }
+   else if (Data === "DISCONNECTION_ERROR"){
+       //error disconnecting
+   }  
+}
+
 
 function DeviceStateCallback(Data){          //receives events related to device state in real time. 4 possible states.
     let DeviceState = Data
