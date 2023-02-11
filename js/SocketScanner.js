@@ -125,7 +125,7 @@ function enableScanning(){
 }
 
 function registerConnStateListener(){
-    EloSocketMobileManager.registerConnStateListener("ClientConnStateCallback")
+    EloSocketMobileManager.registerConnectionStateListener("ClientConnStateCallback")
 }
 
 function ClientConnStateCallback(Data){
