@@ -195,14 +195,14 @@ function runScanner(){
    document.getElementById("textField").value = EloSocketMobileManager.triggerScanner()
 }
 
-function rejectScans(){
+function rejectScans(){   
    if (!RejectAllScans){
          RejectAllScans = true;
-         document.getElementById("rejectScans").innerHTML="Reject Scans"
+         document.getElementById("rejectScans").innerHTML="Accept Scans"
    }
    else{
        RejectAllScans = false;
-       document.getElementById("rejectScans").innerHTML="Accept Scans"
+       document.getElementById("rejectScans").innerHTML="Reject Scans"
    }
 }
 
