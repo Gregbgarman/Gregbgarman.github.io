@@ -213,11 +213,11 @@ function getBatteryLevel(){
 
 function disableScanning(){
 
-//    let success = EloSocketMobileManager.disconnectCaptureClient()
- //   if (!success){
- //        document.getElementById("textField").value = "Failed to close client"    
- //   }
-    EloSocketMobileManager.closeScanner()         //this should set the scanner to unavailable   
+    let success = EloSocketMobileManager.disconnectCaptureClient()
+    if (!success){
+        document.getElementById("textField").value = "Failed to close client"    
+    }
+ //   EloSocketMobileManager.closeScanner()         //this should set the scanner to unavailable   
 }
 
 
