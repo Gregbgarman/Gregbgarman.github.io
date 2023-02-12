@@ -125,22 +125,23 @@ function enableScanning(){
 
 function ConnStateCallback(Data){
    if (Data === "CONNECTING"){
-        document.getElementById("textField").value ="client connecting"
+        //client is connecting
    }
    else if (Data === "CONNECTED"){
        // client is now usable
-      document.getElementById("textField").value ="client connected"
+      
    }
    else if (Data === "DISCONNECTING"){
         // only called when shutting down gracefully
-      document.getElementById("textField").value ="client disconnecting"
+      
    }
    else if (Data === "DISCONNECTED"){
         // successfully disconnected
-      document.getElementById("textField").value ="client disconnected"
+      
    }
    else if (Data === "DISCONNECTION_ERROR"){
        //error disconnecting
+      
    }  
 }
 
@@ -168,7 +169,7 @@ function DeviceStateCallback(Data){          //receives events related to device
     }   
 }
 
-////*****////
+
 function registerScanningListener(){                                  //setting listener to receive scanned data in real time.
     EloSocketMobileManager.registerScanningListener("ScanDataCallback")     
 }
@@ -183,7 +184,6 @@ function ScanDataCallback(Data){                           //when a barcode is s
         document.getElementById("textField").value = "data rejected"
      }
 }
-////****////
 
 
 function runScanner(){
@@ -212,7 +212,6 @@ function getBatteryLevel(){
 }
 
 function disableScanning(){
-
     let success = EloSocketMobileManager.disconnectCaptureClient()
     if (!success){
         document.getElementById("textField").value = "Failed to close client"    
