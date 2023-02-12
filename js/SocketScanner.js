@@ -217,7 +217,7 @@ function disableScanning(){
     if (!success){
         document.getElementById("textField").value = "Failed to close client"    
     }
- //   EloSocketMobileManager.closeScanner()         //this should set the scanner to unavailable   
+ //   EloSocketMobileManager.closeScanner()         //it closes then immediately reopens so this is not the way to close anything. 
 }
 
 
