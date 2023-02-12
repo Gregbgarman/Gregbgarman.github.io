@@ -77,7 +77,7 @@ function searchBluetooth(){        //step 3. Search for the scanner over bluetoo
         document.getElementById("textField").value = "searching..."
     }
     else{
-        document.getElementById("textField").value = "search failed"
+        document.getElementById("textField").value = "Search failed. Try Again."
     }
 }
 
