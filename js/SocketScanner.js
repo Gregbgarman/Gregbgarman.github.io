@@ -47,6 +47,10 @@ let RejectAllScans = false
 
 document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
 
+
+////////////////////////////////////////////////
+// Begin functions dealing with connecting scanner to Elo device
+///////////////////////////////////////////////
                          
 function initService(){   //step 1. Start the capture service - Will run the Companion app in the background. You don't need to open it.
      document.getElementById("textField").value = EloSocketMobileManager.initService()
@@ -81,7 +85,7 @@ function searchBluetooth(){        //step 3. Search for the scanner over bluetoo
     }
 }
 
-                                       //setting BT search listener to receive discovered device(s) as soon as they are found
+                                       //setting BT search listener to receive discovered device as soon as it's found
 function registerBTSearchListener(){
     EloSocketMobileManager.registerBTSearchListener("BTSearchCallback")    //this name needs to match the name of the function that receives data. See below.
 }
@@ -108,9 +112,9 @@ function connectBluetooth(){
     }
 }
 
-/////////////////////////////////////////// 
+///////////////////////////////////////////////////
 //    Begin functions dealing with handheld scanner functionality
-///////////////////////////////////////////
+//////////////////////////////////////////////////
 
 function enableScanning(){   
     let success1 = EloSocketMobileManager.setClientListener("DeviceStateCallback")        //set listener to receive device state changes (see below) 
@@ -146,29 +150,23 @@ function DeviceStateCallback(Data){          //receives events related to device
     }   
 }
 
-
 function ConnStateCallback(Data){
    if (Data === "CONNECTING"){
         //client is connecting
    }
    else if (Data === "CONNECTED"){
-       // client is now usable
-      
+       // client is now usable      
    }
    else if (Data === "DISCONNECTING"){
-        // only called when shutting down gracefully
-      
+        // only called when shutting down gracefully      
    }
    else if (Data === "DISCONNECTED"){
-        // successfully disconnected
-      
+        // successfully disconnected      
    }
    else if (Data === "DISCONNECTION_ERROR"){
-       //error disconnecting
-      
+       //error disconnecting      
    }  
 }
-
 
 function registerScanningListener(){                                  //setting listener to receive scanned data in real time.
     EloSocketMobileManager.registerScanningListener("ScanDataCallback")     
@@ -185,12 +183,11 @@ function ScanDataCallback(Data){                           //when a barcode is s
      }
 }
 
-
 function runScanner(){
    document.getElementById("textField").value = EloSocketMobileManager.triggerScanner()
 }
 
-function rejectScans(){   
+function rejectScans(){             //function highlighting a couple feedback cues the handheld scanner can provide
    if (!RejectAllScans){
          RejectAllScans = true;
          document.getElementById("rejectScans").innerHTML="Accept Scans"
@@ -212,11 +209,11 @@ function getBatteryLevel(){
 }
 
 function disableScanning(){
-    let success = EloSocketMobileManager.disconnectCaptureClient()
+    let success = EloSocketMobileManager.disconnectCaptureClient()      //shuts everything down
     if (!success){
         document.getElementById("textField").value = "Failed to close client"    
     }
- //   EloSocketMobileManager.closeScanner()         //it closes then immediately reopens so this is not the way to close anything. 
+    EloSocketMobileManager.closeScanner()         //it closes then immediately reopens the handheld scanner 
 }
 
 
