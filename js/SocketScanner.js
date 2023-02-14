@@ -123,29 +123,6 @@ function enableScanning(){
     }
 }
 
-function ConnStateCallback(Data){
-   if (Data === "CONNECTING"){
-        //client is connecting
-   }
-   else if (Data === "CONNECTED"){
-       // client is now usable
-      
-   }
-   else if (Data === "DISCONNECTING"){
-        // only called when shutting down gracefully
-      
-   }
-   else if (Data === "DISCONNECTED"){
-        // successfully disconnected
-      
-   }
-   else if (Data === "DISCONNECTION_ERROR"){
-       //error disconnecting
-      
-   }  
-}
-
-
 function DeviceStateCallback(Data){          //receives events related to device state in real time. 4 possible states.
     let DeviceState = Data
     if (DeviceState === "DEVICESTATE_GONE"){      
@@ -167,6 +144,29 @@ function DeviceStateCallback(Data){          //receives events related to device
          document.getElementById("scannerAvailable").innerHTML = "Scanner Ready"
          document.getElementById("textField").value =  ""
     }   
+}
+
+
+function ConnStateCallback(Data){
+   if (Data === "CONNECTING"){
+        //client is connecting
+   }
+   else if (Data === "CONNECTED"){
+       // client is now usable
+      
+   }
+   else if (Data === "DISCONNECTING"){
+        // only called when shutting down gracefully
+      
+   }
+   else if (Data === "DISCONNECTED"){
+        // successfully disconnected
+      
+   }
+   else if (Data === "DISCONNECTION_ERROR"){
+       //error disconnecting
+      
+   }  
 }
 
 
