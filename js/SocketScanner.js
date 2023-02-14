@@ -201,7 +201,7 @@ function rejectScans(){             //function highlighting a couple feedback cu
 
 function getBatteryLevel(){        //activated by button press
    //EloSocketMobileManager.receiveBatteryLevel("BatteryLevelReceiver")
-   let BatteryLevel = EloSocketMobileManager.getBatteryLevel()
+   let BatteryLevel = EloSocketMobileManager.getDeviceBatteryLevel()
    if (BatteryLevel === -1){
           document.getElementById("textField").value = "Error finding battery %"
     }
