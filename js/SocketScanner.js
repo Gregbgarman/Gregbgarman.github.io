@@ -133,6 +133,7 @@ function DeviceStateCallback(Data){          //receives events related to device
         // Scanner is gone
         document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
         document.getElementById("textField").value =  ""
+        EloSocketMobileManager.closeScanner()
     }
     else if (DeviceState === "DEVICESTATE_AVAILABLE"){
         // Scanner is connected to the service. You can choose to open the device or not. 
@@ -213,10 +214,5 @@ function disableScanning(){
     if (!success){
         document.getElementById("textField").value = "Failed to close client"    
     }
-    EloSocketMobileManager.closeScanner()         //it closes then immediately reopens the handheld scanner 
+    //EloSocketMobileManager.closeScanner()         //not necessary to 
 }
-
-
-
-
-
