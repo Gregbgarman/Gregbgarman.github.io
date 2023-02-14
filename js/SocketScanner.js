@@ -199,8 +199,12 @@ function rejectScans(){             //function highlighting a couple feedback cu
    }
 }
 
-function getBatteryLevel(){
-    let BatteryLevel = EloSocketMobileManager.getDeviceBatteryLevel()
+function getBatteryLevel(){        //activated by button press
+   EloSocketMobileManager.getDeviceBatteryLevel("BatteryLevelReceiver")
+}
+
+function BatteryLevelReceiver(Data){     //**THIS DOES NOT PROVIDE BATTERY UPDATES IN REAL TIME, MUST CALL ABOVE FUNCTION EVERYTIME TO GET BATTERY LEVEL
+    let BatteryLevel = Data
     if (BatteryLevel === -1){
           document.getElementById("textField").value = "Error finding battery %"
     }
@@ -210,9 +214,8 @@ function getBatteryLevel(){
 }
 
 function disableScanning(){
-    let success = EloSocketMobileManager.disconnectCaptureClient()      //shuts everything down
+    let success = EloSocketMobileManager.disconnectCaptureClient()      //shuts everything down, scanner will be closed in device state callback above
     if (!success){
         document.getElementById("textField").value = "Failed to close client"    
     }
-    //EloSocketMobileManager.closeScanner()         //not necessary to 
 }
