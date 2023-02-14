@@ -200,7 +200,8 @@ function rejectScans(){             //function highlighting a couple feedback cu
 }
 
 function getBatteryLevel(){        //activated by button press
-   EloSocketMobileManager.receiveBatteryLevel("BatteryLevelReceiver")
+   //EloSocketMobileManager.receiveBatteryLevel("BatteryLevelReceiver")
+   EloSocketMobileManager.getBatteryLevel()
 }
 
 function BatteryLevelReceiver(Data){     //**THIS DOES NOT PROVIDE CONTINUOUS BATTERY UPDATES IN REAL TIME
