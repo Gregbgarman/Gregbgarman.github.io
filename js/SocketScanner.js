@@ -175,12 +175,10 @@ function registerScanningListener(){                                  //setting 
 
 function ScanDataCallback(Data){                           //when a barcode is scanned, its output will be received here.
      if(!RejectAllScans){
-         EloSocketMobileManager.enableLocalAcknowledgment()
          EloSocketMobileManager.acceptData();
          document.getElementById("textField").value = Data
      }
      else{
-        EloSocketMobileManager.disableLocalAcknowledgment()
         EloSocketMobileManager.rejectData();
         document.getElementById("textField").value = "data rejected"
      }
@@ -192,10 +190,12 @@ function runScanner(){
 
 function rejectScans(){
    if (!RejectAllScans){
+         EloSocketMobileManager.disableLocalAcknowledgment()
          RejectAllScans = true;
          document.getElementById("rejectScans").innerHTML="Accept Scans"
    }
    else{
+       EloSocketMobileManager.enableLocalAcknowledgment()
        RejectAllScans = false;
        document.getElementById("rejectScans").innerHTML="Reject Scans"
    }
