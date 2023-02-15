@@ -169,16 +169,18 @@ function ConnStateCallback(Data){
    }  
 }
 
-function registerScanningListener(){                                  //setting listener to receive scanned data in real time.
+function registerScanningListener(){                                  //setting callback to receive scanned data in real time.
     EloSocketMobileManager.registerScanningListener("ScanDataCallback")     
 }
 
 function ScanDataCallback(Data){                           //when a barcode is scanned, its output will be received here.
      if(!RejectAllScans){
+         EloSocketMobileManager.enableLocalAcknowledgment()
          EloSocketMobileManager.acceptData();
          document.getElementById("textField").value = Data
      }
      else{
+        EloSocketMobileManager.disableLocalAcknowledgment()
         EloSocketMobileManager.rejectData();
         document.getElementById("textField").value = "data rejected"
      }
@@ -188,7 +190,7 @@ function runScanner(){
    document.getElementById("textField").value = EloSocketMobileManager.triggerScanner()
 }
 
-function rejectScans(){             //function highlighting a couple feedback cues the handheld scanner can provide
+function rejectScans(){
    if (!RejectAllScans){
          RejectAllScans = true;
          document.getElementById("rejectScans").innerHTML="Accept Scans"
