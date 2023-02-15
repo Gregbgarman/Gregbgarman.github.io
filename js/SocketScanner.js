@@ -118,7 +118,7 @@ function connectBluetooth(){
 
 function enableScanning(){   
     let success1 = EloSocketMobileManager.setClientListener("DeviceStateCallback")        //set listener to receive device state changes (see below) 
-    let success2 = EloSocketMobileManager.connectCaptureClient("ConnStateCallback")                              
+    let success2 = EloSocketMobileManager.connectClient("ConnStateCallback")                              
     if (success1 && success2){
        document.getElementById("textField").value =  "Waiting for device"
     }
@@ -202,15 +202,7 @@ function rejectScans(){
 }
 
 function getBatteryLevel(){        //activated by button press
-   //EloSocketMobileManager.receiveBatteryLevel("BatteryLevelReceiver")
-   let BatteryLevel = EloSocketMobileManager.getDeviceBatteryLevel()
-   if (BatteryLevel === -1){
-          document.getElementById("textField").value = "Error finding battery %"
-    }
-    else{
-         document.getElementById("textField").value = BatteryLevel.toString() + "%"      
-    }  
-   
+   EloSocketMobileManager.receiveBatteryLevel("BatteryLevelReceiver")  
 }
 
 function BatteryLevelReceiver(Data){     //**THIS DOES NOT PROVIDE CONTINUOUS BATTERY UPDATES IN REAL TIME
@@ -225,7 +217,7 @@ function BatteryLevelReceiver(Data){     //**THIS DOES NOT PROVIDE CONTINUOUS BA
 }
 
 function disableScanning(){
-    let success = EloSocketMobileManager.disconnectCaptureClient()      //shuts everything down, scanner will be closed in device state callback above
+    let success = EloSocketMobileManager.disconnectClient()      //shuts scanning down, scanner will be closed in device state callback above under "GONE"
     if (!success){
         document.getElementById("textField").value = "Failed to close client"    
     }
