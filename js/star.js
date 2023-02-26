@@ -382,7 +382,7 @@ function BTHide(){
     let BTManager_Key =  EloStarPrinterManager.getBTManager(PrinterPortName,"",10000, "StarDeviceTypePortablePrinter")
     EloStarPrinterManager.openBTPort(BTManager_Key)
     EloStarPrinterManager.loadBTSetting(BTManager_Key)
-    EloStarPrinterManager.setBTDiscoveryPermission(BTManager_Key, false)
+    EloStarPrinterManager.setBTDiscoveryPermission(BTManager_Key, true)
     EloStarPrinterManager.applyBTSetting(BTManager_Key)
     EloStarPrinterManager.closeBTPort(BTManager_Key)
     
