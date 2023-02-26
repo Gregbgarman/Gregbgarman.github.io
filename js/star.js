@@ -408,22 +408,36 @@ function getReceipt2Data(){     //adding printer commands used for generating sa
 }
 
 function getEmulation(){
+    if (PrinterPortName === ""){
+        return "error"   
+    }
+    
     let ModelName = EloStarPrinterManager.getModelName(PrinterPortName)
-    if (ModelName !== ''){
+    if (EmulationTable[ModelName] !== undefined){
         return EmulationTable[ModelName] 
     }
-    if (ModelName === '' && PrinterPortName[0] === 'B' && PrinterPortName[1] === 'T'){
+    if (ModelName !== ""){
+        let StringMatch = ""
+        for (let i=0;i<ModelName.length;i++){
+            StringMatch += ModelName[i]
+            if (EmulationTable[StringMatch] !== undefined){
+                return EmulationTable[StringMatch]   
+            }
+        }       
+    }
+    if (ModelName === "" && PrinterPortName[0] === 'B' && PrinterPortName[1] === 'T'){  
         let ColonIndex = PrinterPortName.indexOf(':')
         let SubString = PrinterPortName.substr(ColonIndex+1,PrinterPortName.length-1)
         ModelName = ''
-        
+
         for (let i=0;i<SubString.length;i++){
-            ModelName += SubString[i]
-            if (EmulationTable[ModelName] !== undefined){
-                return EmulationTable[ModelName] 
-            }
-        }
+             ModelName += SubString[i]
+             if (EmulationTable[ModelName] !== undefined){
+                 return EmulationTable[ModelName] 
+             }
+         }
     }
+    
     return "error" 
 }
 
