@@ -378,13 +378,13 @@ function getReceipt2Data(){     //adding printer commands used for generating sa
     return ReceiptData_Key
 }
 
-function BTHide(){
+function BTHide(){      //function hides star printer from appearing under bluetooth devices. Will probably want to run this before putting printer in
+                        //a commercial setting to avoid unwanted connections from strangers.
+    
     let BTManager_Key =  EloStarPrinterManager.getBTManager(PrinterPortName,"",10000, "StarDeviceTypePortablePrinter")
     EloStarPrinterManager.openBTPort(BTManager_Key)
     EloStarPrinterManager.loadBTSetting(BTManager_Key)
-    EloStarPrinterManager.setBTDiscoveryPermission(BTManager_Key, true)
+    EloStarPrinterManager.setBTDiscoveryPermission(BTManager_Key, false)
     EloStarPrinterManager.applyBTSetting(BTManager_Key)
     EloStarPrinterManager.closeBTPort(BTManager_Key)
-    
-    
 }
