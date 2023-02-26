@@ -26,6 +26,11 @@ document.getElementById("checkStarPrinterPaper").addEventListener("click", check
 document.getElementById("checkStarPrinterOnline").addEventListener("click",checkStarPrinterOnline)
 document.getElementById("checkStarFirmware").addEventListener("click", checkStarFirmware)
 document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter)
+
+document.getElementById("BTHide").addEventListener("click", BTHide)
+
+
+
 document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
 
 
@@ -371,4 +376,15 @@ function getReceipt2Data(){     //adding printer commands used for generating sa
 
     let ReceiptData_Key = EloStarPrinterManager.getCommands()          //ReceiptData_Key will be passed into writeport to print receipt
     return ReceiptData_Key
+}
+
+function BTHide(){
+    let BTManager_Key =  EloStarPrinterManager.getBTManager(PrinterPortName,"",10000, "StarDeviceTypePortablePrinter")
+    EloStarPrinterManager.openBTPort(BTManager_Key)
+    EloStarPrinterManager.loadBTSetting(BTManager_Key)
+    EloStarPrinterManager.setBTDiscoveryPermission(BTManager_Key, false)
+    EloStarPrinterManager.applyBTSetting(BTManager_Key)
+    EloStarPrinterManager.closeBTPort(BTManager_Key)
+    
+    
 }
