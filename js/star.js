@@ -376,6 +376,7 @@ function getReceipt2Data(){     //adding printer commands used for generating sa
 }
 
 function getEmulation(){
+    //let ModelName = EloStarPrinterManager.getModelName(PrinterPortName)
     
     
 }
