@@ -95,7 +95,7 @@ function printStarBarcode(){        //Will print several barcodes
         
      EloStarPrinterManager.beginDocument(emulation)
      EloStarPrinterManager.appendBarcode("0123456789", "Code39", "Mode1", 40, false)
-     EloStarPrinterManager.appendLineFeed(1)
+     EloStarPrinterManager.appendLineFeed(2)
  
      EloStarPrinterManager.appendBarcode("{B0123456789", "Code128", "Mode1", 40, true)
      EloStarPrinterManager.appendLineFeed(1)
