@@ -425,10 +425,10 @@ function getEmulation(){
             }
         }       
     }
-    if (ModelName === "" && PrinterPortName[0] === 'B' && PrinterPortName[1] === 'T'){  
-        let ColonIndex = PrinterPortName.indexOf(':')
-        let SubString = PrinterPortName.substr(ColonIndex+1,PrinterPortName.length-1)
-        ModelName = ''
+    if (ModelName === "" && PrinterPortName[0] === 'B' && PrinterPortName[1] === 'T'){          //Bluetooth returns a blank string for model name, so 
+        let ColonIndex = PrinterPortName.indexOf(':')                                           //using the PrinterPortName to build the model name.
+        let SubString = PrinterPortName.substr(ColonIndex+1,PrinterPortName.length-1)           //**THIS WILL NOT WORK IF THE DEFAULT PRINTER NAME HAS  
+        ModelName = ''                                                                          //BEEN CHANGED. SEE EMULATION TABLE BELOW.
 
         for (let i=0;i<SubString.length;i++){
              ModelName += SubString[i]
