@@ -375,6 +375,13 @@ function getReceipt2Data(){     //adding printer commands used for generating sa
     return ReceiptData_Key
 }
 
+function getEmulation(){
+    
+    
+}
+
+
+
 function BTHide(){      //function hides star printer from appearing under bluetooth devices. Will probably want to run this before putting printer in
                         //a commercial setting to avoid unwanted connections from strangers.
     
