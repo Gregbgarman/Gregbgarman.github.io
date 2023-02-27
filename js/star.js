@@ -26,7 +26,7 @@ document.getElementById("checkStarPrinterPaper").addEventListener("click", check
 document.getElementById("checkStarPrinterOnline").addEventListener("click",checkStarPrinterOnline)
 document.getElementById("checkStarFirmware").addEventListener("click", checkStarFirmware)
 document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter)
-document.getElementById("BTHide").addEventListener("click", BTHide)
+//document.getElementById("BTHide").addEventListener("click", BTHide)
 
 document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
 
@@ -445,14 +445,14 @@ function getEmulation(){
 function BTHide(){      //function hides star printer from appearing under bluetooth devices. Will probably want to run this before putting printer in
                         //a commercial setting to avoid unwanted connections from strangers.
     
-    let BTManager_Key =  EloStarPrinterManager.getBTManager(PrinterPortName,"",10000, "StarDeviceTypePortablePrinter")
-    EloStarPrinterManager.openBTPort(BTManager_Key)
-    EloStarPrinterManager.loadBTSetting(BTManager_Key)
-    EloStarPrinterManager.setBTDiscoveryPermission(BTManager_Key, true)
-    EloStarPrinterManager.applyBTSetting(BTManager_Key)
-    if (EloStarPrinterManager.isBTPortOpened(BTManager_Key) === 1){
-        EloStarPrinterManager.closeBTPort(BTManager_Key)
-    }    
+    //let BTManager_Key =  EloStarPrinterManager.getBTManager(PrinterPortName,"",10000, "StarDeviceTypePortablePrinter")
+   // EloStarPrinterManager.openBTPort(BTManager_Key)
+   // EloStarPrinterManager.loadBTSetting(BTManager_Key)
+   // EloStarPrinterManager.setBTDiscoveryPermission(BTManager_Key, true)
+   // EloStarPrinterManager.applyBTSetting(BTManager_Key)
+   // if (EloStarPrinterManager.isBTPortOpened(BTManager_Key) === 1){
+   //     EloStarPrinterManager.closeBTPort(BTManager_Key)
+   // }    
 }
 
 function initEmulationTable(){
