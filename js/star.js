@@ -450,7 +450,9 @@ function BTHide(){      //function hides star printer from appearing under bluet
 //    EloStarPrinterManager.loadBTSetting(BTManager_Key)
 //    EloStarPrinterManager.setBTDiscoveryPermission(BTManager_Key, false)
 //    EloStarPrinterManager.applyBTSetting(BTManager_Key)
-//    EloStarPrinterManager.closeBTPort(BTManager_Key)
+//    if (EloStarPrinterManager.isBTPortOpened(BTManager_Key) === 1){
+//        EloStarPrinterManager.closeBTPort(BTManager_Key)
+//    }    
 }
 
 function initEmulationTable(){
