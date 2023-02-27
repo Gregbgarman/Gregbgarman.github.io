@@ -413,10 +413,12 @@ function getEmulation(){
     }
     
     let ModelName = EloStarPrinterManager.getModelName(PrinterPortName)
-    if (EmulationTable[ModelName] !== undefined){
-        return EmulationTable[ModelName] 
-    }
+    
     if (ModelName !== ""){
+        if (EmulationTable[ModelName] !== undefined){
+            return EmulationTable[ModelName] 
+        }
+                
         let StringMatch = ""
         for (let i=0;i<ModelName.length;i++){
             StringMatch += ModelName[i]
@@ -428,8 +430,7 @@ function getEmulation(){
     if (ModelName === "" && PrinterPortName[0] === 'B' && PrinterPortName[1] === 'T'){          //Bluetooth returns a blank string for model name, so 
         let ColonIndex = PrinterPortName.indexOf(':')                                           //using the PrinterPortName to build the model name.
         let SubString = PrinterPortName.substr(ColonIndex+1,PrinterPortName.length-1)           //**THIS WILL NOT WORK IF THE DEFAULT PRINTER NAME HAS  
-        ModelName = ''                                                                          //BEEN CHANGED. SEE EMULATION TABLE BELOW.
-
+                                                                                                //BEEN CHANGED. SEE EMULATION TABLE BELOW.
         for (let i=0;i<SubString.length;i++){
              ModelName += SubString[i]
              if (EmulationTable[ModelName] !== undefined){
