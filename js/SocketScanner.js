@@ -87,7 +87,7 @@ function searchBluetooth(){        //step 3. Search for the scanner over bluetoo
 
                                        //setting BT search listener to receive discovered device as soon as it's found
 function registerBTSearchListener(){
-    EloSocketMobileManager.registerBTSearchListener("BTSearchCallback")    //this name needs to match the name of the function that receives data. See below.
+    EloSocketMobileManager.setBTSearchListener("BTSearchCallback")    //this name needs to match the name of the function that receives data. See below.
 }
 
 function BTSearchCallback(Data){      //receives data in real time when bluetooth device is found. Will return " " if no device found at end of BT search
@@ -170,7 +170,7 @@ function ConnStateCallback(Data){
 }
 
 function registerScanningListener(){                                  //setting callback to receive scanned data in real time.
-    EloSocketMobileManager.registerScanningListener("ScanDataCallback")     
+    EloSocketMobileManager.setScanningListener("ScanDataCallback")     
 }
 
 function ScanDataCallback(Data){                           //when a barcode is scanned, its output will be received here.
