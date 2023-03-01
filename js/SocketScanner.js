@@ -33,7 +33,7 @@ C. When the capture client's connection state has changed.
 document.getElementById("showScanCode").addEventListener("click", showScanCode)
 document.getElementById("searchBluetooth").addEventListener("click", searchBluetooth)
 document.getElementById("connectBluetooth").addEventListener("click", connectBluetooth)
-document.getElementById("initService").addEventListener("click", initService)
+//document.getElementById("initService").addEventListener("click", initService)
 document.getElementById("enableScanning").addEventListener("click", enableScanning)
 document.getElementById("runScanner").addEventListener("click", runScanner)
 document.getElementById("disableScanning").addEventListener("click", disableScanning)
@@ -52,9 +52,9 @@ document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
 // Begin functions dealing with connecting scanner to Elo device
 ///////////////////////////////////////////////
                          
-function initService(){   //step 1. Start the capture service - Will run the Companion app in the background. You don't need to open it.
-     document.getElementById("textField").value = EloSocketMobileManager.initService()
-}
+//function initService(){   //step 1. Start the capture service - Will run the Companion app in the background. You don't need to open it.
+//     document.getElementById("textField").value = EloSocketMobileManager.initService()
+//}
 
 function showScanCode(){           //step 2. Reveal a special Qr code on this website that when scanned, enables the scanner to be found over BT
      if (!PairCodeShown){                   
