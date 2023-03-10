@@ -29,16 +29,16 @@ C. When the capture client's connection state has changed.
 
 */
 
-
+document.getElementById("initService").addEventListener("click", initService)
 document.getElementById("showScanCode").addEventListener("click", showScanCode)
 document.getElementById("searchBluetooth").addEventListener("click", searchBluetooth)
 document.getElementById("connectBluetooth").addEventListener("click", connectBluetooth)
-document.getElementById("initService").addEventListener("click", initService)
 document.getElementById("enableScanning").addEventListener("click", enableScanning)
 document.getElementById("runScanner").addEventListener("click", runScanner)
 document.getElementById("disableScanning").addEventListener("click", disableScanning)
 document.getElementById("getBatteryLevel").addEventListener("click", getBatteryLevel)
 document.getElementById("rejectScans").addEventListener("click", rejectScans)
+
 
 
 let PairCodeShown = false
