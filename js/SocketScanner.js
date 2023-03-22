@@ -64,7 +64,7 @@ function showScanCode(){           //step 2. Reveal a special Qr code on this we
      }
      else{                        
          document.getElementById("appmodeqrcode").style.visibility = 'hidden'
-         document.getElementById("showScanCode").innerHTML="2.Show Pair Code Below"
+         document.getElementById("showScanCode").innerHTML="1.Show Pair Code Below"
          PairCodeShown = false
      }
 }
