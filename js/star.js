@@ -29,6 +29,8 @@ document.getElementById("forgetStarPrinter").addEventListener("click", forgetSta
 
 //document.getElementById("BTHide").addEventListener("click", BTHide)
 //document.getElementById("BTRename").addEventListener("click", BTRename)
+// <button id = "BTHide">QA ignore - BTHide</button>
+//         <button id = "BTRename">QA ignore - BTRename</button> 
 
 
 document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
