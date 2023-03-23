@@ -448,12 +448,7 @@ function getEmulation(){
 
 function BTHide(){      //function hides star printer from appearing under bluetooth devices. Will probably want to run this before putting printer in
                         //a commercial setting to avoid unwanted connections from strangers.
-    
-    if (EloStarPrinterManager.getBTDiscoveryPermissionCapability(BTManager_Key) === "NOSUPPORT"){
-        document.getElementById("textField").value="not supported"
-        return
-    }
-    
+       
     let BTManager_Key =  EloStarPrinterManager.getBTManager(PrinterPortName,"",10000, "StarDeviceTypePortablePrinter")
     EloStarPrinterManager.openBTPort(BTManager_Key)
     EloStarPrinterManager.loadBTSetting(BTManager_Key)
@@ -466,10 +461,7 @@ function BTHide(){      //function hides star printer from appearing under bluet
 
 function BTRename(){
     let BTManager_Key =  EloStarPrinterManager.getBTManager(PrinterPortName,"",10000, "StarPRNT")
-    if (EloStarPrinterManager.getBTDeviceNameCapability(BTManager_Key) == "NOSUPPORT"){
-        document.getElementById("textField").value="not supported"
-        return
-    }
+   
     EloStarPrinterManager.openBTPort(BTManager_Key)
     EloStarPrinterManager.loadBTSetting(BTManager_Key)
     EloStarPrinterManager.setBTDeviceName(BTManager_Key, "mC-Print3")
