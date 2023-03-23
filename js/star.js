@@ -465,7 +465,7 @@ function BTHide(){      //function hides star printer from appearing under bluet
 }
 
 function BTRename(){
-    let BTManager_Key =  EloStarPrinterManager.getBTManager(PrinterPortName,"",10000, "StarDeviceTypePortablePrinter")
+    let BTManager_Key =  EloStarPrinterManager.getBTManager(PrinterPortName,"",10000, "StarPRNT")
     if (EloStarPrinterManager.getBTDeviceNameCapability(BTManager_Key) == "NOSUPPORT"){
         document.getElementById("textField").value="not supported"
         return
