@@ -27,7 +27,7 @@ Some Star printer models can only print using a pattern that creates a bitmap im
 of how to create this kind of receipt.
 
 Throughout this program, several keys are used such as OpenPort_Key and ReceiptData_Key. The Star Android SDK, in Java, uses data types that 
-cannot be used at the JavaScript level. So, to access objects of these data types in Java, unique keys that correspond to each object
+cannot be used at the JavaScript level. So, to access objects of these data types at the Java level, unique keys that correspond to each object
 are used in the JavaScript level and are passed as parameters frequently.
 
 */
