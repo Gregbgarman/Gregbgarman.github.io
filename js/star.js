@@ -2,6 +2,10 @@
 
 This is a sample website containing code examples of how a Star printer could be used with EloStarPrinterManager.
 
+Supported in Elo images:
+Android 10:    MR-25 or higher
+Android 12:    All builds
+
 ***STAR PRINTERS SUPPORTING BLUETOOTH PAIRING- SEE BTHIDE() FUNCTION BEFORE PUTTING PRINTER IN PRODUCTION SETTING***
 By default, anybody can search for and pair with a Star printer over bluetooth, unless configurations are made via software to prevent this.
 
