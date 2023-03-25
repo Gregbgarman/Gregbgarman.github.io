@@ -2,21 +2,24 @@
 
 This is a sample website containing code examples of how a Star printer could be used with EloStarPrinterManager.
 
+This was developed and tested using an mC-Print3 Star Printer Model
+
 Supported in Elo images:
 Android 10:    MR-25 or higher
 Android 12:    All builds
 
+
 ***STAR PRINTERS SUPPORTING BLUETOOTH PAIRING- SEE BTHIDE() FUNCTION BEFORE PUTTING PRINTER IN PRODUCTION SETTING***
 By default, anybody can search for and pair with a Star printer over bluetooth, unless configurations are made via software to prevent this.
 
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------
 
 **There is no formal connection process with Star printers via software.** The connection process is done ahead of time by connecting via a USB cable,
 pairing with bluetooth in the Android settings app, or connecting the Star printer to the same LAN as the Elo device. Then in software, Star printer
 ports are searched for and detected. These ports then are opened, written to, and printing takes place.
 
 The messages on this sample website "Star Printer Connected" and "Star Printer Disconnected" are an indication of whether a detected port confirms
-the online status of a Star printer and that it can print on command. 
+the online status of a Star printer and that it can print on command.
 
 For this sample website, queryStarPrinterList() will detect a printer port and then that port is saved in global variable <PrinterPortName> and 
 used for the duration of the program. This variable is passed into EloStarPrinterManager.getPort() to retrieve an open port which will then 
@@ -423,7 +426,7 @@ function getReceipt2Data(){     //adding printer commands used for generating sa
     EloStarPrinterManager.appendBarcode("17523099544", "UPCA", "Mode2", 60, false)
     EloStarPrinterManager.appendUnitFeed(32)
 
-    EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
+    EloStarPrinterManager.appendCutPaper("FullCutWithFeed")
     EloStarPrinterManager.endDocument()                                //always end receipt creation with endDocument
 
     let ReceiptData_Key = EloStarPrinterManager.getCommands()          //ReceiptData_Key will be passed into writeport to print receipt
@@ -467,11 +470,15 @@ function getEmulation(){                //Function finds printer emulation using
 }
 
 
-function BTHide(){      //function hides star printer from appearing in bluetooth device searches. By default, anybody can search for and pair with a Star printer
-                        //unless configurations are made via software.
-                        //Will probably want to run this after pairing printer in a commercial setting to avoid unwanted connections from strangers.
+function BTHide(){      
+    /*function hides star printer from appearing in searches for bluetooth devices . By default, anybody can search for and pair with a Star printer
+      unless configurations are made via software. Will probably want to run this after pairing printer in a commercial setting to avoid 
+      unwanted connections from strangers.
     
-        //**Be careful with this setting** If printer is hidden from searches, then the Elo device is unpaired from the 
+      Be careful with this setting.  If printer is hidden from blueooth searches, then the Elo device is unpaired from the printer over bluetooth,
+      then bluetooth connection cannot be re-established since the printer won't be found in ensuing bluetooth searches. Bluetooth connection needs
+      to be established for getBTManager() to work. It will fail if ran when Elo device and printer are only connected over USB or TCP.
+   */
     
     let starDeviceType = "StarDeviceTypePortablePrinter"
     let RevealPrinter = true        //change to false to hide printer from bluetooth searches
@@ -484,18 +491,6 @@ function BTHide(){      //function hides star printer from appearing in bluetoot
     if (EloStarPrinterManager.isBTPortOpened(BTManager_Key) === 1){
         EloStarPrinterManager.closeBTPort(BTManager_Key)
     }    
-}
-
-function BTRename(){
- //   let BTManager_Key =  EloStarPrinterManager.getBTManager(PrinterPortName,"",10000, "StarPRNT")
-   
- //   EloStarPrinterManager.openBTPort(BTManager_Key)
- //   EloStarPrinterManager.loadBTSetting(BTManager_Key)
- //   EloStarPrinterManager.setBTDeviceName(BTManager_Key, "mC-Print3")
- //   EloStarPrinterManager.applyBTSetting(BTManager_Key)
- ////   if (EloStarPrinterManager.isBTPortOpened(BTManager_Key) === 1){
-  //      EloStarPrinterManager.closeBTPort(BTManager_Key)
-  //  }    
 }
 
 function initEmulationTable(){
