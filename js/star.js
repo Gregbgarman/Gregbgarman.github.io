@@ -475,7 +475,7 @@ function BTHide(){      //function hides star printer from appearing in bluetoot
     let BTManager_Key =  EloStarPrinterManager.getBTManager(PrinterPortName,"",10000, starDeviceType)
     EloStarPrinterManager.openBTPort(BTManager_Key)
     EloStarPrinterManager.loadBTSetting(BTManager_Key)
-    EloStarPrinterManager.setBTDiscoveryPermission(BTManager_Key, false)       //change to true to reveal printer under bluetooth searches
+    EloStarPrinterManager.setBTDiscoveryPermission(BTManager_Key, true)       //change to true to reveal printer under bluetooth searches
     EloStarPrinterManager.applyBTSetting(BTManager_Key)
     if (EloStarPrinterManager.isBTPortOpened(BTManager_Key) === 1){
         EloStarPrinterManager.closeBTPort(BTManager_Key)
