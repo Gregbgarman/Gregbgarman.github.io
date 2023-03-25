@@ -45,7 +45,7 @@ document.getElementById("checkStarPrinterOnline").addEventListener("click",check
 document.getElementById("checkStarFirmware").addEventListener("click", checkStarFirmware)
 document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter)
 
-//document.getElementById("BTHide").addEventListener("click", BTHide)
+document.getElementById("BTHide").addEventListener("click", BTHide)
 //document.getElementById("BTRename").addEventListener("click", BTRename)
 // <button id = "BTHide">QA ignore - BTHide</button>
 //         <button id = "BTRename">QA ignore - BTRename</button> 
