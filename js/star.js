@@ -1,9 +1,15 @@
 /*
+
 This is a sample website containing code examples of how a Star printer could be used with EloStarPrinterManager.
 
+***STAR PRINTERS SUPPORTING BLUETOOTH PAIRING- SEE BTHIDE() FUNCTION BEFORE PUTTING PRINTER IN PRODUCTION SETTING***
+By default, anybody can search for and pair with a Star printer over bluetooth, unless configurations are made via software to prevent this.
+
+
+
 **There is no formal connection process with Star printers via software.** The connection process is done ahead of time by connecting via a USB cable,
-pairing with bluetooth in the Android settings app, or connecting the Star printer to the same LAN as the Elo device. Then in the software, Star printer
-ports are searched for and detected. They then are written to once they get opened and printing takes place.
+pairing with bluetooth in the Android settings app, or connecting the Star printer to the same LAN as the Elo device. Then in software, Star printer
+ports are searched for and detected. These ports then are opened, written to, and printing takes place.
 
 The messages on this sample website "Star Printer Connected" and "Star Printer Disconnected" are an indication of whether a detected port confirms
 the online status of a Star printer and that it can print on command. 
@@ -12,6 +18,14 @@ For this sample website, queryStarPrinterList() will detect a printer port and t
 used for the duration of the program. This variable is passed into EloStarPrinterManager.getPort() to retrieve an open port which will then 
 be written to after receipt data has been created. See printreceipt() for printing flow sample and getReceipt1Data()/getReceipt2Data() for 
 receipt data creation sample.
+
+Some Star printer models can only print using a pattern that creates a bitmap image and projects onto receipt. See printStarRasterReceipt() for an example
+of how to create this kind of receipt.
+
+Throughout this program, several keys are used such as OpenPort_Key and ReceiptData_Key. The Star Android SDK, in Java, uses data types that 
+cannot be used at the JavaScript level. So, to access objects of these data types in Java, unique keys that correspond to each object
+are used in the JavaScript level and are passed as parameters frequently.
+
 */
 
 
@@ -42,7 +56,7 @@ let EmulationTable = {}
 initEmulationTable()
 
 
-function queryStarPrinterList(){             //enter either USB, BT, or TCP in test field box. Or leave blank to search USB -> BT -> TCP 
+function queryStarPrinterList(){             //enter either USB, BT, or TCP in test field box. Or leave blank to search USB -> BT -> TCP on this sample app
     let target=document.getElementById("textField").value
     let SearchResult = ""
     if (target === "" || target === "[]"){     
@@ -412,8 +426,8 @@ function getReceipt2Data(){     //adding printer commands used for generating sa
     return ReceiptData_Key
 }
 
-function getEmulation(){
-    if (PrinterPortName === ""){
+function getEmulation(){                //Function finds printer emulation using modelname and lookup table
+    if (PrinterPortName === ""){        //This emulation value can be hardcoded if desired, however, and this lookup process can be skipped.
         return "error"   
     }
     
@@ -432,11 +446,12 @@ function getEmulation(){
             }
         }       
     }
-    if (ModelName === "" && PrinterPortName[0] === 'B' && PrinterPortName[1] === 'T'){          //Bluetooth returns a blank string for model name, so 
-        let ColonIndex = PrinterPortName.indexOf(':')                                           //using the PrinterPortName to build the model name.
-        let SubString = PrinterPortName.substr(ColonIndex+1,PrinterPortName.length-1)           //**THIS WILL NOT WORK IF THE DEFAULT PRINTER NAME HAS  
-                                                                                                //BEEN CHANGED. SEE EMULATION TABLE BELOW.
-        for (let i=0;i<SubString.length;i++){
+    if (ModelName === "" && PrinterPortName[0] === 'B' && PrinterPortName[1] === 'T'){          //A limitation of the Star Android SDK is that getModelName()
+                                                                                                //returns a blank string when a bluetooth port is used. So in this sample app,                                     
+        let ColonIndex = PrinterPortName.indexOf(':')                                           //we pull out enough information from PrinterPortName to build the model name and
+        let SubString = PrinterPortName.substr(ColonIndex+1,PrinterPortName.length-1)           //retrieve an emulation from the lookup table below.
+                                                                                                //**THIS DESCRIBED PROCESS LIKELY WILL NOT SUCCEED IF THE ORIGINAL PRINTER NAME HAS                                                                                              
+        for (let i=0;i<SubString.length;i++){                                                   //BEEN CHANGED AND CORE INFO IS NOW MISSING EX. change name mC-Print3-D0100 -> BusinessPrinter won't work
              ModelName += SubString[i]
              if (EmulationTable[ModelName] !== undefined){
                  return EmulationTable[ModelName] 
@@ -448,17 +463,19 @@ function getEmulation(){
 }
 
 
-function BTHide(){      //function hides star printer from appearing under bluetooth devices. Will probably want to run this before putting printer in
-                        //a commercial setting to avoid unwanted connections from strangers.
-       
-//    let BTManager_Key =  EloStarPrinterManager.getBTManager(PrinterPortName,"",10000, "StarDeviceTypePortablePrinter")
-//    EloStarPrinterManager.openBTPort(BTManager_Key)
-//    EloStarPrinterManager.loadBTSetting(BTManager_Key)
-//    EloStarPrinterManager.setBTDiscoveryPermission(BTManager_Key, true)
-//    EloStarPrinterManager.applyBTSetting(BTManager_Key)
-//    if (EloStarPrinterManager.isBTPortOpened(BTManager_Key) === 1){
-//        EloStarPrinterManager.closeBTPort(BTManager_Key)
-//    }    
+function BTHide(){      //function hides star printer from appearing in bluetooth device searches. By default, anybody can search for and pair with a Star printer
+                        //unless configurations are made via software.
+                        //Will probably want to run this after pairing printer in a commercial setting to avoid unwanted connections from strangers.
+    
+    let starDeviceType = "StarDeviceTypePortablePrinter"      
+    let BTManager_Key =  EloStarPrinterManager.getBTManager(PrinterPortName,"",10000, starDeviceType)
+    EloStarPrinterManager.openBTPort(BTManager_Key)
+    EloStarPrinterManager.loadBTSetting(BTManager_Key)
+    EloStarPrinterManager.setBTDiscoveryPermission(BTManager_Key, true)       //change to false to reveal printer under bluetooth searches
+    EloStarPrinterManager.applyBTSetting(BTManager_Key)
+    if (EloStarPrinterManager.isBTPortOpened(BTManager_Key) === 1){
+        EloStarPrinterManager.closeBTPort(BTManager_Key)
+    }    
 }
 
 function BTRename(){
