@@ -466,7 +466,7 @@ function getEmulation(){                //Function finds printer emulation using
 
 
 function BTHide(){      
-    /*function hides star printer from appearing in searches for bluetooth devices . By default, anybody can search for and pair with a Star printer
+   /* function hides star printer from appearing in searches for bluetooth devices . By default, anybody can search for and pair with a Star printer
       unless configurations are made via software. Will probably want to run this after pairing printer in a commercial setting to avoid 
       unwanted connections from strangers.
     
