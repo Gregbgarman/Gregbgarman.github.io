@@ -10,7 +10,7 @@ Android 12:    All builds
 
 
 ***STAR PRINTERS SUPPORTING BLUETOOTH PAIRING- SEE BTHIDE() FUNCTION BEFORE PUTTING PRINTER IN PRODUCTION SETTING***
-By default, anybody can search for and pair with a Star printer over bluetooth, unless configurations are made via software to prevent this.
+By default, anybody can search for and attempt to pair with a Star printer over bluetooth, unless configurations are made via software to prevent this.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -466,9 +466,8 @@ function getEmulation(){                //Function finds printer emulation using
 
 
 function BTHide(){      
-   /* function hides star printer from appearing in searches for bluetooth devices . By default, anybody can search for and pair with a Star printer
-      unless configurations are made via software. Will probably want to run this after pairing printer in a commercial setting to avoid 
-      unwanted connections from strangers.
+   /* function hides star printer from appearing in searches for bluetooth devices. Will probably want to run this after pairing printer 
+      in a commercial setting to avoid unwanted connections from strangers.
     
       Be careful with this setting.  If printer is hidden from blueooth searches, then the Elo device is unpaired from the printer over bluetooth,
       then bluetooth connection cannot be re-established since the printer won't be found in ensuing bluetooth searches. Bluetooth connection needs
