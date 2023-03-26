@@ -479,6 +479,9 @@ function BTHide(){
     let RevealPrinter = true        //change to false to hide printer from bluetooth searches
     
     let BTManager_Key =  EloStarPrinterManager.getBTManager(PrinterPortName,"",10000, starDeviceType)
+    if (BTManager_Key === ''){
+        return   
+    }
     EloStarPrinterManager.openBTPort(BTManager_Key)
     EloStarPrinterManager.loadBTSetting(BTManager_Key)
     EloStarPrinterManager.setBTDiscoveryPermission(BTManager_Key, RevealPrinter)       
