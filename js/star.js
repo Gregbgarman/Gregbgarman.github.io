@@ -9,8 +9,7 @@ Android 10:    MR-25 or higher
 Android 12:    All builds
 
 
-***STAR PRINTERS SUPPORTING BLUETOOTH PAIRING- SEE BTHIDE() FUNCTION BEFORE PUTTING PRINTER IN PRODUCTION SETTING***
-By default, anybody can search for and attempt to pair with a Star printer over bluetooth, unless configurations are made via software to prevent this.
+***STAR PRINTERS SUPPORTING BLUETOOTH PAIRING- SEE BTHIDE() FUNCTION IF WISH TO HIDE PRINTER FROM BLUETOOTH DISCOVERABILITY***
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -466,16 +465,15 @@ function getEmulation(){                //Function finds printer emulation using
 
 
 function BTHide(){      
-   /* function hides star printer from appearing in searches for bluetooth devices. Will probably want to run this after pairing printer 
-      in a commercial setting to avoid unwanted connections from strangers.
-    
-      Be careful with this setting.  If printer is hidden from blueooth searches, then the Elo device is unpaired from the printer over bluetooth,
-      then bluetooth connection cannot be re-established since the printer won't be found in ensuing bluetooth searches. Bluetooth connection needs
+   /* function hides (or reveals) star printer from appearing in searches for bluetooth devices. Bluetooth connection needs
       to be established for getBTManager() to work. It will fail if ran when Elo device and printer are only connected over USB or TCP.
+    
+      Be careful with this discovery setting.  If printer is hidden from bluetooth searches, then the Elo device is unpaired from the printer 
+      over bluetooth, then bluetooth connection cannot be re-established since the printer won't be found in ensuing bluetooth searches. 
    */
     
     let starDeviceType = "StarDeviceTypePortablePrinter"
-    let RevealPrinter = true        //change to false to hide printer from bluetooth searches
+    let canDiscover = false        //change to true to show printer in bluetooth searches
     
     let BTManager_Key =  EloStarPrinterManager.getBTManager(PrinterPortName,"",10000, starDeviceType)
     if (BTManager_Key === ''){
@@ -483,7 +481,7 @@ function BTHide(){
     }
     EloStarPrinterManager.openBTPort(BTManager_Key)
     EloStarPrinterManager.loadBTSetting(BTManager_Key)
-    EloStarPrinterManager.setBTDiscoveryPermission(BTManager_Key, RevealPrinter)       
+    EloStarPrinterManager.setBTDiscoveryPermission(BTManager_Key, canDiscover)       
     EloStarPrinterManager.applyBTSetting(BTManager_Key)
     if (EloStarPrinterManager.isBTPortOpened(BTManager_Key) === 1){
         EloStarPrinterManager.closeBTPort(BTManager_Key)
