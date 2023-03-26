@@ -15,7 +15,7 @@ Android 12:    All builds
 
 **There is no formal connection process with Star printers via software.** The connection process is done ahead of time by connecting via a USB cable,
 pairing with bluetooth in the Android settings app, or connecting the Star printer to the same LAN as the Elo device. Then in software, Star printer
-ports are searched for and detected. These ports then are opened, written to, and printing takes place.
+ports are searched for and detected based on the method of connection. These ports then are opened, written to, and printing takes place.
 
 The messages on this sample website "Star Printer Connected" and "Star Printer Disconnected" are an indication of whether a detected port confirms
 the online status of a Star printer and that it can print on command.
