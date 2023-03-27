@@ -9,8 +9,7 @@ Android 10:    MR-25 or higher
 Android 12:    All builds
 
 
-***STAR PRINTERS SUPPORTING BLUETOOTH PAIRING- SEE BTHIDE() FUNCTION IF WISH TO HIDE PRINTER FROM BLUETOOTH DISCOVERABILITY***
-
+***STAR PRINTERS SUPPORTING BLUETOOTH PAIRING- SEE BTHIDE() FUNCTION IF WISH TO HIDE PRINTER FROM BLUETOOTH DISCOVERABILITY SO STRANGERS CANNOT CONNECT***
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 
 **There is no formal connection process with Star printers via software.** The connection process is done ahead of time by connecting via a USB cable,
