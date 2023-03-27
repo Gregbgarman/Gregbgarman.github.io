@@ -86,15 +86,15 @@ function setStarPrinter(){       //Simply stores a printer port in the PrinterPo
      }
      PrinterPortName = portname      // **stored in global variable to use throughout program**
    
-//     if (IsStarPrinterOnline()){
+     if (IsStarPrinterOnline()){
        document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Connected"
        document.getElementById("textField").value = "Printer Online"
-//     }
+     }
  
-//     else{
-//       document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
-//       document.getElementById("textField").value = "Printer Offline"
-//    }
+     else{
+       document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
+       document.getElementById("textField").value = "Printer Offline"
+    }
 }
 
 function forgetStarPrinter(){          //clears the stored PrinterPortName
