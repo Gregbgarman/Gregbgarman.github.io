@@ -474,6 +474,8 @@ function BTHide(){
     let starDeviceType = "StarDeviceTypePortablePrinter"
     let canDiscover = false        //change to true to show printer in bluetooth searches
     
+    canDiscover = document.getElementById("textField").value
+    
     let BTManager_Key =  EloStarPrinterManager.getBTManager(PrinterPortName,"",10000, starDeviceType)
     if (BTManager_Key === ''){
         return   
