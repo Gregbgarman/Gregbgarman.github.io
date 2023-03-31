@@ -60,11 +60,14 @@ initEmulationTable()
 function queryStarPrinterList(){             //enter either USB, BT, or TCP in test field box. Or leave blank to search USB -> BT -> TCP on this sample app
     let target=document.getElementById("textField").value
     let SearchResult = ""
+    let SearchResult2 = ""
+    
     if (target === "" || target === "[]"){     
        SearchResult = EloStarPrinterManager.searchPrinter("USB:")
        if (SearchResult === "[]"){
-           SearchResult = EloStarPrinterManager.searchPrinter("BT:")       
-           if (SearchResult === "[]"){
+           SearchResult = EloStarPrinterManager.searchPrinter("BT:")
+           SearchResult2 = SearchResult
+           if (SearchResult2 === "[]"){
               SearchResult = EloStarPrinterManager.searchPrinter("TCP:")
            }
        }
