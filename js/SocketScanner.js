@@ -205,9 +205,9 @@ function getBatteryLevel(){        //activated by button press
    EloSocketMobileManager.receiveBatteryLevel("BatteryLevelReceiver")  
 }
 
-function BatteryLevelReceiver(Data){     //**THIS DOES NOT PROVIDE CONTINUOUS BATTERY UPDATES IN REAL TIME
+function BatteryLevelReceiver(BatteryLevel){     //**THIS DOES NOT PROVIDE CONTINUOUS BATTERY UPDATES IN REAL TIME
                                          //**MUST CALL ABOVE FUNCTION EVERYTIME TO GET BATTERY LEVEL
-    let BatteryLevel = Data
+    //let BatteryLevel = Data
     if (BatteryLevel === -1){
           document.getElementById("textField").value = "Error finding battery %"
     }
