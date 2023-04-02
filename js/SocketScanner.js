@@ -90,8 +90,7 @@ function registerBTSearchListener(){
     EloSocketMobileManager.setBTSearchListener("BTSearchCallback")    //this name needs to match the name of the function that receives data. See below.
 }
 
-function BTSearchCallback(Data){      //receives data in real time when bluetooth device is found. Will return " " if no device found at end of BT search
-     let BTDeviceFound = Data
+function BTSearchCallback(BTDeviceFound){      //receives data in real time when bluetooth device is found. Will return " " if no device found at end of BT search
      if (BTDeviceFound === " "){
           document.getElementById("textField").value = "No device found"        
      }
@@ -127,8 +126,7 @@ function enableScanning(){
     }
 }
 
-function DeviceStateCallback(Data){          //receives events related to device state in real time. 4 possible states.
-    let DeviceState = Data
+function DeviceStateCallback(DeviceState){          //receives events related to device state in real time. 4 possible states.
     if (DeviceState === "DEVICESTATE_GONE"){      
         // Scanner is gone
         document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
@@ -151,20 +149,20 @@ function DeviceStateCallback(Data){          //receives events related to device
     }   
 }
 
-function ConnStateCallback(Data){
-   if (Data === "CONNECTING"){
+function ConnStateCallback(ConnState){
+   if (ConnState === "CONNECTING"){
         //client is connecting
    }
-   else if (Data === "CONNECTED"){
+   else if (ConnState === "CONNECTED"){
        // client is now usable      
    }
-   else if (Data === "DISCONNECTING"){
+   else if (ConnState === "DISCONNECTING"){
         // only called when shutting down gracefully      
    }
-   else if (Data === "DISCONNECTED"){
+   else if (ConnState === "DISCONNECTED"){
         // successfully disconnected      
    }
-   else if (Data === "DISCONNECTION_ERROR"){
+   else if (ConnState === "DISCONNECTION_ERROR"){
        //error disconnecting      
    }  
 }
@@ -206,8 +204,7 @@ function getBatteryLevel(){        //activated by button press
 }
 
 function BatteryLevelReceiver(BatteryLevel){     //**THIS DOES NOT PROVIDE CONTINUOUS BATTERY UPDATES IN REAL TIME
-                                         //**MUST CALL ABOVE FUNCTION EVERYTIME TO GET BATTERY LEVEL
-    //let BatteryLevel = Data
+                                                //**MUST CALL ABOVE FUNCTION EVERYTIME TO GET BATTERY LEVEL
     if (BatteryLevel === -1){
           document.getElementById("textField").value = "Error finding battery %"
     }
