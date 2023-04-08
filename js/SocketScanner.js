@@ -47,9 +47,9 @@ let RejectAllScans = false
 
 document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
 
-window.onload = function() {
-  document.getElementById("scannerAvailable").innerHTML = "reload"
-};
+//window.onload = function() {
+
+//};
 
 
 ////////////////////////////////////////////////
