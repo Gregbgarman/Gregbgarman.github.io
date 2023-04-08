@@ -478,14 +478,6 @@ function BTHide(){
     let starDeviceType = "StarDeviceTypePortablePrinter"
     let canDiscover = false        //change to true to show printer in bluetooth searches
     
-    if(document.getElementById("textField").value === 'false'){
-        canDiscover = false
-    }
-    else if (document.getElementById("textField").value === 'true'){
-             canDiscover = true
-             }
-    
-    
     let BTManager_Key =  EloStarPrinterManager.getBTManager(PrinterPortName,"",10000, starDeviceType)
     if (BTManager_Key === ''){
         return   
@@ -498,6 +490,27 @@ function BTHide(){
         EloStarPrinterManager.closeBTPort(BTManager_Key)
     }    
 }
+
+function changePrinterBTName(){         //API's used in this function will be available in MR-28 and Android 12
+    
+    let emulation = "StarPRNT"
+    let name = "mC-Print3-Printer"        
+    
+    let BTManager_Key =  EloStarPrinterManager.getBTManager(PrinterPortName,"",10000, emulation)
+    if (BTManager_Key === ''){
+        return   
+    }
+    if (EloStarPrinterManager.getBTDeviceNameCapability(BTManager_Key) === "SUPPORT"){
+        EloStarPrinterManager.openBTPort(BTManager_Key)
+        EloStarPrinterManager.loadBTSetting(BTManager_Key)
+        EloStarPrinterManager.setBTDeviceName(BTManager_Key, name)       
+        EloStarPrinterManager.applyBTSetting(BTManager_Key)
+        if (EloStarPrinterManager.isBTPortOpened(BTManager_Key) === 1){
+            EloStarPrinterManager.closeBTPort(BTManager_Key)
+         }         
+    }
+}
+
 
 function initEmulationTable(){
   EmulationTable = {
