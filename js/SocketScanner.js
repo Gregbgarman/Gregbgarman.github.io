@@ -47,6 +47,10 @@ let RejectAllScans = false
 
 document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
 
+window.onload = function() {
+  document.getElementById("scannerAvailable").innerHTML = "reload"
+};
+
 
 ////////////////////////////////////////////////
 // Begin functions dealing with connecting scanner to Elo device
