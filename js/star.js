@@ -46,10 +46,6 @@ document.getElementById("checkStarPrinterOnline").addEventListener("click",check
 document.getElementById("checkStarFirmware").addEventListener("click", checkStarFirmware)
 document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter)
 
-document.getElementById("changeBTName").addEventListener("click", changePrinterBTName)
-
-
-
 
 
 document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
