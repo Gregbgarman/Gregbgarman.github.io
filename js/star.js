@@ -505,18 +505,15 @@ function changePrinterBTName(){         //API's used in this function will be av
         return   
     }
     
-     let x = EloStarPrinterManager.getBTDeviceNameCapability(BTManager_Key)
-     document.getElementById("textField").value = x
-    
-    if ( x === "SUPPORT"){
-        EloStarPrinterManager.openBTPort(BTManager_Key)
-        EloStarPrinterManager.loadBTSetting(BTManager_Key)
+    EloStarPrinterManager.openBTPort(BTManager_Key)
+    EloStarPrinterManager.loadBTSetting(BTManager_Key)
+    if (EloStarPrinterManager.getBTDeviceNameCapability(BTManager_Key) === "SUPPORT"){       
         EloStarPrinterManager.setBTDeviceName(BTManager_Key, name)       
-        EloStarPrinterManager.applyBTSetting(BTManager_Key)
-        if (EloStarPrinterManager.isBTPortOpened(BTManager_Key) === 1){
-            EloStarPrinterManager.closeBTPort(BTManager_Key)
-         }         
+        EloStarPrinterManager.applyBTSetting(BTManager_Key)            
     }
+     if (EloStarPrinterManager.isBTPortOpened(BTManager_Key) === 1){
+            EloStarPrinterManager.closeBTPort(BTManager_Key)
+     }   
 }
 
 
