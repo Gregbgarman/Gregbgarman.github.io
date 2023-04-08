@@ -495,7 +495,7 @@ function BTHide(){
 function changePrinterBTName(){         //API's used in this function will be available in MR-28 and Android 12
     
     let emulation = "StarPRNT"
-    let name = "mC-Print3-greg"        
+    let name = "mC-Print3-D0100"        
     
     let BTManager_Key =  EloStarPrinterManager.getBTManager(PrinterPortName,"",10000, emulation)
     if (BTManager_Key === ''){
@@ -505,7 +505,7 @@ function changePrinterBTName(){         //API's used in this function will be av
     EloStarPrinterManager.openBTPort(BTManager_Key)
     EloStarPrinterManager.loadBTSetting(BTManager_Key)
     if (EloStarPrinterManager.getBTDeviceNameCapability(BTManager_Key) === "SUPPORT"){
-        if (EloStarPrinterManager.getBTDeviceName !== name){
+        if (EloStarPrinterManager.getBTDeviceName(BTManager_Key) !== name){
             EloStarPrinterManager.setBTDeviceName(BTManager_Key, name)       
             EloStarPrinterManager.applyBTSetting(BTManager_Key)
         }                   
