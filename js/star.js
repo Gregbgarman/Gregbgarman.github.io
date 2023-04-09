@@ -47,31 +47,13 @@ document.getElementById("checkStarFirmware").addEventListener("click", checkStar
 document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter)
 
 
-//document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
+document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
 
 
 let PrinterPortName=""        //Acquired from searching for printers and used very often throughout program
 
 let EmulationTable = {}
 initEmulationTable()
-
-
-let savedport = localStorage.getItem('StoredPort')
-//document.getElementById("textField").value = savedport
-if (savedport === null){
-    document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
-}
-else{
-    PrinterPortName = savedport
-    if (IsStarPrinterOnline()){
-       document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Connected"
-       
-     }
-    else{
-        PrinterPortName = ""
-    }
-}
-
 
 
 function queryStarPrinterList(){             //enter either USB, BT, or TCP in test field box. Or leave blank to search USB -> BT -> TCP on this sample app
@@ -103,9 +85,7 @@ function setStarPrinter(){       //Simply stores a printer port in the PrinterPo
         portname = portname.slice(1, -1).split(',')[0]
      }
      PrinterPortName = portname      // **stored in global variable to use throughout program**
-    
-     localStorage.setItem('StoredPort', PrinterPortName)
-   
+      
      if (IsStarPrinterOnline()){
        document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Connected"
        document.getElementById("textField").value = "Printer Online"
@@ -122,7 +102,6 @@ function forgetStarPrinter(){          //clears the stored PrinterPortName
          PrinterPortName = ""
          document.getElementById("textField").value = true
          document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
-         localStorage.removeItem('StoredPort')
      }
      else{
           document.getElementById("textField").value = "No set printer" 
