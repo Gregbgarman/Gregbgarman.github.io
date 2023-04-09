@@ -45,11 +45,16 @@ let PairCodeShown = false
 let BluetoothDevices = []
 let RejectAllScans = false
 
-document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
 
-//window.onload = function() {
 
-//};
+window.onload = function() {
+   if (EloSocketMobileManager.getDeviceName() === ''){
+      document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
+   }
+   else{
+      document.getElementById("scannerAvailable").innerHTML = "Scanner Ready"
+   }
+};
 
 
 ////////////////////////////////////////////////
