@@ -47,7 +47,7 @@ document.getElementById("checkStarFirmware").addEventListener("click", checkStar
 document.getElementById("forgetStarPrinter").addEventListener("click", forgetStarPrinter)
 
 
-document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
+//document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
 
 
 let PrinterPortName=""        //Acquired from searching for printers and used very often throughout program
@@ -56,8 +56,17 @@ let EmulationTable = {}
 initEmulationTable()
 
 
-let portt = localStorage.getItem('StoredPort')
-document.getElementById("textField").value = portt
+PrinterPortName = localStorage.getItem('StoredPort')
+//document.getElementById("textField").value = PrinterPort
+if (PrinterPortName === ""){
+    document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
+}
+else{
+    if (IsStarPrinterOnline()){
+       document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Connected"
+       document.getElementById("textField").value = "Printer Online"
+     }
+}
 
 
 
@@ -91,7 +100,7 @@ function setStarPrinter(){       //Simply stores a printer port in the PrinterPo
      }
      PrinterPortName = portname      // **stored in global variable to use throughout program**
     
-     localStorage.setItem('StoredPort', "test name")
+     localStorage.setItem('StoredPort', PrinterPortName)
    
      if (IsStarPrinterOnline()){
        document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Connected"
@@ -109,6 +118,7 @@ function forgetStarPrinter(){          //clears the stored PrinterPortName
          PrinterPortName = ""
          document.getElementById("textField").value = true
          document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
+         localStorage.removeItem('StoredPort')
      }
      else{
           document.getElementById("textField").value = "No set printer" 
