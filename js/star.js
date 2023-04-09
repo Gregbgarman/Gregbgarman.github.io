@@ -57,7 +57,7 @@ initEmulationTable()
 
 
 let savedport = localStorage.getItem('StoredPort')
-//document.getElementById("textField").value = PrinterPort
+document.getElementById("textField").value = savedport
 if (savedport === undefined){
     document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
 }
@@ -65,7 +65,7 @@ else{
     PrinterPortName = savedport
     if (IsStarPrinterOnline()){
        document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Connected"
-       document.getElementById("textField").value = "Printer Online"
+       
      }
     else{
         PrinterPortName = ""
