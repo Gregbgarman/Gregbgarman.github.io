@@ -56,6 +56,11 @@ let EmulationTable = {}
 initEmulationTable()
 
 
+let portt = localStorage.getItem('StoredPort')
+document.getElementById("textField").value = portt
+
+
+
 function queryStarPrinterList(){             //enter either USB, BT, or TCP in test field box. Or leave blank to search USB -> BT -> TCP on this sample app
     let target=document.getElementById("textField").value
     let SearchResult = ""
@@ -85,6 +90,8 @@ function setStarPrinter(){       //Simply stores a printer port in the PrinterPo
         portname = portname.slice(1, -1).split(',')[0]
      }
      PrinterPortName = portname      // **stored in global variable to use throughout program**
+    
+     localStorage.setItem('StoredPort', "test name")
    
      if (IsStarPrinterOnline()){
        document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Connected"
