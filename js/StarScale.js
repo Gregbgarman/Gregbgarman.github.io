@@ -17,13 +17,11 @@ function beginScan(){
 
 function DeviceCallback(Scale){
     let obj = JSON.parse(Scale)
-    
-    let Device_Name = obj.device_name
-    let Identifier = obj.identifier
-    
-    DevicesFound += Device_Name + ' '
     DeviceTable.push(obj)
     
+    let Device_Name = obj.device_name
+    DevicesFound += Device_Name + ' '
+    document.getElementById("textField").value = DevicesFound
     
       //const json = '{"result":true, "count":42}'
 //const obj = JSON.parse(json)
