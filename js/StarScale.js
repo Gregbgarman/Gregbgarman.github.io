@@ -35,9 +35,18 @@ function DeviceCallback(Scale){
 
 
 function connectScale(){
-   let Scale_Identifier = document.getElementById("textField").value
+   let Scale_Name = document.getElementById("textField").value
+   let Identifier = ''
+   for (let i=0;i<DeviceTable.length;i++){
+       if (DeviceTable[i].device_name === Scale_Name){
+           Identifier = DeviceTable[i].identifier
+           break
+       }
+   }
+   
+   
    let Baud_Rate = 1200
-   if (!EloStarScaleManager.createScale(Scale_Identifier, Baud_Rate)){
+   if (!EloStarScaleManager.createScale(Identifier, Baud_Rate)){
        document.getElementById("textField").value = "Create Scale Failed"
        return
    }
