@@ -17,7 +17,7 @@ function beginScan(){
 
 function DeviceCallback(Scale){
     let obj = JSON.parse(Scale)
-    DeviceTable.push(obj)
+    DeviceTable.push(Scale)
     
     let Device_Name = obj.device_name
     DevicesFound += Device_Name + ' '
@@ -37,16 +37,19 @@ function connectScale(){
    let Device_Name = document.getElementById("textField").value
    let Identifier = ''
    for (let i=0;i<DeviceTable.length;i++){
-       let obj = DeviceTable[i]
+       let obj = JSON.parse(DeviceTable[i])
        document.getElementById("textField").value = "here"
+       
        if (obj.device_name === Device_Name){
            Identifier = obj.identifier
            document.getElementById("textField").value = Identifier
-           //break
+           break
        }
+       
+       //document.getElementById("textField").value = obj.identifier
    }
    
-   /*
+   
    let Baud_Rate = 1200
    if (!EloStarScaleManager.createScale(Identifier, Baud_Rate)){
        document.getElementById("textField").value = "Create Scale Failed"
@@ -59,7 +62,7 @@ function connectScale(){
    }
   
    EloStarScaleManager.setScaleDataCallback("DataCallback") 
-  */
+  
   
   
 
