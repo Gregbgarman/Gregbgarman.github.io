@@ -4,6 +4,7 @@ document.getElementById("connectScale").addEventListener("click", connectScale)
 let DevicesFound = ''
 let DeviceTable = []
 
+document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
 
 function beginScan(){
     DevicesFound = ''
@@ -64,7 +65,7 @@ function connectScale(){
        document.getElementById("textField").value = "Scale Callback creation failure"
        return
    }
-   document.getElementById("textField").value = "Scale Ready"
+   document.getElementById("textField").value = "Scale Connecting..."
   
 }
 
@@ -93,6 +94,7 @@ function StatusCallback(status){
   
    if (status === "CONNECT_SUCCESS"){
       document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
+      document.getElementById("textField").value = "Scale Ready"
      
    }
   
@@ -131,7 +133,8 @@ function StatusCallback(status){
 
            
    else if (status ==="DISCONNECT_SUCCESS"){
-     
+     document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
+     document.getElementById("textField").value = "Disconnect Success"
    }
   
    else if (status === "DISCONNECT_NOT_CONNECTED"){
@@ -145,10 +148,13 @@ function StatusCallback(status){
      
    }
    else if (status === "DISCONNECT_UNEXPECTED_ERROR"){
+     document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
+     document.getElementById("textField").value = "Unexpected Error"
      
    }
    else if (status === "DISCONNECT_UNEXPECTED_DISCONNECTION"){
-     
+     document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
+     document.getElementById("textField").value = "Unexpected Disconnection"
    }
                
 
