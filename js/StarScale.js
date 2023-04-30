@@ -33,16 +33,18 @@ function DeviceCallback(Scale){
 
 
 function connectScale(){
+   EloStarScaleManager.stopScan()
    let Scale_Name = document.getElementById("textField").value
    let Identifier = ''
    for (let i=0;i<DeviceTable.length;i++){
        if (DeviceTable[i].device_name === Scale_Name){
            Identifier = DeviceTable[i].identifier
+           document.getElementById("textField").value = Identifier
            break
        }
    }
    
-   
+   /*
    let Baud_Rate = 1200
    if (!EloStarScaleManager.createScale(Identifier, Baud_Rate)){
        document.getElementById("textField").value = "Create Scale Failed"
@@ -55,7 +57,7 @@ function connectScale(){
    }
   
    EloStarScaleManager.setScaleDataCallback("DataCallback") 
-  
+  */
   
   
 
