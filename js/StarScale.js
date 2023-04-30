@@ -34,13 +34,15 @@ function DeviceCallback(Scale){
 
 function connectScale(){
    //EloStarScaleManager.stopScan()
-   let Scale_Name = document.getElementById("textField").value
+   let Device_Name = document.getElementById("textField").value
    let Identifier = ''
    for (let i=0;i<DeviceTable.length;i++){
-       if (DeviceTable[i].device_name === Scale_Name){
-           Identifier = DeviceTable[i].identifier
+       let obj = DeviceTable[i]
+       document.getElementById("textField").value = "here"
+       if (obj.device_name === Device_Name){
+           Identifier = obj.identifier
            document.getElementById("textField").value = Identifier
-           break
+           //break
        }
    }
    
