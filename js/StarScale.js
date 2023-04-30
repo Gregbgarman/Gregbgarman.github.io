@@ -4,6 +4,7 @@ document.getElementById("connectScale").addEventListener("click", connectScale)
 let DevicesFound = ''
 let DeviceTable = []
 
+
 document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
 
 function beginScan(){
@@ -23,23 +24,19 @@ function DeviceCallback(Scale){
     let Device_Name = obj.device_name
     DevicesFound += Device_Name + ','
     document.getElementById("textField").value = DevicesFound
-    
-      //const json = '{"result":true, "count":42}'
-//const obj = JSON.parse(json)
-
-
-
-//document.getElementById("textField").value = obj.count
+ 
 }
 
 
 function connectScale(){
-   EloStarScaleManager.stopScan()
    let Device_Name = document.getElementById("textField").value
+   let Identifier = ''
+   let Baud_Rate = 1200
+   EloStarScaleManager.stopScan()
    if(Device_Name.length > 1 && Device_Name.charAt(Device_Name.length-1) === ',') {
         Device_Name = Device_Name.slice(0, -1)
    }
-   let Identifier = ''
+   
    for (let i=0;i<DeviceTable.length;i++){
        let obj = JSON.parse(DeviceTable[i])
        
@@ -49,8 +46,11 @@ function connectScale(){
        }
    }
    
+   if (!EloStarScaleManager.setScaleDataCallback("DataCallback")){
+       document.getElementById("textField").value = "Scale Callback creation failure"
+       return
+   }
    
-   let Baud_Rate = 1200
    if (!EloStarScaleManager.createScale(Identifier, Baud_Rate)){
        document.getElementById("textField").value = "Create Scale Failed"
        return
@@ -60,13 +60,8 @@ function connectScale(){
        document.getElementById("textField").value = "Connect Scale Failed"
        return
    }
-  
-   if (!EloStarScaleManager.setScaleDataCallback("DataCallback")){
-       document.getElementById("textField").value = "Scale Callback creation failure"
-       return
-   }
-   document.getElementById("textField").value = "Scale Connecting..."
-  
+   
+   document.getElementById("textField").value = "Scale Connecting..."  
 }
 
 function DataCallback(Data){
