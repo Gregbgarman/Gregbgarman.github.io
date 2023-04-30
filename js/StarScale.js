@@ -1,16 +1,36 @@
 document.getElementById("beginScan").addEventListener("click", beginScan)
 document.getElementById("connectScale").addEventListener("click", connectScale)
 
-
+let DevicesFound = ''
+let DeviceTable = []
 
 
 function beginScan(){
-    EloStarScaleManager.scanForScales("DeviceCallback", "All")
-  
+    DevicesFound = ''
+    DeviceTable = []
+    document.getElementById("textField").value = "Searching..."
+    if(!EloStarScaleManager.scanForScales("DeviceCallback", "All")){
+        document.getElementById("textField").value = "Error searching for scales"      
+    }
+     
 }
 
 function DeviceCallback(Scale){
-   
+    let obj = JSON.parse(Scale)
+    
+    let Device_Name = obj.device_name
+    let Identifier = obj.identifier
+    
+    DevicesFound += Device_Name + ' '
+    DeviceTable.push(obj)
+    
+    
+      //const json = '{"result":true, "count":42}'
+//const obj = JSON.parse(json)
+
+
+
+//document.getElementById("textField").value = obj.count
 }
 
 
@@ -31,12 +51,7 @@ function connectScale(){
   
   
   
-  //const json = '{"result":true, "count":42}'
-//const obj = JSON.parse(json)
 
-
-
-//document.getElementById("textField").value = obj.count
 }
 
 function DataCallback(Data){
