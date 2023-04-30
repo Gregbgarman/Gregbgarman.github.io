@@ -34,7 +34,7 @@ function DeviceCallback(Scale){
 
 
 function connectScale(){
-   //EloStarScaleManager.stopScan()
+   EloStarScaleManager.stopScan()
    let Device_Name = document.getElementById("textField").value
    if(Device_Name.length > 1 && Device_Name.charAt(Device_Name.length-1) === ',') {
         Device_Name = Device_Name.slice(0, -1)
