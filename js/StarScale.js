@@ -35,6 +35,9 @@ function DeviceCallback(Scale){
 function connectScale(){
    //EloStarScaleManager.stopScan()
    let Device_Name = document.getElementById("textField").value
+   if(Device_Name.length > 1 && Device_Name.charAt(Device_Name.length-1) === ',') {
+        Device_Name = Device_Name.slice(0, -1)
+   }
    let Identifier = ''
    for (let i=0;i<DeviceTable.length;i++){
        let obj = JSON.parse(DeviceTable[i])
@@ -46,7 +49,6 @@ function connectScale(){
            break
        }
        
-       //document.getElementById("textField").value = obj.identifier
    }
    
    
@@ -61,20 +63,31 @@ function connectScale(){
        return
    }
   
-   EloStarScaleManager.setScaleDataCallback("DataCallback") 
-  
-  
-  
-
+   if (!EloStarScaleManager.setScaleDataCallback("DataCallback")){
+       document.getElementById("textField").value = "Scale Callback creation failure"
+       return
+   }
+   document.getElementById("textField").value = "Scale Ready"
+   document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
 }
 
 function DataCallback(Data){
   if (Data === "ERROR"){
-    
+      document.getElementById("textField").value = "Scale Data Error"
   }
-  
-  
-  
+  else{
+      let obj = JSON.parse(Data)
+      let weight = obj.weight
+      let unit = obj.unit
+      let status = obj.status
+      let decimal_places = obj.decimal_places
+      let data_type = obj.data_type
+      let raw = obj.raw
+      let comparator_result = obj.comparator_result
+      
+      document.getElementById("textField").value = weight + unit
+      
+  }
 }
 
 function StatusCallback(status){
