@@ -41,14 +41,11 @@ function connectScale(){
    let Identifier = ''
    for (let i=0;i<DeviceTable.length;i++){
        let obj = JSON.parse(DeviceTable[i])
-       document.getElementById("textField").value = "here"
        
        if (obj.device_name === Device_Name){
            Identifier = obj.identifier
-           document.getElementById("textField").value = Identifier
            break
        }
-       
    }
    
    
@@ -68,7 +65,7 @@ function connectScale(){
        return
    }
    document.getElementById("textField").value = "Scale Ready"
-   document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
+  
 }
 
 function DataCallback(Data){
@@ -95,7 +92,7 @@ function StatusCallback(status){
        // **connection**
   
    if (status === "CONNECT_SUCCESS"){
-     
+      document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
      
    }
   
