@@ -33,7 +33,7 @@ function DeviceCallback(Scale){
 
 
 function connectScale(){
-   EloStarScaleManager.stopScan()
+   //EloStarScaleManager.stopScan()
    let Scale_Name = document.getElementById("textField").value
    let Identifier = ''
    for (let i=0;i<DeviceTable.length;i++){
