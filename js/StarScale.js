@@ -55,7 +55,7 @@ function connectScale(){
        return
    }
   
-   if (!EloStarScaleManager.connect("StatusCallback")){
+   if (!EloStarScaleManager.connectScale("StatusCallback")){
        document.getElementById("textField").value = "Connect Scale Failed"
        return
    }
