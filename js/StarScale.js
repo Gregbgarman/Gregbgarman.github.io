@@ -27,7 +27,7 @@ function beginScan(){
     DevicesFound = ''
     DeviceTable = []
     document.getElementById("textField").value = "Searching..."
-    if(!EloStarScaleManager.scanForScales("DeviceCallback", "USB")){
+    if(!EloStarScaleManager.scanForScales("DeviceCallback", "All")){
         document.getElementById("textField").value = "Error searching for scales"      
     }
      
