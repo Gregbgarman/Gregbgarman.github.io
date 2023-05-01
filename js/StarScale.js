@@ -70,17 +70,15 @@ function DataCallback(Data){
       document.getElementById("textField").value = "Scale Data Error"
   }
   else{
-        document.getElementById("textField").value = "in the else"
       let obj = JSON.parse(Data)
       let weight = obj.weight
-      let unit = obj.unit
-      let status = obj.status
-      let decimal_places = obj.decimal_places
-      let data_type = obj.data_type
-      let raw = obj.raw
-      let comparator_result = obj.comparator_result
+      //let unit = obj.unit
+     // let status = obj.status
+     // let decimal_places = obj.decimal_places
+    //  let data_type = obj.data_type
+    //  let raw = obj.raw
+    //  let comparator_result = obj.comparator_result
       
-      //document.getElementById("textField").value = weight + unit
           
       document.getElementById("textField").value = weight
 
