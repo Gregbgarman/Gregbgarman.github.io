@@ -78,8 +78,10 @@ function DataCallback(Data){
       let raw = obj.raw
       let comparator_result = obj.comparator_result
       
-      document.getElementById("textField").value = weight + unit
-      
+      //document.getElementById("textField").value = weight + unit
+            document.getElementById("textField").value = "here"
+      document.getElementById("textField").value = weight
+
   }
 }
 
