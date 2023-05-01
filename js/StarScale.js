@@ -38,7 +38,7 @@ function DeviceCallback(Scale){
     DeviceTable.push(Scale)
     
     let Device_Name = obj.device_name
-    DevicesFound += Device_Name + ','
+    DevicesFound += Device_Name + ' '
     document.getElementById("textField").value = DevicesFound
  
 }
@@ -49,7 +49,7 @@ function connectScale(){
    let Identifier = ''
    let Baud_Rate = 1200
    EloStarScaleManager.stopScan()
-   if(Device_Name.length > 1 && Device_Name.charAt(Device_Name.length-1) === ',') {
+   if(Device_Name.length > 1 && Device_Name.charAt(Device_Name.length-1) === ' ') {
         Device_Name = Device_Name.slice(0, -1)
    }
    
