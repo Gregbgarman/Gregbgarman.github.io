@@ -2,6 +2,9 @@ document.getElementById("beginScan").addEventListener("click", beginScan)
 document.getElementById("connectScale").addEventListener("click", connectScale)
 document.getElementById("disconnectScale").addEventListener("click", disconnectScale)
 
+document.getElementById("setContOutput").addEventListener("click", setContinousOutput)
+document.getElementById("setStableOutput").addEventListener("click", setStableOutput)
+
 
 
 
@@ -14,6 +17,19 @@ if (EloStarScaleManager.isScaleConnected()){
 }
 else{
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
+}
+
+function setContinousOutput(){
+    if (!EloStarScaleManager.updateOutputConditionSetting("ContinuousOutputAtAllTimes")){
+        document.getElementById("textField").value = "Error"
+    }
+    
+}
+
+function setStableOutput(){
+    if (!EloStarScaleManager.updateOutputConditionSetting("ContinuousOutputAtStableTimes")){
+        document.getElementById("textField").value = "Error"
+    }
 }
 
 function disconnectScale(){
