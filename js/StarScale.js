@@ -94,34 +94,33 @@ function StatusCallback(status){
    }
   
    else if (status === "CONNECT_NOT_AVAILABLE"){
-     
+     document.getElementById("textField").value = "Connect - Not Available"
      
    }
   
    else if (status === "CONNECT_ALREADY_CONNECTED"){
-     
+     document.getElementById("textField").value = "Connect - Already Connected"
      
    }
                    
    else if (status === "CONNECT_TIMEOUT"){
-     
+          document.getElementById("textField").value = "Connect - Timeout"
    }
   
    else if (status === "CONNECT_READ_WRITE_ERROR"){
-     
-     
+          document.getElementById("textField").value = "Connect - Read/Write Error"    
    }
 
    else if (status === "CONNECT_NOT_SUPPORTED"){
-     
+          document.getElementById("textField").value = "Connect - Not Supported"
    }
 
    else if (status === "CONNECT_NOT_GRANTED_PERMISSION"){
-     
+          document.getElementById("textField").value = "Connect - Not Granted Permission"
    }
   
    else if (status === "CONNECT_UNEXPECTED_ERROR"){
-     
+          document.getElementById("textField").value = "Connect - Unexpected Error"
    }
 
          // **Disconnection**
@@ -133,18 +132,21 @@ function StatusCallback(status){
    }
   
    else if (status === "DISCONNECT_NOT_CONNECTED"){
-     
+       document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
+       document.getElementById("textField").value = "Not Connected"    
    }
   
    else if (status === "DISCONNECT_TIMEOUT"){
-     
+       document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
+       document.getElementById("textField").value = "Disconnect Timeout"    
    }
    else if (status === "DISCONNECT_READ_WRITE_ERROR"){
-     
+       document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
+       document.getElementById("textField").value = "Disconnect Read/Write Error"    
    }
    else if (status === "DISCONNECT_UNEXPECTED_ERROR"){
      document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
-     document.getElementById("textField").value = "Unexpected Error"
+     document.getElementById("textField").value = "Disconnect - Unexpected Error"
      
    }
    else if (status === "DISCONNECT_UNEXPECTED_DISCONNECTION"){
@@ -155,24 +157,24 @@ function StatusCallback(status){
 
                 // ***update settings***
   else if (status === "UPDATE_SETTING_SUCCESS"){
-    
+      document.getElementById("textField").value = "Setting Updated Successfully"    
   }
   
   else if (status === "UPDATE_SETTING_NOT_CONNECTED"){
-    
+    document.getElementById("textField").value = "Setting Update - Not Connected"
   }
   
   else if (status === "UPDATE_SETTING_REQUEST_REJECTED"){
-    
+    document.getElementById("textField").value = "Setting Update - Request Rejected"
   }
   else if (status === "UPDATE_SETTING_TIMEOUT"){
-    
+    document.getElementById("textField").value = "Setting Update - Timeout"
   }
   else if (status === "UPDATE_SETTING_ALREADY_EXECUTING"){
-    
+    document.getElementById("textField").value = "Setting Update - Already Executing"
   }
   else if (status === "UPDATE_SETTING_UNEXPECTED_ERROR"){
-    
+    document.getElementById("textField").value = "Setting Update - Unexpected Error"
   }
   
 
@@ -181,27 +183,28 @@ function StatusCallback(status){
   
   
   else if (status === "UPDATE_SETTING_SUCCESS"){
-    
+        document.getElementById("textField").value = "Condition Update - Success"
   }
   
   else if (status === "UPDATE_SETTING_NOT_CONNECTED"){
-    
+       document.getElementById("textField").value = "Condition Update - Not Connected"
   }
   
   else if (status === "UPDATE_SETTING_REQUEST_REJECTED"){
-    
+       document.getElementById("textField").value = "Condition Update - Request Rejected"
+ 
   }
   else if (status === "UPDATE_SETTING_TIMEOUT"){
-    
+       document.getElementById("textField").value = "Condition Update - Timeout"
   }
   else if (status === "UPDATE_SETTING_NOT_SUPPORTED"){
-    
+       document.getElementById("textField").value = "Condition Update - Not Supported"
   }
   else if (status === "UPDATE_SETTING_ALREADY_EXECUTING"){
-    
+       document.getElementById("textField").value = "Condition Update - Already Executing"    
   }
   else if (status === "UPDATE_SETTING_UNEXPECTED_ERROR"){
-    
+       document.getElementById("textField").value = "Condition Update - Unexpected Error"
   }
                   
        
