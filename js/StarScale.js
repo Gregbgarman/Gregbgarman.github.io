@@ -47,13 +47,9 @@ function setContinousOutput(){
 function setStableOutput(){
     let setting = "ContinuousOutputAtStableTimes"
     if (EloStarScaleManager.getScaleType() === "MGS"){
-         document.getElementById("StarScaleAvailable").innerHTML = "MGS"
        setting = "OneTimeOutputAtStableTimes"        
     }
-    else{
-         document.getElementById("StarScaleAvailable").innerHTML = "nope"
-    }
-    
+       
     if (!EloStarScaleManager.updateOutputConditionSetting(setting)){
         document.getElementById("textField").value = "Error"
     }
