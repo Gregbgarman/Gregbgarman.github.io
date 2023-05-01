@@ -45,7 +45,12 @@ function setContinousOutput(){
 }
 
 function setStableOutput(){
-    if (!EloStarScaleManager.updateOutputConditionSetting("ContinuousOutputAtStableTimes")){
+    let setting = "ContinuousOutputAtStableTimes"
+    if (EloStarScaleManager.getScaleType === "MGS"){
+       setting = "OneTimeOutputAtStableTimes"        
+    }
+    
+    if (!EloStarScaleManager.updateOutputConditionSetting(setting)){
         document.getElementById("textField").value = "Error"
     }
 }
