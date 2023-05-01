@@ -71,6 +71,8 @@ function DataCallback(Data){
   }
   else{
       //let obj = JSON.parse(Data)
+            document.getElementById("textField").value = "in else"
+
       document.getElementById("textField").value = Data
       
       
