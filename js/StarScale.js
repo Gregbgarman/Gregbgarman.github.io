@@ -76,16 +76,16 @@ function DataCallback(Data){
       document.getElementById("textField").value = obj
       
       
-      //let weight = obj.weight
-      //let unit = obj.unit
-     // let status = obj.status
-     // let decimal_places = obj.decimal_places
-    //  let data_type = obj.data_type
+      let weight = obj.weight
+      let unit = obj.unit
+      let status = obj.status
+      let decimal_places = obj.decimal_places
+      let data_type = obj.data_type
     //  let raw = obj.raw
-    //  let comparator_result = obj.comparator_result
+      let comparator_result = obj.comparator_result
       
           
-      //document.getElementById("textField").value = weight
+      document.getElementById("textField").value = weight + unit
 
   }
 }
