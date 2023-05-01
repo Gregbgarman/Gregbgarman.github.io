@@ -71,7 +71,10 @@ function DataCallback(Data){
   }
   else{
       let obj = JSON.parse(Data)
-      let weight = obj.weight
+      document.getElementById("textField").value = obj
+      
+      
+      //let weight = obj.weight
       //let unit = obj.unit
      // let status = obj.status
      // let decimal_places = obj.decimal_places
@@ -80,7 +83,7 @@ function DataCallback(Data){
     //  let comparator_result = obj.comparator_result
       
           
-      document.getElementById("textField").value = weight
+      //document.getElementById("textField").value = weight
 
   }
 }
