@@ -70,10 +70,10 @@ function DataCallback(Data){
       document.getElementById("textField").value = "Scale Data Error"
   }
   else{
-      //let obj = JSON.parse(Data)
+      let obj = JSON.parse(Data)
             document.getElementById("textField").value = "in else"
 
-      document.getElementById("textField").value = Data
+      document.getElementById("textField").value = obj
       
       
       //let weight = obj.weight
