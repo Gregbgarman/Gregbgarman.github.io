@@ -65,10 +65,12 @@ function connectScale(){
 }
 
 function DataCallback(Data){
+      document.getElementById("textField").value = "here"
   if (Data === "ERROR"){
       document.getElementById("textField").value = "Scale Data Error"
   }
   else{
+        document.getElementById("textField").value = "in the else"
       let obj = JSON.parse(Data)
       let weight = obj.weight
       let unit = obj.unit
@@ -79,7 +81,7 @@ function DataCallback(Data){
       let comparator_result = obj.comparator_result
       
       //document.getElementById("textField").value = weight + unit
-            document.getElementById("textField").value = "here"
+          
       document.getElementById("textField").value = weight
 
   }
