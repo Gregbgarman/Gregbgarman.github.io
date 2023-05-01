@@ -229,7 +229,8 @@ function StatusCallback(status){
   else if (status === "UPDATE_SETTING_UNEXPECTED_ERROR"){
        document.getElementById("textField").value = "Condition Update - Unexpected Error"
   }
-                  
+      
+}
     
  function getDeviceName(){
     let name = EloStarScaleManager.getScaleDeviceName()
@@ -270,4 +271,4 @@ function disconnectScale(){
     }
 }   
   
-}
+
