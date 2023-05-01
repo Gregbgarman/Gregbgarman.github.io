@@ -1,11 +1,26 @@
 document.getElementById("beginScan").addEventListener("click", beginScan)
 document.getElementById("connectScale").addEventListener("click", connectScale)
+document.getElementById("disconnectScale").addEventListener("click", disconnectScale)
+
+
+
 
 let DevicesFound = ''
 let DeviceTable = []
 
 
-document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
+if (EloStarScaleManager.isScaleConnected()){
+    document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"   
+}
+else{
+    document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
+}
+
+function disconnectScale(){
+    if (!EloStarScaleManager.disconnectScale()){
+        document.getElementById("textField").value = "Unable to Disconnect Scale"
+    }
+}
 
 function beginScan(){
     DevicesFound = ''
