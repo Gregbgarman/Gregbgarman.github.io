@@ -5,6 +5,7 @@ document.getElementById("disconnectScale").addEventListener("click", disconnectS
 document.getElementById("setContOutput").addEventListener("click", setContinousOutput)
 document.getElementById("setStableOutput").addEventListener("click", setStableOutput)
 document.getElementById("zeroScale").addEventListener("click", zeroPointAdjustment)
+document.getElementById("getDeviceName").addEventListener("click", getDeviceName)
 
 
 
@@ -19,6 +20,16 @@ if (EloStarScaleManager.isScaleConnected()){
 }
 else{
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
+}
+
+function getDeviceName(){
+    let name = EloStarScaleManager.getScaleDeviceName()
+    if (name === ""){
+        document.getElementById("textField").value = "Error finding name"
+    }
+    else{
+        document.getElementById("textField").value = name 
+    }
 }
 
 function zeroPointAdjustment(){
