@@ -22,50 +22,12 @@ else{
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
 }
 
-function getDeviceName(){
-    let name = EloStarScaleManager.getScaleDeviceName()
-    if (name === ""){
-        document.getElementById("textField").value = "Error finding name"
-    }
-    else{
-        document.getElementById("textField").value = name 
-    }
-}
-
-function zeroPointAdjustment(){
-    if (!EloStarScaleManager.updateSetting("ZeroPointAdjustment")){
-        document.getElementById("textField").value = "Error"
-    }
-}
-
-function setContinousOutput(){
-    if (!EloStarScaleManager.updateOutputConditionSetting("ContinuousOutputAtAllTimes")){
-        document.getElementById("textField").value = "Error"
-    }
-}
-
-function setStableOutput(){
-    let setting = "ContinuousOutputAtStableTimes"
-    if (EloStarScaleManager.getScaleType() === "MGS"){
-       setting = "OneTimeOutputAtStableTimes"        
-    }
-       
-    if (!EloStarScaleManager.updateOutputConditionSetting(setting)){
-        document.getElementById("textField").value = "Error"
-    }
-}
-
-function disconnectScale(){
-    if (!EloStarScaleManager.disconnectScale()){
-        document.getElementById("textField").value = "Unable to Disconnect Scale"
-    }
-}
 
 function beginScan(){
     DevicesFound = ''
     DeviceTable = []
     document.getElementById("textField").value = "Searching..."
-    if(!EloStarScaleManager.scanForScales("DeviceCallback", "All")){
+    if(!EloStarScaleManager.scanForScales("DeviceCallback", "USB")){
         document.getElementById("textField").value = "Error searching for scales"      
     }
      
@@ -268,6 +230,44 @@ function StatusCallback(status){
        document.getElementById("textField").value = "Condition Update - Unexpected Error"
   }
                   
+    
+ function getDeviceName(){
+    let name = EloStarScaleManager.getScaleDeviceName()
+    if (name === ""){
+        document.getElementById("textField").value = "Error finding name"
+    }
+    else{
+        document.getElementById("textField").value = name 
+    }
+}
+
+function zeroPointAdjustment(){
+    if (!EloStarScaleManager.updateSetting("ZeroPointAdjustment")){
+        document.getElementById("textField").value = "Error"
+    }
+}
+
+function setContinousOutput(){
+    if (!EloStarScaleManager.updateOutputConditionSetting("ContinuousOutputAtAllTimes")){
+        document.getElementById("textField").value = "Error"
+    }
+}
+
+function setStableOutput(){
+    let setting = "ContinuousOutputAtStableTimes"
+    if (EloStarScaleManager.getScaleType() === "MGS"){
+       setting = "OneTimeOutputAtStableTimes"        
+    }
        
+    if (!EloStarScaleManager.updateOutputConditionSetting(setting)){
+        document.getElementById("textField").value = "Error"
+    }
+}
+
+function disconnectScale(){
+    if (!EloStarScaleManager.disconnectScale()){
+        document.getElementById("textField").value = "Unable to Disconnect Scale"
+    }
+}   
   
 }
