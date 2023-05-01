@@ -4,6 +4,8 @@ document.getElementById("disconnectScale").addEventListener("click", disconnectS
 
 document.getElementById("setContOutput").addEventListener("click", setContinousOutput)
 document.getElementById("setStableOutput").addEventListener("click", setStableOutput)
+document.getElementById("zeroScale").addEventListener("click", zeroPointAdjustment)
+
 
 
 
@@ -19,11 +21,16 @@ else{
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
 }
 
+function zeroPointAdjustment(){
+    if (!EloStarScaleManager.updateSetting("ZeroPointAdjustment")){
+        document.getElementById("textField").value = "Error"
+    }
+}
+
 function setContinousOutput(){
     if (!EloStarScaleManager.updateOutputConditionSetting("ContinuousOutputAtAllTimes")){
         document.getElementById("textField").value = "Error"
     }
-    
 }
 
 function setStableOutput(){
