@@ -97,7 +97,7 @@ function DataCallback(Data){
       let status = obj.status
       let decimal_places = obj.decimal_places
       let data_type = obj.data_type
-    //  let raw = obj.raw
+      let raw = obj.raw
       let comparator_result = obj.comparator_result
       
           
