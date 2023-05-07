@@ -112,7 +112,7 @@ function StatusCallback(status){
   
    if (status === "CONNECT_SUCCESS"){
       document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
-      document.getElementById("textField").value = "Scale Ready"
+      document.getElementById("textField").value = "Scale Ready to Weigh"
      
    }
   
