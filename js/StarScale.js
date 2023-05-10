@@ -243,15 +243,11 @@ function StatusCallback(status){
 }
 
 function zeroPointAdjustment(){
-    if (!EloStarScaleManager.updateSetting("ZeroPointAdjustment")){
-        document.getElementById("textField").value = "Error"
-    }
+    EloStarScaleManager.updateSetting("ZeroPointAdjustment")
 }
 
 function setContinousOutput(){
-    if (!EloStarScaleManager.updateOutputConditionSetting("ContinuousOutputAtAllTimes")){
-        document.getElementById("textField").value = "Error"
-    }
+   EloStarScaleManager.updateOutputConditionSetting("ContinuousOutputAtAllTimes")
 }
 
 function setStableOutput(){
