@@ -256,9 +256,8 @@ function setStableOutput(){
        setting = "OneTimeOutputAtStableTimes"        
     }
        
-    if (!EloStarScaleManager.updateOutputConditionSetting(setting)){
-        document.getElementById("textField").value = "Error"
-    }
+    EloStarScaleManager.updateOutputConditionSetting(setting)
+    
 }
 
 function disconnectScale(){
