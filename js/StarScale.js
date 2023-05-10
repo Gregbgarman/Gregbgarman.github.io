@@ -22,7 +22,7 @@ else{
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
 }
 
-document.getElementById("StarScaleAvailable").innerHTML = "test"
+  document.getElementById("textField").value = "sdfesdfdf"      
 
 
 function beginScan(){
