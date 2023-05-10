@@ -8,9 +8,6 @@ document.getElementById("setStableOutput").addEventListener("click", setStableOu
 document.getElementById("getDeviceName").addEventListener("click", getDeviceName)
 
 
-
-
-
 let DevicesFound = ''
 let DeviceTable = []
 
@@ -82,16 +79,11 @@ function connectScale(){
 }
 
 function DataCallback(Data){
-      document.getElementById("textField").value = "here"
   if (Data === "ERROR"){
       document.getElementById("textField").value = "Scale Data Error"
   }
   else{
       let obj = JSON.parse(Data)
-            document.getElementById("textField").value = "in else"
-
-      document.getElementById("textField").value = obj
-      
       
       let weight = obj.weight
       let unit = obj.unit
@@ -100,10 +92,8 @@ function DataCallback(Data){
       let data_type = obj.data_type
       let raw = obj.raw
       let comparator_result = obj.comparator_result
-      
-          
+                
       document.getElementById("textField").value = weight + unit
-
   }
 }
 
@@ -119,9 +109,8 @@ function StatusCallback(status){
   
    else if (status === "CONNECT_NOT_AVAILABLE"){
      document.getElementById("textField").value = "Connect - Not Available"
-     
    }
-  
+    
    else if (status === "CONNECT_ALREADY_CONNECTED"){
      document.getElementById("textField").value = "Connect - Already Connected"
      
@@ -180,6 +169,8 @@ function StatusCallback(status){
                
 
                 // ***update settings***
+    
+    
   else if (status === "UPDATE_SETTING_SUCCESS"){
       document.getElementById("textField").value = "Setting Updated Successfully"    
   }
@@ -203,7 +194,7 @@ function StatusCallback(status){
   
 
   
-  // ***update output condition***
+            // ***update output condition***
   
   
   else if (status === "UPDATE_SETTING_SUCCESS"){
@@ -256,7 +247,7 @@ function zeroPointAdjustment(){
 function setContinousOutput(){
     if (!EloStarScaleManager.isScaleConnected()){
          document.getElementById("textField").value = "No scale connected"
-        return
+         return
     }
     EloStarScaleManager.updateOutputConditionSetting("ContinuousOutputAtAllTimes")
 }
@@ -273,8 +264,6 @@ function setStableOutput(){
 
 function disconnectScale(){
     if (!EloStarScaleManager.disconnectScale()){
-        document.getElementById("textField").value = "Error with disconnection"
+        document.getElementById("textField").value = "Error while disconnecting"
     }
 }   
-  
-
