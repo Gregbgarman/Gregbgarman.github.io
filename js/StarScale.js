@@ -225,6 +225,10 @@ function StatusCallback(status){
 }
     
  function getDeviceName(){
+     if (!EloStarScaleManager.isScaleConnected()){
+         document.getElementById("textField").value = "No scale connected"
+         return
+    }
     let name = EloStarScaleManager.getScaleDeviceName()
     if (name === ""){
         document.getElementById("textField").value = "Error finding name"
@@ -259,10 +263,13 @@ function setStableOutput(){
     }
        
     EloStarScaleManager.updateOutputConditionSetting(setting)
-    
 }
 
 function disconnectScale(){
+    if (!EloStarScaleManager.isScaleConnected()){
+         document.getElementById("textField").value = "No scale connected"
+         return
+    }
     if (!EloStarScaleManager.disconnectScale()){
         document.getElementById("textField").value = "Error while disconnecting"
     }
