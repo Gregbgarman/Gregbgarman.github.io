@@ -244,11 +244,19 @@ function StatusCallback(status){
 }
 
 function zeroPointAdjustment(){
+    if (!EloStarScaleManager.isScaleConnected()){
+         document.getElementById("textField").value = "No scale connected"
+        return
+    }
     EloStarScaleManager.updateSetting("ZeroPointAdjustment")
 }
 
 function setContinousOutput(){
-   EloStarScaleManager.updateOutputConditionSetting("ContinuousOutputAtAllTimes")
+    if (!EloStarScaleManager.isScaleConnected()){
+         document.getElementById("textField").value = "No scale connected"
+        return
+    }
+    EloStarScaleManager.updateOutputConditionSetting("ContinuousOutputAtAllTimes")
 }
 
 function setStableOutput(){
