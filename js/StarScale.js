@@ -14,7 +14,6 @@ document.getElementById("getDeviceName").addEventListener("click", getDeviceName
 let DevicesFound = ''
 let DeviceTable = []
 
-document.getElementById("StarScaleAvailable").innerHTML = "test"
 
 if (EloStarScaleManager.isScaleConnected()){
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"   
@@ -22,6 +21,8 @@ if (EloStarScaleManager.isScaleConnected()){
 else{
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
 }
+
+document.getElementById("StarScaleAvailable").innerHTML = "test"
 
 
 function beginScan(){
