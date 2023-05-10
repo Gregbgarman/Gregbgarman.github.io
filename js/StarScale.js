@@ -4,7 +4,7 @@ document.getElementById("disconnectScale").addEventListener("click", disconnectS
 
 document.getElementById("setContOutput").addEventListener("click", setContinousOutput)
 document.getElementById("setStableOutput").addEventListener("click", setStableOutput)
-document.getElementById("zeroScale").addEventListener("click", zeroPointAdjustment)
+//document.getElementById("zeroScale").addEventListener("click", zeroPointAdjustment)
 document.getElementById("getDeviceName").addEventListener("click", getDeviceName)
 
 
