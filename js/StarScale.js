@@ -14,6 +14,7 @@ document.getElementById("getDeviceName").addEventListener("click", getDeviceName
 let DevicesFound = ''
 let DeviceTable = []
 
+document.getElementById("StarScaleAvailable").innerHTML = "test"
 
 if (EloStarScaleManager.isScaleConnected()){
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"   
