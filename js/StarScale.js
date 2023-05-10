@@ -273,7 +273,7 @@ function setStableOutput(){
 
 function disconnectScale(){
     if (!EloStarScaleManager.disconnectScale()){
-        document.getElementById("textField").value = "Error during disconnection"
+        document.getElementById("textField").value = "Error with disconnection"
     }
 }   
   
