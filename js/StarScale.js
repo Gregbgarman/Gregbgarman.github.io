@@ -52,10 +52,10 @@ function connectScale(){
        }
    }
    
-//   if (!EloStarScaleManager.setScaleDataCallback("DataCallback")){
-//       document.getElementById("textField").value = "Scale Callback creation failure"
-//       return
-//   }
+   if (!EloStarScaleManager.setScaleDataCallback("DataCallback")){
+       document.getElementById("textField").value = "Scale Callback creation failure"
+       return
+   }
    
    if (!EloStarScaleManager.createScale(Identifier, Baud_Rate)){
        document.getElementById("textField").value = "Create Scale Failed"
@@ -95,30 +95,8 @@ function StatusCallback(status){
     let result = obj.result
     
     
-    if (event === "READ_DATA"){
-        if (result === "ERROR"){
-        document.getElementById("textField").value = "Scale Data Error"
-        }
-      else{
-          let obj = JSON.parse(result)
-      
-         let weight = obj.weight
-        let unit = obj.unit
-        let status = obj.status
-         let decimal_places = obj.decimal_places
-        let data_type = obj.data_type
-        let raw = obj.raw
-        let comparator_result = obj.comparator_result
-               
-         document.getElementById("textField").value = weight + unit
-      }
-        
-        
-        
-    }
     
-  
-    else if (event === "CONNECT"){
+   if (event === "CONNECT"){
   
    if (result === "CONNECT_SUCCESS"){
       document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
