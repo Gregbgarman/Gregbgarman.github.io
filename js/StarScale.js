@@ -1,12 +1,9 @@
 document.getElementById("beginScan").addEventListener("click", beginScan)
 document.getElementById("connectScale").addEventListener("click", connectScale)
 document.getElementById("disconnectScale").addEventListener("click", disconnectScale)
-
 document.getElementById("setContOutput").addEventListener("click", setContinousOutput)
 document.getElementById("setStableOutput").addEventListener("click", setStableOutput)
-//document.getElementById("zeroScale").addEventListener("click", zeroPointAdjustment)
 document.getElementById("getDeviceName").addEventListener("click", getDeviceName)
-
 
 let DevicesFound = ''
 let DeviceTable = []
@@ -19,16 +16,13 @@ else{
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
 }
 
-
-
 function beginScan(){
     DevicesFound = ''
     DeviceTable = []
     document.getElementById("textField").value = "Searching..."
     if(!EloStarScaleManager.scanForScales("DeviceCallback", "All")){
-        document.getElementById("textField").value = "Error searching for scales"      
-    }
-     
+        document.getElementById("textField").value = "Unable to scan for scales"      
+    }     
 }
 
 function DeviceCallback(Scale){
@@ -38,9 +32,7 @@ function DeviceCallback(Scale){
     let Device_Name = obj.device_name
     DevicesFound += Device_Name + ' '
     document.getElementById("textField").value = DevicesFound
- 
 }
-
 
 function connectScale(){
    let Device_Name = document.getElementById("textField").value
@@ -70,8 +62,8 @@ function connectScale(){
        return
    }
   
-   if (!EloStarScaleManager.connectScale("StatusCallback")){
-       document.getElementById("textField").value = "Connect Scale Failed"
+   if (!EloStarScaleManager.connectScale("StatusCallback")){        //see callback to find if connection succeeded or failed. Boolean value indicates if process started or failed.
+       document.getElementById("textField").value = "Could not start connection process"
        return
    }
    
@@ -98,13 +90,15 @@ function DataCallback(Data){
 }
 
 function StatusCallback(status){
+    let obj = JSON.parse(status)
+    let event = obj.event
+    let result = obj.result
   
        // **connection**
   
    if (status === "CONNECT_SUCCESS"){
       document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
-      document.getElementById("textField").value = "Scale Ready to Weigh"
-     
+      document.getElementById("textField").value = "Scale Ready to Weigh"    
    }
   
    else if (status === "CONNECT_NOT_AVAILABLE"){
@@ -159,8 +153,7 @@ function StatusCallback(status){
    }
    else if (status === "DISCONNECT_UNEXPECTED_ERROR"){
      document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
-     document.getElementById("textField").value = "Disconnect - Unexpected Error"
-     
+     document.getElementById("textField").value = "Disconnect - Unexpected Error"     
    }
    else if (status === "DISCONNECT_UNEXPECTED_DISCONNECTION"){
      document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
@@ -174,11 +167,9 @@ function StatusCallback(status){
   else if (status === "UPDATE_SETTING_SUCCESS"){
       document.getElementById("textField").value = "Setting Updated Successfully"    
   }
-  
   else if (status === "UPDATE_SETTING_NOT_CONNECTED"){
     document.getElementById("textField").value = "Setting Update - Not Connected"
-  }
-  
+  }  
   else if (status === "UPDATE_SETTING_REQUEST_REJECTED"){
     document.getElementById("textField").value = "Setting Update - Request Rejected"
   }
@@ -191,11 +182,8 @@ function StatusCallback(status){
   else if (status === "UPDATE_SETTING_UNEXPECTED_ERROR"){
     document.getElementById("textField").value = "Setting Update - Unexpected Error"
   }
-  
-
-  
+   
             // ***update output condition***
-  
   
   else if (status === "UPDATE_SETTING_SUCCESS"){
         document.getElementById("textField").value = "Condition Update - Success"
@@ -207,7 +195,6 @@ function StatusCallback(status){
   
   else if (status === "UPDATE_SETTING_REQUEST_REJECTED"){
        document.getElementById("textField").value = "Condition Update - Request Rejected"
- 
   }
   else if (status === "UPDATE_SETTING_TIMEOUT"){
        document.getElementById("textField").value = "Condition Update - Timeout"
@@ -220,8 +207,7 @@ function StatusCallback(status){
   }
   else if (status === "UPDATE_SETTING_UNEXPECTED_ERROR"){
        document.getElementById("textField").value = "Condition Update - Unexpected Error"
-  }
-      
+  }     
 }
     
  function getDeviceName(){
@@ -262,7 +248,10 @@ function setStableOutput(){
        setting = "OneTimeOutputAtStableTimes"        
     }
        
-    EloStarScaleManager.updateOutputConditionSetting(setting)
+    let change_began = EloStarScaleManager.updateOutputConditionSetting(setting)    //see callback to determine if setting was changed. Boolean value indicates process began.
+    if (!change_began){
+         document.getElementById("textField").value = "Unable to change setting"
+    }
 }
 
 function disconnectScale(){
@@ -270,7 +259,7 @@ function disconnectScale(){
          document.getElementById("textField").value = "No scale connected"
          return
     }
-    if (!EloStarScaleManager.disconnectScale()){
+    if (!EloStarScaleManager.disconnectScale()){                                    //see callback to determine if setting was changed. Boolean value indicates process began.
         document.getElementById("textField").value = "Error while disconnecting"
     }
 }   
