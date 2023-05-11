@@ -52,10 +52,10 @@ function connectScale(){
        }
    }
    
-   if (!EloStarScaleManager.setScaleDataCallback("DataCallback")){
-       document.getElementById("textField").value = "Scale Callback creation failure"
-       return
-   }
+//   if (!EloStarScaleManager.setScaleDataCallback("DataCallback")){
+//       document.getElementById("textField").value = "Scale Callback creation failure"
+//       return
+//   }
    
    if (!EloStarScaleManager.createScale(Identifier, Baud_Rate)){
        document.getElementById("textField").value = "Create Scale Failed"
@@ -93,121 +93,152 @@ function StatusCallback(status){
     let obj = JSON.parse(status)
     let event = obj.event
     let result = obj.result
+    
+    
+    if (event === "READ_DATA"){
+        if (result === "ERROR"){
+        document.getElementById("textField").value = "Scale Data Error"
+        }
+      else{
+          let obj = JSON.parse(result)
+      
+         let weight = obj.weight
+        let unit = obj.unit
+        let status = obj.status
+         let decimal_places = obj.decimal_places
+        let data_type = obj.data_type
+        let raw = obj.raw
+        let comparator_result = obj.comparator_result
+               
+         document.getElementById("textField").value = weight + unit
+      }
+        
+        
+        
+    }
+    
   
-       // **connection**
+    else if (event === "CONNECT"){
   
-   if (status === "CONNECT_SUCCESS"){
+   if (result === "CONNECT_SUCCESS"){
       document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
       document.getElementById("textField").value = "Scale Ready to Weigh"    
    }
   
-   else if (status === "CONNECT_NOT_AVAILABLE"){
+   else if (result === "CONNECT_NOT_AVAILABLE"){
      document.getElementById("textField").value = "Connect - Not Available"
    }
     
-   else if (status === "CONNECT_ALREADY_CONNECTED"){
+   else if (result === "CONNECT_ALREADY_CONNECTED"){
      document.getElementById("textField").value = "Connect - Already Connected"
-     
    }
                    
-   else if (status === "CONNECT_TIMEOUT"){
+   else if (result === "CONNECT_TIMEOUT"){
           document.getElementById("textField").value = "Connect - Timeout"
    }
   
-   else if (status === "CONNECT_READ_WRITE_ERROR"){
+   else if (result === "CONNECT_READ_WRITE_ERROR"){
           document.getElementById("textField").value = "Connect - Read/Write Error"    
    }
 
-   else if (status === "CONNECT_NOT_SUPPORTED"){
+   else if (result === "CONNECT_NOT_SUPPORTED"){
           document.getElementById("textField").value = "Connect - Not Supported"
    }
 
-   else if (status === "CONNECT_NOT_GRANTED_PERMISSION"){
+   else if (result === "CONNECT_NOT_GRANTED_PERMISSION"){
           document.getElementById("textField").value = "Connect - Not Granted Permission"
    }
   
-   else if (status === "CONNECT_UNEXPECTED_ERROR"){
+   else if (result === "CONNECT_UNEXPECTED_ERROR"){
           document.getElementById("textField").value = "Connect - Unexpected Error"
    }
+    }
 
          // **Disconnection**
 
+    else if (event === "DISCONNECT"){
            
-   else if (status ==="DISCONNECT_SUCCESS"){
+   if (result ==="DISCONNECT_SUCCESS"){
      document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
      document.getElementById("textField").value = "Disconnect Success"
    }
   
-   else if (status === "DISCONNECT_NOT_CONNECTED"){
+   else if (result === "DISCONNECT_NOT_CONNECTED"){
        document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
        document.getElementById("textField").value = "Not Connected"    
    }
   
-   else if (status === "DISCONNECT_TIMEOUT"){
+   else if (result === "DISCONNECT_TIMEOUT"){
        document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
        document.getElementById("textField").value = "Disconnect Timeout"    
    }
-   else if (status === "DISCONNECT_READ_WRITE_ERROR"){
+   else if (result === "DISCONNECT_READ_WRITE_ERROR"){
        document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
        document.getElementById("textField").value = "Disconnect Read/Write Error"    
    }
-   else if (status === "DISCONNECT_UNEXPECTED_ERROR"){
+   else if (result === "DISCONNECT_UNEXPECTED_ERROR"){
      document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
      document.getElementById("textField").value = "Disconnect - Unexpected Error"     
    }
-   else if (status === "DISCONNECT_UNEXPECTED_DISCONNECTION"){
+   else if (result === "DISCONNECT_UNEXPECTED_DISCONNECTION"){
      document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
      document.getElementById("textField").value = "Unexpected Disconnection"
    }
-               
+    }            
 
                 // ***update settings***
     
+  else if (event === "UPDATE_SETTING"){
     
-  else if (status === "UPDATE_SETTING_SUCCESS"){
+  if (result === "UPDATE_SETTING_SUCCESS"){
       document.getElementById("textField").value = "Setting Updated Successfully"    
   }
-  else if (status === "UPDATE_SETTING_NOT_CONNECTED"){
+  else if (result === "UPDATE_SETTING_NOT_CONNECTED"){
     document.getElementById("textField").value = "Setting Update - Not Connected"
   }  
-  else if (status === "UPDATE_SETTING_REQUEST_REJECTED"){
+  else if (result === "UPDATE_SETTING_REQUEST_REJECTED"){
     document.getElementById("textField").value = "Setting Update - Request Rejected"
   }
-  else if (status === "UPDATE_SETTING_TIMEOUT"){
+  else if (result === "UPDATE_SETTING_TIMEOUT"){
     document.getElementById("textField").value = "Setting Update - Timeout"
   }
-  else if (status === "UPDATE_SETTING_ALREADY_EXECUTING"){
+  else if (result === "UPDATE_SETTING_ALREADY_EXECUTING"){
     document.getElementById("textField").value = "Setting Update - Already Executing"
   }
-  else if (status === "UPDATE_SETTING_UNEXPECTED_ERROR"){
+  else if (result === "UPDATE_SETTING_UNEXPECTED_ERROR"){
     document.getElementById("textField").value = "Setting Update - Unexpected Error"
   }
-   
+  } 
             // ***update output condition***
   
-  else if (status === "UPDATE_SETTING_SUCCESS"){
+  else if (event === "UPDATE_OUTPUT"){  
+    
+  if (result === "UPDATE_SETTING_SUCCESS"){
         document.getElementById("textField").value = "Condition Update - Success"
   }
   
-  else if (status === "UPDATE_SETTING_NOT_CONNECTED"){
+  else if (result === "UPDATE_SETTING_NOT_CONNECTED"){
        document.getElementById("textField").value = "Condition Update - Not Connected"
   }
   
-  else if (status === "UPDATE_SETTING_REQUEST_REJECTED"){
+  else if (result === "UPDATE_SETTING_REQUEST_REJECTED"){
        document.getElementById("textField").value = "Condition Update - Request Rejected"
   }
-  else if (status === "UPDATE_SETTING_TIMEOUT"){
+  else if (result === "UPDATE_SETTING_TIMEOUT"){
        document.getElementById("textField").value = "Condition Update - Timeout"
   }
-  else if (status === "UPDATE_SETTING_NOT_SUPPORTED"){
+  else if (result === "UPDATE_SETTING_NOT_SUPPORTED"){
        document.getElementById("textField").value = "Condition Update - Not Supported"
   }
-  else if (status === "UPDATE_SETTING_ALREADY_EXECUTING"){
+  else if (result === "UPDATE_SETTING_ALREADY_EXECUTING"){
        document.getElementById("textField").value = "Condition Update - Already Executing"    
   }
-  else if (status === "UPDATE_SETTING_UNEXPECTED_ERROR"){
+  else if (result === "UPDATE_SETTING_UNEXPECTED_ERROR"){
        document.getElementById("textField").value = "Condition Update - Unexpected Error"
-  }     
+  }    
+  
+  }    
+
 }
     
  function getDeviceName(){
