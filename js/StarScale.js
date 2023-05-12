@@ -51,14 +51,14 @@ function connectScale(){
            break
        }
    }
-   
-   if (!EloStarScaleManager.setScaleDataCallback("DataCallback")){
-       document.getElementById("textField").value = "Scale Callback creation failure"
-       return
+    
+   if (Identifier === ''){
+        document.getElementById("textField").value = "Scale not found"
+        return
    }
    
    if (!EloStarScaleManager.createScale(Identifier, Baud_Rate)){
-       document.getElementById("textField").value = "Create Scale Failed"
+       document.getElementById("textField").value = "Could not create scale"
        return
    }
   
@@ -66,17 +66,23 @@ function connectScale(){
        document.getElementById("textField").value = "Could not start connection process"
        return
    }
-   
+    
+   if (!EloStarScaleManager.setScaleDataCallback("DataCallback")){
+       document.getElementById("textField").value = "Error setting Scale Callback"
+       return
+   }
+    
    document.getElementById("textField").value = "Scale Connecting..."  
 }
 
-function DataCallback(Data){
+function DataCallback(Data){    //receives scale measurement data
+                                //Will receive "ERROR" if there is a problem with measuring weight
   if (Data === "ERROR"){
       document.getElementById("textField").value = "Scale Data Error"
   }
-  else{
-      let obj = JSON.parse(Data)
+  else{                         //Otherwise, parse JSON to obtain data in each measurement              
       
+      let obj = JSON.parse(Data)    
       let weight = obj.weight
       let unit = obj.unit
       let status = obj.status
@@ -89,12 +95,12 @@ function DataCallback(Data){
   }
 }
 
-function StatusCallback(status){
+function StatusCallback(status){        //receives events for connecting, disconnecting, and changing scale settings
     let obj = JSON.parse(status)
     let event = obj.event
     let result = obj.result
     
-   if (event === "CONNECT"){
+   if (event === "CONNECT"){ 
        let connectSuccess = false
        
        if (result === "CONNECT_SUCCESS"){
@@ -139,7 +145,7 @@ function StatusCallback(status){
 
          // **Disconnection**
 
-    else if (event === "DISCONNECT"){ 
+    else if (event === "DISCONNECT"){
        EloStarScaleManager.resetScaleData();
         
        if (result ==="DISCONNECT_SUCCESS"){
@@ -170,7 +176,7 @@ function StatusCallback(status){
        }
     }            
 
-                // ***update settings or output conditions***
+       // ***update settings or output conditions***
     
   else if (event === "UPDATE_SETTING" || event === "UPDATE_OUTPUT_SETTING"){
       if (result === "UPDATE_SETTING_SUCCESS"){
