@@ -160,23 +160,15 @@ function DeviceStateCallback(DeviceState){          //receives events related to
 
 function ConnStateCallback(ConnState){
    if (ConnState === "CONNECTING"){
-            document.getElementById("rejectScans").innerHTML = "G Connecting"
-
         //client is connecting
    }
-   else if (ConnState === "CONNECTED"){
-      document.getElementById("rejectScans").innerHTML = "G Connected"
-      
+   else if (ConnState === "CONNECTED"){      
        // client is now usable      
    }
    else if (ConnState === "DISCONNECTING"){
-                  document.getElementById("rejectScans").innerHTML = "G Disconnecting"
-
         // only called when shutting down gracefully      
    }
    else if (ConnState === "DISCONNECTED"){
-            document.getElementById("rejectScans").innerHTML = "G Disconnected"
-
         // successfully disconnected      
    }
    else if (ConnState === "DISCONNECTION_ERROR"){
