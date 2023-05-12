@@ -224,9 +224,10 @@ function StatusCallback(status){
     else{
         document.getElementById("textField").value = name 
     }
+    zeroPointAdjustment()
 }
 
-/*
+
 function zeroPointAdjustment(){
     if (!EloStarScaleManager.isScaleConnected()){
          document.getElementById("textField").value = "No scale connected"
@@ -234,7 +235,7 @@ function zeroPointAdjustment(){
     }
     EloStarScaleManager.updateSetting("ZeroPointAdjustment")
 }
-*/
+
 
 function setContinousOutput(){
     if (!EloStarScaleManager.isScaleConnected()){
