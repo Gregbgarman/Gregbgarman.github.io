@@ -160,15 +160,23 @@ function DeviceStateCallback(DeviceState){          //receives events related to
 
 function ConnStateCallback(ConnState){
    if (ConnState === "CONNECTING"){
+            document.getElementById("StarPrinterAvailable").value = "G Connecting"
+
         //client is connecting
    }
    else if (ConnState === "CONNECTED"){
+      document.getElementById("StarPrinterAvailable").value = "G Connected"
+      
        // client is now usable      
    }
    else if (ConnState === "DISCONNECTING"){
+                  document.getElementById("StarPrinterAvailable").value = "G Disconnecting"
+
         // only called when shutting down gracefully      
    }
    else if (ConnState === "DISCONNECTED"){
+            document.getElementById("StarPrinterAvailable").value = "G Disconnected"
+
         // successfully disconnected      
    }
    else if (ConnState === "DISCONNECTION_ERROR"){
