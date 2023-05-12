@@ -62,7 +62,7 @@ function connectScale(){
        return
    }
   
-   if (!EloStarScaleManager.connectScale("StatusCallback")){        //see callback to find if connection succeeded or failed. Boolean value indicates if process started or failed.
+   if (!EloStarScaleManager.connectScale("StatusCallback")){        //see callback to find if connection succeeded or failed. Boolean value indicates if connecting started or failed.
        document.getElementById("textField").value = "Could not start connection process"
        return
    }
