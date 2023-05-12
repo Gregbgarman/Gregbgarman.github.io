@@ -95,7 +95,10 @@ function StatusCallback(status){
     let result = obj.result
     
    if (event === "CONNECT"){
+       let connectSuccess = false
+       
        if (result === "CONNECT_SUCCESS"){
+          connectSuccess = true
           document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
           document.getElementById("textField").value = "Scale Ready to Weigh"    
        }
@@ -105,6 +108,7 @@ function StatusCallback(status){
        }
 
        else if (result === "CONNECT_ALREADY_CONNECTED"){
+         connectSuccess = true
          document.getElementById("textField").value = "Connect - Already Connected"
        }
 
@@ -127,11 +131,17 @@ function StatusCallback(status){
        else if (result === "CONNECT_UNEXPECTED_ERROR"){
               document.getElementById("textField").value = "Connect - Unexpected Error"
        }
+       
+       if(!connectSuccess) {
+            EloStarScaleManager.resetScaleData()
+       }       
     }
 
          // **Disconnection**
 
-    else if (event === "DISCONNECT"){       
+    else if (event === "DISCONNECT"){ 
+       EloStarScaleManager.resetScaleData();
+        
        if (result ==="DISCONNECT_SUCCESS"){
          document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
          document.getElementById("textField").value = "Disconnect Success"
@@ -160,9 +170,9 @@ function StatusCallback(status){
        }
     }            
 
-                // ***update settings***
+                // ***update settings or output conditions***
     
-  else if (event === "UPDATE_SETTING"){
+  else if (event === "UPDATE_SETTING" || event === "UPDATE_OUTPUT_SETTING"){
       if (result === "UPDATE_SETTING_SUCCESS"){
           document.getElementById("textField").value = "Setting Update - Changed Successfully"    
       }
@@ -178,38 +188,13 @@ function StatusCallback(status){
       else if (result === "UPDATE_SETTING_ALREADY_EXECUTING"){
         document.getElementById("textField").value = "Setting Update - Already Executing"
       }
+      else if (result === "UPDATE_SETTING_NOT_SUPPORTED"){
+           document.getElementById("textField").value = "Setting Update - Not Supported"
+      }
       else if (result === "UPDATE_SETTING_UNEXPECTED_ERROR"){
         document.getElementById("textField").value = "Setting Update - Unexpected Error"
       }
-  } 
-            // ***update output condition***
-  
-  else if (event === "UPDATE_OUTPUT"){  
-      if (result === "UPDATE_SETTING_SUCCESS"){
-            document.getElementById("textField").value = "Output Conditon - Update Success"
-      }
-
-      else if (result === "UPDATE_SETTING_NOT_CONNECTED"){
-           document.getElementById("textField").value = "Output Condition - Not Connected"
-      }
-
-      else if (result === "UPDATE_SETTING_REQUEST_REJECTED"){
-           document.getElementById("textField").value = "Output Condition - Request Rejected"
-      }
-      else if (result === "UPDATE_SETTING_TIMEOUT"){
-           document.getElementById("textField").value = "Output Condition - Timeout"
-      }
-      else if (result === "UPDATE_SETTING_NOT_SUPPORTED"){
-           document.getElementById("textField").value = "Output Condition - Not Supported"
-      }
-      else if (result === "UPDATE_SETTING_ALREADY_EXECUTING"){
-           document.getElementById("textField").value = "Output Condition - Already Executing"    
-      }
-      else if (result === "UPDATE_SETTING_UNEXPECTED_ERROR"){
-           document.getElementById("textField").value = "Output Condition - Unexpected Error"
-      }    
-  }    
-
+  }
 }
     
  function getDeviceName(){
@@ -224,9 +209,7 @@ function StatusCallback(status){
     else{
         document.getElementById("textField").value = name 
     }
-    zeroPointAdjustment()
 }
-
 
 function zeroPointAdjustment(){
     if (!EloStarScaleManager.isScaleConnected()){
@@ -235,7 +218,6 @@ function zeroPointAdjustment(){
     }
     EloStarScaleManager.updateSetting("ZeroPointAdjustment")
 }
-
 
 function setContinousOutput(){
     if (!EloStarScaleManager.isScaleConnected()){
@@ -262,7 +244,8 @@ function disconnectScale(){
          document.getElementById("textField").value = "No scale connected"
          return
     }
-    if (!EloStarScaleManager.disconnectScale()){                                    //see callback to determine if setting was changed. Boolean value indicates disconnection began.
+    if (!EloStarScaleManager.disconnectScale()){                                    //see callback to determine disconnection event
         document.getElementById("textField").value = "Error starting disconnection"
+        EloStarScaleManager.resetScaleData()                                        //resetting scale data if disconnection somehow could not take place
     }
 }   
