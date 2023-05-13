@@ -20,12 +20,12 @@ function beginScan(){
     DevicesFound = ''
     DeviceTable = []
     document.getElementById("textField").value = "Searching..."
-    if(!EloStarScaleManager.scanForScales("DeviceCallback", "All")){
+    if(!EloStarScaleManager.scanForScales("DeviceCallback", "All")){                //See DeviceCallback below for receiving discovered scales
         document.getElementById("textField").value = "Unable to scan for scales"      
     }     
 }
 
-function DeviceCallback(Scale){
+function DeviceCallback(Scale){         //Discovered scales will appear here
     let obj = JSON.parse(Scale)
     DeviceTable.push(Scale)
     
@@ -62,7 +62,7 @@ function connectScale(){
        return
    }
   
-   if (!EloStarScaleManager.connectScale("StatusCallback")){        //see callback to find if connection succeeded or failed. Boolean value indicates if connecting started or failed.
+   if (!EloStarScaleManager.connectScale("StatusCallback")){        //see StatusCallback to find if connection succeeded or failed. Boolean value indicates if connecting started or failed.
        document.getElementById("textField").value = "Could not start connection process"
        return
    }
@@ -76,7 +76,7 @@ function connectScale(){
 }
 
 function DataCallback(Data){    //receives scale measurement data
-                                //Will receive "ERROR" if there is a problem with measuring weight
+                                //Will receive "ERROR" if there is a problem with measuring weight, such as exceeding scale's weight capacity.
   if (Data === "ERROR"){
       document.getElementById("textField").value = "Scale Data Error"
   }
@@ -230,7 +230,7 @@ function setContinousOutput(){
          document.getElementById("textField").value = "No scale connected"
          return
     }
-    EloStarScaleManager.updateOutputConditionSetting("ContinuousOutputAtAllTimes")     //see callback to determine if setting was changed.
+    EloStarScaleManager.updateOutputConditionSetting("ContinuousOutputAtAllTimes")     //see StatusCallback to determine if setting was changed.
 }
 
 function setStableOutput(){
@@ -242,7 +242,7 @@ function setStableOutput(){
     if (EloStarScaleManager.getScaleType() === "MGS"){
        setting = "OneTimeOutputAtStableTimes"        
     }      
-    EloStarScaleManager.updateOutputConditionSetting(setting)    //see callback to determine if setting was changed.
+    EloStarScaleManager.updateOutputConditionSetting(setting)    //see StatusCallback to determine if setting was changed.
 }
 
 function disconnectScale(){
@@ -250,7 +250,7 @@ function disconnectScale(){
          document.getElementById("textField").value = "No scale connected"
          return
     }
-    if (!EloStarScaleManager.disconnectScale()){                                    //see callback to determine disconnection event
+    if (!EloStarScaleManager.disconnectScale()){                                    //see StatusCallback to determine disconnection event
         document.getElementById("textField").value = "Error starting disconnection"
         EloStarScaleManager.resetScaleData()                                        //resetting scale data if disconnection somehow could not take place
     }
