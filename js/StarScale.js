@@ -9,6 +9,17 @@ let DevicesFound = ''
 let DeviceTable = []
 
 
+//////////////////////////////////
+//      Discovered device attributes
+/////////////////////////////////
+let Identifier = ""
+let device_name = ""
+let scale_type = ""
+let mac_address = ""
+let baud_rate = 0
+let interface_type = ""
+
+
 if (EloStarScaleManager.isScaleConnected()){
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"   
 }
@@ -34,6 +45,52 @@ function DeviceCallback(Scale){         //Discovered scales will appear here
     document.getElementById("textField").value = DevicesFound
 }
 
+
+function connectScale(){
+   let scale_name = document.getElementById("textField").value  
+   EloStarScaleManager.stopScan()
+   if(scale_name.length > 1 && scale_name.charAt(scale_name.length-1) === ' ') {
+        scale_name = scale_name.slice(0, -1)
+   }
+   
+   for (let i=0;i<DeviceTable.length;i++){
+       let obj = JSON.parse(DeviceTable[i])
+       
+       if (obj.device_name === scale_name){         //if names match, retrieve the rest of the information for the scale
+           Identifier = obj.Identifier
+           device_name = obj.device_name
+           scale_type = obj.scale_type
+           mac_address = obj.mac_address
+           baud_rate = obj.baud_rate
+           interface_type = obj.interface_type
+           break
+       }
+   }
+    
+   if (Identifier === ''){
+        document.getElementById("textField").value = "Scale not found"
+        return
+   }
+   
+   if (!EloStarScaleManager.createScale(Identifier, 1200)){
+       document.getElementById("textField").value = "Could not create scale"
+       return
+   }
+  
+   if (!EloStarScaleManager.connectScale("StatusCallback")){        //see StatusCallback to find if connection succeeded or failed. Boolean value indicates if connecting started or failed.
+       document.getElementById("textField").value = "Could not start connection process"
+       return
+   }
+    
+   if (!EloStarScaleManager.setScaleDataCallback("DataCallback")){
+       document.getElementById("textField").value = "Error setting Scale Callback"
+       return
+   }
+    
+   document.getElementById("textField").value = "Scale Connecting..."  
+}
+
+/*
 function connectScale(){
    let Device_Name = document.getElementById("textField").value
    let Identifier = ''
@@ -74,6 +131,7 @@ function connectScale(){
     
    document.getElementById("textField").value = "Scale Connecting..."  
 }
+*/
 
 function DataCallback(Data){    //receives scale measurement data
                                 //Will receive "ERROR" if there is a problem with measuring weight, such as exceeding scale's weight capacity.
@@ -204,6 +262,14 @@ function StatusCallback(status){        //receives events for connecting, discon
 }
     
  function getDeviceName(){
+     if (device_name === ""){
+        document.getElementById("textField").value = "Error finding name"
+    }
+    else{
+        document.getElementById("textField").value = device_name 
+    }
+     
+     /*
      if (!EloStarScaleManager.isScaleConnected()){
          document.getElementById("textField").value = "No scale connected"
          return
@@ -215,6 +281,7 @@ function StatusCallback(status){        //receives events for connecting, discon
     else{
         document.getElementById("textField").value = name 
     }
+    */
 }
 
 function zeroPointAdjustment(){
