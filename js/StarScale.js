@@ -8,17 +8,55 @@ document.getElementById("getDeviceName").addEventListener("click", getDeviceName
 let DevicesFound = ''
 let DeviceTable = []
 
+class ScaleInfo{
+    constructor(Scale){
+        this.identifier = Scale.Identifier
+        this.device_name = Scale.device_name
+        this.scale_type = Scale.scale_type
+        this.mac_address = Scale.mac_address
+        this.baud_rate = Scale.baud_rate
+        this.interface_type = Scale.interface_type
+    }
+    
+    getIdentifier(){
+        return this.identifier
+    }
+    
+    getDeviceName(){
+        return this.device_name
+    }
+    
+    getScaleType(){
+        return this.scale_type
+    }
+    
+    getMacAddress(){
+        return this.mac_address
+    }
+    
+    getBaudRate(){
+        return this.baud_rate   
+    }
+    
+    getInterfaceType(){
+        return this.interface_type   
+    }
+}
+
+let scaleInfo = ""
 
 //////////////////////////////////
 //      Discovered device attributes
 /////////////////////////////////
+
+/*
 let Identifier = ""
 let device_name = ""
 let scale_type = ""
 let mac_address = ""
 let baud_rate = 0
 let interface_type = ""
-
+*/
 
 if (EloStarScaleManager.isScaleConnected()){
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"   
@@ -57,22 +95,18 @@ function connectScale(){
        let obj = JSON.parse(DeviceTable[i])
        
        if (obj.device_name === scale_name){         //if names match, retrieve the rest of the information for the scale
-           Identifier = obj.Identifier
-           device_name = obj.device_name
-           scale_type = obj.scale_type
-           mac_address = obj.mac_address
-           baud_rate = obj.baud_rate
-           interface_type = obj.interface_type
+           scaleInfo = new ScaleInfo(obj)
+          
            break
        }
    }
     
-   if (Identifier === ''){
+   if (scaleInfo.getIdentifier === ''){
         document.getElementById("textField").value = "Scale not found"
         return
    }
    
-   if (!EloStarScaleManager.createScale(Identifier, 1200)){
+   if (!EloStarScaleManager.createScale(scaleInfo.getIdentifier, 1200)){
        document.getElementById("textField").value = "Could not create scale"
        return
    }
