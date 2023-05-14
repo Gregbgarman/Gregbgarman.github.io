@@ -351,7 +351,7 @@ function setStableOutput(){
          return
     }
     let setting = "ContinuousOutputAtStableTimes"
-    if (EloStarScaleManager.getScaleType() === "MGS"){
+    if (scaleInfo !== "" && scaleInfo.getScaleType() === "MGS"){
        setting = "OneTimeOutputAtStableTimes"        
     }      
     EloStarScaleManager.updateOutputConditionSetting(setting)    //see StatusCallback to determine if setting was changed.
