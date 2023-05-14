@@ -3,7 +3,7 @@ document.getElementById("connectScale").addEventListener("click", connectScale)
 document.getElementById("disconnectScale").addEventListener("click", disconnectScale)
 document.getElementById("setContOutput").addEventListener("click", setContinousOutput)
 document.getElementById("setStableOutput").addEventListener("click", setStableOutput)
-document.getElementById("getDeviceName").addEventListener("click", getDeviceName)
+document.getElementById("getDeviceInfo").addEventListener("click", getDeviceInfo)
 document.getElementById("seeMoreData").addEventListener("click", seeMoreData)
 
 let DevicesFound = ''
@@ -305,12 +305,12 @@ function StatusCallback(status){        //receives events for connecting, discon
   }
 }
     
- function getDeviceName(){
+ function getDeviceInfo(){
      if (scaleInfo === "" || scaleInfo.getDeviceName() === ""){
         document.getElementById("textField").value = "Error finding name"
     }
     else{
-        let info = scaleInfo.getDeviceName() + ", " + scaleInfo.getScaleType() + ", " + scaleInfo.getInterfaceType()
+        let info = "Name: " + scaleInfo.getDeviceName() + ", Type: " + scaleInfo.getScaleType() + ", Interface: " + scaleInfo.getInterfaceType()
         document.getElementById("textField").value = info
     }
      
