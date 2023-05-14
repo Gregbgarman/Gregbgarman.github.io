@@ -119,7 +119,15 @@ function connectScale(){
 }
 
 function seeMoreData(){
-    SeeMoreData = true   
+    if (SeeMoreData){
+        SeeMoreData = false
+         document.getElementById("textField").size = 25
+    }
+    else{
+        SeeMoreData = true
+        document.getElementById("textField").size = 40
+    }
+      
 }
 
 /*
@@ -184,9 +192,8 @@ function DataCallback(Data){    //receives scale measurement data
       if (!SeeMoreData){
           document.getElementById("textField").value = weight + unit
       }
-      else{
-          
-          document.getElementById("textField").value = "weight:" + weight + "unit:" + unit + "," + "status:" + status + "data type:" + data_type + "comparator result:" + comparator_result
+      else{          
+          document.getElementById("textField").value = "weight:" + weight + ", unit:" + unit + ", status:" + status + ", data type:" + data_type + ", comparator result:" + comparator_result
       }
   }
 }
@@ -304,8 +311,8 @@ function StatusCallback(status){        //receives events for connecting, discon
         document.getElementById("textField").value = "Error finding name"
     }
     else{
-        let str = scaleInfo.getDeviceName() + "," + scaleInfo.getScaleType() + "," + scaleInfo.getInterfaceType()
-        document.getElementById("textField").value = scaleInfo.getDeviceName() 
+        let info = scaleInfo.getDeviceName() + ", " + scaleInfo.getScaleType() + ", " + scaleInfo.getInterfaceType()
+        document.getElementById("textField").value = info
     }
      
      /*
