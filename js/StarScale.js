@@ -109,12 +109,12 @@ function connectScale(){
        }
    }
     
-   if (scaleInfo.getIdentifier === ''){
+   if (scaleInfo.getIdentifier() === ''){
         document.getElementById("textField").value = "Scale not found"
         return
    }
    
-   if (!EloStarScaleManager.createScale(scaleInfo.getIdentifier, 1200)){
+   if (!EloStarScaleManager.createScale(scaleInfo.getIdentifier(), 1200)){
        document.getElementById("textField").value = "Could not create scale"
        return
    }
