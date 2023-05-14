@@ -8,7 +8,7 @@ document.getElementById("seeMoreData").addEventListener("click", seeMoreData)
 
 let DevicesFound = ''
 let DeviceTable = []
-let seeMoreData = false
+let SeeMoreData = false
 
 let scaleInfo = ""
 let scaleData = ""
@@ -119,7 +119,7 @@ function connectScale(){
 }
 
 function seeMoreData(){
-    seeMoreData = true   
+    SeeMoreData = true   
 }
 
 /*
@@ -181,7 +181,7 @@ function DataCallback(Data){    //receives scale measurement data
       let raw = obj.raw
       let comparator_result = obj.comparator_result
                 
-      if (!seeMoreData){
+      if (!SeeMoreData){
           document.getElementById("textField").value = weight + unit
       }
       else{
