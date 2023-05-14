@@ -11,7 +11,6 @@ let DeviceTable = []
 let SeeMoreData = false
 
 let scaleInfo = ""
-let scaleData = ""
 
 
 /////////////////////////
@@ -80,8 +79,8 @@ function DeviceCallback(Scale){         //Discovered scales will appear here
 
 
 function connectScale(){
-   let scale_name = document.getElementById("textField").value  
    EloStarScaleManager.stopScan()
+   let scale_name = document.getElementById("textField").value  
    if(scale_name.length > 1 && scale_name.charAt(scale_name.length-1) === ' ') {
         scale_name = scale_name.slice(0, -1)
    }
@@ -102,6 +101,7 @@ function connectScale(){
    
    if (!EloStarScaleManager.createScale(scaleInfo.getIdentifier(), scaleInfo.getInterfaceType, 1200)){
        document.getElementById("textField").value = "Could not create scale"
+       EloStarScaleManager.destroyScale()                                       //Destroying previous scale instance, if there was one, to have a clean reset
        return
    }
   
@@ -241,14 +241,14 @@ function StatusCallback(status){        //receives events for connecting, discon
        }
        
        if(!connectSuccess) {
-            EloStarScaleManager.resetScaleData()
+            EloStarScaleManager.destroyScale()
        }       
     }
 
          // **Disconnection**
 
     else if (event === "DISCONNECT"){
-       EloStarScaleManager.resetScaleData();
+       EloStarScaleManager.destroyScale()
         
        if (result ==="DISCONNECT_SUCCESS"){
          document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
@@ -365,6 +365,6 @@ function disconnectScale(){
     }
     if (!EloStarScaleManager.disconnectScale()){                                    //see StatusCallback to determine disconnection event
         document.getElementById("textField").value = "Error starting disconnection"
-        EloStarScaleManager.resetScaleData()                                        //resetting scale data if disconnection somehow could not take place
+        EloStarScaleManager.destroyScale()                                        //resetting scale if disconnection somehow could not take place
     }
 }   
