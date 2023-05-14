@@ -99,7 +99,11 @@ function connectScale(){
        let obj = JSON.parse(DeviceTable[i])
        
        if (obj.device_name === scale_name){         //if names match, retrieve the rest of the information for the scale
+           try{
            scaleInfo = new ScaleInfo(obj)
+           }catch(error){
+               document.getElementById("StarScaleAvailable").innerHTML = "error creating class"
+           }
           
            break
        }
