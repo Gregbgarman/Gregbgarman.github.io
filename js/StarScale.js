@@ -10,12 +10,16 @@ let DeviceTable = []
 
 class ScaleInfo{
     constructor(Scale){
+        try{
         this.identifier = Scale.identifier
-        this.device_name = Scale.device_name
-        this.scale_type = Scale.scale_type
-        this.mac_address = Scale.mac_address
-        this.baud_rate = Scale.baud_rate
-        this.interface_type = Scale.interface_type
+        }catch(error){
+             document.getElementById("StarScaleAvailable").innerHTML = "problem"
+        }
+        //this.device_name = Scale.device_name
+       // this.scale_type = Scale.scale_type
+       // this.mac_address = Scale.mac_address
+       // this.baud_rate = Scale.baud_rate
+       // this.interface_type = Scale.interface_type
     }
     
     getIdentifier(){
