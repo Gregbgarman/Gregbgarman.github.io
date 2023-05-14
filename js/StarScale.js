@@ -24,7 +24,6 @@ class ScaleInfo{
         this.mac_address = Scale.mac_address
         this.baud_rate = Scale.baud_rate
         this.interface_type = Scale.interface_type
-        let x = "identifier:
     }
     
     getIdentifier(){
