@@ -10,7 +10,7 @@ let DeviceTable = []
 
 class ScaleInfo{
     constructor(Scale){
-        this.identifier = Scale.Identifier
+        this.identifier = Scale.identifier
         this.device_name = Scale.device_name
         this.scale_type = Scale.scale_type
         this.mac_address = Scale.mac_address
