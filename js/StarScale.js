@@ -7,13 +7,14 @@ document.getElementById("getDeviceName").addEventListener("click", getDeviceName
 
 let DevicesFound = ''
 let DeviceTable = []
+let seeMoreData = false
 
 let scaleInfo = ""
 let scaleData = ""
 
 
 /////////////////////////
-//    ScaleInfo class contains information that can be acquired from a scale when found in search
+//    ScaleInfo class contains information that can be acquired from scales found in search
 ////////////////////////
 class ScaleInfo{
     constructor(Scale){
@@ -48,6 +49,7 @@ class ScaleInfo{
     getInterfaceType(){
         return this.interface_type   
     }
+           
 }
 
 if (EloStarScaleManager.isScaleConnected()){
@@ -86,13 +88,8 @@ function connectScale(){
    for (let i=0;i<DeviceTable.length;i++){
        let obj = JSON.parse(DeviceTable[i])
        
-       if (obj.device_name === scale_name){         //if names match, retrieve the rest of the information for the scale
-           try{
-           scaleInfo = new ScaleInfo(obj)
-           }catch(error){
-               document.getElementById("StarScaleAvailable").innerHTML = "error creating class"
-           }
-          
+       if (obj.device_name === scale_name){         //if names match, create object with all info       
+           scaleInfo = new ScaleInfo(obj)                    
            break
        }
    }
@@ -102,7 +99,7 @@ function connectScale(){
         return
    }
    
-   if (!EloStarScaleManager.createScale(scaleInfo.getIdentifier(), 1200)){
+   if (!EloStarScaleManager.createScale(scaleInfo.getIdentifier(), scaleInfo.getInterfaceType, 1200)){
        document.getElementById("textField").value = "Could not create scale"
        return
    }
@@ -118,6 +115,10 @@ function connectScale(){
    }
     
    document.getElementById("textField").value = "Scale Connecting..."  
+}
+
+function seeMoreData(){
+    seeMoreData = true   
 }
 
 /*
@@ -179,7 +180,13 @@ function DataCallback(Data){    //receives scale measurement data
       let raw = obj.raw
       let comparator_result = obj.comparator_result
                 
-      document.getElementById("textField").value = weight + unit
+      if (!seeMoreData){
+          document.getElementById("textField").value = weight + unit
+      }
+      else{
+          
+          document.getElementById("textField").value = "weight:" + weight + "unit:" + unit + "," + "status:" + status + "data type:" + data_type + "comparator result:" + comparator_result
+      }
   }
 }
 
@@ -296,6 +303,7 @@ function StatusCallback(status){        //receives events for connecting, discon
         document.getElementById("textField").value = "Error finding name"
     }
     else{
+        let str = scaleInfo.getDeviceName() + "," + scaleInfo.getScaleType() + "," + scaleInfo.getInterfaceType()
         document.getElementById("textField").value = scaleInfo.getDeviceName() 
     }
      
