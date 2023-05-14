@@ -59,15 +59,15 @@ else{
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
 }
 
-
+/*
 if (!EloStarScaleManager.createScale("00:12:F3:40:8F:96", "BLE", 1200)){
-       document.getElementById("textField").value = "Could not create scale"
+        document.getElementById("StarScaleAvailable").innerHTML = "Could not create scale"
        EloStarScaleManager.destroyScale()                                       //Destroying previous scale instance, if there was one, to have a clean reset
        scaleInfo = ""      
    }
   
    if (!EloStarScaleManager.connectScale("StatusCallback")){        //see StatusCallback to find if connection succeeded or failed. Boolean value indicates if connecting started or failed.
-       document.getElementById("textField").value = "Could not start connection process"
+        document.getElementById("StarScaleAvailable").innerHTML = "Could not start connection process"
        scaleInfo = ""
       
    }
@@ -79,6 +79,7 @@ if (!EloStarScaleManager.createScale("00:12:F3:40:8F:96", "BLE", 1200)){
    else{
         document.getElementById("textField").value = "connectin scale............."
    }
+   */
 
 
 
