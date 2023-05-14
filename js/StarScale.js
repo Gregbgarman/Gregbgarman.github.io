@@ -121,13 +121,12 @@ function connectScale(){
 function seeMoreData(){
     if (SeeMoreData){
         SeeMoreData = false
-         document.getElementById("textField").size = 25
+        document.getElementById("seeMoreData").innerHTML = "Show More Data"
     }
     else{
         SeeMoreData = true
-        document.getElementById("textField").size = 40
-    }
-      
+        document.getElementById("seeMoreData").innerHTML = "Show Less Data"
+    }      
 }
 
 /*
