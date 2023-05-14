@@ -59,7 +59,7 @@ else{
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
 }
 
-/*
+
 if (!EloStarScaleManager.createScale("00:12:F3:40:8F:96", "BLE", 1200)){
         document.getElementById("StarScaleAvailable").innerHTML = "Could not create scale"
        EloStarScaleManager.destroyScale()                                       //Destroying previous scale instance, if there was one, to have a clean reset
@@ -79,7 +79,7 @@ if (!EloStarScaleManager.createScale("00:12:F3:40:8F:96", "BLE", 1200)){
    else{
         document.getElementById("textField").value = "connectin scale............."
    }
-   */
+   
 
 
 
