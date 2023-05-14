@@ -8,18 +8,20 @@ document.getElementById("getDeviceName").addEventListener("click", getDeviceName
 let DevicesFound = ''
 let DeviceTable = []
 
+let scaleInfo = ""
+
+
+/////////////////////////
+//    ScaleInfo class contains information acquired from a scale when found in search
+////////////////////////
 class ScaleInfo{
     constructor(Scale){
-        try{
-        this.identifier = Scale.identifier
-        }catch(error){
-             document.getElementById("StarScaleAvailable").innerHTML = "problem"
-        }
-        //this.device_name = Scale.device_name
-       // this.scale_type = Scale.scale_type
-       // this.mac_address = Scale.mac_address
-       // this.baud_rate = Scale.baud_rate
-       // this.interface_type = Scale.interface_type
+        this.identifier = Scale.identifier       
+        this.device_name = Scale.device_name
+        this.scale_type = Scale.scale_type
+        this.mac_address = Scale.mac_address
+        this.baud_rate = Scale.baud_rate
+        this.interface_type = Scale.interface_type
     }
     
     getIdentifier(){
@@ -47,20 +49,7 @@ class ScaleInfo{
     }
 }
 
-let scaleInfo = ""
 
-//////////////////////////////////
-//      Discovered device attributes
-/////////////////////////////////
-
-/*
-let Identifier = ""
-let device_name = ""
-let scale_type = ""
-let mac_address = ""
-let baud_rate = 0
-let interface_type = ""
-*/
 
 if (EloStarScaleManager.isScaleConnected()){
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"   
@@ -304,11 +293,11 @@ function StatusCallback(status){        //receives events for connecting, discon
 }
     
  function getDeviceName(){
-     if (device_name === ""){
+     if (scaleInfo === ""){
         document.getElementById("textField").value = "Error finding name"
     }
     else{
-        document.getElementById("textField").value = device_name 
+        document.getElementById("textField").value = scaleInfo.getDeviceName() 
     }
      
      /*
@@ -355,6 +344,7 @@ function setStableOutput(){
 }
 
 function disconnectScale(){
+    scaleInfo = ""
     if (!EloStarScaleManager.isScaleConnected()){
          document.getElementById("textField").value = "No scale connected"
          return
