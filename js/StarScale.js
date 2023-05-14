@@ -9,10 +9,11 @@ let DevicesFound = ''
 let DeviceTable = []
 
 let scaleInfo = ""
+let scaleData = ""
 
 
 /////////////////////////
-//    ScaleInfo class contains information acquired from a scale when found in search
+//    ScaleInfo class contains information that can be acquired from a scale when found in search
 ////////////////////////
 class ScaleInfo{
     constructor(Scale){
@@ -48,8 +49,6 @@ class ScaleInfo{
         return this.interface_type   
     }
 }
-
-
 
 if (EloStarScaleManager.isScaleConnected()){
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"   
@@ -293,7 +292,7 @@ function StatusCallback(status){        //receives events for connecting, discon
 }
     
  function getDeviceName(){
-     if (scaleInfo === ""){
+     if (scaleInfo === "" || scaleInfo.getDeviceName() === ""){
         document.getElementById("textField").value = "Error finding name"
     }
     else{
