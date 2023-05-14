@@ -96,22 +96,26 @@ function connectScale(){
     
    if (scaleInfo.getIdentifier() === ''){
         document.getElementById("textField").value = "Scale not found"
+        scaleInfo = ""
         return
    }
    
    if (!EloStarScaleManager.createScale(scaleInfo.getIdentifier(), scaleInfo.getInterfaceType, 1200)){
        document.getElementById("textField").value = "Could not create scale"
        EloStarScaleManager.destroyScale()                                       //Destroying previous scale instance, if there was one, to have a clean reset
+       scaleInfo = ""
        return
    }
   
    if (!EloStarScaleManager.connectScale("StatusCallback")){        //see StatusCallback to find if connection succeeded or failed. Boolean value indicates if connecting started or failed.
        document.getElementById("textField").value = "Could not start connection process"
+       scaleInfo = ""
        return
    }
     
    if (!EloStarScaleManager.setScaleDataCallback("DataCallback")){
        document.getElementById("textField").value = "Error setting Scale Callback"
+       scaleInfo = ""
        return
    }
     
