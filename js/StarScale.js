@@ -60,7 +60,7 @@ else{
 }
 
 
-if (!EloStarScaleManager.createScale("62:00:A1:28:B7:0A", "BLE", 1200)){
+if (!EloStarScaleManager.createScale("00:12:F3:40:8F:96", "BLE", 1200)){
        document.getElementById("textField").value = "Could not create scale"
        EloStarScaleManager.destroyScale()                                       //Destroying previous scale instance, if there was one, to have a clean reset
        scaleInfo = ""      
