@@ -24,6 +24,7 @@ class ScaleInfo{
         this.mac_address = Scale.mac_address
         this.baud_rate = Scale.baud_rate
         this.interface_type = Scale.interface_type
+        let x = "identifier:
     }
     
     getIdentifier(){
@@ -100,7 +101,7 @@ function connectScale(){
         return
    }
    
-   if (!EloStarScaleManager.createScale(scaleInfo.getIdentifier(), scaleInfo.getInterfaceType, 1200)){
+   if (!EloStarScaleManager.createScale(scaleInfo.getIdentifier(), scaleInfo.getInterfaceType(), 1200)){
        document.getElementById("textField").value = "Could not create scale"
        EloStarScaleManager.destroyScale()                                       //Destroying previous scale instance, if there was one, to have a clean reset
        scaleInfo = ""
