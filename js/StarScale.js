@@ -48,8 +48,14 @@ class ScaleInfo{
     
     getInterfaceType(){
         return this.interface_type   
-    }
-           
+    }           
+}
+
+if (EloStarScaleManager.isScaleConnected()){
+    document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"   
+}
+else{
+    document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
 }
 
 
