@@ -4,6 +4,7 @@ document.getElementById("disconnectScale").addEventListener("click", disconnectS
 document.getElementById("setContOutput").addEventListener("click", setContinousOutput)
 document.getElementById("setStableOutput").addEventListener("click", setStableOutput)
 document.getElementById("getDeviceName").addEventListener("click", getDeviceName)
+document.getElementById("seeMoreData").addEventListener("click", seeMoreData)
 
 let DevicesFound = ''
 let DeviceTable = []
