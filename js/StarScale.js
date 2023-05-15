@@ -370,5 +370,6 @@ function disconnectScale(){
     if (!EloStarScaleManager.disconnectScale()){                                    //see StatusCallback to determine disconnection event
         document.getElementById("textField").value = "Error starting disconnection"
         EloStarScaleManager.destroyScale()                                        //resetting scale if disconnection somehow could not take place
+        document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
     }
 }   
