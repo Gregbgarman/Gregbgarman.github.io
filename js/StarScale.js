@@ -137,49 +137,6 @@ function seeMoreData(){
     }      
 }
 
-/*
-function connectScale(){
-   let Device_Name = document.getElementById("textField").value
-   let Identifier = ''
-   let Baud_Rate = 1200
-   EloStarScaleManager.stopScan()
-   if(Device_Name.length > 1 && Device_Name.charAt(Device_Name.length-1) === ' ') {
-        Device_Name = Device_Name.slice(0, -1)
-   }
-   
-   for (let i=0;i<DeviceTable.length;i++){
-       let obj = JSON.parse(DeviceTable[i])
-       
-       if (obj.device_name === Device_Name){
-           Identifier = obj.identifier
-           break
-       }
-   }
-    
-   if (Identifier === ''){
-        document.getElementById("textField").value = "Scale not found"
-        return
-   }
-   
-   if (!EloStarScaleManager.createScale(Identifier, Baud_Rate)){
-       document.getElementById("textField").value = "Could not create scale"
-       return
-   }
-  
-   if (!EloStarScaleManager.connectScale("StatusCallback")){        //see StatusCallback to find if connection succeeded or failed. Boolean value indicates if connecting started or failed.
-       document.getElementById("textField").value = "Could not start connection process"
-       return
-   }
-    
-   if (!EloStarScaleManager.setScaleDataCallback("DataCallback")){
-       document.getElementById("textField").value = "Error setting Scale Callback"
-       return
-   }
-    
-   document.getElementById("textField").value = "Scale Connecting..."  
-}
-*/
-
 function DataCallback(Data){    //receives scale measurement data
                                 //Will receive "ERROR" if there is a problem with measuring weight, such as exceeding scale's weight capacity.
   if (Data === "ERROR"){
@@ -288,7 +245,7 @@ function StatusCallback(status){        //receives events for connecting, discon
 
        // ***update settings or output conditions***
     
-  else if (event === "UPDATE_SETTING" || event === "UPDATE_OUTPUT_SETTING"){
+  else if (event === "UPDATE_SETTING" || event === "UPDATE_OUTPUT_CONDITION"){
       if (result === "UPDATE_SETTING_SUCCESS"){
           document.getElementById("textField").value = "Setting Update - Changed Successfully"    
       }
@@ -320,21 +277,7 @@ function StatusCallback(status){        //receives events for connecting, discon
     else{
         let info = "Name: " + scaleInfo.getDeviceName() + ", Type: " + scaleInfo.getScaleType() + ", Interface: " + scaleInfo.getInterfaceType()
         document.getElementById("textField").value = info
-    }
-     
-     /*
-     if (!EloStarScaleManager.isScaleConnected()){
-         document.getElementById("textField").value = "No scale connected"
-         return
-    }
-    let name = EloStarScaleManager.getScaleDeviceName()
-    if (name === ""){
-        document.getElementById("textField").value = "Error finding name"
-    }
-    else{
-        document.getElementById("textField").value = name 
-    }
-    */
+    }       
 }
 
 function zeroPointAdjustment(){
