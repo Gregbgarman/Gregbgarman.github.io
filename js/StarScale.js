@@ -79,6 +79,10 @@ function DeviceCallback(Scale){         //Discovered scales will appear here
 
 
 function connectScale(){
+   if (EloStarScaleManager.isConnected()){
+       document.getElementById("textField").value = "Disconnect scale first"
+       return
+   }
    EloStarScaleManager.stopScan()
    let scale_name = document.getElementById("textField").value  
    if(scale_name.length > 1 && scale_name.charAt(scale_name.length-1) === ' ') {
