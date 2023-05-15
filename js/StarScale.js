@@ -98,7 +98,7 @@ function connectScale(){
        }
    }
     
-   if (scaleInfo.getIdentifier() === ''){
+   if (scaleInfo === '' || scaleInfo.getIdentifier() === ''){
         document.getElementById("textField").value = "Scale not found"
         scaleInfo = ""
         return
