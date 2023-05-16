@@ -127,6 +127,11 @@ function connectScale(){
 }
 
 function seeMoreData(){
+    if (!EloStarScaleManager.isScaleConnected()){
+       document.getElementById("textField").value = "No scale connected"
+       return
+   }
+    
     if (SeeMoreData){
         SeeMoreData = false
         document.getElementById("seeMoreData").innerHTML = "Show More Data"
@@ -271,6 +276,11 @@ function StatusCallback(status){        //receives events for connecting, discon
 }
     
  function getDeviceInfo(){
+     if (!EloStarScaleManager.isScaleConnected()){
+       document.getElementById("textField").value = "No Scale Connected"
+       return
+     }
+     
      if (scaleInfo === "" || scaleInfo.getDeviceName() === ""){
         document.getElementById("textField").value = "Error finding name"
     }
