@@ -212,6 +212,7 @@ function StatusCallback(status){        //receives events for connecting, discon
        
        if(!connectSuccess) {
             EloStarScaleManager.destroyScale()
+            scaleInfo = ""
        }       
     }
 
@@ -219,6 +220,7 @@ function StatusCallback(status){        //receives events for connecting, discon
 
     else if (event === "DISCONNECT"){
        EloStarScaleManager.destroyScale()
+       scaleInfo = ""
         
        if (result ==="DISCONNECT_SUCCESS"){
          document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
@@ -319,13 +321,13 @@ function setStableOutput(){
 }
 
 function disconnectScale(){
-    scaleInfo = ""
     if (!EloStarScaleManager.isScaleConnected()){
          document.getElementById("textField").value = "No scale connected"
          return
     }
     if (!EloStarScaleManager.disconnectScale()){                                    //see StatusCallback to determine disconnection event
         document.getElementById("textField").value = "Error starting disconnection"
+        scaleInfo = ""
         EloStarScaleManager.destroyScale()                                        //resetting scale if disconnection somehow could not take place
         document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
     }
