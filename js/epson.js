@@ -14,7 +14,7 @@ function printBarcode() {
     if(!barcodeToPrint || barcodeToPrint.length === 0 || barcodeToPrint === "true" || barcodeToPrint === "false"){
         barcodeToPrint = "1234567890"
     }
-    EloEpsonPrinterManager.addCut(CUT_FEED)
+    EloEpsonPrinterManager.addCut(1)
     document.getElementById("textField").value = EloEpsonPrinterManager.printBarcode(barcodeToPrint);
 }
 
