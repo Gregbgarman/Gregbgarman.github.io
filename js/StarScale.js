@@ -60,6 +60,10 @@ else{
 
 
 function beginScan(){
+    if (EloStarScaleManager.isScaleConnected()){
+       document.getElementById("textField").value = "Disconnect scale first"
+       return
+   }
     DevicesFound = ''
     DeviceTable = []
     document.getElementById("textField").value = "Searching..."
