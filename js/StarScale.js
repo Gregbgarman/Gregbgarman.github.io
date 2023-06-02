@@ -152,10 +152,9 @@ function DataCallback(Data){    //receives scale measurement data
       document.getElementById("textField").value = "Scale Data Error"
   }
   else{                         //Otherwise, parse JSON to obtain data in each measurement                 
-       try{
-           let dat = "fsdfd"
-          let obj = JSON.parse(dat) //Data    
-          let weight = obj.weight
+       try{          
+          let obj = JSON.parse(Data)   
+          let weight = obj.weight           //will just show undefined it not present, but JSON.parse error could throw exception
           let unit = obj.unit
           let status = obj.status
           let decimal_places = obj.decimal_places
