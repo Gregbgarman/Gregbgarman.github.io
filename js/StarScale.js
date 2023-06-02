@@ -154,7 +154,7 @@ function DataCallback(Data){    //receives scale measurement data
   else{                         //Otherwise, parse JSON to obtain data in each measurement                 
        try{
           let obj = JSON.parse(Data)    
-          let weight = obj.weight
+          let weight = obj.weigh
           let unit = obj.unit
           let status = obj.status
           let decimal_places = obj.decimal_places
