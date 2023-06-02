@@ -151,23 +151,27 @@ function DataCallback(Data){    //receives scale measurement data
   if (Data === "ERROR"){
       document.getElementById("textField").value = "Scale Data Error"
   }
-  else{                         //Otherwise, parse JSON to obtain data in each measurement              
-      
-      let obj = JSON.parse(Data)    
-      let weight = obj.weight
-      let unit = obj.unit
-      let status = obj.status
-      let decimal_places = obj.decimal_places
-      let data_type = obj.data_type
-      let raw = obj.raw
-      let comparator_result = obj.comparator_result
-                
-      if (!SeeMoreData){
-          document.getElementById("textField").value = weight + unit
+  else{                         //Otherwise, parse JSON to obtain data in each measurement                 
+       try{
+          let obj = JSON.parse(Data)    
+          let weight = obj.weight
+          let unit = obj.unit
+          let status = obj.status
+          let decimal_places = obj.decimal_places
+          let data_type = obj.data_type
+          let raw = obj.raw
+          let comparator_result = obj.comparator_result
+
+          if (!SeeMoreData){
+              document.getElementById("textField").value = weight + unit
+          }
+          else{          
+              document.getElementById("textField").value = "weight:" + weight + ", unit:" + unit + ", status:" + status //+ ", data type:" + data_type  + ", comparator result:" + comparator_result
+          }
+      }catch (error){
+              document.getElementById("textField").value = "Error parsing JSON data"
       }
-      else{          
-          document.getElementById("textField").value = "weight:" + weight + ", unit:" + unit + ", status:" + status + ", data type:" + data_type + ", comparator result:" + comparator_result
-      }
+
   }
 }
 
