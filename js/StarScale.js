@@ -148,10 +148,10 @@ function seeMoreData(){
 
 function DataCallback(Data){    //receives scale measurement data
                                 //Will receive "ERROR" if there is a problem with measuring weight, such as exceeding scale's weight capacity.
-  if (Data === "ERROR"){
-      document.getElementById("textField").value = "Scale Data Error"
-  }
-  else{                         //Otherwise, parse JSON to obtain data in each measurement                 
+ // if (Data === "ERROR"){
+//      document.getElementById("textField").value = "Scale Data Error"
+//  }
+//  else{                         //Otherwise, parse JSON to obtain data in each measurement                 
        try{          
           let obj = JSON.parse(Data)   
           let weight = obj.weight           //will just show undefined it not present, but JSON.parse error could throw exception
@@ -161,6 +161,8 @@ function DataCallback(Data){    //receives scale measurement data
           let data_type = obj.data_type
           let raw = obj.raw
           let comparator_result = obj.comparator_result
+          
+          //if statement here for if status == error
 
           if (!SeeMoreData){
               document.getElementById("textField").value = weight + unit
@@ -172,7 +174,7 @@ function DataCallback(Data){    //receives scale measurement data
               document.getElementById("textField").value = "Error parsing JSON data"
       }
 
-  }
+//  }
 }
 
 function StatusCallback(status){        //receives events for connecting, disconnecting, and changing scale settings
