@@ -55,7 +55,7 @@ class ScaleInfo{
 // Change to isScaleCreated()
 // Change terminology from "Scale Connected/Disconnected" to "Scale Ready/Unavailable"
 // probably can get rid of scaleConnected variable
-// Instead of "no scale connected" -> 
+// Instead of "no scale connected" -> "no scale found"
 
 if (EloStarScaleManager.isScaleConnected()){
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"   
