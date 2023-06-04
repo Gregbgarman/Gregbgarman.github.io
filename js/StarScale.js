@@ -11,6 +11,7 @@ let DeviceTable = []
 let SeeMoreData = false
 
 let scaleInfo = ""
+let scaleConnected = false
 
 
 /////////////////////////
@@ -50,6 +51,10 @@ class ScaleInfo{
         return this.interface_type   
     }           
 }
+
+// Change to isScaleCreated()
+// Change terminology from "Scale Connected/Disconnected" to "Scale Ready/Unavailable"
+// probably can get rid of scaleConnected variable
 
 if (EloStarScaleManager.isScaleConnected()){
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"   
@@ -102,31 +107,24 @@ function connectScale(){
        }
    }
     
-   if (scaleInfo === '' || scaleInfo.getIdentifier() === ''){
+   if (scaleInfo === ''){   //|| scaleInfo.getIdentifier() === ''){
         document.getElementById("textField").value = "Scale not found"
-        scaleInfo = ""
+       // scaleInfo = ""
         return
    }
    
    if (!EloStarScaleManager.createScale(scaleInfo.getIdentifier(), scaleInfo.getInterfaceType(), 1200)){
        document.getElementById("textField").value = "Could not create scale"
-       EloStarScaleManager.destroyScale()                                       //Destroying previous scale instance, if there was one, to have a clean reset
-       scaleInfo = ""
        return
    }
   
    if (!EloStarScaleManager.connectScale("StatusCallback")){        //see StatusCallback to find if connection succeeded or failed. Boolean value indicates if connecting started or failed.
        document.getElementById("textField").value = "Could not start connection process"
-       scaleInfo = ""
+       resetScale()
        return
    }
-    
-   if (!EloStarScaleManager.setScaleDataCallback("DataCallback")){
-       document.getElementById("textField").value = "Error setting Scale Callback"
-       scaleInfo = ""
-       return
-   }
-    
+   
+   EloStarScaleManager.setScaleDataCallback("DataCallback")
    document.getElementById("textField").value = "Scale Connecting..."  
 }
 
@@ -146,38 +144,31 @@ function seeMoreData(){
     }      
 }
 
-function DataCallback(Data){    //receives scale measurement data
-                                //Will receive "ERROR" if there is a problem with measuring weight, such as exceeding scale's weight capacity.
- // if (Data === "ERROR"){
-//      document.getElementById("textField").value = "Scale Data Error"
-//  }
-//  else{                         //Otherwise, parse JSON to obtain data in each measurement                 
-       try{          
-          let obj = JSON.parse(Data)   
-          let weight = obj.weight           //will just show undefined it not present, but JSON.parse error could throw exception
-          let unit = obj.unit
-          let status = obj.status
-          let decimal_places = obj.decimal_places
-          let data_type = obj.data_type
-          let raw = obj.raw
-          let comparator_result = obj.comparator_result
+function DataCallback(Data){    //receives scale measurement data              
+   try{          
+      let obj = JSON.parse(Data)   
+      let weight = obj.weight           //will just show undefined it not present, but JSON.parse error could throw exception
+      let unit = obj.unit
+      let status = obj.status
+      let decimal_places = obj.decimal_places
+      let data_type = obj.data_type
+      let raw = obj.raw
+      let comparator_result = obj.comparator_result
           
-          if (status === "ERROR"){
-              document.getElementById("textField").value = "Scale Data Error"
-          }
-          else {        //STABLE, UNSTABLE, INVALID
-              if (!SeeMoreData){
-                  document.getElementById("textField").value = weight + unit            
-              }
-              else{          
-                  document.getElementById("textField").value = "weight:" + weight + ", unit:" + unit + ", status:" + status + ", data type:" + data_type  + ", comparator result:" + comparator_result
-              }
-          }        
-      }catch (error){
-          document.getElementById("textField").value = "Error parsing JSON data"
+      if (status === "ERROR"){
+          document.getElementById("textField").value = "Scale Data Error"
       }
-
-//  }
+      else {        //STABLE, UNSTABLE, INVALID
+          if (!SeeMoreData){
+              document.getElementById("textField").value = weight + unit            
+          }
+          else{          
+              document.getElementById("textField").value = "weight:" + weight + ", unit:" + unit + ", status:" + status + ", data type:" + data_type  + ", comparator result:" + comparator_result
+          }
+      }        
+  }catch (error){
+      document.getElementById("textField").value = "Error parsing JSON data"
+  }
 }
 
 function StatusCallback(status){        //receives events for connecting, disconnecting, and changing scale settings
@@ -224,16 +215,17 @@ function StatusCallback(status){        //receives events for connecting, discon
        }
        
        if(!connectSuccess) {
-            EloStarScaleManager.destroyScale()
-            scaleInfo = ""
-       }       
+           resetScale()
+       }
+       else{
+           scaleConnected = true   
+       }
     }
 
          // **Disconnection**
 
     else if (event === "DISCONNECT"){
-       EloStarScaleManager.destroyScale()
-       scaleInfo = ""
+       resetScale()
         
        if (result ==="DISCONNECT_SUCCESS"){
          document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
@@ -340,8 +332,13 @@ function disconnectScale(){
     }
     if (!EloStarScaleManager.disconnectScale()){                                    //see StatusCallback to determine disconnection event
         document.getElementById("textField").value = "Error starting disconnection"
-        scaleInfo = ""
-        EloStarScaleManager.destroyScale()                                        //resetting scale if disconnection somehow could not take place
+        resetScale()                                        //resetting scale if disconnection somehow could not take place
         document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
     }
 }   
+
+function resetScale(){
+    EloStarScaleManager.destroyScale()
+    scaleInfo = ""
+    scaleConnected = false
+}
