@@ -170,7 +170,7 @@ function DataCallback(Data){    //receives scale measurement data
                   document.getElementById("textField").value = weight + unit            
               }
               else{          
-                  document.getElementById("textField").value = "weight:" + weight + ", unit:" + unit + ", status:" + status //+ ", data type:" + data_type  + ", comparator result:" + comparator_result
+                  document.getElementById("textField").value = "weight:" + weight + ", unit:" + unit + ", status:" + status + ", data type:" + data_type  + ", comparator result:" + comparator_result
               }
           }        
       }catch (error){
