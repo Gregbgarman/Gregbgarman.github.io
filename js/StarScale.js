@@ -59,7 +59,8 @@ class ScaleInfo{
 
 if (EloStarScaleManager.isScaleConnected()){
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
-    ScaleInfo = localStorage.getItem("scaleinfo")
+    ScaleInfo = localStorage.getItem("mycat")
+    document.getElementById("StarScaleAvailable").innerHTML = mycat
 }
 else{
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
@@ -221,8 +222,8 @@ function StatusCallback(status){        //receives events for connecting, discon
        }
        else{
            scaleConnected = true
-          // localStorage.setItem("myCat", "Tom")
-           localStorage.setItem("scaleinfo", ScaleInfo)
+           localStorage.setItem("mycat", "Tom")
+           //localStorage.setItem("scaleinfo", ScaleInfo)
        }
     }
 
