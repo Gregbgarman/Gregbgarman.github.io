@@ -228,7 +228,7 @@ function StatusCallback(status){        //receives events for connecting, discon
            scaleConnected = true
            localStorage.setItem("scaleConnected", "true")
            try{
-               localStorage.setItem("scaleInfo",JSON.stringify(scaleInfo)
+               localStorage.setItem("scaleInfo",JSON.stringify(scaleInfo))
            }catch(error){
            }
        }
