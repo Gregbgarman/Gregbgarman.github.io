@@ -58,7 +58,8 @@ class ScaleInfo{
 // Instead of "no scale connected" -> "no scale found"
 
 if (EloStarScaleManager.isScaleConnected()){
-    document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"   
+    document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
+    ScaleInfo = localStorage.getItem("scaleinfo")
 }
 else{
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
@@ -219,7 +220,9 @@ function StatusCallback(status){        //receives events for connecting, discon
            resetScale()
        }
        else{
-           scaleConnected = true   
+           scaleConnected = true
+          // localStorage.setItem("myCat", "Tom")
+           localStorage.setItem("scaleinfo", ScaleInfo)
        }
     }
 
