@@ -59,7 +59,7 @@ window.onload = function() {                    //if scale instance exists upon 
     }
     else{
         document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
-        localStorage.removeItem("scaleConnected")
+        resetScale()
     }
 }
 
