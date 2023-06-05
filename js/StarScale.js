@@ -58,9 +58,8 @@ class ScaleInfo{
 // Instead of "no scale connected" -> "no scale found"
 
 if (EloStarScaleManager.isScaleConnected()){
+    scaleConnected = true
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
-    ssss = localStorage.getItem("mycat")
-    document.getElementById("StarScaleAvailable").innerHTML = ssss
 }
 else{
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
@@ -68,7 +67,7 @@ else{
 
 
 function beginScan(){
-    if (EloStarScaleManager.isScaleConnected()){
+    if (scaleConnected){
        document.getElementById("textField").value = "Disconnect scale first"
        return
    }
@@ -91,7 +90,7 @@ function DeviceCallback(Scale){         //Discovered scales will appear here
 
 
 function connectScale(){
-   if (EloStarScaleManager.isScaleConnected()){
+   if (scaleConnected){
        document.getElementById("textField").value = "Disconnect scale first"
        return
    }
@@ -132,7 +131,7 @@ function connectScale(){
 }
 
 function seeMoreData(){
-    if (!EloStarScaleManager.isScaleConnected()){
+    if (!scaleConnected){
        document.getElementById("textField").value = "No scale connected"
        return
    }
@@ -221,9 +220,7 @@ function StatusCallback(status){        //receives events for connecting, discon
            resetScale()
        }
        else{
-           scaleConnected = true
-           localStorage.setItem("mycat", "Tom")
-           //localStorage.setItem("scaleinfo", ScaleInfo)
+           scaleConnected = true           
        }
     }
 
@@ -288,7 +285,7 @@ function StatusCallback(status){        //receives events for connecting, discon
 }
     
  function getDeviceInfo(){
-     if (!EloStarScaleManager.isScaleConnected()){
+     if (!scaleConnected){
        document.getElementById("textField").value = "No Scale Connected"
        return
      }
@@ -303,7 +300,7 @@ function StatusCallback(status){        //receives events for connecting, discon
 }
 
 function zeroPointAdjustment(){
-    if (!EloStarScaleManager.isScaleConnected()){
+    if (!scaleConnected){
          document.getElementById("textField").value = "No scale connected"
         return
     }
@@ -311,7 +308,7 @@ function zeroPointAdjustment(){
 }
 
 function setContinousOutput(){
-    if (!EloStarScaleManager.isScaleConnected()){
+    if (!scaleConnected){
          document.getElementById("textField").value = "No scale connected"
          return
     }
@@ -319,7 +316,7 @@ function setContinousOutput(){
 }
 
 function setStableOutput(){
-     if (!EloStarScaleManager.isScaleConnected()){
+     if (!scaleConnected){
          document.getElementById("textField").value = "No scale connected"
          return
     }
@@ -331,7 +328,7 @@ function setStableOutput(){
 }
 
 function disconnectScale(){
-    if (!EloStarScaleManager.isScaleConnected()){
+    if (!scaleConnected){
          document.getElementById("textField").value = "No scale connected"
          return
     }
