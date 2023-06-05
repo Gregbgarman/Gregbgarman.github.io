@@ -338,29 +338,18 @@ function resetScale(){
 function restoreScale(){
      if (EloStarScaleManager.isScaleCreated() && localStorage.getItem("scaleConnected") === "true"){
         scaleConnected = true
-        document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
-        try{
-           let savedScaleInfo = localStorage.getItem("scaleInfo")
-           if (savedScaleInfo !== undefined){
-               scaleInfo = new ScaleInfo(JSON.parse(savedScaleInfo))
-           }         
-        }catch(error){
-            document.getElementById("textField").value = "Could not restore scale data"
-        }
+        document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"       
+        let savedScaleInfo = localStorage.getItem("scaleInfo")
+        if (savedScaleInfo !== null){
+            try{
+                scaleInfo = new ScaleInfo(JSON.parse(savedScaleInfo))
+            }catch(error){
+                 document.getElementById("textField").value = "Could not restore scale data"
+            }
+        }                 
     }
     else{
         document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
         resetScale()
     }    
-    let x = localStorage.getItem("scaleInfo")
-    if (x === null){
-        document.getElementById("StarScaleAvailable").innerHTML = "it is null"
-    }
-    else if (x === undefined){
-        document.getElementById("StarScaleAvailable").innerHTML = "it is undefined"
-    }
-    else{
-        document.getElementById("StarScaleAvailable").innerHTML = "it is something else"
-    }
-      
 }
