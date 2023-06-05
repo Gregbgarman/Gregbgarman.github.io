@@ -57,7 +57,10 @@ window.onload = function() {                    //if scale instance exists and i
         scaleConnected = true
         document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
         try{
-           scaleInfo = JSON.parse(localStorage.getItem("scaleInfo"))
+           let savedScaleInfo = localStorage.getItem("scaleInfo")
+           if (savedScaleInfo !== undefined){
+               scaleInfo = JSON.parse(savedScaleInfo)
+           }    
         }catch(error){
         }
     }
