@@ -295,15 +295,8 @@ function StatusCallback(status){        //receives events for connecting, discon
     else{
         let info = "Name: " + scaleInfo.getDeviceName() + ", Type: " + scaleInfo.getScaleType() + ", Interface: " + scaleInfo.getInterfaceType()
         document.getElementById("textField").value = info
-    }       
-}
-
-function zeroPointAdjustment(){
-    if (!scaleConnected){
-         document.getElementById("textField").value = "No scale connected"
-        return
     }
-    EloStarScaleManager.updateSetting("ZeroPointAdjustment")
+     document.getElementById("textField").value = JSON.stringify(scaleInfo)
 }
 
 function setContinousOutput(){
@@ -327,7 +320,6 @@ function setStableOutput(){
 }
 
 function disconnectScale(){
-    document.getElementById("textField").value = JSON.stringify(scaleInfo)
     if (!scaleConnected){
          document.getElementById("textField").value = "No scale connected"
          return
