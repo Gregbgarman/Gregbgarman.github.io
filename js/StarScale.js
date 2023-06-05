@@ -216,6 +216,7 @@ function StatusCallback(status){        //receives events for connecting, discon
            try{
                localStorage.setItem("scaleInfo",JSON.stringify(scaleInfo))
            }catch(error){
+               document.getElementById("textField").value = "Could not persist scaleInfo"
            }
        }
     }
