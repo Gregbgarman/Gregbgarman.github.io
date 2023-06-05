@@ -53,7 +53,7 @@ class ScaleInfo{
 
 
 window.onload = function() {                    //if scale instance exists upon page reload
-    if (EloStarScaleManager.isScaleCreated() && localStorage.getItem("isConnected") === true){
+    if (EloStarScaleManager.isScaleCreated() && localStorage.getItem("scaleConnected") === "true"){
         scaleConnected = true
         document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
     }
@@ -219,7 +219,7 @@ function StatusCallback(status){        //receives events for connecting, discon
        }
        else{
            scaleConnected = true
-           localStorage.setItem("isConnected", true);
+           localStorage.setItem("scaleConnected", "true");
        }
     }
 
