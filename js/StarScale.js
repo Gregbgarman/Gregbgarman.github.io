@@ -52,22 +52,8 @@ class ScaleInfo{
 }
 
 
-window.onload = function() {                    //if scale instance exists and is connected when a page refresh occurs
-    if (EloStarScaleManager.isScaleCreated() && localStorage.getItem("scaleConnected") === "true"){
-        scaleConnected = true
-        document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
-        try{
-           let savedScaleInfo = localStorage.getItem("scaleInfo")
-           if (savedScaleInfo !== undefined){
-               scaleInfo = new ScaleInfo(JSON.parse(savedScaleInfo))
-           }    
-        }catch(error){
-        }
-    }
-    else{
-        document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
-        resetScale()
-    }
+window.onload = function() {                    
+   restoreScale()
 }
 
 
@@ -347,4 +333,26 @@ function resetScale(){
     scaleConnected = false
     localStorage.removeItem("scaleConnected")
     localStorage.removeItem("scaleInfo")
+}
+
+function restoreScale(){
+     if (EloStarScaleManager.isScaleCreated() && localStorage.getItem("scaleConnected") === "true"){
+        scaleConnected = true
+        document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
+        try{
+           let savedScaleInfo = localStorage.getItem("scaleInfo")
+           if (savedScaleInfo !== undefined){
+               scaleInfo = new ScaleInfo(JSON.parse(savedScaleInfo))
+           }
+           else{
+              document.getElementById("StarScaleAvailable").innerHTML = savedScaleInfo
+           }
+        }catch(error){
+            document.getElementById("textField").value = "Could not restore scale data"
+        }
+    }
+    else{
+        document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
+        resetScale()
+    }    
 }
