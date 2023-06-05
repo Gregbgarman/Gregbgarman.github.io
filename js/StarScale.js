@@ -53,7 +53,7 @@ class ScaleInfo{
 
 
 window.onload = function() {                    //if scale instance exists upon page reload
-    if (EloStarScaleManager.isScaleCreated()){
+    if (EloStarScaleManager.isScaleCreated() && localStorage.getItem("isConnected") === true){
         scaleConnected = true
         document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
     }
@@ -146,7 +146,7 @@ function seeMoreData(){
 function DataCallback(Data){    //receives scale measurement data              
    try{          
       let obj = JSON.parse(Data)   
-      let weight = obj.weight           //will just show undefined it not present, but JSON.parse error could throw exception
+      let weight = obj.weight   
       let unit = obj.unit
       let status = obj.status
       let decimal_places = obj.decimal_places
@@ -162,7 +162,7 @@ function DataCallback(Data){    //receives scale measurement data
               document.getElementById("textField").value = weight + unit            
           }
           else{          
-              document.getElementById("textField").value = "weight:" + weight + ", unit:" + unit + ", status:" + status + ", data type:" + data_type  + ", comparator result:" + comparator_result
+              document.getElementById("textField").value = "weight:" + weight + ", unit:" + unit + ", status:" + status + ", data type:" + data_type // + ", comparator result:" + comparator_result
           }
       }        
   }catch (error){
@@ -217,7 +217,8 @@ function StatusCallback(status){        //receives events for connecting, discon
            resetScale()
        }
        else{
-           scaleConnected = true           
+           scaleConnected = true
+           localStorage.setItem("isConnected", true);
        }
     }
 
@@ -283,7 +284,7 @@ function StatusCallback(status){        //receives events for connecting, discon
     
  function getDeviceInfo(){
      if (!scaleConnected){
-       document.getElementById("textField").value = "No Scale Connected"
+       document.getElementById("textField").value = "No scale connected"
        return
      }
      
@@ -340,4 +341,5 @@ function resetScale(){
     EloStarScaleManager.destroyScale()
     scaleInfo = ""
     scaleConnected = false
+    localStorage.clear()        //removes scale connected status
 }
