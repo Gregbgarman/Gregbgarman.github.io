@@ -59,6 +59,7 @@ window.onload = function() {                    //if scale instance exists upon 
     }
     else{
         document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
+        localStorage.removeItem("scaleConnected")
     }
 }
 
@@ -341,5 +342,5 @@ function resetScale(){
     EloStarScaleManager.destroyScale()
     scaleInfo = ""
     scaleConnected = false
-    localStorage.clear()        //removes scale connected status
+    localStorage.removeItem("scaleConnected")
 }
