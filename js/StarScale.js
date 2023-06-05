@@ -9,7 +9,6 @@ document.getElementById("seeMoreData").addEventListener("click", seeMoreData)
 let DevicesFound = ''
 let DeviceTable = []
 let SeeMoreData = false
-
 let scaleInfo = ""
 let scaleConnected = false
 
@@ -52,17 +51,15 @@ class ScaleInfo{
     }           
 }
 
-// Change to isScaleCreated()
-// Change terminology from "Scale Connected/Disconnected" to "Scale Ready/Unavailable"
-// probably can get rid of scaleConnected variable
-// Instead of "no scale connected" -> "no scale found"
 
-if (EloStarScaleManager.isScaleConnected()){
-    scaleConnected = true
-    document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
-}
-else{
-    document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
+window.onload = function() {                    //if scale instance exists upon page reload
+    if (EloStarScaleManager.isScaleCreated()){
+        scaleConnected = true
+        document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
+    }
+    else{
+        document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
+    }
 }
 
 
@@ -134,7 +131,7 @@ function seeMoreData(){
     if (!scaleConnected){
        document.getElementById("textField").value = "No scale connected"
        return
-   }
+    }
     
     if (SeeMoreData){
         SeeMoreData = false
