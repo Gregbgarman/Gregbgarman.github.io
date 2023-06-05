@@ -336,7 +336,6 @@ function resetScale(){
 }
 
 function restoreScale(){
-    document.getElementById("StarScaleAvailable").innerHTML = localStorage.getItem("scaleInfo")
      if (EloStarScaleManager.isScaleCreated() && localStorage.getItem("scaleConnected") === "true"){
         scaleConnected = true
         document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
@@ -353,4 +352,5 @@ function restoreScale(){
         document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
         resetScale()
     }    
+     document.getElementById("StarScaleAvailable").innerHTML = localStorage.getItem("scaleInfo")
 }
