@@ -327,6 +327,7 @@ function setStableOutput(){
 }
 
 function disconnectScale(){
+    document.getElementById("textField").value = JSON.stringify(scaleInfo)
     if (!scaleConnected){
          document.getElementById("textField").value = "No scale connected"
          return
