@@ -59,7 +59,7 @@ window.onload = function() {                    //if scale instance exists and i
         try{
            let savedScaleInfo = localStorage.getItem("scaleInfo")
            if (savedScaleInfo !== undefined){
-               scaleInfo = JSON.parse(savedScaleInfo)
+               scaleInfo = new ScaleInfo(JSON.parse(savedScaleInfo))
            }    
         }catch(error){
         }
