@@ -352,5 +352,15 @@ function restoreScale(){
         document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
         resetScale()
     }    
-     document.getElementById("StarScaleAvailable").innerHTML = localStorage.getItem("scaleInfo")
+    let x = localStorage.getItem("scaleInfo")
+    if (x === null){
+        document.getElementById("StarScaleAvailable").innerHTML = "it is null"
+    }
+    else if (x === undefined){
+        document.getElementById("StarScaleAvailable").innerHTML = "it is undefined"
+    }
+    else{
+        document.getElementById("StarScaleAvailable").innerHTML = "it is something else"
+    }
+      
 }
