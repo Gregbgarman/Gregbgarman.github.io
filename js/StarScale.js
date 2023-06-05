@@ -52,7 +52,7 @@ class ScaleInfo{
 }
 
 
-window.onload = function() {                    //if scale instance exists upon page reload
+window.onload = function() {                    //if scale instance exists and is connected when a page refresh occurs
     if (EloStarScaleManager.isScaleCreated() && localStorage.getItem("scaleConnected") === "true"){
         scaleConnected = true
         document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
