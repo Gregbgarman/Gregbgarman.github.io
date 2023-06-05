@@ -52,9 +52,9 @@ class ScaleInfo{
 }
 
 
-window.onload = function() {                    
+//window.onload = function() {                    
    restoreScale()
-}
+//}
 
 
 function beginScan(){
