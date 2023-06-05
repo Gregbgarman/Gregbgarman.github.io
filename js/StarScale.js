@@ -56,6 +56,10 @@ window.onload = function() {                    //if scale instance exists and i
     if (EloStarScaleManager.isScaleCreated() && localStorage.getItem("scaleConnected") === "true"){
         scaleConnected = true
         document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
+        try{
+           scaleInfo = JSON.parse(localStorage.getItem("scaleInfo"))
+        }catch(error){
+        }
     }
     else{
         document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
@@ -219,7 +223,11 @@ function StatusCallback(status){        //receives events for connecting, discon
        }
        else{
            scaleConnected = true
-           localStorage.setItem("scaleConnected", "true");
+           localStorage.setItem("scaleConnected", "true")
+           try{
+               localStorage.setItem("scaleInfo",JSON.stringify(scaleInfo)
+           }catch(error){
+           }
        }
     }
 
@@ -295,8 +303,7 @@ function StatusCallback(status){        //receives events for connecting, discon
     else{
         let info = "Name: " + scaleInfo.getDeviceName() + ", Type: " + scaleInfo.getScaleType() + ", Interface: " + scaleInfo.getInterfaceType()
         document.getElementById("textField").value = info
-    }
-     document.getElementById("textField").value = JSON.stringify(scaleInfo)
+    }    
 }
 
 function setContinousOutput(){
@@ -336,4 +343,5 @@ function resetScale(){
     scaleInfo = ""
     scaleConnected = false
     localStorage.removeItem("scaleConnected")
+    localStorage.removeItem("scaleInfo")
 }
