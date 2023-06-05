@@ -59,8 +59,8 @@ class ScaleInfo{
 
 if (EloStarScaleManager.isScaleConnected()){
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Connected"
-    ScaleInfo = localStorage.getItem("mycat")
-    document.getElementById("StarScaleAvailable").innerHTML = mycat
+    ssss = localStorage.getItem("mycat")
+    document.getElementById("StarScaleAvailable").innerHTML = ssss
 }
 else{
     document.getElementById("StarScaleAvailable").innerHTML = "Scale Disconnected"
