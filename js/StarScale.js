@@ -130,10 +130,12 @@ function seeMoreData(){
     if (SeeMoreData){
         SeeMoreData = false
         document.getElementById("seeMoreData").innerHTML = "Show More Data"
+        document.getElementById("textField").size = 30
     }
     else{
         SeeMoreData = true
         document.getElementById("seeMoreData").innerHTML = "Show Less Data"
+        document.getElementById("textField").size = 40
     }      
 }
 
