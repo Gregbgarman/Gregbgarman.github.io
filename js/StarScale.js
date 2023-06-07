@@ -129,13 +129,11 @@ function seeMoreData(){
     
     if (SeeMoreData){
         SeeMoreData = false
-        document.getElementById("seeMoreData").innerHTML = "Show More Data"
-        document.getElementById("textField").size = 30
+        document.getElementById("seeMoreData").innerHTML = "Show More Data"       
     }
     else{
         SeeMoreData = true
         document.getElementById("seeMoreData").innerHTML = "Show Less Data"
-        document.getElementById("textField").size = 40
     }      
 }
 
@@ -155,9 +153,11 @@ function DataCallback(Data){    //receives scale measurement data
       }
       else {        //STABLE, UNSTABLE, INVALID
           if (!SeeMoreData){
+              document.getElementById("textField").size = 30
               document.getElementById("textField").value = weight + unit            
           }
-          else{          
+          else{
+              document.getElementById("textField").size = 40
               document.getElementById("textField").value = "weight:" + weight + ", unit:" + unit + ", status:" + status + ", data type:" + data_type // + ", comparator result:" + comparator_result
           }
       }        
