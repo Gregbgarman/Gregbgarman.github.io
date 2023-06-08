@@ -286,7 +286,6 @@ function StatusCallback(status){        //receives events for connecting, discon
 }
     
  function getDeviceInfo(){
-     document.getElementById("textField").size = 45
      if (!scaleConnected){
        document.getElementById("textField").value = "No scale connected"
        return
@@ -296,6 +295,7 @@ function StatusCallback(status){        //receives events for connecting, discon
         document.getElementById("textField").value = "Error finding name"
     }
     else{
+        document.getElementById("textField").size = 45
         let info = "Name: " + scaleInfo.getDeviceName() + ", Type: " + scaleInfo.getScaleType() + ", Interface: " + scaleInfo.getInterfaceType()
         document.getElementById("textField").value = info
     }    
