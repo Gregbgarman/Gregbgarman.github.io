@@ -58,6 +58,7 @@ class ScaleInfo{
 
 
 function beginScan(){
+    document.getElementById("textField").size = 30
     if (scaleConnected){
        document.getElementById("textField").value = "Disconnect scale first"
        return
@@ -81,6 +82,7 @@ function DeviceCallback(Scale){         //Discovered scales will appear here
 
 
 function connectScale(){
+   document.getElementById("textField").size = 30
    if (scaleConnected){
        document.getElementById("textField").value = "Disconnect scale first"
        return
@@ -284,6 +286,7 @@ function StatusCallback(status){        //receives events for connecting, discon
 }
     
  function getDeviceInfo(){
+     document.getElementById("textField").size = 45
      if (!scaleConnected){
        document.getElementById("textField").value = "No scale connected"
        return
@@ -299,6 +302,7 @@ function StatusCallback(status){        //receives events for connecting, discon
 }
 
 function setContinousOutput(){
+    document.getElementById("textField").size = 30
     if (!scaleConnected){
          document.getElementById("textField").value = "No scale connected"
          return
@@ -307,6 +311,7 @@ function setContinousOutput(){
 }
 
 function setStableOutput(){
+     document.getElementById("textField").size = 30
      if (!scaleConnected){
          document.getElementById("textField").value = "No scale connected"
          return
@@ -319,6 +324,7 @@ function setStableOutput(){
 }
 
 function disconnectScale(){
+    document.getElementById("textField").size = 30
     if (!scaleConnected){
          document.getElementById("textField").value = "No scale connected"
          return
