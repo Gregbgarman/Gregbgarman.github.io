@@ -11,6 +11,7 @@ let DeviceTable = []
 let SeeMoreData = false
 let scaleInfo = ""
 let scaleConnected = false
+const DEFAULT_SIZE = 30
 
 
 /////////////////////////
@@ -58,8 +59,8 @@ class ScaleInfo{
 
 
 function beginScan(){
-    document.getElementById("textField").size = 30
     if (scaleConnected){
+       document.getElementById("textField").size = DEFAULT_SIZE
        document.getElementById("textField").value = "Disconnect scale first"
        return
    }
@@ -82,8 +83,8 @@ function DeviceCallback(Scale){         //Discovered scales will appear here
 
 
 function connectScale(){
-   document.getElementById("textField").size = 30
    if (scaleConnected){
+       document.getElementById("textField").size = DEFAULT_SIZE
        document.getElementById("textField").value = "Disconnect scale first"
        return
    }
@@ -155,7 +156,7 @@ function DataCallback(Data){    //receives scale measurement data
       }
       else {        //STABLE, UNSTABLE, INVALID
           if (!SeeMoreData){
-              document.getElementById("textField").size = 30
+              document.getElementById("textField").size = DEFAULT_SIZE
               document.getElementById("textField").value = weight + unit            
           }
           else{
@@ -169,7 +170,7 @@ function DataCallback(Data){    //receives scale measurement data
 }
 
 function StatusCallback(status){        //receives events for connecting, disconnecting, and changing scale settings
-    document.getElementById("textField").size = 30
+    document.getElementById("textField").size = DEFAULT_SIZE
     let obj = JSON.parse(status)
     let event = obj.event
     let result = obj.result
@@ -323,7 +324,7 @@ function setStableOutput(){
 }
 
 function disconnectScale(){
-    document.getElementById("textField").size = 30
+    document.getElementById("textField").size = DEFAULT_SIZE
     if (!scaleConnected){
          document.getElementById("textField").value = "No scale connected"
          return
