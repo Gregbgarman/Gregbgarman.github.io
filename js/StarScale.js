@@ -169,6 +169,7 @@ function DataCallback(Data){    //receives scale measurement data
 }
 
 function StatusCallback(status){        //receives events for connecting, disconnecting, and changing scale settings
+    document.getElementById("textField").size = 30
     let obj = JSON.parse(status)
     let event = obj.event
     let result = obj.result
@@ -302,7 +303,6 @@ function StatusCallback(status){        //receives events for connecting, discon
 }
 
 function setContinousOutput(){
-    document.getElementById("textField").size = 30
     if (!scaleConnected){
          document.getElementById("textField").value = "No scale connected"
          return
@@ -311,7 +311,6 @@ function setContinousOutput(){
 }
 
 function setStableOutput(){
-     document.getElementById("textField").size = 30
      if (!scaleConnected){
          document.getElementById("textField").value = "No scale connected"
          return
