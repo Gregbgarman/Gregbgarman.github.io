@@ -159,7 +159,7 @@ function DataCallback(Data){    //receives scale measurement data
               document.getElementById("textField").value = weight + unit            
           }
           else{
-              document.getElementById("textField").size = 40
+              document.getElementById("textField").size = 45
               document.getElementById("textField").value = "weight:" + weight + ", unit:" + unit + ", status:" + status + ", data type:" + data_type // + ", comparator result:" + comparator_result
           }
       }        
