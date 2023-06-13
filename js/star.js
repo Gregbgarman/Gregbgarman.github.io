@@ -389,7 +389,8 @@ function getReceipt1Data(){     //adding printer commands used for generating sa
    
     EloStarPrinterManager.append(" Scan the Qr code below to start!\n\n")
     EloStarPrinterManager.appendQrCode("https://www.elotouch.com/", "No2", "Q", 5)
-    EloStarPrinterManager.appendUnitFeed(10);
+    //EloStarPrinterManager.appendUnitFeed(10);
+    EloStarPrinterManager.appendUnitFeed("sponge",10)
 
     EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
     EloStarPrinterManager.endDocument()                             //always end receipt creation with endDocument
