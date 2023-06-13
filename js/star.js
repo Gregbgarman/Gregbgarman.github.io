@@ -368,12 +368,10 @@ function getReceipt1Data(){     //adding printer commands used for generating sa
     EloStarPrinterManager.append("Guest No 2\n")
     EloStarPrinterManager.appendAlignment("Left")
    
-    EloStarPrinterManager.appendInvert(true)        //testing
     
     EloStarPrinterManager.append("1\tcheese pizza\t5.00\n")
     EloStarPrinterManager.append("1\tmilkshake\t1.75\n\n---------------------------------\n")
     
-     EloStarPrinterManager.appendInvert(false)        //testing
    
     EloStarPrinterManager.appendAlignment("Right")
     EloStarPrinterManager.append("Subtotal    17.00\nTax          1.20\n")
@@ -390,7 +388,6 @@ function getReceipt1Data(){     //adding printer commands used for generating sa
     EloStarPrinterManager.append(" Scan the Qr code below to start!\n\n")
     EloStarPrinterManager.appendQrCode("https://www.elotouch.com/", "No2", "Q", 5)
     EloStarPrinterManager.appendUnitFeed(10)
-    EloStarPrinterManager.appendUnitFeed("sponge",10)       //testing
 
     EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
     EloStarPrinterManager.endDocument()                             //always end receipt creation with endDocument
