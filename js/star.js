@@ -368,8 +368,12 @@ function getReceipt1Data(){     //adding printer commands used for generating sa
     EloStarPrinterManager.append("Guest No 2\n")
     EloStarPrinterManager.appendAlignment("Left")
    
+    EloStarPrinterManager.appendInvert(true)        //testing
+    
     EloStarPrinterManager.append("1\tcheese pizza\t5.00\n")
     EloStarPrinterManager.append("1\tmilkshake\t1.75\n\n---------------------------------\n")
+    
+     EloStarPrinterManager.appendInvert(false)        //testing
    
     EloStarPrinterManager.appendAlignment("Right")
     EloStarPrinterManager.append("Subtotal    17.00\nTax          1.20\n")
