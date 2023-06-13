@@ -244,8 +244,6 @@ function checkStarPrinterPaper(){         //checking if printer has paper
     EloStarPrinterManager.appendMultipleHeight("sfd", 20)
     EloStarPrinterManager.appendMultipleWidth("sdfd", 300)
     EloStarPrinterManager.appendBitmapWithAbsolutePosition(Eloimage,true, 50, true, "Rotate180", 100)
-    EloStarPrinterManager.appendBitmapWithAbsolutePosition(Eloimage,true, 50, true, "Rotate180", 100)
-    EloStarPrinterManager.appendAlignment("ssdfsd","Right")
     
      EloStarPrinterManager.appendLineFeed(1)
     EloStarPrinterManager.appendLineFeed()
