@@ -260,7 +260,7 @@ EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
  //   let ReceiptData_Key = EloStarPrinterManager.getCommands()   
   //   printReceipt(ReceiptData_Key)
     let voltage = document.getElementById("textField").value
-    document.getElementById("textField").value = EloPeripheralManager.setCDVoltage(12)
+    document.getElementById("textField").value = EloPeripheralManager.setCDVoltage(voltage)
     
 }
 
