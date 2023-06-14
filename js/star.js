@@ -262,6 +262,7 @@ EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
     
     var value = document.getElementById("textField").value;
     if(!value || value.length !== 2){
+        document.getElementById("textField").value = "false"
         return;
     }
     var voltage = parseInt(value, 10);
