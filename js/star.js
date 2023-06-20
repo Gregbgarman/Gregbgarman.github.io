@@ -264,7 +264,7 @@ EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
 let encoder = new TextEncoder();
 
 let bytess = encoder.encode(text)
- document.getElementById("textField").value = "at bottom"
+ document.getElementById("textField").value = bytess
     
 }
 
