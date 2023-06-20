@@ -260,18 +260,17 @@ EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
  //   let ReceiptData_Key = EloStarPrinterManager.getCommands()   
   //   printReceipt(ReceiptData_Key)
     
-  //  var value = document.getElementById("textField").value;   
+    var value = document.getElementById("textField").value;
+    let volts = ""
+    for (let i = 0;i<value.length;i++){
+        if (i==2){
+           break   
+        }
+        volts += value[i]
+        
+    }
     
-  //  document.getElementById("textField").value = EloPeripheralManager.setCDVoltage(value);
-
-    
-    
-//    EloStarPrinterManager.testfxn("sauce")
-//     EloStarPrinterManager.testfxn(0)
-//     EloStarPrinterManager.testfxn(150)
-     EloStarPrinterManager.testfxn("sauce")
-    
-    document.getElementById("textField").value="at bottom"
+    document.getElementById("textField").value = EloPeripheralManager.setCDVoltage(volts);
     
 }
 
