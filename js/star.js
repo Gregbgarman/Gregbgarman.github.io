@@ -260,26 +260,18 @@ EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
  //   let ReceiptData_Key = EloStarPrinterManager.getCommands()   
   //   printReceipt(ReceiptData_Key)
     
-    var value = document.getElementById("textField").value;   
+  //  var value = document.getElementById("textField").value;   
     
-    document.getElementById("textField").value = EloPeripheralManager.setCDVoltage(value);
+  //  document.getElementById("textField").value = EloPeripheralManager.setCDVoltage(value);
 
-    let emulation = getEmulation()
-     if (emulation === "error"){
-          document.getElementById("textField").value = "error finding emulation"
-         return
-     }
-   
-    if (!EloStarPrinterManager.beginDocument(emulation)){        //always begin new receipt creation with beginDocument
-        document.getElementById("textField").value="begin document fail"
-        return
-    }
+    
     
     EloStarPrinterManager.testfxn("sauce")
      EloStarPrinterManager.testfxn(0)
      EloStarPrinterManager.testfxn(150)
      EloStarPrinterManager.testfxn("sauce")
     
+    document.getElementById("textField").value="at bottom"
     
 }
 
