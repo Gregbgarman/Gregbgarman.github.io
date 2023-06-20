@@ -269,8 +269,9 @@ EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
         volts += value[i]
         
     }
+   var voltage = parseInt(value, 10);
     
-    document.getElementById("textField").value = EloPeripheralManager.setCDVoltage(volts);
+    document.getElementById("textField").value = EloPeripheralManager.setCDVoltage(voltage);
     
 }
 
