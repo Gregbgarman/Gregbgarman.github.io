@@ -264,8 +264,21 @@ EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
     
     document.getElementById("textField").value = EloPeripheralManager.setCDVoltage(value);
 
+    let emulation = getEmulation()
+     if (emulation === "error"){
+          document.getElementById("textField").value = "error finding emulation"
+         return
+     }
+   
+    if (!EloStarPrinterManager.beginDocument(emulation)){        //always begin new receipt creation with beginDocument
+        document.getElementById("textField").value="begin document fail"
+        return
+    }
     
-    
+    EloStarPrinterManager.testfxn("sauce")
+     EloStarPrinterManager.testfxn(0)
+     EloStarPrinterManager.testfxn(150)
+     EloStarPrinterManager.testfxn("sauce")
     
     
 }
