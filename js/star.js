@@ -266,9 +266,9 @@ EloStarPrinterManager.appendCutPaper("PartialCutWithFeed")
 
     
     
-    EloStarPrinterManager.testfxn("sauce")
-     EloStarPrinterManager.testfxn(0)
-     EloStarPrinterManager.testfxn(150)
+//    EloStarPrinterManager.testfxn("sauce")
+//     EloStarPrinterManager.testfxn(0)
+//     EloStarPrinterManager.testfxn(150)
      EloStarPrinterManager.testfxn("sauce")
     
     document.getElementById("textField").value="at bottom"
