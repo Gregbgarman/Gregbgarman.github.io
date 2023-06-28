@@ -55,7 +55,7 @@ let PrinterPortName=""        //Acquired from searching for printers and used ve
 let EmulationTable = {}
 initEmulationTable()
 
-EloStarScaleManager.scanForScales("DeviceCallback", "All")
+EloStarPrinterManager.scanForScales("DeviceCallback", "All")
 
 function queryStarPrinterList(){             //enter either USB, BT, or TCP in test field box. Or leave blank to search USB -> BT -> TCP on this sample app
     let target=document.getElementById("textField").value
