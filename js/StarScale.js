@@ -67,7 +67,7 @@ function beginScan(){
     DevicesFound = ''
     DeviceTable = []
     document.getElementById("textField").value = "Searching..."
-    if(!EloStarScaleManager.scanForScales("DeviceCallback", "All")){                //See DeviceCallback below for receiving discovered scales
+    if(!EloStarPrinterManager.scanForScales("DeviceCallback", "All")){                //See DeviceCallback below for receiving discovered scales
         document.getElementById("textField").value = "Unable to scan for scales"      
     }     
 }
