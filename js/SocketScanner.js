@@ -114,7 +114,8 @@ function connectBluetooth(){
     let success =  EloSocketMobileManager.connectBluetooth(BTDevice)       //Passing BT name to connect to the device
     if (success){
         document.getElementById("textField").value = "Connecting...Wait for beep"
-        enableScanning()
+       
+        //enableScanning()   COULD ADD HERE TO HAVE UI UPDATE WHEN BT CONNECTS
     }
     else{
         document.getElementById("textField").value =  "Failed. Try again"
