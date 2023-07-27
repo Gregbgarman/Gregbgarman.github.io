@@ -113,7 +113,8 @@ function connectBluetooth(){
     let BTDevice = document.getElementById("textField").value              //Reading the BT device name found after searching bluetooth
     let success =  EloSocketMobileManager.connectBluetooth(BTDevice)       //Passing BT name to connect to the device
     if (success){
-        document.getElementById("textField").value = "Connecting...Wait for beep" 
+        document.getElementById("textField").value = "Connecting...Wait for beep"
+        enableScanning()
     }
     else{
         document.getElementById("textField").value =  "Failed. Try again"
