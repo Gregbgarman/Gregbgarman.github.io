@@ -124,9 +124,7 @@ function connectScale(){
    document.getElementById("textField").value = "Scale Connecting..."  
 }
 
-function seeMoreData(){
-document.getElementById("seeMoreData").innerHTML = "Sauce" 
-    
+function seeMoreData(){    
     if (!scaleConnected){
        document.getElementById("textField").value = "No scale connected"
        return
