@@ -24,7 +24,19 @@ document.getElementById("set_cd_voltage").addEventListener("click", setCDVoltage
 
 window.onload = function() {
   checkAvailableDevices();
+	document.getElementById("textField").value="on window load"
 };
+
+function onEloReady(){
+        document.getElementById("textField").value="on elo ready"
+
+}
+
+function onEloStopped(){
+	document.getElementById("textField").value="on elo stopped"
+
+}
+
 
 
 // SLK Gen 2 colors:         NONE(0), RED(0x0001), GREEN(0x0080), BLUE(0x0100)
@@ -247,5 +259,4 @@ function checkAvailableDevices() {
     } else {
         document.getElementById("printerAvailable").innerHTML = "Printer is Disconnected";
     }
-    document.getElementById("textField").value="window on load"
 }
