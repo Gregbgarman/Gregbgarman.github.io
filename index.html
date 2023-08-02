@@ -7,10 +7,19 @@
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <title>Hello World</title>
+    <title>Elo Peripheral Connect</title>
 </head>
 <body>
 <div class="content">
+    <div>
+        <h2>Device Utility Functions</h2>
+        <button id="set_brightness">Set Brightness</button>
+        <button id="activate_idle_mode">Activate IDLE Mode</button>
+        <button id="get_lcd_density">Get LCD Density</button>
+        <button id="set_lcd_density">Set LCD Density</button>
+        <button id="register_usb_listener">Register USB Attachment Listener</button>
+        <button id="unregister_usb_listener">Unregister USB Attachment Listener</button>
+    </div>
     <div>
         <h2>Standard Light Kit (SLK)</h2>
         <button id="enable_slk">Enable SLK</button>
@@ -19,12 +28,24 @@
         <button id="slk_color_green">SLK Green</button>
     </div>
     <div>
-        <h2>Device Utility Functions</h2>
-        <button id="set_brightness">Set Brightness</button>
-        <button id="activate_idle_mode">Activate IDLE Mode</button>
-        <button id="get_lcd_density">Get LCD Density</button>
-        <button id="register_usb_listener">Register USB Attachment Listener</button>
-        <button id="unregister_usb_listener">Unregister USB Attachment Listener</button>
+        <h2>Standard Light Kit Gen 2 (July, 2023 MR-28 release)</h2>
+        <button id="get_light">Get SLK Light</button>
+        <button id="set_red_light">Set SLK Red</button>
+        <button id="set_green_light">Set SLK Green</button>
+        <button id="set_blue_light">Set SLK Blue</button>
+        <button id="set_light_off">Set SLK Light Off</button>
+        <button id="is_flashing">Is Flashing?</button>
+        <button id="set_red_flashing">Set Red Flashing</button>
+        <button id="set_green_flashing">Set Green Flashing</button>
+        <button id="set_blue_flashing">Set Blue Flashing</button>
+        <button id="stop_flashing">Stop Flashing</button>
+    </div>
+    <div>
+        <h2>Cash Drawer Functions (July, 2023 MR-28 release)</h2>
+        <button id="open_cd">Open Cash Drawer</button>
+        <button id="is_cd_open">Is Cash Drawer Open?</button>
+        <button id="get_cd_voltage">Get Cash Drawer Voltage</button>
+        <button id="set_cd_voltage">Set Cash Drawer Voltage</button>
     </div>
     <div>
         <h2>Honeywell Barcode Reader</h2>
@@ -57,8 +78,7 @@
         <button id="scanHandheldManual">Scan Handheld Manual</button>
         <button id="scanHandheldHandsFree">Scan Handheld Hands Free</button>
     </div>
-    
-      <div>
+    <div>
         <h2>Epson Printer Plugin</h2>
         <h3><span id="printerAvailable"></span></h3>
         <button id="updatePrinterList">Update Printer List</button>
@@ -70,26 +90,20 @@
         <button id="printImage">Print Image</button>
         <button id="checkPrinterPaper">Check Printer Paper</button>
         <button id="disconnectPrinter">Disconnect Printer</button>
-    </div>
-    
-    
-      <div>
+    </div> 
+    <div>
         <h2>Socket Mobile Plugin</h2>
         <h3><span id="scannerAvailable"></span></h3>
-          <button id="initService">Init Service</button>
-        <button id="showScanCode">1.Show Pair Code Below</button>
-        <button id ="searchBluetooth">2.Search Bluetooth</button>
-        <button id ="connectBluetooth">3.Connect Bluetooth</button>       
+        <button id="initService">1.Init Service</button>
+        <button id="showScanCode">2.Show Pair Code Below</button>
+        <button id ="searchBluetooth">3.Search Bluetooth</button>
+        <button id ="connectBluetooth">4.Connect Bluetooth</button>       
         <button id="enableScanning">Enable Scanning</button>                 
         <button id="runScanner">Run Scanner</button>
         <button id="rejectScans">Reject Scans</button>
         <button id="getBatteryLevel">Get Battery Level</button> 
         <button id="disableScanning">Disable Scanning</button>
-          
-          
-          
     </div>
-    
      <div>
         <h2>Star Printer Plugin</h2>
         <h3><span id="StarPrinterAvailable"></span></h3>
@@ -104,39 +118,31 @@
         <button id="checkStarPrinterOnline">Check Printer Online</button>
         <button id="checkStarFirmware">Get Firmware Info</button>
         <button id="forgetStarPrinter">Forget Printer</button> 
-        
-         
     </div>
-    
-   
+
     <div>
-        <h2>Star Scale Plugin</h2>
+        <h2>Star Scale Plugin (July, 2023 MR-28 release)</h2>
         <h3><span id="StarScaleAvailable"></span></h3>
         <button id="beginScan">Scan For Scales</button>
         <button id="connectScale">Connect Scale</button>
         <button id="setContOutput">Set Continuous Output</button>
         <button id="setStableOutput">Set Stable Output</button>   
-         <button id="seeMoreData">Show More Data</button>        
-         <button id="getDeviceInfo">Show Scale Info</button>      
+        <button id="seeMoreData">Show More Data</button>        
+        <button id="getDeviceInfo">Show Scale Info</button>      
         <button id="disconnectScale">Disconnect Scale</button>               
     </div>
-    
-   
-  
-   
-    
-    
+
+
     <div>
-        <h2>Test Fields:</h2>
-        <input type="text" id="textField" name="textField"" size="30"/><br>
-        <img id="myImage" src="" width ="500">
+        <h2>Input/Output:</h2>
+        <input type="text" id="textField" name="textField" size="30"/><br>
+        <img id="myImage" src="">
     </div>
-                                
     <div>
-        <img id="appmodeqrcode" src="SocketFiles/appmodeqrcode.png" alt="noalternate" width="128" height="128" class="center" style="visibility:hidden">
-    </div>                                                                                                                             
-                                
-</div>                              
+        <img id="appmodeqrcode" src="SocketMobileResources/appmodeqrcode.png" alt="noalternate" width="128" height="128" class="center" style="visibility:hidden">
+    </div> 
+
+</div>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/epson.js"></script>
 <script type="text/javascript" src="js/honeywell.js"></script>
@@ -144,6 +150,6 @@
 <script type="text/javascript" src="js/handheld.js"></script>
 <script type="text/javascript" src="js/star.js"></script>
 <script type="text/javascript" src="js/SocketScanner.js"></script>
-<script type="text/javascript" src="js/StarScale.js"></script>                                                       
+<script type="text/javascript" src="js/StarScale.js"></script>
 </body>
 </html>
