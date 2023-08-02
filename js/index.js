@@ -2,7 +2,7 @@
 document.getElementById("enable_slk").addEventListener("click", enableSlk);
 document.getElementById("disable_slk").addEventListener("click", disableSlk);
 document.getElementById("slk_color_red").addEventListener("click", setSlkColorRed);
-.addEventListener("click", setSlkColorGreen);
+document.getElementById("slk_color_green").addEventListener("click", setSlkColorGreen);
 document.getElementById("set_brightness").addEventListener("click", setBrightess);
 document.getElementById("activate_idle_mode").addEventListener("click", activateIdleMode);
 document.getElementById("get_lcd_density").addEventListener("click", getScreenDensity);
@@ -24,7 +24,6 @@ document.getElementById("set_cd_voltage").addEventListener("click", setCDVoltage
 
 window.onload = function() {
   checkAvailableDevices();
- document.getElementById("textField").value="window on load"	
 };
 
 
@@ -248,4 +247,5 @@ function checkAvailableDevices() {
     } else {
         document.getElementById("printerAvailable").innerHTML = "Printer is Disconnected";
     }
+    document.getElementById("textField").value="window on load"
 }
