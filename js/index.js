@@ -29,13 +29,6 @@ window.onload = function() {
 
 
 
-function onEloStopped(){
-	document.getElementById("textField").value="on elo stopped"
-
-}
-
-
-
 // SLK Gen 2 colors:         NONE(0), RED(0x0001), GREEN(0x0080), BLUE(0x0100)
 
 function openCD() {
