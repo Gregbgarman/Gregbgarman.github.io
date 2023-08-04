@@ -24,9 +24,7 @@ document.getElementById("set_cd_voltage").addEventListener("click", setCDVoltage
 
 window.onload = function() {
   checkAvailableDevices();
-	//document.getElementById("textField").value="on window load"
 };
-
 
 
 // SLK Gen 2 colors:         NONE(0), RED(0x0001), GREEN(0x0080), BLUE(0x0100)
