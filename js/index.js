@@ -68,6 +68,7 @@ function onHoneywellReady(){
 }
 
 function onZebraReady(){
+	 var zebraAvailable = EloZebraBarcodeManager.isZebraBarcodeConnected();
 	 if(zebraAvailable == true){
         document.getElementById("zebraBarcodeConnected").innerHTML = "Zebra Barcode Reader is Connected";
     } else {
