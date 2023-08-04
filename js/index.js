@@ -37,30 +37,51 @@ window.onload = function() {
 
 
 function onSocketReady(){
-	
+	EloSocketMobileManager.enableScanning()
 }
 
 function onScaleReady(){
+	
 }
 
 function onEpsonReady(){
+    if(printerAvailable == true){
+        document.getElementById("printerAvailable").innerHTML = "Printer is Connected";
+    } else {
+        document.getElementById("printerAvailable").innerHTML = "Printer is Disconnected";
+    }
 }
 
 function onStarPrinterReady(){
+	
 }
 
 function onHoneywellReady(){
+	 var honeywellAvailable = EloHoneywellBarcodeManager.isBcrOn();
+	if(honeywellAvailable == true){
+        document.getElementById("honeywellBarcodeAvailable").innerHTML = "Honeywell is Connected";
+    } else {
+        document.getElementById("honeywellBarcodeAvailable").innerHTML = "Honeywell is Disconnected";
+    }
 }
 
 function onZebraReady(){
-
+	 if(zebraAvailable == true){
+        document.getElementById("zebraBarcodeConnected").innerHTML = "Zebra Barcode Reader is Connected";
+    } else {
+        document.getElementById("zebraBarcodeConnected").innerHTML = "Zebra Barcode Reader is Disconnected";
+    }
 }
 
 function onHandheldReady(){
+	
 }
 
 function onPeripheralManagerReady(){
+	setLightOff()
+	setGreenLight()
 }
+
 
 
 
