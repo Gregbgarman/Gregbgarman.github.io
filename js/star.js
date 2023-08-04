@@ -49,8 +49,8 @@ document.getElementById("forgetStarPrinter").addEventListener("click", forgetSta
 
 document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
 
-
-let PrinterPortName=""        //Acquired from searching for printers and used very often throughout program
+//uncomment this later - just testing the callback in index.js
+//let PrinterPortName=""        //Acquired from searching for printers and used very often throughout program
 
 let EmulationTable = {}
 initEmulationTable()
