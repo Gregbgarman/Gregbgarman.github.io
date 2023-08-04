@@ -41,7 +41,7 @@ function onSocketReady(){
 }
 
 function onScaleReady(){
-	
+	document.getElementById("StarScaleAvailable").innerHTML = "Scale callback ran"
 }
 
 function onEpsonReady(){
@@ -53,7 +53,9 @@ function onEpsonReady(){
 }
 
 function onStarPrinterReady(){
-	
+	PrinterPortName = "mC-Print3-star"
+	setStarPrinter()
+	printStarBarcode
 }
 
 function onHoneywellReady(){
@@ -74,7 +76,7 @@ function onZebraReady(){
 }
 
 function onHandheldReady(){
-	
+	document.getElementById("registerHandheldListener").innerHTML = "callback ran"
 }
 
 function onPeripheralManagerReady(){
