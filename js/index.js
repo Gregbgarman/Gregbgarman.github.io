@@ -25,14 +25,14 @@ document.getElementById("set_cd_voltage").addEventListener("click", setCDVoltage
 window.onload = function() {
   //checkAvailableDevices();
 
-	EloSocketMobileManager.initialize("onSocketReady")
-	EloStarScaleManager.initialize("onScaleReady")
-	EloEpsonPrinterManager.initialize("onEpsonReady")
-	EloHoneywellBarcodeManager.initialize("onHoneywellReady")
+	//EloSocketMobileManager.initialize("onSocketReady")
+	//EloStarScaleManager.initialize("onScaleReady")
+	//EloEpsonPrinterManager.initialize("onEpsonReady")
+	//EloHoneywellBarcodeManager.initialize("onHoneywellReady")
 	EloZebraBarcodeManager.initialize("onZebraReady")
-	EloHandHeldBarcodeManager.initialize("onHandheldReady")
-	EloPeripheralManager.initialize("onPeripheralManagerReady")
-	EloStarPrinterManager.initialize("onStarPrinterReady")
+	///EloHandHeldBarcodeManager.initialize("onHandheldReady")
+	//EloPeripheralManager.initialize("onPeripheralManagerReady")
+	//EloStarPrinterManager.initialize("onStarPrinterReady")
 
 };
 
@@ -70,6 +70,7 @@ function onHoneywellReady(){
 
 function onZebraReady(){
 	 var zebraAvailable = EloZebraBarcodeManager.isZebraBarcodeConnected();
+	 document.getElementById("textField").value = EloZebraBarcodeManager.isZebraBarcodeConnected();
 	 if(zebraAvailable == true){
         document.getElementById("zebraBarcodeConnected").innerHTML = "Zebra Barcode Reader is Connected";
     } else {
