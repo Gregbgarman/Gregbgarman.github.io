@@ -46,11 +46,12 @@ let BluetoothDevices = []
 let RejectAllScans = false
 
 
-/*
+
 window.onload = function() {
   EloSocketMobileManager.initialize("onSocketReady")
 };
 
+/*
 function onSocketReady(){
  if (EloSocketMobileManager.getDeviceName() === ''){
       document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
