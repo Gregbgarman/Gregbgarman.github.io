@@ -37,7 +37,7 @@ window.onload = function() {
 
 
 function onSocketReady(){
-	EloSocketMobileManager.enableScanning()
+	enableScanning()
 }
 
 function onScaleReady(){
@@ -90,8 +90,6 @@ function onPeripheralManagerReady(){
 
 function openCD() {
     document.getElementById("textField").value = EloPeripheralManager.openCD();
-
-	document.getElementById("textField").value = saucey		//testing can get variable in other JSfile
 }
 
 function isCDOpen() {
