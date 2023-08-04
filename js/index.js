@@ -55,7 +55,7 @@ function onEpsonReady(){
 function onStarPrinterReady(){
 	PrinterPortName = "mC-Print3-star"
 	setStarPrinter()
-	printStarBarcode
+	printStarBarcode()
 }
 
 function onHoneywellReady(){
