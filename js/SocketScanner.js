@@ -136,10 +136,10 @@ function enableScanning(){
     let success1 = EloSocketMobileManager.setClientListener("DeviceStateCallback")        //set listener to receive device state changes (see below) 
     let success2 = EloSocketMobileManager.connectClient("ConnStateCallback")                              
     if (success1 && success2){
-       document.getElementById("textField").value =  "Waiting for device"
+//       document.getElementById("textField").value =  "Waiting for device"
     }
     else{
-       document.getElementById("textField").value =  "Failed"   
+//       document.getElementById("textField").value =  "Failed"   
     }
 }
 
