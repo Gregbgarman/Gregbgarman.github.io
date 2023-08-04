@@ -46,6 +46,7 @@ function onScaleReady(){
 }
 
 function onEpsonReady(){
+	 var printerAvailable = EloEpsonPrinterManager.isPrinterConnected();
     if(printerAvailable == true){
         document.getElementById("printerAvailable").innerHTML = "Printer is Connected";
     } else {
