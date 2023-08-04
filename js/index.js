@@ -28,11 +28,12 @@ window.onload = function() {
 	EloSocketMobileManager.initialize("onSocketReady")
 	EloStarScaleManager.initialize("onScaleReady")
 	EloEpsonPrinterManager.initialize("onEpsonReady")
-	EloStarPrinterManager.initialize("onStarPrinterReady")
 	EloHoneywellBarcodeManager.initialize("onHoneywellReady")
 	EloZebraBarcodeManager.initialize("onZebraReady")
 	EloHandHeldBarcodeManager.initialize("onHandheldReady")
 	EloPeripheralManager.initialize("onPeripheralManagerReady")
+	EloStarPrinterManager.initialize("onStarPrinterReady")
+
 };
 
 
@@ -53,7 +54,7 @@ function onEpsonReady(){
 }
 
 function onStarPrinterReady(){
-	PrinterPortName = "mC-Print3-star"
+	PrinterPortName = "BT:mC-Print3-star"
 	setStarPrinter()
 	printStarBarcode()
 }
