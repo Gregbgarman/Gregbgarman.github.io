@@ -24,6 +24,8 @@ document.getElementById("set_cd_voltage").addEventListener("click", setCDVoltage
 
 window.onload = function() {
   checkAvailableDevices();
+
+	EloSocketMobileManager.initialize("onSocketReady")
 };
 
 
