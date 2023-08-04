@@ -55,7 +55,6 @@ function onEpsonReady(){
 
 function onStarPrinterReady(){
 	PrinterPortName = "BT:mC-Print3-star"
-	setStarPrinter()
 	printStarBarcode()
 }
 
