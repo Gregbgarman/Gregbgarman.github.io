@@ -46,9 +46,9 @@ let BluetoothDevices = []
 let RejectAllScans = false
 
 
-
+/*
 window.onload = function() {
- // EloSocketMobileManager.initialize("onSocketReady")
+  EloSocketMobileManager.initialize("onSocketReady")
 };
 
 function onSocketReady(){
@@ -59,7 +59,7 @@ function onSocketReady(){
       document.getElementById("scannerAvailable").innerHTML = "Scanner Ready"
    }
 }
-
+*/
 
 
 ////////////////////////////////////////////////
