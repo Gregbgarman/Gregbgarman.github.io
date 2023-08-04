@@ -54,7 +54,7 @@ class ScaleInfo{
 
 
 //window.onload = function() {                    
-   restoreScale()
+  // restoreScale()
 //}
 
 
