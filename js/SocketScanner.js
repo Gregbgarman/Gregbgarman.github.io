@@ -51,7 +51,7 @@ let RejectAllScans = false
   //EloSocketMobileManager.initialize("onSocketReady")
 //};
 
-/*
+
 function onSocketReady(){
  if (EloSocketMobileManager.getDeviceName() === ''){
       document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
@@ -60,7 +60,7 @@ function onSocketReady(){
       document.getElementById("scannerAvailable").innerHTML = "Scanner Ready"
    }
 }
-*/
+
 
 
 ////////////////////////////////////////////////
