@@ -47,9 +47,9 @@ let RejectAllScans = false
 
 
 
-window.onload = function() {
+//window.onload = function() {
   //EloSocketMobileManager.initialize("onSocketReady")
-};
+//};
 
 /*
 function onSocketReady(){
