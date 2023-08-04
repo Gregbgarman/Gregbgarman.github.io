@@ -47,14 +47,19 @@ let RejectAllScans = false
 
 
 
-//window.onload = function() {
-   if (EloSocketMobileManager.getDeviceName() === ''){
+window.onload = function() {
+  EloSocketMobileManager.initialize("onSocketReady")
+};
+
+function onSocketReady(){
+ if (EloSocketMobileManager.getDeviceName() === ''){
       document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
    }
    else{
       document.getElementById("scannerAvailable").innerHTML = "Scanner Ready"
    }
-//};
+}
+
 
 
 ////////////////////////////////////////////////
