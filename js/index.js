@@ -24,13 +24,10 @@ document.getElementById("set_cd_voltage").addEventListener("click", setCDVoltage
 
 window.onload = function() {
   checkAvailableDevices();
-	document.getElementById("textField").value="on window load"
+	//document.getElementById("textField").value="on window load"
 };
 
-function onEloReady(){
-        document.getElementById("textField").value="on elo ready"
 
-}
 
 function onEloStopped(){
 	document.getElementById("textField").value="on elo stopped"
