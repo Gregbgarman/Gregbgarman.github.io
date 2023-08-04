@@ -23,16 +23,54 @@ document.getElementById("get_cd_voltage").addEventListener("click", getCDVoltage
 document.getElementById("set_cd_voltage").addEventListener("click", setCDVoltage);
 
 window.onload = function() {
-  checkAvailableDevices();
+  //checkAvailableDevices();
 
 	EloSocketMobileManager.initialize("onSocketReady")
+	EloStarScaleManager.initialize("onScaleReady")
+	EloEpsonPrinterManager.initialize("onEpsonReady")
+	EloStarPrinterManager.initialize("onStarPrinterReady")
+	EloHoneywellBarcodeManager.initialize("onHoneywellReady")
+	EloZebraBarcodeManager.initialize("onZebraReady")
+	EloHandHeldBarcodeManager.initialize("onHandheldReady")
+	EloPeripheralManager.initialize("onPeripheralManagerReady")
 };
+
+
+function onSocketReady(){
+	
+}
+
+function onScaleReady(){
+}
+
+function onEpsonReady(){
+}
+
+function onStarPrinterReady(){
+}
+
+function onHoneywellReady(){
+}
+
+function onZebraReady(){
+
+}
+
+function onHandheldReady(){
+}
+
+function onPeripheralManagerReady(){
+}
+
+
 
 
 // SLK Gen 2 colors:         NONE(0), RED(0x0001), GREEN(0x0080), BLUE(0x0100)
 
 function openCD() {
     document.getElementById("textField").value = EloPeripheralManager.openCD();
+
+	document.getElementById("textField").value = saucey		//testing can get variable in other JSfile
 }
 
 function isCDOpen() {
@@ -227,6 +265,7 @@ function setScreenDensity() {
     EloPeripheralManager.setLcdDensity(density)
 }
 
+/*
 function checkAvailableDevices() {
     var honeywellAvailable = EloHoneywellBarcodeManager.isBcrOn();
     var zebraAvailable = EloZebraBarcodeManager.isZebraBarcodeConnected();
@@ -250,3 +289,4 @@ function checkAvailableDevices() {
         document.getElementById("printerAvailable").innerHTML = "Printer is Disconnected";
     }
 }
+*/
