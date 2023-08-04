@@ -53,7 +53,6 @@ let RejectAllScans = false
 
 
 function onSocketReady(){
-    document.getElementById("textField").value = "callback ran"
  if (EloSocketMobileManager.getDeviceName() === ''){
       document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
    }
