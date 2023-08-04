@@ -41,7 +41,7 @@ function onSocketReady(){
 }
 
 function onScaleReady(){
-	document.getElementById("StarScaleAvailable").innerHTML = "Scale callback ran"
+	document.getElementById("StarScaleAvailable").innerHTML = "callback ranzzz"
 }
 
 function onEpsonReady(){
@@ -76,7 +76,7 @@ function onZebraReady(){
 }
 
 function onHandheldReady(){
-	document.getElementById("registerHandheldListener").innerHTML = "callback ran"
+	document.getElementById("registerHandheldListener").innerHTML = "callback ranzzz"
 }
 
 function onPeripheralManagerReady(){
