@@ -45,7 +45,7 @@ let PairCodeShown = false
 let BluetoothDevices = []
 let RejectAllScans = false
 
-
+let saucey = "sauce"
 
 //window.onload = function() {
   //EloSocketMobileManager.initialize("onSocketReady")
