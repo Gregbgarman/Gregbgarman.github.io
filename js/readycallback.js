@@ -10,11 +10,6 @@ let starscaleReady = false
 
 
 window.onload = function() {
-	//document.getElementById("finalMessage").style.visibility = 'visible'
-
-document.getElementById("finalMessage").style.visibility = 'visible'
-		document.getElementById("finalMessage").style.color = '#008000' 
-	
 	initializeCallbacks()
 };
 
