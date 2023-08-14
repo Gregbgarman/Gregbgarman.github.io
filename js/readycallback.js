@@ -27,45 +27,53 @@ function initializeCallbacks(){
 function onPeripheralManagerReady(){
         document.getElementById("PeripheralManagerCallbackText").innerText = "Peripheral Manager Initialized"
 	peripheralmanagerReady = true
+	checkAllDevicesInitialized()
 }
 
 function onHoneywellReady(){
 	 document.getElementById("HoneywellCallbackText").innerText = "Honeywell Scanner Initialized"
-	honeywellscannerReady = true
+	 honeywellscannerReady = true
+	checkAllDevicesInitialized()
 }
 
 function onZebraReady(){
 	 document.getElementById("ZebraCallbackText").innerText = "Zebra Scanner Initialized"
 	 zebrascannerReady = true
+	checkAllDevicesInitialized()
 }
 
 function onHandheldReady(){
 	document.getElementById("HandheldCallbackText").innerText = "Handheld Scanner Initialized"
 	handheldscannerReady = true
+	checkAllDevicesInitialized()
 }
 
 function onEpsonReady(){
 	document.getElementById("EpsonPrinterCallbackText").innerText = "Epson Printer Initialized"
 	epsonprinterReady = true
+	checkAllDevicesInitialized()
 }
 
 function onSocketReady(){
 	document.getElementById("SocketMobileCallbackText").innerText = "Socket Mobile Scanner Initialized"
 	socketscannerReady = true
+	checkAllDevicesInitialized()
 }
 
 function onStarPrinterReady(){
 	document.getElementById("StarPrinterCallbackText").innerText = "Star Printer Initialized"
 	starprinterReady = true
+	checkAllDevicesInitialized()
 }
 
 function onScaleReady(){
         document.getElementById("StarScaleCallbackText").innerText= "Star Scale Initialized"
 	starscaleReady = true
+	checkAllDevicesInitialized()
 }
 
-function updateStatus(){
-	if (peripheralmanagerReady && honeywellscannerReady && zebrascannerReady && handheldscannerReady && epsonprinterReady
+function checkAllDevicesInitialized(){
+	if (peripheralmanagerReady && honeywellscannerReady && zebrascannerReady &&& handheldscannerReady && epsonprinterReady
 	    && socketscannerReady && starprinterReady && starscaleReady){
 		document.getElementById("finalMessage").style.visibility = 'visible'
 		document.getElementById("finalMessage").style.color = '#008000' 
