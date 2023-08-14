@@ -24,6 +24,14 @@ function initializeCallbacks(){
 	EloStarScaleManager.initialize("onScaleReady")
 }
 
+function checkAllDevicesInitialized(){
+	if (peripheralmanagerReady && honeywellscannerReady && zebrascannerReady &&& handheldscannerReady && epsonprinterReady
+	    && socketscannerReady && starprinterReady && starscaleReady){
+		document.getElementById("finalMessage").style.visibility = 'visible'
+		document.getElementById("finalMessage").style.color = '#008000' 
+	}
+}
+
 function onPeripheralManagerReady(){
         document.getElementById("PeripheralManagerCallbackText").innerText = "Peripheral Manager Initialized"
 	peripheralmanagerReady = true
@@ -71,15 +79,3 @@ function onScaleReady(){
 	starscaleReady = true
 	checkAllDevicesInitialized()
 }
-
-function checkAllDevicesInitialized(){
-	if (peripheralmanagerReady && honeywellscannerReady && zebrascannerReady &&& handheldscannerReady && epsonprinterReady
-	    && socketscannerReady && starprinterReady && starscaleReady){
-		document.getElementById("finalMessage").style.visibility = 'visible'
-		document.getElementById("finalMessage").style.color = '#008000' 
-	}
-	
-}
-
-
-
