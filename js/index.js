@@ -23,16 +23,16 @@ document.getElementById("get_cd_voltage").addEventListener("click", getCDVoltage
 document.getElementById("set_cd_voltage").addEventListener("click", setCDVoltage);
 
 window.onload = function() {
-  //checkAvailableDevices();
+  checkAvailableDevices();	//won't work but just testing right now
 
-	//EloSocketMobileManager.initialize("onSocketReady")
-	//EloStarScaleManager.initialize("onScaleReady")
-	//EloEpsonPrinterManager.initialize("onEpsonReady")
-	//EloHoneywellBarcodeManager.initialize("onHoneywellReady")
-	//EloZebraBarcodeManager.initialize("onZebraReady")
-	//EloHandHeldBarcodeManager.initialize("onHandheldReady")
-	EloPeripheralManager.initialize("onPeripheralManagerReady")
-	//EloStarPrinterManager.initialize("onStarPrinterReady")
+	EloSocketMobileManager.initialize()
+	EloStarScaleManager.initialize()
+	EloEpsonPrinterManager.initialize()
+	EloHoneywellBarcodeManager.initialize()
+	EloZebraBarcodeManager.initialize()
+	EloHandHeldBarcodeManager.initialize()
+	EloPeripheralManager.initialize()
+	EloStarPrinterManager.initialize()
 
 };
 
@@ -289,7 +289,7 @@ function setScreenDensity() {
     EloPeripheralManager.setLcdDensity(density)
 }
 
-/*
+
 function checkAvailableDevices() {
     var honeywellAvailable = EloHoneywellBarcodeManager.isBcrOn();
     var zebraAvailable = EloZebraBarcodeManager.isZebraBarcodeConnected();
@@ -313,4 +313,4 @@ function checkAvailableDevices() {
         document.getElementById("printerAvailable").innerHTML = "Printer is Disconnected";
     }
 }
-*/
+
