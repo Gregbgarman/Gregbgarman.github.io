@@ -67,7 +67,7 @@ function onScaleReady(){
 function updateStatus(){
 	if (peripheralmanagerReady && honeywellscannerReady && zebrascannerReady && handheldscannerReady && epsonprinterReady
 	    && socketscannerReady && starprinterReady && starscaleReady){
-		
+		document.getElementById("finalMessage").style.visibility = 'visible'
 	}
 	
 }
