@@ -69,7 +69,7 @@ function updateStatus(){
 	if (peripheralmanagerReady && honeywellscannerReady && zebrascannerReady && handheldscannerReady && epsonprinterReady
 	    && socketscannerReady && starprinterReady && starscaleReady){
 		document.getElementById("finalMessage").style.visibility = 'visible'
-		document.getElementById("finalMessage").style.color = #008000 
+		//document.getElementById("finalMessage").style.color = #008000 
 	}
 	
 }
