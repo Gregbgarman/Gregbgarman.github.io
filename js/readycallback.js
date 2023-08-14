@@ -25,7 +25,7 @@ function initializeCallbacks(){
 }
 
 function checkAllDevicesInitialized(){
-	if (peripheralmanagerReady && honeywellscannerReady && zebrascannerReady &&& handheldscannerReady && epsonprinterReady
+	if (peripheralmanagerReady && honeywellscannerReady && zebrascannerReady && handheldscannerReady && epsonprinterReady
 	    && socketscannerReady && starprinterReady && starscaleReady){
 		document.getElementById("finalMessage").style.visibility = 'visible'
 		document.getElementById("finalMessage").style.color = '#008000' 
