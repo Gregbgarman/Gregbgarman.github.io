@@ -41,7 +41,7 @@ function onHandheldReady(){
 }
 
 function onPeripheralManagerReady(){
-  document.getElementById("PeripheralManagerCallbackText").value = "Peripheral Manager Ready"
+  document.getElementById("PeripheralManagerCallbackText").text = "Peripheral Manager Ready"
 }
 
 
