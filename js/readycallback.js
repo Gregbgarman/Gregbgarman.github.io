@@ -1,14 +1,14 @@
 
 
 window.onload = function() {
-	EloSocketMobileManager.initialize("onSocketReady")
-	EloStarScaleManager.initialize("onScaleReady")
-	EloEpsonPrinterManager.initialize("onEpsonReady")
-	EloHoneywellBarcodeManager.initialize("onHoneywellReady")
-	EloZebraBarcodeManager.initialize("onZebraReady")
-	EloHandHeldBarcodeManager.initialize("onHandheldReady")
+	//EloSocketMobileManager.initialize("onSocketReady")
+	//EloStarScaleManager.initialize("onScaleReady")
+	//EloEpsonPrinterManager.initialize("onEpsonReady")
+	//EloHoneywellBarcodeManager.initialize("onHoneywellReady")
+	//EloZebraBarcodeManager.initialize("onZebraReady")
+	//EloHandHeldBarcodeManager.initialize("onHandheldReady")
 	EloPeripheralManager.initialize("onPeripheralManagerReady")
-	EloStarPrinterManager.initialize("onStarPrinterReady")
+	//EloStarPrinterManager.initialize("onStarPrinterReady")
 };
 
 
