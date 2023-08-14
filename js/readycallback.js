@@ -1,47 +1,48 @@
 
 
 window.onload = function() {
-	//EloSocketMobileManager.initialize("onSocketReady")
-	//EloStarScaleManager.initialize("onScaleReady")
-	//EloEpsonPrinterManager.initialize("onEpsonReady")
-	//EloHoneywellBarcodeManager.initialize("onHoneywellReady")
-	//EloZebraBarcodeManager.initialize("onZebraReady")
-	//EloHandHeldBarcodeManager.initialize("onHandheldReady")
+
 	EloPeripheralManager.initialize("onPeripheralManagerReady")
-	//EloStarPrinterManager.initialize("onStarPrinterReady")
+	EloHoneywellBarcodeManager.initialize("onHoneywellReady")
+	EloZebraBarcodeManager.initialize("onZebraReady")
+	EloHandHeldBarcodeManager.initialize("onHandheldReady")
+	EloEpsonPrinterManager.initialize("onEpsonReady")
+	EloSocketMobileManager.initialize("onSocketReady")
+	EloStarPrinterManager.initialize("onStarPrinterReady")
+	EloStarScaleManager.initialize("onScaleReady")
 };
 
-
-function onSocketReady(){
-//	document.getElementById("PeripheralManagerCallbackText").value = EloEpsonPrinterManager.printBarcode(barcodeToPrint);
-}
-
-function onScaleReady(){
-//	document.getElementById("textField").value = EloEpsonPrinterManager.printBarcode(barcodeToPrint);
-}
-
-function onEpsonReady(){
-	// document.getElementById("textField").value = EloEpsonPrinterManager.printBarcode(barcodeToPrint);
-}
-
-function onStarPrinterReady(){
-//	document.getElementById("textField").value = EloEpsonPrinterManager.printBarcode(barcodeToPrint);
+function onPeripheralManagerReady(){
+        document.getElementById("PeripheralManagerCallbackText").innerText = "Peripheral Manager Initialized"
 }
 
 function onHoneywellReady(){
-	// document.getElementById("textField").value = EloEpsonPrinterManager.printBarcode(barcodeToPrint);
+	 document.getElementById("HoneywellCallbackText").innerText = "Honeywell Scanner Initialized"
 }
 
 function onZebraReady(){
-	//document.getElementById("textField").value = EloEpsonPrinterManager.printBarcode(barcodeToPrint);
+	 document.getElementById("ZebraCallbackText").innerText = "Zebra Scanner Initialized"
 }
 
 function onHandheldReady(){
-	//document.getElementById("textField").value = EloEpsonPrinterManager.printBarcode(barcodeToPrint);
+	document.getElementById("HandheldCallbackText").innerText = "Handheld Scanner Initialized"
 }
 
-function onPeripheralManagerReady(){
-  document.getElementById("PeripheralManagerCallbackText").innerText = "Peripheral Manager Ready"
+function onEpsonReady(){
+	document.getElementById("EpsonPrinterCallbackText").innerText = "Epson Printer Initialized"
 }
+
+function onSocketReady(){
+	document.getElementById("SocketMobileCallbackText").innerText = "Socket Mobile Scanner Initialized"
+}
+
+function onStarPrinterReady(){
+	document.getElementById("StarPrinterCallbackText").innerText = "Star Printer Initialized"
+}
+
+function onScaleReady(){
+        document.getElementById("StarScaleCallbackText").innerText= "Star Scale Initialized"
+}
+
 
 
