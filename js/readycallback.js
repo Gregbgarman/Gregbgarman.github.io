@@ -10,6 +10,7 @@ let starscaleReady = false
 
 
 window.onload = function() {
+	document.getElementById("finalMessage").style.visibility = 'visible'
 	initializeCallbacks()
 };
 
