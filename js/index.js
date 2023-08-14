@@ -26,7 +26,7 @@ window.onload = function() {
   checkAvailableDevices();	//won't work but just testing right now
 
 	EloSocketMobileManager.initialize()
-	EloStarScaleManager.initialize("onScaleReady")
+	EloStarScaleManager.initialize()
 	EloEpsonPrinterManager.initialize()
 	EloHoneywellBarcodeManager.initialize()
 	EloZebraBarcodeManager.initialize()
