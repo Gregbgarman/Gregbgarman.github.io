@@ -52,6 +52,9 @@ class ScaleInfo{
     }           
 }
 
+function onScaleReady(){
+    restoreScale()
+}
 
 //window.onload = function() {                    
   // restoreScale()
