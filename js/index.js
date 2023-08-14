@@ -25,14 +25,14 @@ document.getElementById("set_cd_voltage").addEventListener("click", setCDVoltage
 window.onload = function() {
   //checkAvailableDevices();
 
-	EloSocketMobileManager.initialize("onSocketReady")
-	EloStarScaleManager.initialize("onScaleReady")
-	EloEpsonPrinterManager.initialize("onEpsonReady")
-	EloHoneywellBarcodeManager.initialize("onHoneywellReady")
-	EloZebraBarcodeManager.initialize("onZebraReady")
-	EloHandHeldBarcodeManager.initialize("onHandheldReady")
+	//EloSocketMobileManager.initialize("onSocketReady")
+	//EloStarScaleManager.initialize("onScaleReady")
+	//EloEpsonPrinterManager.initialize("onEpsonReady")
+	//EloHoneywellBarcodeManager.initialize("onHoneywellReady")
+	//EloZebraBarcodeManager.initialize("onZebraReady")
+	//EloHandHeldBarcodeManager.initialize("onHandheldReady")
 	EloPeripheralManager.initialize("onPeripheralManagerReady")
-	EloStarPrinterManager.initialize("onStarPrinterReady")
+	//EloStarPrinterManager.initialize("onStarPrinterReady")
 
 };
 
