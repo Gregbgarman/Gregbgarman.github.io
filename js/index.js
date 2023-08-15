@@ -25,12 +25,12 @@ document.getElementById("set_cd_voltage").addEventListener("click", setCDVoltage
 window.onload = function() {
   checkAvailableDevices();	//won't work but just testing right now
 
-//	EloSocketMobileManager.initialize()                         testing just star stuff first on perf a12
-//	EloEpsonPrinterManager.initialize()
-//	EloHoneywellBarcodeManager.initialize()
-//	EloZebraBarcodeManager.initialize()
-//	EloHandHeldBarcodeManager.initialize()
-//	EloPeripheralManager.initialize()
+	EloSocketMobileManager.initialize()                         
+	EloEpsonPrinterManager.initialize()
+	EloHoneywellBarcodeManager.initialize()
+	EloZebraBarcodeManager.initialize()
+	EloHandHeldBarcodeManager.initialize()
+	EloPeripheralManager.initialize()
 	EloStarPrinterManager.initialize()
 	EloStarScaleManager.initialize()
 
