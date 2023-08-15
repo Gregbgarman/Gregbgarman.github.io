@@ -14,12 +14,12 @@ window.onload = function() {
 };
 
 function initializeCallbacks(){
-	EloPeripheralManager.initialize("onPeripheralManagerReady")
-	EloHoneywellBarcodeManager.initialize("onHoneywellReady")
-	EloZebraBarcodeManager.initialize("onZebraReady")
-	EloHandHeldBarcodeManager.initialize("onHandheldReady")
-	EloEpsonPrinterManager.initialize("onEpsonReady")
-	EloSocketMobileManager.initialize("onSocketReady")
+//	EloPeripheralManager.initialize("onPeripheralManagerReady")
+//	EloHoneywellBarcodeManager.initialize("onHoneywellReady")
+//	EloZebraBarcodeManager.initialize("onZebraReady")
+//	EloHandHeldBarcodeManager.initialize("onHandheldReady")
+//	EloEpsonPrinterManager.initialize("onEpsonReady")
+//	EloSocketMobileManager.initialize("onSocketReady")
 	EloStarPrinterManager.initialize("onStarPrinterReady")
 	EloStarScaleManager.initialize("onScaleReady")
 }
