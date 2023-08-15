@@ -23,7 +23,7 @@ document.getElementById("get_cd_voltage").addEventListener("click", getCDVoltage
 document.getElementById("set_cd_voltage").addEventListener("click", setCDVoltage);
 
 window.onload = function() {
-  checkAvailableDevices();	//won't work but just testing right now
+  //checkAvailableDevices();	//won't work but just testing right now
 
 	EloSocketMobileManager.initialize()                         
 	EloEpsonPrinterManager.initialize()
