@@ -31,7 +31,7 @@ window.onload = function() {
 	EloZebraBarcodeManager.initialize()
 	EloHandHeldBarcodeManager.initialize()
 	EloPeripheralManager.initialize()
-	EloStarPrinterManager.initialize()
+	EloStarPrinterManager.initialize("onStarPrinterReady")
 	EloStarScaleManager.initialize()
 
 };
