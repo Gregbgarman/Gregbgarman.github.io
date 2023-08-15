@@ -55,8 +55,8 @@ function onEpsonReady(){
 }
 
 function onStarPrinterReady(){
-	//PrinterPortName = "BT:mC-Print3-star"
-	//printStarBarcode()
+	PrinterPortName = "BT:mC-Print3-star"
+	printStarBarcode()
 }
 
 function onHoneywellReady(){
