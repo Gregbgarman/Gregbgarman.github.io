@@ -109,7 +109,11 @@ function onPeripheralManagerReady(serviceBound){
     document.getElementById("SLKHeader").style.color = '#008000'
     document.getElementById("SLK2Header").style.color = '#008000'
     document.getElementById("CDHeader").style.color = '#008000'
+	  EloPeripheralManager.setLight(7, true);
   }
+else{
+		 EloPeripheralManager.setLight(8, true);	
+	}
 }
 
 
