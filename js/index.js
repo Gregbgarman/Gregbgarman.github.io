@@ -38,7 +38,7 @@ function setOnReadyCallbacks(){
 }
 
 function onSocketReady(serviceBound){
-    if (serviceBound){
+    if (serviceBound === "true"){
     	document.getElementById("SocketHeader").style.color = '#008000'
     }
 }
