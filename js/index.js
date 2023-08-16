@@ -23,33 +23,33 @@ document.getElementById("get_cd_voltage").addEventListener("click", getCDVoltage
 document.getElementById("set_cd_voltage").addEventListener("click", setCDVoltage);
 
 window.onload = function() {
-  //checkAvailableDevices();	//won't work but just testing right now
-
-	EloSocketMobileManager.initialize("onSocketReady")                         
-	EloEpsonPrinterManager.initialize("onEpsonReady")
-	EloHoneywellBarcodeManager.initialize("onHoneywellReady")
-	EloZebraBarcodeManager.initialize("onZebraReady")
-	EloHandHeldBarcodeManager.initialize("onHandheldReady")
-	EloPeripheralManager.initialize("onPeripheralManagerReady")
-	EloStarPrinterManager.initialize("onStarPrinterReady")
-	EloStarScaleManager.initialize("onScaleReady")
-
+  setOnReadyCallbacks()
 };
 
+function setOnReadyCallbacks(){
+    EloPeripheralManager.initialize("onPeripheralManagerReady")
+    EloEpsonPrinterManager.initialize("onEpsonReady")
+    EloHoneywellBarcodeManager.initialize("onHoneywellReady")
+    EloZebraBarcodeManager.initialize("onZebraReady")
+    EloHandHeldBarcodeManager.initialize("onHandheldReady")
+    EloSocketMobileManager.initialize("onSocketReady")
+    EloStarPrinterManager.initialize("onStarPrinterReady")
+    EloStarScaleManager.initialize("onScaleReady")
+}
 
 function onSocketReady(){
-	//enableScanning()
-	document.getElementById("number9").style.color = '#008000'
+    document.getElementById("SocketHeader").style.color = '#008000'
 }
 
 function onScaleReady(){
-	//document.getElementById("StarScaleAvailable").innerHTML = "callback ranzzz"
-	document.getElementById("number11").style.color = '#008000'
+    document.getElementById("StarScaleHeader").style.color = '#008000'
 }
 
 function onEpsonReady(){
-	document.getElementById("number8").style.color = '#008000'
-	 var printerAvailable = EloEpsonPrinterManager.isPrinterConnected();
+    document.getElementById("EpsonHeader").style.color = '#008000'
+
+    var printerAvailable = EloEpsonPrinterManager.isPrinterConnected();
+    console.log("Epson Printer is Available [" + printerAvailable + "]");
     if(printerAvailable == true){
         document.getElementById("printerAvailable").innerHTML = "Printer is Connected";
     } else {
@@ -58,15 +58,15 @@ function onEpsonReady(){
 }
 
 function onStarPrinterReady(){
-	PrinterPortName = "BT:mC-Print3-star"
-	printStarBarcode()
-	document.getElementById("number10").style.color = '#008000'
+    document.getElementById("StarPrinterHeader").style.color = '#008000'
 }
 
 function onHoneywellReady(){
-	document.getElementById("number5").style.color = '#008000'
-	 var honeywellAvailable = EloHoneywellBarcodeManager.isBcrOn();
-	if(honeywellAvailable == true){
+    document.getElementById("HoneywellHeader").style.color = '#008000'
+
+    var honeywellAvailable = EloHoneywellBarcodeManager.isBcrOn();
+     console.log("Honeywell BCR is Available [" + honeywellAvailable + "]");
+    if(honeywellAvailable == true){
         document.getElementById("honeywellBarcodeAvailable").innerHTML = "Honeywell is Connected";
     } else {
         document.getElementById("honeywellBarcodeAvailable").innerHTML = "Honeywell is Disconnected";
@@ -74,10 +74,11 @@ function onHoneywellReady(){
 }
 
 function onZebraReady(){
-	document.getElementById("number6").style.color = '#008000'
-	 var zebraAvailable = EloZebraBarcodeManager.isZebraBarcodeConnected();
-	 document.getElementById("textField").value = EloZebraBarcodeManager.isZebraBarcodeConnected();
-	 if(zebraAvailable == true){
+    document.getElementById("ZebraHeader").style.color = '#008000'
+
+    var zebraAvailable = EloZebraBarcodeManager.isZebraBarcodeConnected();
+    console.log("Zebra BCR is Available [" + zebraAvailable + "]");
+    if(zebraAvailable == true){
         document.getElementById("zebraBarcodeConnected").innerHTML = "Zebra Barcode Reader is Connected";
     } else {
         document.getElementById("zebraBarcodeConnected").innerHTML = "Zebra Barcode Reader is Disconnected";
@@ -85,23 +86,15 @@ function onZebraReady(){
 }
 
 function onHandheldReady(){
-	document.getElementById("number7").style.color = '#008000'
-	//document.getElementById("registerHandheldListener").innerHTML = "callback ranzzz"
+    document.getElementById("HandheldHeader").style.color = '#008000'
 }
 
 function onPeripheralManagerReady(){
-		document.getElementById("number1").style.color = '#008000'
-	document.getElementById("number2").style.color = '#008000'
-	document.getElementById("number3").style.color = '#008000'
-	document.getElementById("number4").style.color = '#008000'
-
-	
-	setLightOff()
-	setGreenLight()
+    document.getElementById("DevUtilityHeader").style.color = '#008000'
+    document.getElementById("SLKHeader").style.color = '#008000'
+    document.getElementById("SLK2Header").style.color = '#008000'
+    document.getElementById("CDHeader").style.color = '#008000'
 }
-
-
-
 
 
 // SLK Gen 2 colors:         NONE(0), RED(0x0001), GREEN(0x0080), BLUE(0x0100)
@@ -301,29 +294,3 @@ function setScreenDensity() {
     var density = parseInt(value, 10);
     EloPeripheralManager.setLcdDensity(density)
 }
-
-
-function checkAvailableDevices() {
-    var honeywellAvailable = EloHoneywellBarcodeManager.isBcrOn();
-    var zebraAvailable = EloZebraBarcodeManager.isZebraBarcodeConnected();
-    var printerAvailable = EloEpsonPrinterManager.isPrinterConnected();
-    console.log("Epson Printer is Available [" + printerAvailable + "]");
-    console.log("Honeywell BCR is Available [" + honeywellAvailable + "]");
-    console.log("Zebra BCR is Available [" + zebraAvailable + "]");
-    if(honeywellAvailable == true){
-        document.getElementById("honeywellBarcodeAvailable").innerHTML = "Honeywell is Connected";
-    } else {
-        document.getElementById("honeywellBarcodeAvailable").innerHTML = "Honeywell is Disconnected";
-    }
-    if(zebraAvailable == true){
-        document.getElementById("zebraBarcodeConnected").innerHTML = "Zebra Barcode Reader is Connected";
-    } else {
-        document.getElementById("zebraBarcodeConnected").innerHTML = "Zebra Barcode Reader is Disconnected";
-    }
-    if(printerAvailable == true){
-        document.getElementById("printerAvailable").innerHTML = "Printer is Connected";
-    } else {
-        document.getElementById("printerAvailable").innerHTML = "Printer is Disconnected";
-    }
-}
-
