@@ -38,15 +38,15 @@ function setOnReadyCallbacks(){
 }
 
 function onSocketReady(serviceBound){
-	if (serviceBound){
-    		document.getElementById("SocketHeader").style.color = '#008000'
-	}
+    if (serviceBound){
+    	document.getElementById("SocketHeader").style.color = '#008000'
+    }
 }
 
 function onScaleReady(serviceBound){
-	if (serviceBound){
-    		document.getElementById("StarScaleHeader").style.color = '#008000'
-	}
+    if (serviceBound){
+    	document.getElementById("StarScaleHeader").style.color = '#008000'
+    }
 }
 
 function onEpsonReady(serviceBound){
