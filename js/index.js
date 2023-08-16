@@ -98,8 +98,10 @@ function onZebraReady(serviceBound){
 }
 
 function onHandheldReady(serviceBound){
+	 document.getElementById("textField").value = serviceBound
   if (serviceBound){
     document.getElementById("HandheldHeader").style.color = '#008000'
+	  
   }
 }
 
