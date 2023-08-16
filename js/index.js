@@ -25,27 +25,30 @@ document.getElementById("set_cd_voltage").addEventListener("click", setCDVoltage
 window.onload = function() {
   //checkAvailableDevices();	//won't work but just testing right now
 
-	EloSocketMobileManager.initialize()                         
-	EloEpsonPrinterManager.initialize()
-	EloHoneywellBarcodeManager.initialize()
-	EloZebraBarcodeManager.initialize()
-	EloHandHeldBarcodeManager.initialize()
-	EloPeripheralManager.initialize()
+	EloSocketMobileManager.initialize("onSocketReady")                         
+	EloEpsonPrinterManager.initialize("onEpsonReady")
+	EloHoneywellBarcodeManager.initialize("onHoneywellReady")
+	EloZebraBarcodeManager.initialize("onZebraReady")
+	EloHandHeldBarcodeManager.initialize("onHandheldReady")
+	EloPeripheralManager.initialize("onPeripheralManagerReady")
 	EloStarPrinterManager.initialize("onStarPrinterReady")
-	EloStarScaleManager.initialize()
+	EloStarScaleManager.initialize("onScaleReady")
 
 };
 
 
 function onSocketReady(){
-	enableScanning()
+	//enableScanning()
+	document.getElementById("number9").style.color = '#008000'
 }
 
 function onScaleReady(){
-	document.getElementById("StarScaleAvailable").innerHTML = "callback ranzzz"
+	//document.getElementById("StarScaleAvailable").innerHTML = "callback ranzzz"
+	document.getElementById("number11").style.color = '#008000'
 }
 
 function onEpsonReady(){
+	document.getElementById("number8").style.color = '#008000'
 	 var printerAvailable = EloEpsonPrinterManager.isPrinterConnected();
     if(printerAvailable == true){
         document.getElementById("printerAvailable").innerHTML = "Printer is Connected";
@@ -57,9 +60,11 @@ function onEpsonReady(){
 function onStarPrinterReady(){
 	PrinterPortName = "BT:mC-Print3-star"
 	printStarBarcode()
+	document.getElementById("number10").style.color = '#008000'
 }
 
 function onHoneywellReady(){
+	document.getElementById("number5").style.color = '#008000'
 	 var honeywellAvailable = EloHoneywellBarcodeManager.isBcrOn();
 	if(honeywellAvailable == true){
         document.getElementById("honeywellBarcodeAvailable").innerHTML = "Honeywell is Connected";
@@ -69,6 +74,7 @@ function onHoneywellReady(){
 }
 
 function onZebraReady(){
+	document.getElementById("number6").style.color = '#008000'
 	 var zebraAvailable = EloZebraBarcodeManager.isZebraBarcodeConnected();
 	 document.getElementById("textField").value = EloZebraBarcodeManager.isZebraBarcodeConnected();
 	 if(zebraAvailable == true){
@@ -79,10 +85,17 @@ function onZebraReady(){
 }
 
 function onHandheldReady(){
-	document.getElementById("registerHandheldListener").innerHTML = "callback ranzzz"
+	document.getElementById("number7").style.color = '#008000'
+	//document.getElementById("registerHandheldListener").innerHTML = "callback ranzzz"
 }
 
 function onPeripheralManagerReady(){
+		document.getElementById("number1").style.color = '#008000'
+	document.getElementById("number2").style.color = '#008000'
+	document.getElementById("number3").style.color = '#008000'
+	document.getElementById("number4").style.color = '#008000'
+
+	
 	setLightOff()
 	setGreenLight()
 }
