@@ -38,7 +38,7 @@ function setOnReadyCallbacks(){
 }
 
 function onSocketReady(serviceBound){
-    if (serviceBound === "true"){
+    if (serviceBound){
     	document.getElementById("SocketHeader").style.color = '#008000'
     }
 }
@@ -105,12 +105,17 @@ function onHandheldReady(serviceBound){
 }
 
 function onPeripheralManagerReady(serviceBound){
-  if (serviceBound){
+  if (serviceBound === "true"){
     document.getElementById("DevUtilityHeader").style.color = '#008000'
     document.getElementById("SLKHeader").style.color = '#008000'
     document.getElementById("SLK2Header").style.color = '#008000'
     document.getElementById("CDHeader").style.color = '#008000'   
+	 setGreenLight()
+	  
   }
+	else if (serviceBound === "false"){
+setRedLight()
+	}
 }
 
 
