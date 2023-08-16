@@ -104,7 +104,7 @@ function onHandheldReady(serviceBound){
 }
 
 function onPeripheralManagerReady(serviceBound){
-  if (serviceBound){
+  if (serviceBound === true){
     document.getElementById("DevUtilityHeader").style.color = '#008000'
     document.getElementById("SLKHeader").style.color = '#008000'
     document.getElementById("SLK2Header").style.color = '#008000'
@@ -113,9 +113,9 @@ function onPeripheralManagerReady(serviceBound){
 	  setLightOff()
 	  EloPeripheralManager.setLight(7, true);
   }
-else{
+else if (serviceBound === false){
 	setLightOff()
-		 EloPeripheralManager.setLight(8, true);	
+	setRedLight() 	
 	}
 }
 
