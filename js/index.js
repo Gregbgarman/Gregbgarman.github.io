@@ -98,10 +98,10 @@ function onZebraReady(serviceBound){
 }
 
 function onHandheldReady(serviceBound){
-  if (serviceBound){
+  if (serviceBound === true){
     document.getElementById("HandheldHeader").style.color = '#008000'
-	  
   }
+
 }
 
 function onPeripheralManagerReady(serviceBound){
@@ -110,10 +110,12 @@ function onPeripheralManagerReady(serviceBound){
     document.getElementById("SLKHeader").style.color = '#008000'
     document.getElementById("SLK2Header").style.color = '#008000'
     document.getElementById("CDHeader").style.color = '#008000'   
+	  setLightOff()
 	 setGreenLight()
 	  
   }
 	else if (serviceBound === "false"){
+	setLightOff()	
 setRedLight()
 	}
 }
