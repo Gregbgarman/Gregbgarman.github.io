@@ -84,7 +84,7 @@ function onHoneywellReady(serviceBound){
 }
 
 function onZebraReady(serviceBound){
-  if (serviceBound){
+  if (!serviceBound){
     document.getElementById("ZebraHeader").style.color = '#008000'
 
     var zebraAvailable = EloZebraBarcodeManager.isZebraBarcodeConnected();
@@ -98,7 +98,7 @@ function onZebraReady(serviceBound){
 }
 
 function onHandheldReady(serviceBound){
-	 document.getElementById("textField").value = serviceBound
+  document.getElementById("textField").value = serviceBound
   if (serviceBound){
     document.getElementById("HandheldHeader").style.color = '#008000'
 	  
@@ -106,19 +106,12 @@ function onHandheldReady(serviceBound){
 }
 
 function onPeripheralManagerReady(serviceBound){
-  if (serviceBound === true){
+  if (serviceBound){
     document.getElementById("DevUtilityHeader").style.color = '#008000'
     document.getElementById("SLKHeader").style.color = '#008000'
     document.getElementById("SLK2Header").style.color = '#008000'
-    document.getElementById("CDHeader").style.color = '#008000'
-
-	  setLightOff()
-	  EloPeripheralManager.setLight(7, true);
+    document.getElementById("CDHeader").style.color = '#008000'   
   }
-else if (serviceBound === false){
-	setLightOff()
-	setRedLight() 	
-	}
 }
 
 
