@@ -37,15 +37,20 @@ function setOnReadyCallbacks(){
     EloStarScaleManager.initialize("onScaleReady")
 }
 
-function onSocketReady(){
-    document.getElementById("SocketHeader").style.color = '#008000'
+function onSocketReady(serviceBound){
+	if (serviceBound){
+    		document.getElementById("SocketHeader").style.color = '#008000'
+	}
 }
 
-function onScaleReady(){
-    document.getElementById("StarScaleHeader").style.color = '#008000'
+function onScaleReady(serviceBound){
+	if (serviceBound){
+    		document.getElementById("StarScaleHeader").style.color = '#008000'
+	}
 }
 
-function onEpsonReady(){
+function onEpsonReady(serviceBound){
+  if (serviceBound){
     document.getElementById("EpsonHeader").style.color = '#008000'
 
     var printerAvailable = EloEpsonPrinterManager.isPrinterConnected();
@@ -55,13 +60,17 @@ function onEpsonReady(){
     } else {
         document.getElementById("printerAvailable").innerHTML = "Printer is Disconnected";
     }
+  }
 }
 
-function onStarPrinterReady(){
+function onStarPrinterReady(serviceBound){
+  if (serviceBound){
     document.getElementById("StarPrinterHeader").style.color = '#008000'
+  }
 }
 
-function onHoneywellReady(){
+function onHoneywellReady(serviceBound){
+  if (serviceBound){
     document.getElementById("HoneywellHeader").style.color = '#008000'
 
     var honeywellAvailable = EloHoneywellBarcodeManager.isBcrOn();
@@ -71,9 +80,11 @@ function onHoneywellReady(){
     } else {
         document.getElementById("honeywellBarcodeAvailable").innerHTML = "Honeywell is Disconnected";
     }
+  }
 }
 
-function onZebraReady(){
+function onZebraReady(serviceBound){
+  if (serviceBound){
     document.getElementById("ZebraHeader").style.color = '#008000'
 
     var zebraAvailable = EloZebraBarcodeManager.isZebraBarcodeConnected();
@@ -83,17 +94,22 @@ function onZebraReady(){
     } else {
         document.getElementById("zebraBarcodeConnected").innerHTML = "Zebra Barcode Reader is Disconnected";
     }
+  }
 }
 
-function onHandheldReady(){
+function onHandheldReady(serviceBound){
+  if (serviceBound){
     document.getElementById("HandheldHeader").style.color = '#008000'
+  }
 }
 
-function onPeripheralManagerReady(){
+function onPeripheralManagerReady(serviceBound){
+  if (serviceBound){
     document.getElementById("DevUtilityHeader").style.color = '#008000'
     document.getElementById("SLKHeader").style.color = '#008000'
     document.getElementById("SLK2Header").style.color = '#008000'
     document.getElementById("CDHeader").style.color = '#008000'
+  }
 }
 
 
