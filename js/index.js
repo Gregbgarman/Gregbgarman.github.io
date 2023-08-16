@@ -84,7 +84,7 @@ function onHoneywellReady(serviceBound){
 }
 
 function onZebraReady(serviceBound){
-  if (!serviceBound){
+  if (serviceBound){
     document.getElementById("ZebraHeader").style.color = '#008000'
 
     var zebraAvailable = EloZebraBarcodeManager.isZebraBarcodeConnected();
