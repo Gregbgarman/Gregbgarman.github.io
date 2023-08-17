@@ -22,6 +22,9 @@ document.getElementById("is_cd_open").addEventListener("click", isCDOpen);
 document.getElementById("get_cd_voltage").addEventListener("click", getCDVoltage);
 document.getElementById("set_cd_voltage").addEventListener("click", setCDVoltage);
 
+let RED = "#FF0000"
+
+
 window.onload = function() {
   setOnReadyCallbacks()
 };
@@ -38,19 +41,25 @@ function setOnReadyCallbacks(){
 }
 
 function onSocketReady(serviceBound){
-    if (serviceBound){
+    if (serviceBound === "true"){
     	document.getElementById("SocketHeader").style.color = '#008000'
+    }
+    else{
+	document.getElementById("SocketHeader").style.color = RED
     }
 }
 
 function onScaleReady(serviceBound){
-    if (serviceBound){
+    if (serviceBound === "true"){
     	document.getElementById("StarScaleHeader").style.color = '#008000'
+    }
+    else{
+	document.getElementById("StarScaleHeader").style.color = RED
     }
 }
 
 function onEpsonReady(serviceBound){
-  if (serviceBound){
+  if (serviceBound === "true"){
     document.getElementById("EpsonHeader").style.color = '#008000'
 
     var printerAvailable = EloEpsonPrinterManager.isPrinterConnected();
@@ -61,16 +70,22 @@ function onEpsonReady(serviceBound){
         document.getElementById("printerAvailable").innerHTML = "Printer is Disconnected";
     }
   }
+else{
+     document.getElementById("EpsonHeader").style.color = RED
+}
 }
 
 function onStarPrinterReady(serviceBound){
-  if (serviceBound){
+  if (serviceBound === "true"){
     document.getElementById("StarPrinterHeader").style.color = '#008000'
   }
+else{
+     document.getElementById("StarPrinterHeader").style.color = RED
+}	
 }
 
 function onHoneywellReady(serviceBound){
-  if (serviceBound){
+  if (serviceBound === "true"){
     document.getElementById("HoneywellHeader").style.color = '#008000'
 
     var honeywellAvailable = EloHoneywellBarcodeManager.isBcrOn();
@@ -81,10 +96,13 @@ function onHoneywellReady(serviceBound){
         document.getElementById("honeywellBarcodeAvailable").innerHTML = "Honeywell is Disconnected";
     }
   }
+else{
+     document.getElementById("HoneywellHeader").style.color = RED
+ }
 }
 
 function onZebraReady(serviceBound){
-  if (serviceBound){
+  if (serviceBound === "true"){
     document.getElementById("ZebraHeader").style.color = '#008000'
 
     var zebraAvailable = EloZebraBarcodeManager.isZebraBarcodeConnected();
@@ -95,13 +113,18 @@ function onZebraReady(serviceBound){
         document.getElementById("zebraBarcodeConnected").innerHTML = "Zebra Barcode Reader is Disconnected";
     }
   }
+else{
+     document.getElementById("ZebraHeader").style.color = RED
+}
 }
 
 function onHandheldReady(serviceBound){
-  if (serviceBound === true){
+  if (serviceBound === "true"){
     document.getElementById("HandheldHeader").style.color = '#008000'
   }
-
+else{
+     document.getElementById("HandheldHeader").style.color = RED
+}
 }
 
 function onPeripheralManagerReady(serviceBound){
@@ -110,13 +133,17 @@ function onPeripheralManagerReady(serviceBound){
     document.getElementById("SLKHeader").style.color = '#008000'
     document.getElementById("SLK2Header").style.color = '#008000'
     document.getElementById("CDHeader").style.color = '#008000'   
-	  setLightOff()
-	 setGreenLight()
+	//  setLightOff()
+	// setGreenLight()
 	  
   }
-	else if (serviceBound === "false"){
-	setLightOff()	
-setRedLight()
+	else {
+	//setLightOff()	
+//setRedLight()
+		document.getElementById("DevUtilityHeader").style.color = RED
+    document.getElementById("SLKHeader").style.color = RED
+    document.getElementById("SLK2Header").style.color = RED
+    document.getElementById("CDHeader").style.color = RED
 	}
 }
 
