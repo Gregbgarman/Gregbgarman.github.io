@@ -37,12 +37,12 @@ function setOnReadyCallbacks(){
     EloZebraBarcodeManager.initialize("onZebraReady")
     EloHandHeldBarcodeManager.initialize("onHandheldReady")
     EloSocketMobileManager.initialize("onSocketReady")	   
-    }catch(Exception e){
+    }catch(error){
    }
    try{
     EloStarPrinterManager.initialize("onStarPrinterReady")
     EloStarScaleManager.initialize("onScaleReady")
-    }catch(Exception e){
+    }catch(error){
     }
 }
 
