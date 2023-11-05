@@ -16,13 +16,13 @@ function disconnectCitizenPrinter(){
 
 function printSampleCitizenReceipt1(){
 
-  var sts = posPtr.printerCheck();
+  var sts =  EloCitizenMobileManager.printerCheck();
   if(sts != 0) {
       document.getElementById("textField").value = "Printer check fail"
       return
   }
 
-  sts = posPtr.status();
+  sts =  EloCitizenMobileManager.status();
   if(sts != 0) {
     document.getElementById("textField").value = "Printer status fail"
     return
