@@ -16,12 +16,15 @@ function disconnectCitizenPrinter(){
 
 function printSampleCitizenReceipt1(){
          EloCitizenMobileManager.printNormal("Chicken                                                   $10.00\n")
-         EloCitizenMobileManager.printNormal("Hamburger                                                 $20.00\n")
-         EloCitizenMobileManager.printNormal("Pizza                                                     $30.00\n")
-         EloCitizenMobileManager.printNormal("Lemons                                                    $40.00\n")
-         EloCitizenMobileManager.printNormal("Drink                                                     $50.00\n")
-         EloCitizenMobileManager.printNormal("Excluded tax                                              $150.00\n")
-         EloCitizenMobileManager.lineFeed(2)
+   EloCitizenMobileManager.printNormal("Chicken                                                   $10.00\n")
+   EloCitizenMobileManager.printNormal("Chicken                                                   $10.00\n")
+   EloCitizenMobileManager.printNormal("Chicken                                                   $10.00\n")
+         //EloCitizenMobileManager.printNormal("Hamburger                                                 $20.00\n")
+         //EloCitizenMobileManager.printNormal("Pizza                                                     $30.00\n")
+         //EloCitizenMobileManager.printNormal("Lemons                                                    $40.00\n")
+         //EloCitizenMobileManager.printNormal("Drink                                                     $50.00\n")
+         //EloCitizenMobileManager.printNormal("Excluded tax                                              $150.00\n")
+         //EloCitizenMobileManager.lineFeed(2)
   
 }
 
