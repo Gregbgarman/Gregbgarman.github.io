@@ -15,6 +15,22 @@ function disconnectCitizenPrinter(){
 }
 
 function printSampleCitizenReceipt1(){
+
+  var sts = posPtr.printerCheck();
+  if(sts != 0) {
+      document.getElementById("textField").value = "Printer check fail"
+      return
+  }
+
+  sts = posPtr.status();
+  if(sts != 0) {
+    document.getElementById("textField").value = "Printer status fail"
+    return
+  }
+
+
+
+  
          EloCitizenMobileManager.printNormal("Chicken                                                   $10.00\n")
    EloCitizenMobileManager.printNormal("Chicken                                                   $10.00\n")
    EloCitizenMobileManager.printNormal("Chicken                                                   $10.00\n")
