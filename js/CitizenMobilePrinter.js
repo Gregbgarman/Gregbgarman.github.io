@@ -172,18 +172,18 @@ function printTheQRCode(){
 }
 
 function printCitizenImage(){          //tied to button
-     /*
+     
     if (printTheImage() == CMP_SUCCESS){
        document.getElementById("textField").value = "print success"
     }
     else{
        document.getElementById("textField").value = "print failure"
     }     
-    */
+    
 }
 
 function printTheImage(){
-/*
+
      var sts =  EloCitizenMobileManager.printerCheck();
   if(sts != CMP_SUCCESS) {
       document.getElementById("textField").value = "Printer check fail"
@@ -201,7 +201,7 @@ function printTheImage(){
      EloCitizenMobileManager.lineFeed(4);
      
    return CMP_SUCCESS;
-*/
+
 }
 
 
