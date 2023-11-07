@@ -7,6 +7,15 @@ document.getElementById("isCitizenBTConnected").addEventListener("click", isCiti
 
 let pairedDeviceNames = []
 let deviceNameAddressTable = {}
+const CMP_ALIGNMENT_CENTER = 1
+const CMP_FNT_DEFAULT = 0
+const CMP_ALIGNMENT_RIGHT = 2
+const CMP_ALIGNMENT_LEFT = 0
+const CMP_FNT_UNDERLINE = 128
+const CMP_TXT_1WIDTH = 0
+const CMP_TXT_2WIDTH = 16
+const CMP_SUCCESS = 0
+
 
 function showBTPairedDevicesCitizen(){
      let deviceString = EloCitizenMobileManager.getBluetoothPairedDevices()
@@ -42,6 +51,16 @@ function disconnectCitizenPrinter(){
 }
 
 function printSampleCitizenReceipt1(){
+    if (printReceipt1() == CMP_SUCCESS){
+         document.getElementById("textField").value = "print success"
+    }
+     else{
+         document.getElementById("textField").value = "print failure"
+     }
+
+}
+
+function printReceipt1(){
   var sts =  EloCitizenMobileManager.printerCheck();
   if(sts != 0) {
       document.getElementById("textField").value = "Printer check fail"
@@ -53,26 +72,26 @@ function printSampleCitizenReceipt1(){
     document.getElementById("textField").value = "Printer status fail"
     return
   }
-     let ESC = 27
 
-  EloCitizenMobileManager.printNormal(ESC+"|cA"+ESC+"|2CReceipt\r\n\r\n\r\n");
-  EloCitizenMobileManager.printNormal(ESC+"|rATEL (123)-456-7890\n\n\n");
-  EloCitizenMobileManager.printNormal(ESC+"|cAThank you for coming to our shop!\n");
-  EloCitizenMobileManager.printNormal("Chicken                                   $10.00\n");
-  EloCitizenMobileManager.printNormal("Hamburger                                 $20.00\n");
-  EloCitizenMobileManager.printNormal("Pizza                                     $30.00\n");
-  EloCitizenMobileManager.printNormal("Lemons                                    $40.00\n");
-  EloCitizenMobileManager.printNormal("Drink                                     $50.00\n");
-  EloCitizenMobileManager.printNormal("Excluded tax                             $150.00\n");
-  EloCitizenMobileManager.printNormal(ESC+"|uCTax(5%)                                    $7.50\n");
-  EloCitizenMobileManager.printNormal(ESC+"|bC"+ESC+"|2CTotal            $157.50\n\n");
-  EloCitizenMobileManager.printNormal("Payment                                  $200.00\n");
-  EloCitizenMobileManager.printNormal("Change                                    $42.50\n\n");
+  EloCitizenMobileManager.printText("Receipt\r\n\r\n\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_2WIDTH);
+  EloCitizenMobileManager.printText("TEL (123)-456-7890\r\n", CMP_ALIGNMENT_RIGHT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Thank you for coming to our shop!\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Chicken                                   $10.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Hamburger                                 $20.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Pizza                                     $30.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Lemons                                    $40.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Drink                                     $50.00\r\n\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Excluded tax                             $150.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Tax(5%)                                    $7.50\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_UNDERLINE, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Total            $157.50\r\n\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_2WIDTH);
+  EloCitizenMobileManager.printText("Payment                                  $200.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Change                                    $42.50\r\n\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenMobileManager.lineFeed(2);
 
-     
+  return  CMP_SUCCESS
      
 }
+
 
 function printSampleCitizenReceipt2(){
 
