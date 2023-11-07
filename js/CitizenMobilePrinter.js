@@ -24,18 +24,15 @@ function isCitizenBTConnected(){
 }
 
 
-
 function connectCitizenPrinter(){
-    let address = document.getElementById("textField").value
-     if (address != "" && address != "{}"){
-          if(address.length > 1 && address.charAt(0) == '[' && address.charAt(address.length-1) == ']') {
-              address = addresss.slice(1, -1).split(',')[0]
-          }
-          EloCitizenMobileManager.connectBluetooth(address)
+    let deviceName = document.getElementById("textField").value
+    let deviceAddress = deviceNameAddressTable[deviceName]
+     if (deviceAddress != undefined){
+         EloCitizenMobileManager.connectBluetooth(deviceAddress)
      }
-
-     
-    document.getElementById("textField").value = "unable to connect"
+     else{
+         document.getElementById("textField").value = "unable to connect" 
+     }
 }
 
 function disconnectCitizenPrinter(){
