@@ -151,7 +151,7 @@ function printCitizenQRCode(){          //tied to button
 }
 
 function printTheQRCode(){
-var sts =  EloCitizenMobileManager.printerCheck();
+  var sts =  EloCitizenMobileManager.printerCheck();
   if(sts != CMP_SUCCESS) {
       document.getElementById("textField").value = "Printer check fail"
       return sts
@@ -165,26 +165,25 @@ var sts =  EloCitizenMobileManager.printerCheck();
 
    let data = "https://www.elotouch.com/"
    EloCitizenMobileManager.printString("QR Code\r\n");
-   EloCitizenMobileManager.printQRCode(data, data.length, 11, CMP_QRCODE_EC_LEVEL_L, CMP_ALIGNMENT_CENTER);
+   EloCitizenMobileManager.printQRCode(data, data.length, 5, CMP_QRCODE_EC_LEVEL_L, CMP_ALIGNMENT_CENTER);
    EloCitizenMobileManager.lineFeed(4);
 
    return CMP_SUCCESS;
 }
 
 function printCitizenImage(){          //tied to button
-if (printTheImage() == CMP_SUCCESS){
-         document.getElementById("textField").value = "print success"
+     /*
+    if (printTheImage() == CMP_SUCCESS){
+       document.getElementById("textField").value = "print success"
     }
-     else{
-         document.getElementById("textField").value = "print failure"
-     }
-
-     
-    
+    else{
+       document.getElementById("textField").value = "print failure"
+    }     
+    */
 }
 
 function printTheImage(){
-
+/*
      var sts =  EloCitizenMobileManager.printerCheck();
   if(sts != CMP_SUCCESS) {
       document.getElementById("textField").value = "Printer check fail"
@@ -202,7 +201,7 @@ function printTheImage(){
      EloCitizenMobileManager.lineFeed(4);
      
    return CMP_SUCCESS;
-
+*/
 }
 
 
