@@ -28,6 +28,7 @@ function showBTPairedDevicesCitizen(){          //tied to button
           document.getElementById("textField").value = "no devices found"
           return
      }
+
      
      parseDeviceString(deviceString)
      document.getElementById("textField").value = pairedDeviceNames
