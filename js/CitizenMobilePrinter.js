@@ -75,14 +75,14 @@ function printSampleCitizenReceipt2(){
 
 }
 
-function parseDeviceString(){
+function parseDeviceString(deviceString){
     deviceNameAddressTable = {}
     pairedDeviceNames = []
     let deviceName = ""
     let deviceAddress = ""
     let onAddress = false
-    for (let i = 0; i < string.length; i++) {
-        let char = string[i]
+    for (let i = 0; i < deviceString.length; i++) {
+        let char = deviceString[i]
         if (char == '{'){
             continue
         }
