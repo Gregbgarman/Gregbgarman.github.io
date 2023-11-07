@@ -74,8 +74,8 @@ function printReceipt1(){
   }
 
   EloCitizenMobileManager.printText("Receipt\r\n\r\n\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_2WIDTH);
-  EloCitizenMobileManager.printText("TEL (123)-456-7890\r\n", CMP_ALIGNMENT_RIGHT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenMobileManager.printText("Thank you for coming to our shop!\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("TEL (123)-456-7890\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Thank you for coming to our shop\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenMobileManager.printText("Chicken                                   $10.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenMobileManager.printText("Hamburger                                 $20.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenMobileManager.printText("Pizza                                     $30.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
