@@ -76,7 +76,7 @@ function printSampleCitizenReceipt2(){
 
 }
 
-function parseDeviceString(deviceString){
+function parseDeviceString(deviceString){          //devices will be in string format such as "{CMP_2345=00:12:34:56, Device2=00:45:23}"
     deviceNameAddressTable = {}
     pairedDeviceNames = []
     let deviceName = ""
