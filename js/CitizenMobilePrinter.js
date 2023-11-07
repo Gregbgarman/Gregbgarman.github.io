@@ -5,9 +5,18 @@ document.getElementById("printSampleCitizenReceipt2").addEventListener("click", 
 document.getElementById("showBTPairedDevicesCitizen").addEventListener("click", showBTPairedDevicesCitizen)
 document.getElementById("isCitizenBTConnected").addEventListener("click", isCitizenBTConnected)
 
+let pairedDeviceNames = []
+let deviceNameAddressTable = {}
 
 function showBTPairedDevicesCitizen(){
-     document.getElementById("textField").value = EloCitizenMobileManager.getBluetoothPairedDevices()
+     let deviceString = EloCitizenMobileManager.getBluetoothPairedDevices()
+     if (deviceString == "{}"){
+          document.getElementById("textField").value = "no devices found"
+          return
+     }
+     
+     parseDeviceString(deviceString)
+     document.getElementById("textField").value = pairedDeviceNames
 }
 
 function isCitizenBTConnected(){
@@ -17,7 +26,16 @@ function isCitizenBTConnected(){
 
 
 function connectCitizenPrinter(){
-    EloCitizenMobileManager.connect("00:13:7B:40:2B:3C")
+    let address = document.getElementById("textField").value
+     if (address != "" && address != "{}"){
+          if(address.length > 1 && address.charAt(0) == '[' && address.charAt(address.length-1) == ']') {
+              address = addresss.slice(1, -1).split(',')[0]
+          }
+          EloCitizenMobileManager.connectBluetooth(address)
+     }
+
+     
+    document.getElementById("textField").value = "unable to connect"
 }
 
 function disconnectCitizenPrinter(){
@@ -55,5 +73,41 @@ function printSampleCitizenReceipt1(){
 
 function printSampleCitizenReceipt2(){
 
+}
+
+function parseDeviceString(){
+    deviceNameAddressTable = {}
+    pairedDeviceNames = []
+    let deviceName = ""
+    let deviceAddress = ""
+    let onAddress = false
+    for (let i = 0; i < string.length; i++) {
+        let char = string[i]
+        if (char == '{'){
+            continue
+        }
+
+       if (char == '='){
+          onAddress = true
+          deviceAddress = ""
+          continue
+      }
+
+      if (char == ',' || char == '}'){
+         deviceNameAddressTable[deviceName] = deviceAddress
+         pairedDeviceNames.push(deviceName)
+         onAddress = false
+         deviceName = ""           
+         continue
+      }
+
+      if (!onAddress){
+        deviceName += char
+      }
+      else{
+        deviceAddress += char
+      }
+
+  }
 }
 
