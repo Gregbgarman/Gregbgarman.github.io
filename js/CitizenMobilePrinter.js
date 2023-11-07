@@ -8,7 +8,7 @@ document.getElementById("isCitizenBTConnected").addEventListener("click", "isCit
 
 
 function showBTPairedDevicesCitizen(){
-
+     document.getElementById("textField").value = EloCitizenMobileManager.getBluetoothPairedDevices()
 }
 
 function isCitizenBTConnected(){
