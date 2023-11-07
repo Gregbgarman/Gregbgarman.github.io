@@ -26,12 +26,16 @@ function isCitizenBTConnected(){
 
 function connectCitizenPrinter(){
     let deviceName = document.getElementById("textField").value
+
+     
+     
     let deviceAddress = deviceNameAddressTable[deviceName]
+     document.getElementById("textField").value = deviceAddress
      if (deviceAddress != undefined){
          EloCitizenMobileManager.connectBluetooth(deviceAddress)
      }
      else{
-         document.getElementById("textField").value = "unable to connect" 
+         //document.getElementById("textField").value = "unable to connect" 
      }
 }
 
