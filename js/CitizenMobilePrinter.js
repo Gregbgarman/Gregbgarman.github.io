@@ -28,8 +28,6 @@ function showBTPairedDevicesCitizen(){          //tied to button
           document.getElementById("textField").value = "no devices found"
           return
      }
-
-     
      parseDeviceString(deviceString)
      document.getElementById("textField").value = pairedDeviceNames
 }
@@ -210,7 +208,7 @@ function printTheImage(){
 
 
 
-function parseDeviceString(deviceString){          //devices will be in string format such as "{CMP_2345=00:12:34:56, Device2=00:45:23}"
+function parseDeviceString(deviceString){          //devices will be in string format such as {CMP_2345=00:12:34:56, Device2=00:45:23}
     deviceNameAddressTable = {}
     pairedDeviceNames = []
     let deviceName = ""
