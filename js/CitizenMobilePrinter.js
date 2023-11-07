@@ -119,19 +119,21 @@ function printReceipt2(){
     return sts
   }
 
+     
 
-        EloCitizenMobileManager.printNormal("                            Receipt\n")
-        EloCitizenMobileManager.printNormal("Chicken                                        $10.00\n")
-        EloCitizenMobileManager.printNormal("Hamburger                                      $20.00\n")
-        EloCitizenMobileManager.printNormal("Pizza                                          $30.00\n")
-        EloCitizenMobileManager.printNormal("Lemons                                         $40.00\n")
-        EloCitizenMobileManager.printNormal("Drink                                          $50.00\n")
-        EloCitizenMobileManager.printNormal("Excluded tax                                   $150.00\n")
-        EloCitizenMobileManager.printNormal("Tax(5%)                                        $7.50\n")
-        EloCitizenMobileManager.printNormal("Total                      $157.50\n\n")
-        EloCitizenMobileManager.printNormal("Payment                                        $200.00\n")
-        EloCitizenMobileManager.printNormal("Change                                         $42.50\n\n")
+        EloCitizenMobileManager.printNormal("           Receipt\n")
+        EloCitizenMobileManager.printNormal("Chicken              $10.00\n")
+        EloCitizenMobileManager.printNormal("Hamburger            $20.00\n")
+        EloCitizenMobileManager.printNormal("Pizza                $30.00\n")
+        EloCitizenMobileManager.printNormal("Lemons               $40.00\n")
+        EloCitizenMobileManager.printNormal("Drink                $50.00\n")
+        EloCitizenMobileManager.printNormal("Excluded tax         $150.00\n")
+        EloCitizenMobileManager.printNormal("Tax(5%)              $7.50\n")
+        EloCitizenMobileManager.printNormal("Total             $157.50\n\n")
+        EloCitizenMobileManager.printNormal("Payment           $200.00\n")
+        EloCitizenMobileManager.printNormal("Change            $42.50\n\n")
         EloCitizenMobileManager.lineFeed(2);
+        
 
      return  CMP_SUCCESS
 }
