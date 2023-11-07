@@ -75,7 +75,7 @@ function printReceipt1(){
 
   EloCitizenMobileManager.printText("Receipt\r\n\r\n\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_2WIDTH);
   EloCitizenMobileManager.printText("TEL (123)-456-7890\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenMobileManager.printText("Thank you for coming to our shop\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Thank you for coming to our shop\r\n\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenMobileManager.printText("Chicken                                   $10.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenMobileManager.printText("Hamburger                                 $20.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenMobileManager.printText("Pizza                                     $30.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
@@ -94,7 +94,43 @@ function printReceipt1(){
 
 
 function printSampleCitizenReceipt2(){
+   if (printReceipt2() == CMP_SUCCESS){
+         document.getElementById("textField").value = "print success"
+    }
+     else{
+         document.getElementById("textField").value = "print failure"
+     }
+     
+}
 
+function printReceipt2(){
+  var sts =  EloCitizenMobileManager.printerCheck();
+  if(sts != 0) {
+      document.getElementById("textField").value = "Printer check fail"
+      return
+  }
+
+  sts =  EloCitizenMobileManager.status();
+  if(sts != 0) {
+    document.getElementById("textField").value = "Printer status fail"
+    return
+  }
+
+
+        EloCitizenMobileManager.printNormal("                            Receipt                                 \n")
+        EloCitizenMobileManager.printNormal("Chicken                                                       $10.00\n")
+        EloCitizenMobileManager.printNormal("Hamburger                                                     $20.00\n")
+        EloCitizenMobileManager.printNormal("Pizza                                                         $30.00\n")
+        EloCitizenMobileManager.printNormal("Lemons                                                        $40.00\n")
+        EloCitizenMobileManager.printNormal("Drink                                                         $50.00\n")
+        EloCitizenMobileManager.printNormal("Excluded tax                                                 $150.00\n")
+        EloCitizenMobileManager.printNormal("Tax(5%)                                                        $7.50\n")
+        EloCitizenMobileManager.printNormal("Total                      $157.50\n\n")
+        EloCitizenMobileManager.printNormal("Payment                                                      $200.00\n")
+        EloCitizenMobileManager.printNormal("Change                                                        $42.50\n\n")
+
+
+     return  CMP_SUCCESS
 }
 
 function parseDeviceString(deviceString){          //devices will be in string format such as "{CMP_2345=00:12:34:56, Device2=00:45:23}"
