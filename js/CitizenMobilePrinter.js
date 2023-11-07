@@ -3,7 +3,7 @@ document.getElementById("disconnectCitizenPrinter").addEventListener("click", di
 document.getElementById("printSampleCitizenReceipt1").addEventListener("click", printSampleCitizenReceipt1)
 document.getElementById("printSampleCitizenReceipt2").addEventListener("click", printSampleCitizenReceipt2)
 document.getElementById("showBTPairedDevicesCitizen").addEventListener("click", showBTPairedDevicesCitizen)
-document.getElementById("isCitizenBTConnected").addEventListener("click", "isCitizenBTConnected)
+document.getElementById("isCitizenBTConnected").addEventListener("click", isCitizenBTConnected)
 
 
 function showBTPairedDevicesCitizen(){
