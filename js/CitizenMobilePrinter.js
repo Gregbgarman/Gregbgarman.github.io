@@ -17,8 +17,6 @@ function showBTPairedDevicesCitizen(){
      
      parseDeviceString(deviceString)
      document.getElementById("textField").value = pairedDeviceNames
-     //document.getElementById("textField").value = deviceNameAddressTable
-     //document.getElementById("CitizenPrinterAvailable").innerHTML = pairedDeviceNames
 }
 
 function isCitizenBTConnected(){
@@ -55,21 +53,25 @@ function printSampleCitizenReceipt1(){
     document.getElementById("textField").value = "Printer status fail"
     return
   }
+     let ESC = 27
 
+  EloCitizenMobileManager.printNormal(ESC+"|cA"+ESC+"|2CReceipt\r\n\r\n\r\n");
+  EloCitizenMobileManager.printNormal(ESC+"|rATEL (123)-456-7890\n\n\n");
+  EloCitizenMobileManager.printNormal(ESC+"|cAThank you for coming to our shop!\n");
+  EloCitizenMobileManager.printNormal("Chicken                                   $10.00\n");
+  EloCitizenMobileManager.printNormal("Hamburger                                 $20.00\n");
+  EloCitizenMobileManager.printNormal("Pizza                                     $30.00\n");
+  EloCitizenMobileManager.printNormal("Lemons                                    $40.00\n");
+  EloCitizenMobileManager.printNormal("Drink                                     $50.00\n");
+  EloCitizenMobileManager.printNormal("Excluded tax                             $150.00\n");
+  EloCitizenMobileManager.printNormal(ESC+"|uCTax(5%)                                    $7.50\n");
+  EloCitizenMobileManager.printNormal(ESC+"|bC"+ESC+"|2CTotal            $157.50\n\n");
+  EloCitizenMobileManager.printNormal("Payment                                  $200.00\n");
+  EloCitizenMobileManager.printNormal("Change                                    $42.50\n\n");
+  EloCitizenMobileManager.lineFeed(2);
 
-
-  
-         EloCitizenMobileManager.printNormal("Chicken                                                   $10.00\n")
-   EloCitizenMobileManager.printNormal("Chicken                                                   $10.00\n")
-   EloCitizenMobileManager.printNormal("Chicken                                                   $10.00\n")
-   EloCitizenMobileManager.printNormal("Chicken                                                   $10.00\n")
-         //EloCitizenMobileManager.printNormal("Hamburger                                                 $20.00\n")
-         //EloCitizenMobileManager.printNormal("Pizza                                                     $30.00\n")
-         //EloCitizenMobileManager.printNormal("Lemons                                                    $40.00\n")
-         //EloCitizenMobileManager.printNormal("Drink                                                     $50.00\n")
-         //EloCitizenMobileManager.printNormal("Excluded tax                                              $150.00\n")
-         //EloCitizenMobileManager.lineFeed(2)
-  
+     
+     
 }
 
 function printSampleCitizenReceipt2(){
