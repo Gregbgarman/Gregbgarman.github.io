@@ -78,7 +78,7 @@ function printSampleCitizenReceipt2(){
 }
 
 function parseDeviceString(deviceString){
-    deviceNameAddressTable = = new Map()
+    deviceNameAddressTable = new Map()
     pairedDeviceNames = []
     let deviceName = ""
     let deviceAddress = ""
