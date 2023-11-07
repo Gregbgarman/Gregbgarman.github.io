@@ -18,6 +18,7 @@ function showBTPairedDevicesCitizen(){
      parseDeviceString(deviceString)
     // document.getElementById("textField").value = pairedDeviceNames
      document.getElementById("textField").value = deviceNameAddressTable
+     document.getElementById("CitizenPrinterAvailable").innerHTML = pairedDeviceNames
 }
 
 function isCitizenBTConnected(){
@@ -78,7 +79,7 @@ function printSampleCitizenReceipt2(){
 }
 
 function parseDeviceString(deviceString){
-    deviceNameAddressTable = new Map()
+    deviceNameAddressTable = {}
     pairedDeviceNames = []
     let deviceName = ""
     let deviceAddress = ""
@@ -96,7 +97,7 @@ function parseDeviceString(deviceString){
       }
 
       if (char == ',' || char == '}'){
-         deviceNameAddressTable.set(deviceName,deviceAddress)
+         deviceNameAddressTable[deviceName] = deviceAddress
          pairedDeviceNames.push(deviceName)
          onAddress = false
          deviceName = ""           
