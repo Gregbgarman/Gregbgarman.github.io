@@ -3,19 +3,29 @@ document.getElementById("disconnectCitizenPrinter").addEventListener("click", di
 document.getElementById("printSampleCitizenReceipt1").addEventListener("click", printSampleCitizenReceipt1)
 document.getElementById("printSampleCitizenReceipt2").addEventListener("click", printSampleCitizenReceipt2)
 
+document.getElementById("showBTPairedDevicesCitizen").addEventListener("click", showBTPairedDevicesCitizen)
+document.getElementById("isCitizenBTConnected").addEventListener("click", "isCitizenBTConnected)
+
+
+function showBTPairedDevicesCitizen(){
+
+}
+
+function isCitizenBTConnected(){
+     document.getElementById("textField").value = EloCitizenMobileManager.isBluetoothConnected()
+}
+
+
+
 function connectCitizenPrinter(){
-  let connected = EloCitizenMobileManager.connect("00:13:7B:40:2B:3C")
-  if (connected){
-     document.getElementById("textField").value = "Connected"
-  }
+    EloCitizenMobileManager.connect("00:13:7B:40:2B:3C")
 }
 
 function disconnectCitizenPrinter(){
-
+    EloCitizenMobileManager.disconnectBluetooth()
 }
 
 function printSampleCitizenReceipt1(){
-
   var sts =  EloCitizenMobileManager.printerCheck();
   if(sts != 0) {
       document.getElementById("textField").value = "Printer check fail"
