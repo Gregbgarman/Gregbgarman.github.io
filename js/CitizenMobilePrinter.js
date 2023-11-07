@@ -2,7 +2,6 @@ document.getElementById("connectCitizenPrinter").addEventListener("click", conne
 document.getElementById("disconnectCitizenPrinter").addEventListener("click", disconnectCitizenPrinter)
 document.getElementById("printSampleCitizenReceipt1").addEventListener("click", printSampleCitizenReceipt1)
 document.getElementById("printSampleCitizenReceipt2").addEventListener("click", printSampleCitizenReceipt2)
-
 document.getElementById("showBTPairedDevicesCitizen").addEventListener("click", showBTPairedDevicesCitizen)
 document.getElementById("isCitizenBTConnected").addEventListener("click", "isCitizenBTConnected)
 
