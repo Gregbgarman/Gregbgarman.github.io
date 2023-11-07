@@ -16,9 +16,9 @@ function showBTPairedDevicesCitizen(){
      }
      
      parseDeviceString(deviceString)
-    // document.getElementById("textField").value = pairedDeviceNames
-     document.getElementById("textField").value = deviceNameAddressTable
-     document.getElementById("CitizenPrinterAvailable").innerHTML = pairedDeviceNames
+     document.getElementById("textField").value = pairedDeviceNames
+     //document.getElementById("textField").value = deviceNameAddressTable
+     //document.getElementById("CitizenPrinterAvailable").innerHTML = pairedDeviceNames
 }
 
 function isCitizenBTConnected(){
