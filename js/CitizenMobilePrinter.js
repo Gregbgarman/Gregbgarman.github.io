@@ -164,7 +164,7 @@ var sts =  EloCitizenMobileManager.printerCheck();
    let data = "https://www.elotouch.com/"
    EloCitizenMobileManager.printString("QR Code\r\n");
    EloCitizenMobileManager.printQRCode(data, data.length, 11, CMP_QRCODE_EC_LEVEL_L, CMP_ALIGNMENT_CENTER);
-   EloCitizenMobileManager.lineFeed(2);
+   EloCitizenMobileManager.lineFeed(4);
 
    return CMP_SUCCESS;
      
