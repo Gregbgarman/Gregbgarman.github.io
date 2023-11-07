@@ -79,16 +79,16 @@ function printReceipt1(){
   EloCitizenMobileManager.printText("Receipt\r\n\r\n\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_2WIDTH);
   EloCitizenMobileManager.printText("TEL (123)-456-7890\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenMobileManager.printText("Thank you for coming to our shop\r\n\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenMobileManager.printText("Chicken                                   $10.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenMobileManager.printText("Hamburger                                 $20.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenMobileManager.printText("Pizza                                     $30.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenMobileManager.printText("Lemons                                    $40.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenMobileManager.printText("Drink                                     $50.00\r\n\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenMobileManager.printText("Excluded tax                             $150.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenMobileManager.printText("Tax(5%)                                    $7.50\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_UNDERLINE, CMP_TXT_1WIDTH);
-  EloCitizenMobileManager.printText("Total            $157.50\r\n\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_2WIDTH);
-  EloCitizenMobileManager.printText("Payment                                  $200.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenMobileManager.printText("Change                                    $42.50\r\n\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Chicken               $10.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Hamburger             $20.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Pizza                 $30.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Lemons                $40.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Drink                 $50.00\r\n\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Excluded tax          $150.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Tax(5%)               $7.50\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_UNDERLINE, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Total                 $157.50\r\n\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_2WIDTH);
+  EloCitizenMobileManager.printText("Payment               $200.00\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printText("Change                $42.50\r\n\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenMobileManager.lineFeed(2);
 
   return  CMP_SUCCESS
@@ -122,16 +122,17 @@ function printReceipt2(){
      
 
         EloCitizenMobileManager.printNormal("           Receipt\n")
-        EloCitizenMobileManager.printNormal("Chicken              $10.00\n")
-        EloCitizenMobileManager.printNormal("Hamburger            $20.00\n")
-        EloCitizenMobileManager.printNormal("Pizza                $30.00\n")
-        EloCitizenMobileManager.printNormal("Lemons               $40.00\n")
-        EloCitizenMobileManager.printNormal("Drink                $50.00\n")
-        EloCitizenMobileManager.printNormal("Excluded tax         $150.00\n")
-        EloCitizenMobileManager.printNormal("Tax(5%)              $7.50\n")
-        EloCitizenMobileManager.printNormal("Total             $157.50\n\n")
-        EloCitizenMobileManager.printNormal("Payment           $200.00\n")
-        EloCitizenMobileManager.printNormal("Change            $42.50\n\n")
+        EloCitizenMobileManager.printNormal("Pencils               $15.00\n\n")
+        EloCitizenMobileManager.printNormal("Notebook              $10.00\n\n")
+        EloCitizenMobileManager.printNormal("Paper                 $12.00\n\n")
+        EloCitizenMobileManager.printNormal("Flash Cards           $7.00\n\n")
+        EloCitizenMobileManager.printNormal("Eraser                $2.00\n\n")
+         EloCitizenMobileManager.printNormal("----------------------------\n")
+        EloCitizenMobileManager.printNormal("Excluded tax          $46.00\n\n")
+        EloCitizenMobileManager.printNormal("Tax(10%)              $4.60\n\n")
+        EloCitizenMobileManager.printNormal("Total             $50.60\n\n")
+        EloCitizenMobileManager.printNormal("Payment           $100.00\n\n")
+        EloCitizenMobileManager.printNormal("Change            $49.40\n\n")
         EloCitizenMobileManager.lineFeed(2);
         
 
