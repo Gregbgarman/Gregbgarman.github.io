@@ -4,6 +4,9 @@ document.getElementById("printSampleCitizenReceipt1").addEventListener("click", 
 document.getElementById("printSampleCitizenReceipt2").addEventListener("click", printSampleCitizenReceipt2)
 document.getElementById("showBTPairedDevicesCitizen").addEventListener("click", showBTPairedDevicesCitizen)
 document.getElementById("isCitizenBTConnected").addEventListener("click", isCitizenBTConnected)
+document.getElementById("printCitizenQRCode").addEventListener("click", printCitizenQRCode)
+
+
 
 let pairedDeviceNames = []
 let deviceNameAddressTable = {}
@@ -15,9 +18,10 @@ const CMP_FNT_UNDERLINE = 128
 const CMP_TXT_1WIDTH = 0
 const CMP_TXT_2WIDTH = 16
 const CMP_SUCCESS = 0
+const CMP_QRCODE_EC_LEVEL_L = 0
 
 
-function showBTPairedDevicesCitizen(){
+function showBTPairedDevicesCitizen(){          //tied to button
      let deviceString = EloCitizenMobileManager.getBluetoothPairedDevices()
      if (deviceString == "{}"){
           document.getElementById("textField").value = "no devices found"
@@ -28,12 +32,7 @@ function showBTPairedDevicesCitizen(){
      document.getElementById("textField").value = pairedDeviceNames
 }
 
-function isCitizenBTConnected(){
-     document.getElementById("textField").value = EloCitizenMobileManager.isBluetoothConnected()
-}
-
-
-function connectCitizenPrinter(){
+function connectCitizenPrinter(){          //tied to button
     let deviceName = document.getElementById("textField").value
 
     let deviceAddress = deviceNameAddressTable[deviceName]
@@ -46,11 +45,15 @@ function connectCitizenPrinter(){
      }
 }
 
-function disconnectCitizenPrinter(){
+function isCitizenBTConnected(){          //tied to button
+     document.getElementById("textField").value = EloCitizenMobileManager.isBluetoothConnected()
+}
+
+function disconnectCitizenPrinter(){          //tied to button
     EloCitizenMobileManager.disconnectBluetooth()
 }
 
-function printSampleCitizenReceipt1(){
+function printSampleCitizenReceipt1(){          //tied to button
     if (printReceipt1() == CMP_SUCCESS){
          document.getElementById("textField").value = "print success"
     }
@@ -62,15 +65,15 @@ function printSampleCitizenReceipt1(){
 
 function printReceipt1(){
   var sts =  EloCitizenMobileManager.printerCheck();
-  if(sts != 0) {
+  if(sts != CMP_SUCCESS) {
       document.getElementById("textField").value = "Printer check fail"
-      return
+      return sts
   }
 
   sts =  EloCitizenMobileManager.status();
-  if(sts != 0) {
+  if(sts != CMP_SUCCESS) {
     document.getElementById("textField").value = "Printer status fail"
-    return
+    return sts
   }
 
   EloCitizenMobileManager.printText("Receipt\r\n\r\n\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_2WIDTH);
@@ -93,7 +96,7 @@ function printReceipt1(){
 }
 
 
-function printSampleCitizenReceipt2(){
+function printSampleCitizenReceipt2(){          //tied to button
    if (printReceipt2() == CMP_SUCCESS){
          document.getElementById("textField").value = "print success"
     }
@@ -105,15 +108,15 @@ function printSampleCitizenReceipt2(){
 
 function printReceipt2(){
   var sts =  EloCitizenMobileManager.printerCheck();
-  if(sts != 0) {
+  if(sts != CMP_SUCCESS) {
       document.getElementById("textField").value = "Printer check fail"
-      return
+      return sts
   }
 
   sts =  EloCitizenMobileManager.status();
-  if(sts != 0) {
+  if(sts != CMP_SUCCESS) {
     document.getElementById("textField").value = "Printer status fail"
-    return
+    return sts
   }
 
 
@@ -132,6 +135,43 @@ function printReceipt2(){
 
      return  CMP_SUCCESS
 }
+
+function printCitizenQRCode(){          //tied to button
+    if (printTheQRCode() == CMP_SUCCESS){
+         document.getElementById("textField").value = "print success"
+    }
+     else{
+         document.getElementById("textField").value = "print failure"
+     }
+}
+
+function printTheQRCode(){
+var sts =  EloCitizenMobileManager.printerCheck();
+  if(sts != CMP_SUCCESS) {
+      document.getElementById("textField").value = "Printer check fail"
+      return sts
+  }
+
+  sts =  EloCitizenMobileManager.status();
+  if(sts != CMP_SUCCESS) {
+    document.getElementById("textField").value = "Printer status fail"
+    return sts
+  }
+
+   let data = "https://www.elotouch.com/"
+   EloCitizenMobileManager.printString("QR Code\r\n");
+   EloCitizenMobileManager.printQRCode(data, data.length, 11, CMP_QRCODE_EC_LEVEL_L, CMP_ALIGNMENT_CENTER);
+   EloCitizenMobileManager.lineFeed(2);
+
+   return CMP_SUCCESS;
+     
+     
+}
+
+
+
+
+
 
 function parseDeviceString(deviceString){          //devices will be in string format such as "{CMP_2345=00:12:34:56, Device2=00:45:23}"
     deviceNameAddressTable = {}
