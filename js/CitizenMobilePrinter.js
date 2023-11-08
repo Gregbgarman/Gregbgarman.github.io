@@ -242,7 +242,7 @@ function parseDeviceString(deviceString){          //devices will be in string f
          if (deviceName[0] == ' '){
               deviceName = deviceName.slice(1)
          }
-         deviceNameAddressTable[deviceName] = deviceAddress
+         pairedDeviceAddressTable[deviceName] = deviceAddress
          pairedDeviceNames.push(deviceName)
          onAddress = false
          deviceName = ""           
