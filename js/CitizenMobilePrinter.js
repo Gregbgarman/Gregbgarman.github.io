@@ -26,6 +26,8 @@ const CMP_TXT_1WIDTH = 0
 const CMP_TXT_2WIDTH = 16
 const CMP_SUCCESS = 0
 const CMP_QRCODE_EC_LEVEL_L = 0
+const CMP_BCS_Code39 = 109
+const CMP_HRI_TEXT_BELOW = 2
 
 
 
@@ -129,6 +131,8 @@ function printReceipt1(){
   EloCitizenMobileManager.printText("Total                 $157.50\r\n\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_2WIDTH);
   EloCitizenMobileManager.printText("Payment               $200.00\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenMobileManager.printText("Change                $42.50\r\n\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenMobileManager.printBarCode("1234567890", CMP_BCS_Code39, 40, 2, CMP_ALIGNMENT_CENTER, CMP_HRI_TEXT_BELOW);
+
   EloCitizenMobileManager.lineFeed(2);
 
   return  CMP_SUCCESS
@@ -219,9 +223,7 @@ function printTheImage(){
 }
 
 
-
-
-function parseDeviceString(deviceString){          //devices will be in string format such as {CMP_2345=00:12:34:56, Device2=00:45:23}
+function parseDeviceString(deviceString){          //devices will be in string format such as "{CMP_2345=00:12:34:56, Device2=00:45:23}"
     deviceNameAddressTable = {}
     pairedDeviceNames = []
     let deviceName = ""
