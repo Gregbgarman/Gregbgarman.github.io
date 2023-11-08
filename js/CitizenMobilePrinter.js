@@ -172,9 +172,9 @@ function printReceipt2(){
         EloCitizenMobileManager.printNormal("Stromboli             $12.00\n\n")
         EloCitizenMobileManager.printNormal("salad                 $8.00\n\n")
         EloCitizenMobileManager.printNormal("----------------------------\n")
-        EloCitizenMobileManager.printNormal("Tax(10%)              $3.80\n\n")
-        EloCitizenMobileManager.printNormal("Total             $41.80\n\n")
-        EloCitizenMobileManager.printNormal("Payment           $50.00\n\n")
+        EloCitizenMobileManager.printNormal("Tax(10%)              $3.80\n")
+        EloCitizenMobileManager.printNormal("Total             $41.80\n")
+        EloCitizenMobileManager.printNormal("Payment           $50.00\n")
         EloCitizenMobileManager.printNormal("Change            $8.20\n\n\n")
         EloCitizenMobileManager.printString("QR Code\r\n");
         EloCitizenMobileManager.printQRCode(data, data.length, 5, CMP_QRCODE_EC_LEVEL_L, CMP_ALIGNMENT_LEFT);
