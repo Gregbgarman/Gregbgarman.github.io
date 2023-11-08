@@ -125,7 +125,7 @@ function printReceipt1(){
   EloCitizenMobileManager.printText("Drink                 $50.00\r\n\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenMobileManager.printText("Excluded tax          $150.00\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenMobileManager.printText("Tax(5%)               $7.50\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_UNDERLINE, CMP_TXT_1WIDTH);
-  EloCitizenMobileManager.printText("Total                 $157.50\r\n\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_2WIDTH);
+  EloCitizenMobileManager.printText("Total            $157.50\r\n\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_2WIDTH);
   EloCitizenMobileManager.printText("Payment               $200.00\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenMobileManager.printText("Change                $42.50\r\n\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenMobileManager.printBarCode("1234567890", CMP_BCS_Code39, 40, 2, CMP_ALIGNMENT_CENTER, CMP_HRI_TEXT_BELOW);
@@ -171,7 +171,6 @@ function printReceipt2(){
         EloCitizenMobileManager.printNormal("Stromboli             $12.00\n\n")
         EloCitizenMobileManager.printNormal("salad                 $8.00\n\n")
         EloCitizenMobileManager.printNormal("----------------------------\n")
-        EloCitizenMobileManager.printNormal("Excluded tax          $38.00\n\n")
         EloCitizenMobileManager.printNormal("Tax(10%)              $3.80\n\n")
         EloCitizenMobileManager.printNormal("Total             $41.80\n\n")
         EloCitizenMobileManager.printNormal("Payment           $50.00\n\n")
