@@ -90,6 +90,7 @@ function isCitizenBTConnected(){          //tied to button
 
 function disconnectCitizenPrinter(){          //tied to button
     EloCitizenMobileManager.disconnectBluetooth()
+    document.getElementById("textField").value = "use button to check if disconnected"
 }
 
 function printSampleCitizenReceipt1(){          //tied to button
