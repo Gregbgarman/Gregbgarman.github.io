@@ -37,14 +37,10 @@ function runBluetoothDiscovery(){          //tied to button. Extra API added by 
     EloCitizenMobileManager.discoverBluetoothDevices()
 }
 
-function DeviceReceiver(deviceName, deviceAddress){          //actively receives discovered bluetooth devices
-     document.getElementById("CitizenMobileHeader").value = deviceName
-    
-     //discoveredDevicesArray.push(deviceName)
-     //discoveredDevicesTable[deviceName] = deviceAddress
-     //document.getElementById("textField").value = discoveredDevicesArray
-    document.getElementById("textField").value = deviceAddress
-    
+function DeviceReceiver(deviceName, deviceAddress){          //actively receives discovered bluetooth devices    
+     discoveredDevicesArray.push(deviceName)
+     discoveredDevicesTable[deviceName] = deviceAddress
+     document.getElementById("textField").value = discoveredDevicesArray    
 }
 
 function pairOverBluetooth(){          //tied to button. Extra API added by Elo
