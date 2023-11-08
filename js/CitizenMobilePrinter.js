@@ -38,11 +38,11 @@ function runBluetoothDiscovery(){          //tied to button. Extra API added by 
 }
 
 function DeviceReceiver(deviceName, deviceAddress){          //actively receives discovered bluetooth devices
-     if (deviceName.includes("cmp")){    //using as criteria to filter out search results
+  //   if (deviceName.includes("cmp")){    //using as criteria to filter out search results
          discoveredDevicesArray.push(deviceName)
          discoveredDevicesTable[deviceName] = deviceAddress
          document.getElementById("textField").value = discoveredDevicesArray
-     }
+ //    }
 }
 
 function pairOverBluetooth(){          //tied to button. Extra API added by Elo
