@@ -9,10 +9,7 @@ document.getElementById("runBluetoothDiscovery").addEventListener("click", runBl
 document.getElementById("pairOverBluetooth").addEventListener("click", pairOverBluetooth)
 
 
-
-
-let pairedDeviceNames = []
-let deviceNameAddressTable = {}
+let pairedDeviceAddressTable = {}
 
 let discoveredDevicesTable = {}
 let discoveredDevicesArray = []
@@ -70,14 +67,14 @@ function showBTPairedDevicesCitizen(){          //tied to button
           document.getElementById("textField").value = "no devices found"
           return
      }
-     parseDeviceString(deviceString)
-     document.getElementById("textField").value = pairedDeviceNames
+     let pairedDevices = parseDeviceString(deviceString)
+     document.getElementById("textField").value = pairedDevices
 }
 
 function connectCitizenPrinter(){          //tied to button
     let deviceName = document.getElementById("textField").value
 
-    let deviceAddress = deviceNameAddressTable[deviceName]
+    let deviceAddress = pairedDeviceAddressTable[deviceName]
      if (deviceAddress != undefined){
          EloCitizenMobileManager.connectBluetooth(deviceAddress)    //part of citizen SDK. First step needed to use API's
          document.getElementById("textField").value = "use next button to check if connected"
@@ -224,8 +221,8 @@ function printTheImage(){
 
 
 function parseDeviceString(deviceString){          //devices will be in string format such as "{CMP_2345=00:12:34:56, Device2=00:45:23}"
-    deviceNameAddressTable = {}
-    pairedDeviceNames = []
+    pairedDeviceAddressTable = {}
+    let pairedDeviceNames = []
     let deviceName = ""
     let deviceAddress = ""
     let onAddress = false
@@ -260,5 +257,6 @@ function parseDeviceString(deviceString){          //devices will be in string f
       }
 
   }
+  return pairedDeviceNames
 }
 
