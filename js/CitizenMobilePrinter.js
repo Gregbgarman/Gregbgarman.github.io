@@ -32,15 +32,17 @@ const CMP_QRCODE_EC_LEVEL_L = 0
 
 function runBluetoothDiscovery(){          //tied to button. Extra API added by Elo
     discoveredDevicesTable = {}
-     discoveredDevicesArray = []
+    discoveredDevicesArray = []
     EloCitizenMobileManager.setBluetoothSearchListener("DeviceReceiver")     //set callback function
     EloCitizenMobileManager.discoverBluetoothDevices()
 }
 
-function DeviceReceiver(deviceName, deviceAddress){          //actively receives discovered bluetooth devices    
-     discoveredDevicesArray.push(deviceName)
-     discoveredDevicesTable[deviceName] = deviceAddress
-     document.getElementById("textField").value = discoveredDevicesArray    
+function DeviceReceiver(deviceName, deviceAddress){          //actively receives discovered bluetooth devices
+     if (deviceName.includes("cmp")){    //using as criteria to filter out search results
+         discoveredDevicesArray.push(deviceName)
+         discoveredDevicesTable[deviceName] = deviceAddress
+         document.getElementById("textField").value = discoveredDevicesArray
+     }
 }
 
 function pairOverBluetooth(){          //tied to button. Extra API added by Elo
