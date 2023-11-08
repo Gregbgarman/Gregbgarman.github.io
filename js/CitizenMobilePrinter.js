@@ -6,7 +6,6 @@ document.getElementById("showBTPairedDevicesCitizen").addEventListener("click", 
 document.getElementById("isCitizenBTConnected").addEventListener("click", isCitizenBTConnected)
 document.getElementById("printCitizenQRCode").addEventListener("click", printCitizenQRCode)
 document.getElementById("printCitizenImage").addEventListener("click", printCitizenImage)
-
 document.getElementById("runBluetoothDiscovery").addEventListener("click", runBluetoothDiscovery)
 document.getElementById("pairOverBluetooth").addEventListener("click", pairOverBluetooth)
 
@@ -31,7 +30,7 @@ const CMP_QRCODE_EC_LEVEL_L = 0
 
 
 
-function runBluetoothDiscovery(){          //tied to button
+function runBluetoothDiscovery(){          //tied to button. Extra API added by Elo
     discoveredDevicesTable = {}
      discoveredDevicesArray = []
     EloCitizenMobileManager.setBluetoothSearchListener("DeviceReceiver")     //set callback function
@@ -44,7 +43,7 @@ function DeviceReceiver(deviceName, deviceAddress){          //actively receives
      document.getElementById("textField").value = discoveredDevicesArray
 }
 
-function pairOverBluetooth(){          //tied to button
+function pairOverBluetooth(){          //tied to button. Extra API added by Elo
      let deviceName = document.getElementById("textField").value
      let deviceAddress = discoveredDevicesTable[deviceName]
      if (deviceAddress == undefined){
@@ -76,7 +75,7 @@ function connectCitizenPrinter(){          //tied to button
 
     let deviceAddress = deviceNameAddressTable[deviceName]
      if (deviceAddress != undefined){
-         EloCitizenMobileManager.connectBluetooth(deviceAddress)
+         EloCitizenMobileManager.connectBluetooth(deviceAddress)    //part of citizen SDK. First step needed to use API's
          document.getElementById("textField").value = "use next button to check if connected"
      }
      else{
