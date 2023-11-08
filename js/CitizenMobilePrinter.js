@@ -8,6 +8,8 @@ document.getElementById("printCitizenQRCode").addEventListener("click", printCit
 document.getElementById("printCitizenImage").addEventListener("click", printCitizenImage)
 
 document.getElementById("runBluetoothDiscovery").addEventListener("click", runBluetoothDiscovery)
+document.getElementById("pairOverBluetooth").addEventListener("click", pairOverBluetooth)
+
 
 
 
