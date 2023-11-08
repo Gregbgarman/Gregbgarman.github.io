@@ -29,6 +29,7 @@ const CMP_QRCODE_EC_LEVEL_L = 0
 
 
 
+
 function runBluetoothDiscovery(){          //tied to button. Extra API added by Elo
     discoveredDevicesTable = {}
      discoveredDevicesArray = []
