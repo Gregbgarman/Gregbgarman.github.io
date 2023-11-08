@@ -4,7 +4,6 @@ document.getElementById("printSampleCitizenReceipt1").addEventListener("click", 
 document.getElementById("printSampleCitizenReceipt2").addEventListener("click", printSampleCitizenReceipt2)
 document.getElementById("showBTPairedDevicesCitizen").addEventListener("click", showBTPairedDevicesCitizen)
 document.getElementById("isCitizenBTConnected").addEventListener("click", isCitizenBTConnected)
-document.getElementById("printCitizenQRCode").addEventListener("click", printCitizenQRCode)
 document.getElementById("printCitizenImage").addEventListener("click", printCitizenImage)
 document.getElementById("runBluetoothDiscovery").addEventListener("click", runBluetoothDiscovery)
 document.getElementById("pairOverBluetooth").addEventListener("click", pairOverBluetooth)
@@ -156,7 +155,7 @@ function printReceipt2(){
     document.getElementById("textField").value = "Printer status fail"
     return sts
   }
-
+  let data = "https://www.elotouch.com/"
      
 
         EloCitizenMobileManager.printNormal("       Greg's Pizza House\n")
@@ -172,42 +171,16 @@ function printReceipt2(){
         EloCitizenMobileManager.printNormal("Tax(10%)              $3.80\n\n")
         EloCitizenMobileManager.printNormal("Total             $41.80\n\n")
         EloCitizenMobileManager.printNormal("Payment           $50.00\n\n")
-        EloCitizenMobileManager.printNormal("Change            $8.20\n\n")
+        EloCitizenMobileManager.printNormal("Change            $8.20\n\n\n")
+        EloCitizenMobileManager.printString("QR Code\r\n");
+        EloCitizenMobileManager.printQRCode(data, data.length, 5, CMP_QRCODE_EC_LEVEL_L, CMP_ALIGNMENT_CENTER);
         EloCitizenMobileManager.lineFeed(2);
         
 
      return  CMP_SUCCESS
 }
 
-function printCitizenQRCode(){          //tied to button
-    if (printTheQRCode() == CMP_SUCCESS){
-         document.getElementById("textField").value = "print success"
-    }
-     else{
-         document.getElementById("textField").value = "print failure"
-     }
-}
 
-function printTheQRCode(){
-  var sts =  EloCitizenMobileManager.printerCheck();
-  if(sts != CMP_SUCCESS) {
-      document.getElementById("textField").value = "Printer check fail"
-      return sts
-  }
-
-  sts =  EloCitizenMobileManager.status();
-  if(sts != CMP_SUCCESS) {
-    document.getElementById("textField").value = "Printer status fail"
-    return sts
-  }
-
-   let data = "https://www.elotouch.com/"
-   EloCitizenMobileManager.printString("QR Code\r\n");
-   EloCitizenMobileManager.printQRCode(data, data.length, 5, CMP_QRCODE_EC_LEVEL_L, CMP_ALIGNMENT_CENTER);
-   EloCitizenMobileManager.lineFeed(4);
-
-   return CMP_SUCCESS;
-}
 
 function printCitizenImage(){          //tied to button
      
