@@ -4,6 +4,7 @@ document.getElementById("printSampleCitizenReceipt1").addEventListener("click", 
 document.getElementById("printSampleCitizenReceipt2").addEventListener("click", printSampleCitizenReceipt2)
 document.getElementById("showBTPairedDevicesCitizen").addEventListener("click", showBTPairedDevicesCitizen)
 document.getElementById("isCitizenBTConnected").addEventListener("click", isCitizenBTConnected)
+document.getElementById("getEmulation").addEventListener("click", getEmulation)
 document.getElementById("printCitizenImage").addEventListener("click", printCitizenImage)
 document.getElementById("runBluetoothDiscovery").addEventListener("click", runBluetoothDiscovery)
 document.getElementById("pairOverBluetooth").addEventListener("click", pairOverBluetooth)
@@ -25,6 +26,13 @@ const CMP_SUCCESS = 0
 const CMP_QRCODE_EC_LEVEL_L = 0
 const CMP_BCS_Code39 = 109
 const CMP_HRI_TEXT_BELOW = 2
+
+
+
+function getEmulation(){
+    
+
+}
 
 
 
