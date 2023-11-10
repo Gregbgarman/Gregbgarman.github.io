@@ -156,11 +156,10 @@ function printReceipt2CPCL(){
   }
 
 let nLineWidth = 384;
-let data = "Receipt";
 
    EloCitizenManagerCPCL.setForm(0, 200, 200, 406, 1);
    EloCitizenManagerCPCL.setMedia(CMP_CPCL_CONTINUOUS);
-   EloCitizenManagerCPCL.printAndroidFont(data, nLineWidth, 100, 0, CMP_CPCL_CENTER);
+   EloCitizenManagerCPCL.printAndroidFont("Receipt", nLineWidth, 100, 0, CMP_CPCL_CENTER);
    EloCitizenManagerCPCL.printAndroidFont("Left Alignment", nLineWidth, 24, 120, CMP_CPCL_LEFT);
    EloCitizenManagerCPCL.printAndroidFont("Center Alignment", nLineWidth, 24, 150, CMP_CPCL_CENTER);
    EloCitizenManagerCPCL.printAndroidFont("Right Alignment", nLineWidth, 24, 180, CMP_CPCL_RIGHT);
@@ -168,7 +167,6 @@ let data = "Receipt";
    EloCitizenManagerCPCL.printAndroidFont("SERIF", "SERIF : 1234iwIW", nLineWidth, 24, 240, CMP_CPCL_LEFT);
    EloCitizenManagerCPCL.printAndroidFont("MONOSPACE", "MONOSPACE : 1234iwIW", nLineWidth, 24, 270, CMP_CPCL_LEFT);
    EloCitizenManagerCPCL.printForm();
-
    return  CMP_SUCCESS
 }
 
