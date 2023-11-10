@@ -5,8 +5,8 @@ document.getElementById("printSampleCitizenReceipt2CPCL").addEventListener("clic
 document.getElementById("showBTPairedDevicesCitizenCPCL").addEventListener("click", showBTPairedDevicesCitizenCPCL)
 document.getElementById("isCitizenBTConnectedCPCL").addEventListener("click", isCitizenBTConnectedCPCL)
 document.getElementById("printCitizenImageCPCL").addEventListener("click", printCitizenImageCPCL)
-document.getElementById("runBluetoothDiscovery").addEventListener("click", runBluetoothDiscoveryCPCL)
-document.getElementById("pairOverBluetooth").addEventListener("click", pairOverBluetoothCPCL)
+document.getElementById("runBluetoothDiscoveryCPCL").addEventListener("click", runBluetoothDiscoveryCPCL)
+document.getElementById("pairOverBluetoothCPCL").addEventListener("click", pairOverBluetoothCPCL)
 
 
 
