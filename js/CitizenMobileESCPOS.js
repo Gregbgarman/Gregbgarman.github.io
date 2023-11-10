@@ -171,8 +171,9 @@ function printReceipt2(){
   let data = "https://www.elotouch.com/"
      
 
-        EloCitizenManagerESCPOS.printNormal("       Greg's Pizza House\n")
-        EloCitizenManagerESCPOS.printNormal("123 Rainbow Road Knoxville, TN\n")
+        EloCitizenManagerESCPOS.printNormal("Greg's Pizza House\n")
+        EloCitizenManagerESCPOS.printNormal("123 Rainbow Road\n")
+        EloCitizenManagerESCPOS.printNormal("Knoxville, TN\n")
         EloCitizenManagerESCPOS.printNormal("456-321-7890\n\n")
         EloCitizenManagerESCPOS.printNormal("----------------------------\n")
         EloCitizenManagerESCPOS.printNormal("Cheese Slice          $8.00\n\n")
@@ -180,7 +181,7 @@ function printReceipt2(){
         EloCitizenManagerESCPOS.printNormal("Stromboli             $12.00\n\n")
         EloCitizenManagerESCPOS.printNormal("salad                 $8.00\n\n")
         EloCitizenManagerESCPOS.printNormal("----------------------------\n")
-        EloCitizenManagerESCPOS.printNormal("Tax(10%)              $3.80\n")
+        EloCitizenManagerESCPOS.printNormal("Tax(10%)          $3.80\n")
         EloCitizenManagerESCPOS.printNormal("Total             $41.80\n")
         EloCitizenManagerESCPOS.printNormal("Payment           $50.00\n")
         EloCitizenManagerESCPOS.printNormal("Change            $8.20\n\n\n")
