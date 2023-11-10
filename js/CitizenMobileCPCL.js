@@ -197,13 +197,12 @@ function printTheImageCPCL(){
     return sts
   }
 
-   cpclPrinter.setForm(0, 200, 200, 406, 1);
-   cpclPrinter.setMedia(CMP_CPCL_CONTINUOUS);
-   cpclPrinter.setCPCLBarcode(0, 0, 0);
-   cpclPrinter.printCPCLBarcode(CMP_CPCL_0_ROTATION, CMP_CPCL_BCS_CODABAR, 2, CMP_CPCL_BCS_0RATIO, 30, 19, 45, "A37859B", 0);
-   cpclPrinter.printCPCLText(0, 7, 0, 19, 18, CMP_CPCL_BCS_CODABAR, 0);
+    EloCitizenManagerCPCL.setForm(0, 200, 200, 406, 1);
+    EloCitizenManagerCPCL.setMedia(CMP_CPCL_CONTINUOUS);
+    EloCitizenManagerCPCL.setCPCLBarcode(0, 0, 0);
+    EloCitizenManagerCPCL.printCPCLBarcode(CMP_CPCL_0_ROTATION, CMP_CPCL_BCS_CODABAR, 2, CMP_CPCL_BCS_0RATIO, 30, 19, 45, "A37859B", 0);
+    EloCitizenManagerCPCL.printCPCLText(0, 7, 0, 19, 18, CMP_CPCL_BCS_CODABAR, 0);
 
-     
    return CMP_SUCCESS;
 }
 
