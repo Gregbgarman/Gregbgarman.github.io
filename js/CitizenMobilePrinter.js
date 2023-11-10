@@ -88,7 +88,9 @@ function connectCitizenPrinter(){          //tied to button
     let deviceAddress = pairedDeviceAddressTable[deviceName]
      if (deviceAddress != undefined){
          EloCitizenMobileManager.connectBluetooth(deviceAddress)    //part of citizen SDK. First step needed to use API's
-         document.getElementById("textField").value = "use next button to check if connected"
+         if (EloCitizenMobileManager.isBluetoothConnected()){
+              document.getElementById("CitizenPrinterAvailable").innerHTML = "Printer Connected"
+         }
      }
      else{
          document.getElementById("textField").value = "failed to connect" 
@@ -101,7 +103,12 @@ function isCitizenBTConnected(){          //tied to button
 
 function disconnectCitizenPrinter(){          //tied to button
     EloCitizenMobileManager.disconnectBluetooth()
-    document.getElementById("textField").value = "use button to check if disconnected"
+    if (!EloCitizenMobileManager.isBluetoothConnected()){
+        document.getElementById("CitizenPrinterAvailable").innerHTML = "Printer Disconnected"
+    }
+    else{
+        document.getElementById("textField").value = "error disconnecting"
+    }
 }
 
 function printSampleCitizenReceipt1(){          //tied to button
