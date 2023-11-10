@@ -159,7 +159,7 @@ let nLineWidth = 384;
 let data = "Receipt";
 
    EloCitizenManagerCPCL.setForm(0, 200, 200, 406, 1);
-   EloCitizenManagerCPCL.setMedia(paperType);
+   EloCitizenManagerCPCL.setMedia(CMP_CPCL_CONTINUOUS);
    EloCitizenManagerCPCL.printAndroidFont(data, nLineWidth, 100, 0, CMP_CPCL_CENTER);
    EloCitizenManagerCPCL.printAndroidFont("Left Alignment", nLineWidth, 24, 120, CMP_CPCL_LEFT);
    EloCitizenManagerCPCL.printAndroidFont("Center Alignment", nLineWidth, 24, 150, CMP_CPCL_CENTER);
