@@ -115,7 +115,7 @@ function disconnectCitizenPrinterCPCL(){          //tied to button
 }
 
 function printSampleCitizenReceipt1CPCL(){          //tied to button
-    if (printReceipt1() == CMP_SUCCESS){
+    if (printReceipt1CPCL() == CMP_SUCCESS){
          document.getElementById("textField").value = "print success"
     }
      else{
@@ -155,7 +155,7 @@ function printReceipt1CPCL(){
 
 
 function printSampleCitizenReceipt2CPCL(){          //tied to button
-   if (printReceipt2() == CMP_SUCCESS){
+   if (printReceipt2CPCL() == CMP_SUCCESS){
          document.getElementById("textField").value = "print success"
     }
      else{
