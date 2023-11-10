@@ -79,7 +79,7 @@ function connectCitizenPrinter(){          //tied to button
      if (deviceAddress != undefined){
          EloCitizenManagerESCPOS.connectBluetooth(deviceAddress)    //part of citizen SDK. First step needed to use API's
          if (EloCitizenManagerESCPOS.isBluetoothConnected()){
-              document.getElementById("CitizenPrinterAvailable").innerHTML = "Printer Connected"
+              document.getElementById("CitizenPrinterAvailable").innerHTML = "Printer Ready"
          }
      }
      else{
