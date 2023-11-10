@@ -179,7 +179,7 @@ function printSampleCitizenReceipt2CPCL(){          //tied to button
 }
 
 function printReceipt2CPCL(){
-  /*
+
   var sts =  EloCitizenManagerESCPOS.printerCheck();
   if(sts != CMP_SUCCESS) {
       document.getElementById("textField").value = "Printer check fail"
@@ -191,30 +191,19 @@ function printReceipt2CPCL(){
     document.getElementById("textField").value = "Printer status fail"
     return sts
   }
-  let data = "https://www.elotouch.com/"
-     
 
-        EloCitizenManagerESCPOS.printNormal("Greg's Pizza House\n\n")
-        EloCitizenManagerESCPOS.printNormal("123 Rainbow Road\n")
-        EloCitizenManagerESCPOS.printNormal("Knoxville, TN\n")
-        EloCitizenManagerESCPOS.printNormal("456-321-7890\n\n")
-        EloCitizenManagerESCPOS.printNormal("----------------------------\n")
-        EloCitizenManagerESCPOS.printNormal("cheese slice          $8.00\n\n")
-        EloCitizenManagerESCPOS.printNormal("pepperoni slice       $10.00\n\n")
-        EloCitizenManagerESCPOS.printNormal("stromboli             $12.00\n\n")
-        EloCitizenManagerESCPOS.printNormal("salad                 $8.00\n\n")
-        EloCitizenManagerESCPOS.printNormal("----------------------------\n")
-        EloCitizenManagerESCPOS.printNormal("Tax(10%)          $3.80\n")
-        EloCitizenManagerESCPOS.printNormal("Total             $41.80\n")
-        EloCitizenManagerESCPOS.printNormal("Payment           $50.00\n")
-        EloCitizenManagerESCPOS.printNormal("Change            $8.20\n\n\n")
-        EloCitizenManagerESCPOS.printString("QR Code\r\n");
-        EloCitizenManagerESCPOS.printQRCode(data, data.length, 5, CMP_QRCODE_EC_LEVEL_L, CMP_ALIGNMENT_LEFT);
-        EloCitizenManagerESCPOS.lineFeed(4);
-        
+   EloCitizenManagerCPCL.setForm(0, 200, 200, 406, count);
+   EloCitizenManagerCPCL.setMedia(paperType);
+   EloCitizenManagerCPCL.printAndroidFont(data, nLineWidth, 100, 0, CPCLConst.CMP_CPCL_CENTER);
+   EloCitizenManagerCPCL.printAndroidFont("Left Alignment", nLineWidth, 24, 120, CPCLConst.CMP_CPCL_LEFT);
+   EloCitizenManagerCPCL.printAndroidFont("Center Alignment", nLineWidth, 24, 150, CPCLConst.CMP_CPCL_CENTER);
+   EloCitizenManagerCPCL.printAndroidFont("Right Alignment", nLineWidth, 24, 180, CPCLConst.CMP_CPCL_RIGHT);
+   EloCitizenManagerCPCL.printAndroidFont(Typeface.SANS_SERIF, "SANS_SERIF : 1234iwIW", nLineWidth, 24, 210, CPCLConst.CMP_CPCL_LEFT);
+   EloCitizenManagerCPCL.printAndroidFont(Typeface.SERIF, "SERIF : 1234iwIW", nLineWidth, 24, 240, CPCLConst.CMP_CPCL_LEFT);
+   EloCitizenManagerCPCL.printAndroidFont(typeface.MONOSPACE, "MONOSPACE : 1234iwIW", nLineWidth, 24, 270, CPCLConst.CMP_CPCL_LEFT);
+   EloCitizenManagerCPCL.printForm();
 
-     return  CMP_SUCCESS
-     */
+   return  CMP_SUCCESS
 }
 
 
