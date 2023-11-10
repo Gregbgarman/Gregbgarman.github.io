@@ -9,6 +9,7 @@ document.getElementById("runBluetoothDiscovery").addEventListener("click", runBl
 document.getElementById("pairOverBluetooth").addEventListener("click", pairOverBluetoothCPCL)
 
 
+
 let pairedDeviceAddressTable = {}
 
 let discoveredDevicesTable = {}
