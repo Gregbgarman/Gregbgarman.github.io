@@ -14,6 +14,7 @@ let pairedDeviceAddressTable = {}
 let discoveredDevicesTable = {}
 let discoveredDevicesArray = []
 
+
 ///// ESCPOS CONSTANTS
 const CMP_ALIGNMENT_CENTER = 1
 const CMP_FNT_DEFAULT = 0
