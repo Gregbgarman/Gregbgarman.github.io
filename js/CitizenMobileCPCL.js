@@ -15,6 +15,7 @@ let pairedDeviceAddressTableCPCL = {}
 let discoveredDevicesTableCPCL = {}
 let discoveredDevicesArrayCPCL = []
 
+/*
 
 ///// ESCPOS CONSTANTS
 const CMP_ALIGNMENT_CENTER = 1
@@ -29,6 +30,7 @@ const CMP_QRCODE_EC_LEVEL_L = 0
 const CMP_BCS_Code39 = 109
 const CMP_HRI_TEXT_BELOW = 2
 /////--------------------------
+*/
 
 
 function runBluetoothDiscoveryCPCL(){          //tied to button. Extra API added by Elo
