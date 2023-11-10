@@ -171,7 +171,7 @@ function printReceipt2(){
   let data = "https://www.elotouch.com/"
      
 
-        EloCitizenManagerESCPOS.printNormal("Greg's Pizza House\n")
+        EloCitizenManagerESCPOS.printNormal("Greg's Pizza House\n\n")
         EloCitizenManagerESCPOS.printNormal("123 Rainbow Road\n")
         EloCitizenManagerESCPOS.printNormal("Knoxville, TN\n")
         EloCitizenManagerESCPOS.printNormal("456-321-7890\n\n")
