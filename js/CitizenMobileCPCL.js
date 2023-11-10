@@ -79,7 +79,7 @@ function showBTPairedDevicesCitizenCPCL(){          //tied to button
 function connectCitizenPrinterCPCL(){          //tied to button
     let deviceName = document.getElementById("textField").value
 
-    let deviceAddress = pairedDeviceAddressTable[deviceName]
+    let deviceAddress = pairedDeviceAddressTableCPCL[deviceName]
      if (deviceAddress != undefined){
          EloCitizenManagerCPCL.connectBluetooth(deviceAddress)    //part of citizen SDK. First step needed to use API's
          if (EloCitizenManagerCPCL.isBluetoothConnected()){
