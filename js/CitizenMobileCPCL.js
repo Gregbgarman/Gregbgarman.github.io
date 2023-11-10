@@ -33,24 +33,18 @@ const CMP_HRI_TEXT_BELOW = 2
 */
 
 
-function runBluetoothDiscoveryCPCL(){          //tied to button. Extra API added by Elo
-document.getElementById("textField").value = "runningggg"
-    
+function runBluetoothDiscoveryCPCL(){          //tied to button. Extra API added by Elo    
     discoveredDevicesTableCPCL = {}
     discoveredDevicesArrayCPCL = []
     EloCitizenManagerCPCL.setBluetoothSearchListener("DeviceReceiverCPCL")     //set callback function
     EloCitizenManagerCPCL.discoverBluetoothDevices()
 }
 
-function DeviceReceiverCPCL(deviceName, deviceAddress){          //actively receives discovered bluetooth devices
-
-
-document.getElementById("textField").value = "device found"
-    
+function DeviceReceiverCPCL(deviceName, deviceAddress){          //actively receives discovered bluetooth device
      if (deviceName.includes("cmp") || deviceName.includes("CMP")){    //using as criteria to filter out search results
          discoveredDevicesArrayCPCL.push(deviceName)
          discoveredDevicesTableCPCL[deviceName] = deviceAddress
-         document.getElementById("textField").value = discoveredDevicesArray
+         document.getElementById("textField").value = discoveredDevicesArrayCPCL
      }
 }
 
