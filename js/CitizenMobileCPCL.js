@@ -43,6 +43,10 @@ document.getElementById("textField").value = "runningggg"
 }
 
 function DeviceReceiverCPCL(deviceName, deviceAddress){          //actively receives discovered bluetooth devices
+
+
+document.getElementById("textField").value = "device found"
+    
      if (deviceName.includes("cmp") || deviceName.includes("CMP")){    //using as criteria to filter out search results
          discoveredDevicesArrayCPCL.push(deviceName)
          discoveredDevicesTableCPCL[deviceName] = deviceAddress
