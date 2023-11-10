@@ -33,6 +33,15 @@ const CMP_HRI_TEXT_BELOW = 2
 /////--------------------------
 */
 
+const CMP_CPCL_CONTINUOUS = 2
+const CMP_CPCL_LEFT = 0
+const CMP_CPCL_CENTER = 1
+const CMP_CPCL_RIGHT = 2
+
+const CMP_CPCL_0_ROTATION = 0
+const CMP_CPCL_BCS_QRCODE = "QRCODE"
+
+
 
 function runBluetoothDiscoveryCPCL(){          //tied to button. Extra API added by Elo    
     discoveredDevicesTableCPCL = {}
@@ -129,42 +138,19 @@ function printReceipt1CPCL(){
     return sts
   }
 
-   EloCitizenManagerCPCL.setForm(0, 200, 200, 406, count);
-   EloCitizenManagerCPCL.setMedia(paperType);
+   EloCitizenManagerCPCL.setForm(0, 200, 200, 406, 1);
+   EloCitizenManagerCPCL.setMedia(CMP_CPCL_CONTINUOUS);
    EloCitizenManagerCPCL.printCPCLText(0, 5, 1, 1, 1, "CITIZEN SYSTEMS CO.,LTD.", 0);
    EloCitizenManagerCPCL.printCPCLText(0, 0, 2, 1, 70, "Micro Human Tech", 0);
    EloCitizenManagerCPCL.printCPCLText(0, 0, 2, 1, 110, "CITIZEN MOBILE PRINTER", 0);
    EloCitizenManagerCPCL.printCPCLText(0, 0, 2, 1, 150, "CMP-20 , CMP-30", 0);
-   EloCitizenManagerCPCL.printCPCLText(CPCLConst.CMP_CPCL_0_ROTATION, 7, 0, 1, 200, "Copyright 2011 Citizen Systems", 0);
-   EloCitizenManagerCPCL.printCPCL2DBarCode(0, CPCLConst.CMP_CPCL_BCS_QRCODE, 0, 250, 4, 0, 1, 0, "http://citizen-systems.com");
-   EloCitizenManagerCPCL.printCPCLText(CPCLConst.CMP_CPCL_0_ROTATION, 7, 0, 130, 250, "citizen-systems.com", 0);
-   EloCitizenManagerCPCL.printCPCLText(CPCLConst.CMP_CPCL_0_ROTATION, 1, 0, 130, 300, "<-- Check This.", 0);         
+   EloCitizenManagerCPCL.printCPCLText(CMP_CPCL_0_ROTATION, 7, 0, 1, 200, "Copyright 2011 Citizen Systems", 0);
+   EloCitizenManagerCPCL.printCPCL2DBarCode(0, CMP_CPCL_BCS_QRCODE, 0, 250, 4, 0, 1, 0, "http://citizen-systems.com");
+   EloCitizenManagerCPCL.printCPCLText(CMP_CPCL_0_ROTATION, 7, 0, 130, 250, "citizen-systems.com", 0);
+   EloCitizenManagerCPCL.printCPCLText(CMP_CPCL_0_ROTATION, 1, 0, 130, 300, "<-- Check This.", 0);         
    EloCitizenManagerCPCL.printForm();
-
+  
    return CMP_SUCCESS
-
-  
-/*
-  EloCitizenManagerESCPOS.printText("Receipt\r\n\r\n\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_2WIDTH);
-  EloCitizenManagerESCPOS.printText("TEL (123)-456-7890\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenManagerESCPOS.printText("Thank you for coming to our shop\r\n\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenManagerESCPOS.printText("Chicken               $10.00\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenManagerESCPOS.printText("Hamburger             $20.00\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenManagerESCPOS.printText("Pizza                 $30.00\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenManagerESCPOS.printText("Lemons                $40.00\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenManagerESCPOS.printText("Drink                 $50.00\r\n\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenManagerESCPOS.printText("Excluded tax          $150.00\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenManagerESCPOS.printText("Tax(5%)               $7.50\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_UNDERLINE, CMP_TXT_1WIDTH);
-  EloCitizenManagerESCPOS.printText("Total            $157.50\r\n\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_2WIDTH);
-  EloCitizenManagerESCPOS.printText("Payment               $200.00\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenManagerESCPOS.printText("Change                $42.50\r\n\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
-  EloCitizenManagerESCPOS.printBarCode("1234567890", CMP_BCS_Code39, 40, 2, CMP_ALIGNMENT_CENTER, CMP_HRI_TEXT_BELOW);
-
-  EloCitizenManagerESCPOS.lineFeed(2);
-  
-  return  CMP_SUCCESS
-  */
-     
 }
 
 
@@ -175,7 +161,6 @@ function printSampleCitizenReceipt2CPCL(){          //tied to button
      else{
          document.getElementById("textField").value = "print failure"
      }
-     
 }
 
 function printReceipt2CPCL(){
@@ -192,15 +177,18 @@ function printReceipt2CPCL(){
     return sts
   }
 
+let nLineWidth = 384;
+let data = "Receipt";
+
    EloCitizenManagerCPCL.setForm(0, 200, 200, 406, count);
    EloCitizenManagerCPCL.setMedia(paperType);
-   EloCitizenManagerCPCL.printAndroidFont(data, nLineWidth, 100, 0, CPCLConst.CMP_CPCL_CENTER);
-   EloCitizenManagerCPCL.printAndroidFont("Left Alignment", nLineWidth, 24, 120, CPCLConst.CMP_CPCL_LEFT);
-   EloCitizenManagerCPCL.printAndroidFont("Center Alignment", nLineWidth, 24, 150, CPCLConst.CMP_CPCL_CENTER);
-   EloCitizenManagerCPCL.printAndroidFont("Right Alignment", nLineWidth, 24, 180, CPCLConst.CMP_CPCL_RIGHT);
-   EloCitizenManagerCPCL.printAndroidFont(Typeface.SANS_SERIF, "SANS_SERIF : 1234iwIW", nLineWidth, 24, 210, CPCLConst.CMP_CPCL_LEFT);
-   EloCitizenManagerCPCL.printAndroidFont(Typeface.SERIF, "SERIF : 1234iwIW", nLineWidth, 24, 240, CPCLConst.CMP_CPCL_LEFT);
-   EloCitizenManagerCPCL.printAndroidFont(typeface.MONOSPACE, "MONOSPACE : 1234iwIW", nLineWidth, 24, 270, CPCLConst.CMP_CPCL_LEFT);
+   EloCitizenManagerCPCL.printAndroidFont(data, nLineWidth, 100, 0, CMP_CPCL_CENTER);
+   EloCitizenManagerCPCL.printAndroidFont("Left Alignment", nLineWidth, 24, 120, CMP_CPCL_LEFT);
+   EloCitizenManagerCPCL.printAndroidFont("Center Alignment", nLineWidth, 24, 150, CMP_CPCL_CENTER);
+   EloCitizenManagerCPCL.printAndroidFont("Right Alignment", nLineWidth, 24, 180, CMP_CPCL_RIGHT);
+   EloCitizenManagerCPCL.printAndroidFont("SANS_SERIF", "SANS_SERIF : 1234iwIW", nLineWidth, 24, 210, CMP_CPCL_LEFT);
+   EloCitizenManagerCPCL.printAndroidFont("SERIF", "SERIF : 1234iwIW", nLineWidth, 24, 240, CMP_CPCL_LEFT);
+   EloCitizenManagerCPCL.printAndroidFont("MONOSPACE", "MONOSPACE : 1234iwIW", nLineWidth, 24, 270, CMP_CPCL_LEFT);
    EloCitizenManagerCPCL.printForm();
 
    return  CMP_SUCCESS
