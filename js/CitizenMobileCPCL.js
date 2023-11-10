@@ -117,19 +117,34 @@ function printSampleCitizenReceipt1CPCL(){          //tied to button
 
 function printReceipt1CPCL(){
 
-  /*
   var sts =  EloCitizenManagerCPCL.printerCheck();
   if(sts != CMP_SUCCESS) {
       document.getElementById("textField").value = "Printer check fail"
       return sts
   }
 
-  sts =  EloCitizenManagerESCPOS.status();
+  sts =  EloCitizenManagerCPCL.status();
   if(sts != CMP_SUCCESS) {
     document.getElementById("textField").value = "Printer status fail"
     return sts
   }
 
+   EloCitizenManagerCPCL.setForm(0, 200, 200, 406, count);
+   EloCitizenManagerCPCL.setMedia(paperType);
+   EloCitizenManagerCPCL.printCPCLText(0, 5, 1, 1, 1, "CITIZEN SYSTEMS CO.,LTD.", 0);
+   EloCitizenManagerCPCL.printCPCLText(0, 0, 2, 1, 70, "Micro Human Tech", 0);
+   EloCitizenManagerCPCL.printCPCLText(0, 0, 2, 1, 110, "CITIZEN MOBILE PRINTER", 0);
+   EloCitizenManagerCPCL.printCPCLText(0, 0, 2, 1, 150, "CMP-20 , CMP-30", 0);
+   EloCitizenManagerCPCL.printCPCLText(CPCLConst.CMP_CPCL_0_ROTATION, 7, 0, 1, 200, "Copyright 2011 Citizen Systems", 0);
+   EloCitizenManagerCPCL.printCPCL2DBarCode(0, CPCLConst.CMP_CPCL_BCS_QRCODE, 0, 250, 4, 0, 1, 0, "http://citizen-systems.com");
+   EloCitizenManagerCPCL.printCPCLText(CPCLConst.CMP_CPCL_0_ROTATION, 7, 0, 130, 250, "citizen-systems.com", 0);
+   EloCitizenManagerCPCL.printCPCLText(CPCLConst.CMP_CPCL_0_ROTATION, 1, 0, 130, 300, "<-- Check This.", 0);         
+   EloCitizenManagerCPCL.printForm();
+
+   return CMP_SUCCESS
+
+  
+/*
   EloCitizenManagerESCPOS.printText("Receipt\r\n\r\n\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_2WIDTH);
   EloCitizenManagerESCPOS.printText("TEL (123)-456-7890\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenManagerESCPOS.printText("Thank you for coming to our shop\r\n\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
