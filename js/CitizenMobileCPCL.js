@@ -159,13 +159,13 @@ let nLineWidth = 384;
 
    EloCitizenManagerCPCL.setForm(0, 200, 200, 406, 1);
    EloCitizenManagerCPCL.setMedia(CMP_CPCL_CONTINUOUS);
-   EloCitizenManagerCPCL.printAndroidFont("Receipt", nLineWidth, 100, 0, CMP_CPCL_CENTER);
-   EloCitizenManagerCPCL.printAndroidFont("Left Alignment", nLineWidth, 24, 120, CMP_CPCL_LEFT);
-   EloCitizenManagerCPCL.printAndroidFont("Center Alignment", nLineWidth, 24, 150, CMP_CPCL_CENTER);
-   EloCitizenManagerCPCL.printAndroidFont("Right Alignment", nLineWidth, 24, 180, CMP_CPCL_RIGHT);
-   EloCitizenManagerCPCL.printAndroidFont("SANS_SERIF", "SANS_SERIF : 1234iwIW", nLineWidth, 24, 210, CMP_CPCL_LEFT);
-   EloCitizenManagerCPCL.printAndroidFont("SERIF", "SERIF : 1234iwIW", nLineWidth, 24, 240, CMP_CPCL_LEFT);
-   EloCitizenManagerCPCL.printAndroidFont("MONOSPACE", "MONOSPACE : 1234iwIW", nLineWidth, 24, 270, CMP_CPCL_LEFT);
+   EloCitizenManagerCPCL.printAndroidFontWithAlignment("Receipt", nLineWidth, 100, 0, CMP_CPCL_CENTER);
+   EloCitizenManagerCPCL.printAndroidFontWithAlignment("Left Alignment", nLineWidth, 24, 120, CMP_CPCL_LEFT);
+   EloCitizenManagerCPCL.printAndroidFontWithAlignment("Center Alignment", nLineWidth, 24, 150, CMP_CPCL_CENTER);
+   EloCitizenManagerCPCL.printAndroidFontWithAlignment("Right Alignment", nLineWidth, 24, 180, CMP_CPCL_RIGHT);
+   EloCitizenManagerCPCL.printAndroidFontWithAlignment("SANS_SERIF", "SANS_SERIF : 1234iwIW", nLineWidth, 24, 210, CMP_CPCL_LEFT);
+   EloCitizenManagerCPCL.printAndroidFontWithAlignment("SERIF", "SERIF : 1234iwIW", nLineWidth, 24, 240, CMP_CPCL_LEFT);
+   EloCitizenManagerCPCL.printAndroidFontWithAlignment("MONOSPACE", "MONOSPACE : 1234iwIW", nLineWidth, 24, 270, CMP_CPCL_LEFT);
    EloCitizenManagerCPCL.printForm();
    return  CMP_SUCCESS
 }
