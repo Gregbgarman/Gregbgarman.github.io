@@ -259,7 +259,7 @@ function parseDeviceStringCPCL(deviceString){          //devices will be in stri
               deviceName = deviceName.slice(1)
          }
          pairedDeviceAddressTableCPCL[deviceName] = deviceAddress
-         pairedDeviceNamesCPCL.push(deviceName)
+         pairedDeviceNames.push(deviceName)
          onAddress = false
          deviceName = ""           
          continue
