@@ -10,10 +10,10 @@ document.getElementById("pairOverBluetooth").addEventListener("click", pairOverB
 
 
 
-let pairedDeviceAddressTable = {}
+let pairedDeviceAddressTableCPCL = {}
 
-let discoveredDevicesTable = {}
-let discoveredDevicesArray = []
+let discoveredDevicesTableCPCL = {}
+let discoveredDevicesArrayCPCL = []
 
 
 ///// ESCPOS CONSTANTS
@@ -32,23 +32,23 @@ const CMP_HRI_TEXT_BELOW = 2
 
 
 function runBluetoothDiscoveryCPCL(){          //tied to button. Extra API added by Elo
-    discoveredDevicesTable = {}
-    discoveredDevicesArray = []
+    discoveredDevicesTableCPCL = {}
+    discoveredDevicesArrayCPCL = []
     EloCitizenManagerCPCL.setBluetoothSearchListener("DeviceReceiverCPCL")     //set callback function
     EloCitizenManagerCPCL.discoverBluetoothDevices()
 }
 
 function DeviceReceiverCPCL(deviceName, deviceAddress){          //actively receives discovered bluetooth devices
      if (deviceName.includes("cmp") || deviceName.includes("CMP")){    //using as criteria to filter out search results
-         discoveredDevicesArray.push(deviceName)
-         discoveredDevicesTable[deviceName] = deviceAddress
+         discoveredDevicesArrayCPCL.push(deviceName)
+         discoveredDevicesTableCPCL[deviceName] = deviceAddress
          document.getElementById("textField").value = discoveredDevicesArray
      }
 }
 
 function pairOverBluetoothCPCL(){          //tied to button. Extra API added by Elo
      let deviceName = document.getElementById("textField").value
-     let deviceAddress = discoveredDevicesTable[deviceName]
+     let deviceAddress = discoveredDevicesTableCPCL[deviceName]
      if (deviceAddress == undefined){
           document.getElementById("textField").value = "invalid device"
           return
@@ -236,7 +236,7 @@ function printTheImageCPCL(){
 
 
 function parseDeviceStringCPCL(deviceString){          //devices will be in string format such as "{CMP_2345=00:12:34:56, Device2=00:45:23}"
-    pairedDeviceAddressTable = {}
+    pairedDeviceAddressTableCPCL = {}
     let pairedDeviceNames = []
     let deviceName = ""
     let deviceAddress = ""
@@ -257,8 +257,8 @@ function parseDeviceStringCPCL(deviceString){          //devices will be in stri
          if (deviceName[0] == ' '){
               deviceName = deviceName.slice(1)
          }
-         pairedDeviceAddressTable[deviceName] = deviceAddress
-         pairedDeviceNames.push(deviceName)
+         pairedDeviceAddressTableCPCL[deviceName] = deviceAddress
+         pairedDeviceNamesCPCL.push(deviceName)
          onAddress = false
          deviceName = ""           
          continue
