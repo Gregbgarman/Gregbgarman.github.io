@@ -34,6 +34,8 @@ const CMP_HRI_TEXT_BELOW = 2
 
 
 function runBluetoothDiscoveryCPCL(){          //tied to button. Extra API added by Elo
+document.getElementById("textField").value = "runningggg"
+    
     discoveredDevicesTableCPCL = {}
     discoveredDevicesArrayCPCL = []
     EloCitizenManagerCPCL.setBluetoothSearchListener("DeviceReceiverCPCL")     //set callback function
