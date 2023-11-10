@@ -94,7 +94,7 @@ function isCitizenBTConnected(){          //tied to button
 function disconnectCitizenPrinter(){          //tied to button
     EloCitizenManagerESCPOS.disconnectBluetooth()
     if (!EloCitizenManagerESCPOS.isBluetoothConnected()){
-        document.getElementById("CitizenPrinterAvailable").innerHTML = "Printer Disconnected"
+        document.getElementById("CitizenPrinterAvailable").innerHTML = "Printer Offline"
     }
     else{
         document.getElementById("textField").value = "error disconnecting"
