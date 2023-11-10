@@ -143,13 +143,13 @@ function printSampleCitizenReceipt2CPCL(){          //tied to button
 }
 
 function printReceipt2CPCL(){
-  var sts =  EloCitizenManagerESCPOS.printerCheck();
+  var sts =  EloCitizenManagerCPCL.printerCheck();
   if(sts != CMP_SUCCESS) {
       document.getElementById("textField").value = "Printer check fail"
       return sts
   }
 
-  sts =  EloCitizenManagerESCPOS.status();
+  sts =  EloCitizenManagerCPCL.status();
   if(sts != CMP_SUCCESS) {
     document.getElementById("textField").value = "Printer status fail"
     return sts
