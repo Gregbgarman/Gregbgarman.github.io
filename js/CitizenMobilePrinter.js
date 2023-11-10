@@ -15,6 +15,7 @@ let pairedDeviceAddressTable = {}
 let discoveredDevicesTable = {}
 let discoveredDevicesArray = []
 
+///// ESCPOS CONSTANTS
 const CMP_ALIGNMENT_CENTER = 1
 const CMP_FNT_DEFAULT = 0
 const CMP_ALIGNMENT_RIGHT = 2
@@ -26,6 +27,8 @@ const CMP_SUCCESS = 0
 const CMP_QRCODE_EC_LEVEL_L = 0
 const CMP_BCS_Code39 = 109
 const CMP_HRI_TEXT_BELOW = 2
+/////--------------------------
+
 
 
 
