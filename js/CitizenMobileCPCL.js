@@ -12,6 +12,7 @@ document.getElementById("pairOverBluetoothCPCL").addEventListener("click", pairO
 
 let pairedDeviceAddressTableCPCL = {}
 
+
 let discoveredDevicesTableCPCL = {}
 let discoveredDevicesArrayCPCL = []
 
