@@ -8,38 +8,20 @@ document.getElementById("printCitizenImageCPCL").addEventListener("click", print
 document.getElementById("runBluetoothDiscoveryCPCL").addEventListener("click", runBluetoothDiscoveryCPCL)
 document.getElementById("pairOverBluetoothCPCL").addEventListener("click", pairOverBluetoothCPCL)
 
-
-
 let pairedDeviceAddressTableCPCL = {}
-
-
 let discoveredDevicesTableCPCL = {}
 let discoveredDevicesArrayCPCL = []
 
-/*
 
-///// ESCPOS CONSTANTS
-const CMP_ALIGNMENT_CENTER = 1
-const CMP_FNT_DEFAULT = 0
-const CMP_ALIGNMENT_RIGHT = 2
-const CMP_ALIGNMENT_LEFT = 0
-const CMP_FNT_UNDERLINE = 128
-const CMP_TXT_1WIDTH = 0
-const CMP_TXT_2WIDTH = 16
-const CMP_SUCCESS = 0
-const CMP_QRCODE_EC_LEVEL_L = 0
-const CMP_BCS_Code39 = 109
-const CMP_HRI_TEXT_BELOW = 2
-/////--------------------------
-*/
-
+///// CPCL CONSTANTS
 const CMP_CPCL_CONTINUOUS = 2
 const CMP_CPCL_LEFT = 0
 const CMP_CPCL_CENTER = 1
 const CMP_CPCL_RIGHT = 2
-
 const CMP_CPCL_0_ROTATION = 0
 const CMP_CPCL_BCS_QRCODE = "QRCODE"
+
+//CMP_SUCCESS = 0      defined in other file
 
 
 
@@ -70,10 +52,8 @@ function pairOverBluetoothCPCL(){          //tied to button. Extra API added by 
       }
       else{
            document.getElementById("textField").value = "error pairing device"
-      }
-          
+      }    
 }
-
 
 function showBTPairedDevicesCitizenCPCL(){          //tied to button
      let deviceString = EloCitizenManagerCPCL.getBluetoothPairedDevices()
@@ -121,7 +101,6 @@ function printSampleCitizenReceipt1CPCL(){          //tied to button
      else{
          document.getElementById("textField").value = "print failure"
      }
-
 }
 
 function printReceipt1CPCL(){
@@ -164,7 +143,6 @@ function printSampleCitizenReceipt2CPCL(){          //tied to button
 }
 
 function printReceipt2CPCL(){
-
   var sts =  EloCitizenManagerESCPOS.printerCheck();
   if(sts != CMP_SUCCESS) {
       document.getElementById("textField").value = "Printer check fail"
@@ -197,18 +175,15 @@ let data = "Receipt";
 
 
 function printCitizenImageCPCL(){          //tied to button
-     
     if (printTheImage() == CMP_SUCCESS){
        document.getElementById("textField").value = "print success"
     }
     else{
        document.getElementById("textField").value = "print failure"
     }     
-    
 }
 
 function printTheImageCPCL(){
-
   var sts =  EloCitizenManagerCPCL.printerCheck();
   if(sts != CMP_SUCCESS) {
       document.getElementById("textField").value = "Printer check fail"
@@ -225,7 +200,6 @@ function printTheImageCPCL(){
      EloCitizenManagerCPCL.printBitmap(image,30,30)     
      
    return CMP_SUCCESS;
-
 }
 
 
