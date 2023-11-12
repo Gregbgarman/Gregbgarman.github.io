@@ -77,8 +77,8 @@ function connectCitizenPrinter(){          //tied to button
 
     let deviceAddress = pairedDeviceAddressTable[deviceName]
      if (deviceAddress != undefined){
-         EloCitizenManagerESCPOS.connectBluetooth(deviceAddress)    //part of citizen SDK. First step needed to use API's
-         if (EloCitizenManagerESCPOS.isBluetoothConnected()){
+         EloCitizenManagerESCPOS.connectBluetoothPort(deviceAddress)    //part of citizen SDK. First step needed to use API's
+         if (EloCitizenManagerESCPOS.isBluetoothPortConnected()){
               document.getElementById("CitizenPrinterAvailable").innerHTML = "Printer Ready"
          }
      }
@@ -92,8 +92,8 @@ function isCitizenBTConnected(){          //tied to button
 }
 
 function disconnectCitizenPrinter(){          //tied to button
-    EloCitizenManagerESCPOS.disconnectBluetooth()
-    if (!EloCitizenManagerESCPOS.isBluetoothConnected()){
+    EloCitizenManagerESCPOS.disconnectBluetoothPort()
+    if (!EloCitizenManagerESCPOS.isBluetoothPortConnected()){
         document.getElementById("CitizenPrinterAvailable").innerHTML = "Printer Offline"
     }
     else{
