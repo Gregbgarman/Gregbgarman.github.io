@@ -133,7 +133,7 @@ function printReceipt1(){
   EloCitizenManagerESCPOS.printText("Drink                 $50.00\r\n\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenManagerESCPOS.printText("Excluded tax          $150.00\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenManagerESCPOS.printText("Tax(5%)               $7.50\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_UNDERLINE, CMP_TXT_1WIDTH);
-  EloCitizenManagerESCPOS.printText("Total            $157.50\r\n\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
+  EloCitizenManagerESCPOS.printText("Total                 $157.50\r\n\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenManagerESCPOS.printText("Payment               $200.00\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenManagerESCPOS.printText("Change                $42.50\r\n\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenManagerESCPOS.printBarCode("1234567890", CMP_BCS_Code39, 40, 2, CMP_ALIGNMENT_CENTER, CMP_HRI_TEXT_BELOW);
