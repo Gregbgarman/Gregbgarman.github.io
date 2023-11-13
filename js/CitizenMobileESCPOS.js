@@ -59,9 +59,7 @@ function pairOverBluetooth(){          //tied to button. Extra API added by Elo
       else{
            document.getElementById("textField").value = "error pairing device"
       }
-          
 }
-
 
 function showBTPairedDevicesCitizen(){          //tied to button
      let deviceString = EloCitizenManagerESCPOS.getBluetoothPairedDevices()
@@ -139,8 +137,7 @@ function printReceipt1(){
   EloCitizenManagerESCPOS.printText("Payment               $200.00\r\n\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenManagerESCPOS.printText("Change                $42.50\r\n\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenManagerESCPOS.printBarCode("1234567890", CMP_BCS_Code39, 40, 2, CMP_ALIGNMENT_CENTER, CMP_HRI_TEXT_BELOW);
-
-  EloCitizenManagerESCPOS.lineFeed(2);
+  EloCitizenManagerESCPOS.lineFeed(4);
 
   return  CMP_SUCCESS
      
