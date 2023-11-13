@@ -24,6 +24,7 @@ const CMP_FNT_UNDERLINE = 128
 const CMP_TXT_1WIDTH = 0
 const CMP_TXT_2WIDTH = 16
 const CMP_SUCCESS = 0
+const CMP_FAIL = -1
 const CMP_QRCODE_EC_LEVEL_L = 0
 const CMP_BCS_Code39 = 109
 const CMP_HRI_TEXT_BELOW = 2
@@ -53,7 +54,7 @@ function pairOverBluetooth(){          //tied to button. Extra API added by Elo
           return
      }
       if(EloCitizenManagerESCPOS.pairBluetoothDevice(deviceAddress)){
-           document.getElementById("textField").value = "pairing device - check if paired shortly"
+           document.getElementById("textField").value = "pairing device"
       }
       else{
            document.getElementById("textField").value = "error pairing device"
@@ -194,7 +195,6 @@ function printReceipt2(){
 }
 
 
-
 function printCitizenImage(){          //tied to button
      
     if (printTheImage() == CMP_SUCCESS){
@@ -225,11 +225,10 @@ function printTheImage(){
      EloCitizenManagerESCPOS.lineFeed(4);
      
    return CMP_SUCCESS;
-
 }
 
 
-function parseDeviceString(deviceString){          //devices will be in string format such as "{CMP_2345=00:12:34:56, Device2=00:45:23}"
+function parseDeviceString(deviceString){          //devices will be in string format such as "{CMP_2345=00:12:34:56, Device2=00:45:23:56}"
     pairedDeviceAddressTable = {}
     let pairedDeviceNames = []
     let deviceName = ""
@@ -248,9 +247,6 @@ function parseDeviceString(deviceString){          //devices will be in string f
       }
 
       if (char == ',' || char == '}'){
-         if (deviceName[0] == ' '){
-              deviceName = deviceName.slice(1)
-         }
          pairedDeviceAddressTable[deviceName] = deviceAddress
          pairedDeviceNames.push(deviceName)
          onAddress = false
