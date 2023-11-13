@@ -83,7 +83,7 @@ function connectCitizenPrinterCPCL(){          //tied to button
 }
 
 function isCitizenBTConnectedCPCL(){          //tied to button
-     document.getElementById("textField").value = EloCitizenManagerCPCL.isBluetoothConnected()
+     document.getElementById("textField").value = EloCitizenManagerCPCL.isBluetoothPortConnected()
 }
 
 function disconnectCitizenPrinterCPCL(){          //tied to button
