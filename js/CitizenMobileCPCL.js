@@ -23,8 +23,8 @@ const CMP_CPCL_BCS_QRCODE = "QRCODE"
 const CMP_CPCL_BCS_CODABAR = "CODABAR"
 const CMP_CPCL_BCS_0RATIO = 0
 
-//CMP_SUCCESS = 0      defined in other file
-
+//CMP_SUCCESS = 0      defined in ESCPOS file
+//CMP_FAIL = -1        defined in ESCPOS file
 
 
 function runBluetoothDiscoveryCPCL(){          //tied to button. Extra API added by Elo    
@@ -50,7 +50,7 @@ function pairOverBluetoothCPCL(){          //tied to button. Extra API added by 
           return
      }
       if(EloCitizenManagerCPCL.pairBluetoothDevice(deviceAddress)){
-           document.getElementById("textField").value = "pairing device - check if paired shortly"
+           document.getElementById("textField").value = "pairing device"
       }
       else{
            document.getElementById("textField").value = "error pairing device"
