@@ -35,7 +35,12 @@ function runBluetoothDiscovery(){          //tied to button. Extra API added by 
     discoveredDevicesTable = {}
     discoveredDevicesArray = []
     EloCitizenManagerESCPOS.setBluetoothSearchListener("DeviceReceiver")     //set callback function
-    EloCitizenManagerESCPOS.discoverBluetoothDevices()
+    if(EloCitizenManagerESCPOS.discoverBluetoothDevices()){
+        document.getElementById("textField").value = "searching..."
+    }
+    else{
+        document.getElementById("textField").value = "unable to begin search"
+    }
 }
 
 function DeviceReceiver(deviceName, deviceAddress){          //actively receives discovered bluetooth devices
