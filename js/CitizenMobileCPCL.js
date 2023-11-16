@@ -175,7 +175,7 @@ let nLineWidth = 384;
 
 
 function printCitizenImageCPCL(){          //tied to button
-    if (printTheImage() == CMP_SUCCESS){
+    if (printTheImageCPCL() == CMP_SUCCESS){
        document.getElementById("textField").value = "print success"
     }
     else{
