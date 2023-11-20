@@ -68,6 +68,10 @@ function showBTPairedDevicesCitizenCPCL(){          //tied to button
 }
 
 function connectCitizenPrinterCPCL(){          //tied to button
+EloCitizenManagerCPCL.connectUSBPort(0)
+    
+    
+    /*
     let deviceName = document.getElementById("textField").value
 
     let deviceAddress = pairedDeviceAddressTableCPCL[deviceName]
@@ -80,6 +84,7 @@ function connectCitizenPrinterCPCL(){          //tied to button
      else{
          document.getElementById("textField").value = "failed to connect" 
      }
+     */
 }
 
 function isCitizenBTConnectedCPCL(){          //tied to button
