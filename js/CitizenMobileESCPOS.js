@@ -128,6 +128,7 @@ function printReceipt1(){
     return sts
   }
 
+    /*
   EloCitizenManagerESCPOS.printText("Receipt\r\n\r\n\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenManagerESCPOS.printText("TEL (123)-456-7890\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenManagerESCPOS.printText("Thank you for coming to our shop\r\n\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
@@ -143,6 +144,12 @@ function printReceipt1(){
   EloCitizenManagerESCPOS.printText("Change                $42.50\r\n\r\n", CMP_ALIGNMENT_LEFT, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenManagerESCPOS.printBarCode("1234567890", CMP_BCS_Code39, 40, 2, CMP_ALIGNMENT_CENTER, CMP_HRI_TEXT_BELOW);
   EloCitizenManagerESCPOS.lineFeed(4);
+  */
+
+   let x = 10
+  let str = "Chicken                   $10.00" + x  
+  EloCitizenManagerESCPOS.printNormal(str)
+  EloCitizenManagerESCPOS.lineFeed(2)
 
   return  CMP_SUCCESS
      
