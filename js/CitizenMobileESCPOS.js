@@ -150,7 +150,7 @@ function printReceipt1(){
     var LF = byte(10)
 
   
-  EloCitizenManagerESCPOS.printNormal(ESC + "|cA" + ESC + "|bC" + ESC + "|2C" + "Receipt" + LF + LF)
+  EloCitizenManagerESCPOS.printNormal(ESC + "|cA" + ESC + "|bC" + ESC + "|2C" + "ReceipT" + LF + LF)
   EloCitizenManagerESCPOS.lineFeed(2)
 
   return  CMP_SUCCESS
