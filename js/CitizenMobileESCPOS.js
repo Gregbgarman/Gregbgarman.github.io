@@ -145,10 +145,12 @@ function printReceipt1(){
   EloCitizenManagerESCPOS.printBarCode("1234567890", CMP_BCS_Code39, 40, 2, CMP_ALIGNMENT_CENTER, CMP_HRI_TEXT_BELOW);
   EloCitizenManagerESCPOS.lineFeed(4);
   */
+    var image = new Uint8Array([27,10])
+    var ESC = image[0]
+    var LF = image[1]
 
-   let x = 10
-  let str = "Chicken                   $10.00" + x  
-  EloCitizenManagerESCPOS.printNormal(str)
+  
+  EloCitizenManagerESCPOS.printNormal(ESC + "|cA" + ESC + "|bC" + ESC + "|2C" + "Receipt" + LF + LF)
   EloCitizenManagerESCPOS.lineFeed(2)
 
   return  CMP_SUCCESS
