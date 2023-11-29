@@ -146,8 +146,8 @@ function printReceipt1(){
   EloCitizenManagerESCPOS.lineFeed(4);
   */
     var image = new Uint8Array([27,10])
-    var ESC = image[0]
-    var LF = image[1]
+    var ESC = byte(27)
+    var LF = byte(10)
 
   
   EloCitizenManagerESCPOS.printNormal(ESC + "|cA" + ESC + "|bC" + ESC + "|2C" + "Receipt" + LF + LF)
