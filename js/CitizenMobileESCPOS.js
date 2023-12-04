@@ -31,6 +31,11 @@ const CMP_HRI_TEXT_BELOW = 2
 /////--------------------------
 
 
+const ESC = "ELO_ESCPOS_ESC"
+const LF = "ELO_ESCPOS_LF"
+
+
+
 function runBluetoothDiscovery(){          //tied to button. Extra API added by Elo
     discoveredDevicesTable = {}
     discoveredDevicesArray = []
@@ -128,6 +133,26 @@ function printReceipt1(){
     return sts
   }
 
+
+     EloCitizenManagerESCPOS.printNormal(ESC + "|cA" + ESC + "|bC" + ESC + "|2C" + "Greg's Pizza House" + LF + LF);
+                     EloCitizenManagerESCPOS.printNormal(ESC + "|cA" + ESC + "|bC" + "123 Rainbow Road" + LF);
+                     EloCitizenManagerESCPOS.printNormal(ESC + "|cA" + ESC + "|bC" + "Knoxville, TN" + LF + LF);
+                     EloCitizenManagerESCPOS.printNormal("Table 12" + LF);
+                     EloCitizenManagerESCPOS.printNormal("Server Greg" + LF);
+                     EloCitizenManagerESCPOS.printNormal(ESC + "|lA" + "----------------------------" + LF);
+                     EloCitizenManagerESCPOS.printNormal("pepperoni slice       $10.00" + LF );
+                     EloCitizenManagerESCPOS.printNormal("stromboli             $12.00" + LF );
+                     EloCitizenManagerESCPOS.printNormal("salad                  $8.00" + LF );
+                     EloCitizenManagerESCPOS.printNormal("----------------------------" + LF);
+                     EloCitizenManagerESCPOS.printNormal("Excluded tax            $30.00" + LF);
+                     EloCitizenManagerESCPOS.printNormal(ESC + "|uC" + "Tax(8%)                  $2.40" + LF);
+                     EloCitizenManagerESCPOS.printNormal(ESC + "|bC" + ESC + "|2C" + "Total    $32.40" + LF + LF);
+                     EloCitizenManagerESCPOS.printNormal(ESC + "|bC" + "Payment                  $50.00" + LF);
+                     EloCitizenManagerESCPOS.printNormal(ESC + "|bC" + "Change                   $17.60" + LF + LF + LF);
+
+
+
+    
     /*
   EloCitizenManagerESCPOS.printText("Receipt\r\n\r\n\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
   EloCitizenManagerESCPOS.printText("TEL (123)-456-7890\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
@@ -145,14 +170,7 @@ function printReceipt1(){
   EloCitizenManagerESCPOS.printBarCode("1234567890", CMP_BCS_Code39, 40, 2, CMP_ALIGNMENT_CENTER, CMP_HRI_TEXT_BELOW);
   EloCitizenManagerESCPOS.lineFeed(4);
   */
-    var image = new Uint16Array([27,10])
-    var ESC =image[0]
-    var LF = image[1]
-
-  
-  EloCitizenManagerESCPOS.printNormal(ESC + "|cA" + ESC + "|bC" + ESC + "|2C" + "ReceipT" + LF + LF)
-  EloCitizenManagerESCPOS.lineFeed(2)
-
+   
   return  CMP_SUCCESS
      
 }
