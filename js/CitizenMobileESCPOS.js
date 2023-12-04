@@ -93,7 +93,6 @@ function showBTPairedDevicesCitizen(){          //tied to button
          pairedDevices.push(name)
          
     }
-    document.getElementById("CitizenPrinterAvailableESCPOS").innerHTML = "yup"
      //let pairedDevices = parseDeviceString(deviceString)
      document.getElementById("textField").value = pairedDevices
 }
@@ -274,7 +273,7 @@ function printTheImage(){
    return CMP_SUCCESS;
 }
 
-
+/*
 function parseDeviceString(deviceString){          //devices will be in string format such as "{CMP_2345=00:12:34:56, Device2=00:45:23:56}"
     pairedDeviceAddressTable = {}
     let pairedDeviceNames = []
@@ -314,3 +313,4 @@ function parseDeviceString(deviceString){          //devices will be in string f
   }
   return pairedDeviceNames
 }
+*/
