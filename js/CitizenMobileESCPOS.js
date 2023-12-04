@@ -50,8 +50,8 @@ function runBluetoothDiscovery(){          //tied to button. Extra API added by 
 
 function DeviceReceiver(device){          //actively receives discovered bluetooth devices
     let deviceObj = JSON.parse(device)
-    let name = device["name"]
-    let address = device["address"]
+    let name = deviceObj["name"]
+    let address = deviceObj["address"]
 
      if (name.includes("cmp") || name.includes("CMP")){    //using as criteria to filter out search results
          discoveredDevicesArray.push(name)
