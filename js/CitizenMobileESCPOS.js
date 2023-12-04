@@ -134,8 +134,10 @@ function printReceipt1(){
   }
 
 
-     EloCitizenManagerESCPOS.printNormal(ESC + "|cA" + ESC + "|bC" + ESC + "|2C" + "The Pizza House" + LF + LF);
-                     EloCitizenManagerESCPOS.printNormal(ESC + "|cA" + ESC + "|bC" + "123 Rainbow Road" + LF);
+     EloCitizenManagerESCPOS.printNormal(String.fromCharCode(27) + "|cA" + String.fromCharCode(27) + "|bC" + String.fromCharCode(27) + "|2C" + "The Pizza House" + String.fromCharCode(10) + String.fromCharCode(10));
+                     EloCitizenManagerESCPOS.printNormal(String.fromCharCode(27) + "|cA" + String.fromCharCode(27) + "|bC" + "123 Rainbow Road" + String.fromCharCode(10));
+
+    /*
                      EloCitizenManagerESCPOS.printNormal(ESC + "|cA" + ESC + "|bC" + "Knoxville, TN" + LF + LF);
                      EloCitizenManagerESCPOS.printNormal("Table 12" + LF);
                      EloCitizenManagerESCPOS.printNormal("Server Greg" + LF);
@@ -149,7 +151,7 @@ function printReceipt1(){
                      EloCitizenManagerESCPOS.printNormal(ESC + "|bC" + ESC + "|2C" + "Total    $32.40" + LF + LF);
                      EloCitizenManagerESCPOS.printNormal(ESC + "|bC" + "Payment                  $50.00" + LF);
                      EloCitizenManagerESCPOS.printNormal(ESC + "|bC" + "Change                   $17.60" + LF + LF + LF);
-
+*/
 
 
     
