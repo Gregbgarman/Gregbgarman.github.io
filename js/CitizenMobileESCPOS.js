@@ -89,6 +89,7 @@ function showBTPairedDevicesCitizen(){          //tied to button
          pairedDevices.push(name)
          
     }
+    document.getElementById("CitizenPrinterAvailableESCPOS").innerHTML = "yup"
      //let pairedDevices = parseDeviceString(deviceString)
      document.getElementById("textField").value = pairedDevices
 }
