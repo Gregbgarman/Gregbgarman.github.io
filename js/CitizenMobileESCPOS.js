@@ -31,8 +31,8 @@ const CMP_HRI_TEXT_BELOW = 2
 /////--------------------------
 
 
-const ESC = "ELO_ESCPOS_ESC"
-const LF = "ELO_ESCPOS_LF"
+const ESC = String.fromCharCode(27)
+const LF = String.fromCharCode(10)
 
 
 
@@ -134,24 +134,24 @@ function printReceipt1(){
   }
 
 
-     EloCitizenManagerESCPOS.printNormal(String.fromCharCode(27) + "|cA" + String.fromCharCode(27) + "|bC" + String.fromCharCode(27) + "|2C" + "The Pizza House" + String.fromCharCode(10) + String.fromCharCode(10));
-                     EloCitizenManagerESCPOS.printNormal(String.fromCharCode(27) + "|cA" + String.fromCharCode(27) + "|bC" + "123 Rainbow Road" + String.fromCharCode(10));
+     EloCitizenManagerESCPOS.printNormal(ESC + "|cA" + ESC + "|bC" + String.fromCharCode(27) + "|2C" + "The Pizza House" + LF + LF);
+     EloCitizenManagerESCPOS.printNormal(ESC + "|cA" + String.fromCharCode(27) + "|bC" + "123 Rainbow Road" + LF);
 
-    /*
-                     EloCitizenManagerESCPOS.printNormal(ESC + "|cA" + ESC + "|bC" + "Knoxville, TN" + LF + LF);
-                     EloCitizenManagerESCPOS.printNormal("Table 12" + LF);
-                     EloCitizenManagerESCPOS.printNormal("Server Greg" + LF);
-                     EloCitizenManagerESCPOS.printNormal(ESC + "|lA" + "----------------------------" + LF);
-                     EloCitizenManagerESCPOS.printNormal("pepperoni slice       $10.00" + LF );
-                     EloCitizenManagerESCPOS.printNormal("stromboli             $12.00" + LF );
-                     EloCitizenManagerESCPOS.printNormal("salad                  $8.00" + LF );
-                     EloCitizenManagerESCPOS.printNormal("----------------------------" + LF);
-                     EloCitizenManagerESCPOS.printNormal("Excluded tax            $30.00" + LF);
-                     EloCitizenManagerESCPOS.printNormal(ESC + "|uC" + "Tax(8%)                  $2.40" + LF);
-                     EloCitizenManagerESCPOS.printNormal(ESC + "|bC" + ESC + "|2C" + "Total    $32.40" + LF + LF);
-                     EloCitizenManagerESCPOS.printNormal(ESC + "|bC" + "Payment                  $50.00" + LF);
-                     EloCitizenManagerESCPOS.printNormal(ESC + "|bC" + "Change                   $17.60" + LF + LF + LF);
-*/
+    
+    EloCitizenManagerESCPOS.printNormal(ESC + "|cA" + ESC + "|bC" + "Knoxville, TN" + LF + LF);
+    EloCitizenManagerESCPOS.printNormal("Table 12" + LF);
+    EloCitizenManagerESCPOS.printNormal("Server Greg" + LF);
+    EloCitizenManagerESCPOS.printNormal(ESC + "|lA" + "----------------------------" + LF);
+    EloCitizenManagerESCPOS.printNormal("pepperoni slice       $10.00" + LF );
+    EloCitizenManagerESCPOS.printNormal("stromboli             $12.00" + LF );
+    EloCitizenManagerESCPOS.printNormal("salad                  $8.00" + LF );
+    EloCitizenManagerESCPOS.printNormal("----------------------------" + LF);
+    EloCitizenManagerESCPOS.printNormal("Excluded tax            $30.00" + LF);
+    EloCitizenManagerESCPOS.printNormal(ESC + "|uC" + "Tax(8%)                  $2.40" + LF);
+    EloCitizenManagerESCPOS.printNormal(ESC + "|bC" + ESC + "|2C" + "Total    $32.40" + LF + LF);
+    EloCitizenManagerESCPOS.printNormal(ESC + "|bC" + "Payment                  $50.00" + LF);
+    EloCitizenManagerESCPOS.printNormal(ESC + "|bC" + "Change                   $17.60" + LF + LF + LF);
+
 
 
     
