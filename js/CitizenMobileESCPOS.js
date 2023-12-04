@@ -72,12 +72,24 @@ function pairOverBluetooth(){          //tied to button. Extra API added by Elo
 }
 
 function showBTPairedDevicesCitizen(){          //tied to button
-     let deviceString = EloCitizenManagerESCPOS.getBluetoothPairedDevices()
-     if (deviceString == "{}"){
+     let devices = EloCitizenManagerESCPOS.getBluetoothPairedDevices()
+     if (devices == "[]"){
           document.getElementById("textField").value = "no devices found"
           return
      }
-     let pairedDevices = parseDeviceString(deviceString)
+    
+     let pairedDevices = []
+     let deviceArray = JSON.parse(devices)
+     for (let i = 0;i<deviceArray.length;i++){
+         let device = deviceArray[i]
+
+         let name = device["name"]
+         let address = device["address"]
+         pairedDeviceAddressTable[name] = address
+         pairedDevices.push(name)
+         
+    }
+     //let pairedDevices = parseDeviceString(deviceString)
      document.getElementById("textField").value = pairedDevices
 }
 
