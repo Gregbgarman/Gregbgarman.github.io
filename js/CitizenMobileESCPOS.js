@@ -55,7 +55,7 @@ function DeviceReceiver(device){          //actively receives discovered bluetoo
 
      if (name.includes("cmp") || name.includes("CMP")){    //using as criteria to filter out search results
          discoveredDevicesArray.push(name)
-         discoveredDevicesTable[name] = deviceAddress
+         discoveredDevicesTable[name] = address
          document.getElementById("textField").value = discoveredDevicesArray
      }
 }
