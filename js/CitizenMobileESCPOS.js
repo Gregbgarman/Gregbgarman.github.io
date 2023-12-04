@@ -134,7 +134,7 @@ function printReceipt1(){
   }
 
 
-     EloCitizenManagerESCPOS.printNormal(ESC + "|cA" + ESC + "|bC" + ESC + "|2C" + "Greg's Pizza House" + LF + LF);
+     EloCitizenManagerESCPOS.printNormal(ESC + "|cA" + ESC + "|bC" + ESC + "|2C" + "The Pizza House" + LF + LF);
                      EloCitizenManagerESCPOS.printNormal(ESC + "|cA" + ESC + "|bC" + "123 Rainbow Road" + LF);
                      EloCitizenManagerESCPOS.printNormal(ESC + "|cA" + ESC + "|bC" + "Knoxville, TN" + LF + LF);
                      EloCitizenManagerESCPOS.printNormal("Table 12" + LF);
