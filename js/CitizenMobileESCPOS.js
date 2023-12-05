@@ -61,6 +61,9 @@ function DeviceReceiver(device){          //actively receives discovered bluetoo
 }
 
 function pairOverBluetooth(){          //tied to button. Extra API added by Elo
+EloCitizenManagerESCPOS.connectBluetoothPort("0C:43:14:58:22:C6")
+/*
+    
      let deviceName = document.getElementById("textField").value
      let deviceAddress = discoveredDevicesTable[deviceName]
      if (deviceAddress == undefined){
@@ -73,6 +76,7 @@ function pairOverBluetooth(){          //tied to button. Extra API added by Elo
       else{
            document.getElementById("textField").value = "error pairing device"
       }
+      */
 }
 
 function showBTPairedDevicesCitizen(){          //tied to button
