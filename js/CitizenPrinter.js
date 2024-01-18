@@ -34,6 +34,8 @@ function connectBTCitizen(){
 }
 
 function connectUSBCitizen(){
+            document.getElementById("textField").value = "btn click"
+
     let result = EloCitizenPrinterManager.connect(CMP_PORT_USB)
     if (result == CMP_SUCCESS){
         document.getElementById("CitizenPrinterAvailable").value = "printer ready"
@@ -54,6 +56,9 @@ function checkCitizenConnected(){
 }
 
 function printReceipt1Citizen(){
+
+
+    
     EloCitizenPrinterManager.transactionPrint(CMP_TP_TRANSACTION );     
     EloCitizenPrinterManager.printNormal(ESC + "|cA" + ESC + "|bC" + ESC + "|2C" + "The Pizza House" + ESC + "|lF" + ESC + "|lF");
     EloCitizenPrinterManager.printNormal(ESC + "|cA" + ESC + "|bC" + "123 Rainbow Road" + ESC + "|lF");
