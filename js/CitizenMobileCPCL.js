@@ -1,3 +1,5 @@
+
+/*
 document.getElementById("connectCitizenPrinterCPCL").addEventListener("click", connectCitizenPrinterCPCL)
 document.getElementById("disconnectCitizenPrinterCPCL").addEventListener("click", disconnectCitizenPrinterCPCL)
 document.getElementById("printSampleCitizenReceipt1CPCL").addEventListener("click", printSampleCitizenReceipt1CPCL)
@@ -7,6 +9,7 @@ document.getElementById("isCitizenBTConnectedCPCL").addEventListener("click", is
 document.getElementById("printCitizenImageCPCL").addEventListener("click", printCitizenImageCPCL)
 document.getElementById("runBluetoothDiscoveryCPCL").addEventListener("click", runBluetoothDiscoveryCPCL)
 document.getElementById("pairOverBluetoothCPCL").addEventListener("click", pairOverBluetoothCPCL)
+*/
 
 let pairedDeviceAddressTableCPCL = {}
 let discoveredDevicesTableCPCL = {}
@@ -14,6 +17,7 @@ let discoveredDevicesArrayCPCL = []
 
 
 ///// CPCL CONSTANTS
+/*
 const CMP_CPCL_CONTINUOUS = 2
 const CMP_CPCL_LEFT = 0
 const CMP_CPCL_CENTER = 1
@@ -22,6 +26,7 @@ const CMP_CPCL_0_ROTATION = 0
 const CMP_CPCL_BCS_QRCODE = "QRCODE"
 const CMP_CPCL_BCS_CODABAR = "CODABAR"
 const CMP_CPCL_BCS_0RATIO = 0
+*/
 
 //CMP_SUCCESS = 0      defined in ESCPOS file
 //CMP_FAIL = -1        defined in ESCPOS file
