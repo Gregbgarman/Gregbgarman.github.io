@@ -58,13 +58,11 @@ function setOnReadyCallbacks(){
 }
 
 function onCitizenPrinterReady(serviceBound){
-	document.getElementById("textField").value = "callback ran"
     if (serviceBound === "true"){
     	document.getElementById("CitizenPrinterHeader").style.color = '#008000'
     }
     else{
-	//document.getElementById("CitizenPrinterHeader").style.color = RED
-	  document.getElementById("CitizenPrinterHeader").style.color = '#000000'  
+	document.getElementById("CitizenPrinterHeader").style.color = RED
     }
 }
 
