@@ -33,7 +33,7 @@ are used in the JavaScript level and are passed as parameters frequently.
 
 */
 
-
+/*
 document.getElementById("queryStarPrinterList").addEventListener("click", queryStarPrinterList)
 document.getElementById("setStarPrinter").addEventListener("click", setStarPrinter)
 document.getElementById("printStarBarcode").addEventListener("click", printStarBarcode)
@@ -48,6 +48,7 @@ document.getElementById("forgetStarPrinter").addEventListener("click", forgetSta
 
 
 document.getElementById("StarPrinterAvailable").innerHTML = "Star Printer Disconnected"
+*/
 
 //uncomment this later - just testing the callback in index.js
 //let PrinterPortName=""        //Acquired from searching for printers and used very often throughout program
