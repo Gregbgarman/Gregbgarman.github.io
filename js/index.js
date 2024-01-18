@@ -1,4 +1,6 @@
 // Set up button click listener
+
+/*
 document.getElementById("enable_slk").addEventListener("click", enableSlk);
 document.getElementById("disable_slk").addEventListener("click", disableSlk);
 document.getElementById("slk_color_red").addEventListener("click", setSlkColorRed);
@@ -21,6 +23,7 @@ document.getElementById("open_cd").addEventListener("click", openCD);
 document.getElementById("is_cd_open").addEventListener("click", isCDOpen);
 document.getElementById("get_cd_voltage").addEventListener("click", getCDVoltage);
 document.getElementById("set_cd_voltage").addEventListener("click", setCDVoltage);
+*/
 
 let RED = "#FF0000"
 
