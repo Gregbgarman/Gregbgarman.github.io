@@ -1,10 +1,12 @@
 // Set up button click listener
+/*
 document.getElementById("registerHandheldListener").addEventListener("click", registerHandheldListener);
 document.getElementById("unregisterHandheldListener").addEventListener("click", unregisterHandheldListener);
 document.getElementById("stopHandheldHandsFreeScan").addEventListener("click", stopHandheldHandsFreeScan);
 document.getElementById("setHandheldHandsFreeTimer").addEventListener("click", setHandheldHandsFreeTimer);
 document.getElementById("scanHandheldManual").addEventListener("click", scanHandheldManual);
 document.getElementById("scanHandheldHandsFree").addEventListener("click", scanHandheldHandsFree);
+*/
 
 function registerHandheldListener() {
     EloHandHeldBarcodeManager.registerHandheldBarcodeListener("HHBCRCallback");
