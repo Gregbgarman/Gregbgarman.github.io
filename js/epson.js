@@ -1,4 +1,5 @@
 // Set up button click listener
+/*
 document.getElementById("printBarcode").addEventListener("click", printBarcode);
 document.getElementById("printDemoReceipt").addEventListener("click", printDemoReceipt);
 document.getElementById("printImage").addEventListener("click", printImage);
@@ -8,6 +9,7 @@ document.getElementById("updatePrinterList").addEventListener("click", updatePri
 document.getElementById("queryPrinterList").addEventListener("click", queryPrinterList);
 document.getElementById("connectPrinter").addEventListener("click", connectPrinter);
 document.getElementById("disconnectPrinter").addEventListener("click", disconnectPrinter);
+*/
 
 function printBarcode() {
     var barcodeToPrint = document.getElementById("textField").value;
