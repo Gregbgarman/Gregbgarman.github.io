@@ -1,4 +1,5 @@
 // Set up button click listener
+/*
 document.getElementById("init_honeywell_barcode").addEventListener("click", initHoneywellBarcode);
 document.getElementById("register_listener_honeywell").addEventListener("click", registerHoneywellListener);
 document.getElementById("unregister_listener_honeywell").addEventListener("click", unregisterHoneywellListener);
@@ -8,6 +9,7 @@ document.getElementById("activate_bcr").addEventListener("click", activateBCR);
 document.getElementById("deactivate_bcr").addEventListener("click", deactivateBCR);
 document.getElementById("is_bcr_on").addEventListener("click", isBCREnable);
 document.getElementById("get_bcr_type").addEventListener("click", getBCRType);
+*/
 
 function BCRCallback(state, data) {
     if(state != 0){
