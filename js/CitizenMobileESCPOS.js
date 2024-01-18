@@ -31,7 +31,7 @@ const CMP_HRI_TEXT_BELOW = 2
 /////--------------------------
 
 
-const ESC = String.fromCharCode(27)
+//const ESC = String.fromCharCode(27)
 const LF = String.fromCharCode(10)
 
 
