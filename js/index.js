@@ -30,14 +30,14 @@ window.onload = function() {
 };
 
 function setOnReadyCallbacks(){
-   try{   
+   try{
+	   EloCitizenPrinterManager.initialize("onCitizenPrinterReady")
     EloPeripheralManager.initialize("onPeripheralManagerReady")
     EloEpsonPrinterManager.initialize("onEpsonReady")
     EloHoneywellBarcodeManager.initialize("onHoneywellReady")
     EloZebraBarcodeManager.initialize("onZebraReady")
     EloHandHeldBarcodeManager.initialize("onHandheldReady")
     EloSocketMobileManager.initialize("onSocketReady")
-    EloCitizenPrinterManager.initialize("onCitizenPrinterReady")
     }catch(error){
    }
    try{
