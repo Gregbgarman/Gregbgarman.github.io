@@ -117,7 +117,7 @@ function printReceipt1Citizen(){
 }
 
 function printReceipt2Citizen(){
-    EloCitizenPrinterManager.transactionPrint( ESCPOSConst.CMP_TP_TRANSACTION );     //USB and BT both need this
+    EloCitizenPrinterManager.transactionPrint(CMP_TP_TRANSACTION );     //USB and BT both need this
     EloCitizenPrinterManager.printText("Receipt\r\n\r\n\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
     EloCitizenPrinterManager.printText("TEL (123)-456-7890\r\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
     EloCitizenPrinterManager.printText("Thank you for coming to our shop\r\n\n", CMP_ALIGNMENT_CENTER, CMP_FNT_DEFAULT, CMP_TXT_1WIDTH);
