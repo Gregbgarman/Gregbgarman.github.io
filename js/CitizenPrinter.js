@@ -30,9 +30,10 @@ const CMP_BCS_Code39 = 109
 
 function searchBTCitizen(){
     let CMP_PORT_Bluetooth_Insecure = 2
-    let searchTime = 10
+    let searchTime = 5
     let error = [1]
 
+    document.getElementById("textField").value = "searching for 5 seconds"
     let bluetoothPrinters = EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth_Insecure, searchTime, error)
     document.getElementById("textField").value = bluetoothPrinters
 }
