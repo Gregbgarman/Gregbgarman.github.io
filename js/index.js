@@ -30,11 +30,13 @@ window.onload = function() {
 };
 
 function setOnReadyCallbacks(){
+	document.getElementById("textField").value = "set on ready"
    try{
-	  
-	   EloCitizenManagerESCPOS.initialize("onCitizenESCPOSReady")
-           EloCitizenManagerCPCL.initialize("onCitizenCPCLReady")
 	    EloCitizenPrinterManager.initialize("onCitizenPrinterReady")
+	  
+	//   EloCitizenManagerESCPOS.initialize("onCitizenESCPOSReady")
+        //   EloCitizenManagerCPCL.initialize("onCitizenCPCLReady")
+	   
 
  //   EloPeripheralManager.initialize("onPeripheralManagerReady")
  //   EloEpsonPrinterManager.initialize("onEpsonReady")
@@ -43,6 +45,7 @@ function setOnReadyCallbacks(){
    // EloHandHeldBarcodeManager.initialize("onHandheldReady")
   //  EloSocketMobileManager.initialize("onSocketReady")
     }catch(error){
+	   document.getElementById("textField").value = "exception thrown"
    }
    try{
     //EloStarPrinterManager.initialize("onStarPrinterReady")
