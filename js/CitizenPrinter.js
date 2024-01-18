@@ -27,19 +27,43 @@ const CMP_CUT_PARTIAL_PREFEED = -4
 const CMP_QRCODE_EC_LEVEL_L = 48
 const CMP_BCS_Code39 = 109
 
+let deviceTable = {}
+let deviceArray = []
 
 function searchBTCitizen(){
+    deviceTable = {}
+    deviceArray = []
+    EloCitizenPrinterManager.setDeviceCallback("citizenDeviceReceiver")    //setting callback to receive discovered devices. Added to prevent thread freezing
+    
     let CMP_PORT_Bluetooth_Insecure = 2
     let searchTime = 5
     let error = [1]
 
     document.getElementById("textField").value = "searching for 5 seconds"
-    let bluetoothPrinters = EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth_Insecure, searchTime, error)
-    document.getElementById("textField").value = bluetoothPrinters
+    EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth_Insecure, searchTime, error)
+}
+
+function citizenDeviceReceiver(device){
+    let deviceObj = JSON.parse(device)
+    let name = deviceObj["name"]
+    let btaddress = deviceObj["btaddress"]
+
+    deviceTable[name] = btaddress
+    deviceArray.push(name)
+    document.getElementById("textField").value = deviceArray
 }
 
 function connectBTCitizen(){
+    let name = document.getElementById("textField").value;
+    let btaddress = deviceTable[name]
 
+    let result = EloCitizenPrinterManager.connect(CMP_PORT_Bluetooth_Insecure,btaddress)
+    if (result == CMP_SUCCESS){
+        document.getElementById("CitizenPrinterAvailable").value = "printer ready"
+    }
+    else{
+        document.getElementById("textField").value = "error connecting"
+    } 
 }
 
 function connectUSBCitizen(){
