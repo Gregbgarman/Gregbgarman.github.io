@@ -1,4 +1,5 @@
 // Set up button click listener
+/*
 document.getElementById("initZebraBarcode").addEventListener("click", initZebraBarcode);
 document.getElementById("registerZebraBarcodeListener").addEventListener("click", registerZebraBarcodeListener);
 document.getElementById("unregisterZebraBarcodeListener").addEventListener("click", unregisterZebraBarcodeListener);
@@ -6,6 +7,7 @@ document.getElementById("isZebraBarcodeConnected").addEventListener("click", isZ
 document.getElementById("enableZebraBarcode").addEventListener("click", enableZebraBarcode);
 document.getElementById("disableZebraBarcode").addEventListener("click", disableZebraBarcode);
 document.getElementById("scanZebraBarcode").addEventListener("click", scanZebraBarcode);
+*/
 
 function initZebraBarcode() {
     EloZebraBarcodeManager.initZebraBarcode();
