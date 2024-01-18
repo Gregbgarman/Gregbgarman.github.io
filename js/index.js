@@ -36,13 +36,23 @@ function setOnReadyCallbacks(){
     EloHoneywellBarcodeManager.initialize("onHoneywellReady")
     EloZebraBarcodeManager.initialize("onZebraReady")
     EloHandHeldBarcodeManager.initialize("onHandheldReady")
-    EloSocketMobileManager.initialize("onSocketReady")	   
+    EloSocketMobileManager.initialize("onSocketReady")
+    EloCitizenPrinterManager.initialize("onCitizenPrinterReady")
     }catch(error){
    }
    try{
     EloStarPrinterManager.initialize("onStarPrinterReady")
     EloStarScaleManager.initialize("onScaleReady")
     }catch(error){
+    }
+}
+
+function onCitizenPrinterReady(serviceBound){
+    if (serviceBound === "true"){
+    	document.getElementById("CitizenPrinterHeader").style.color = '#008000'
+    }
+    else{
+	document.getElementById("CitizenPrinterHeader").style.color = RED
     }
 }
 
