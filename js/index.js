@@ -31,18 +31,22 @@ window.onload = function() {
 
 function setOnReadyCallbacks(){
    try{
-	   EloCitizenPrinterManager.initialize("onCitizenPrinterReady")
-    EloPeripheralManager.initialize("onPeripheralManagerReady")
-    EloEpsonPrinterManager.initialize("onEpsonReady")
-    EloHoneywellBarcodeManager.initialize("onHoneywellReady")
-    EloZebraBarcodeManager.initialize("onZebraReady")
-    EloHandHeldBarcodeManager.initialize("onHandheldReady")
-    EloSocketMobileManager.initialize("onSocketReady")
+	  
+	   EloCitizenManagerESCPOS.initialize("onCitizenESCPOSReady")
+           EloCitizenManagerCPCL.initialize("onCitizenCPCLReady")
+	    EloCitizenPrinterManager.initialize("onCitizenPrinterReady")
+
+ //   EloPeripheralManager.initialize("onPeripheralManagerReady")
+ //   EloEpsonPrinterManager.initialize("onEpsonReady")
+  //  EloHoneywellBarcodeManager.initialize("onHoneywellReady")
+  //  EloZebraBarcodeManager.initialize("onZebraReady")
+   // EloHandHeldBarcodeManager.initialize("onHandheldReady")
+  //  EloSocketMobileManager.initialize("onSocketReady")
     }catch(error){
    }
    try{
-    EloStarPrinterManager.initialize("onStarPrinterReady")
-    EloStarScaleManager.initialize("onScaleReady")
+    //EloStarPrinterManager.initialize("onStarPrinterReady")
+   // EloStarScaleManager.initialize("onScaleReady")
     }catch(error){
     }
 }
@@ -55,6 +59,16 @@ function onCitizenPrinterReady(serviceBound){
 	document.getElementById("CitizenPrinterHeader").style.color = RED
     }
 }
+
+
+function onCitizenESCPOSReady(serviceBound){
+
+}
+
+function onCitizenCPCLReady(serviceBound){
+    
+}
+
 
 function onSocketReady(serviceBound){
     if (serviceBound === "true"){
