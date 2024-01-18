@@ -1,3 +1,4 @@
+/*
 document.getElementById("connectCitizenPrinter").addEventListener("click", connectCitizenPrinter)
 document.getElementById("disconnectCitizenPrinter").addEventListener("click", disconnectCitizenPrinter)
 document.getElementById("printSampleCitizenReceipt1").addEventListener("click", printSampleCitizenReceipt1)
@@ -7,6 +8,7 @@ document.getElementById("isCitizenBTConnected").addEventListener("click", isCiti
 document.getElementById("printCitizenImage").addEventListener("click", printCitizenImage)
 document.getElementById("runBluetoothDiscovery").addEventListener("click", runBluetoothDiscovery)
 document.getElementById("pairOverBluetooth").addEventListener("click", pairOverBluetooth)
+*/
 
 
 let pairedDeviceAddressTable = {}
@@ -16,6 +18,7 @@ let discoveredDevicesArray = []
 
 
 ///// ESCPOS CONSTANTS
+/*
 const CMP_ALIGNMENT_CENTER = 1
 const CMP_FNT_DEFAULT = 0
 const CMP_ALIGNMENT_RIGHT = 2
@@ -28,6 +31,7 @@ const CMP_FAIL = -1
 const CMP_QRCODE_EC_LEVEL_L = 0
 const CMP_BCS_Code39 = 109
 const CMP_HRI_TEXT_BELOW = 2
+*/
 /////--------------------------
 
 
