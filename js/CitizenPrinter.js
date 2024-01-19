@@ -12,7 +12,11 @@ const ESC = "\u001b"
 const CMP_SUCCESS = 0
 const CMP_E_DISCONNECT = 1002
 
+const CMP_PORT_Bluetooth = 1
+const CMP_PORT_Bluetooth_Insecure = 2
 const CMP_PORT_USB = 3
+
+
 const CMP_TP_TRANSACTION = 11
 const CMP_TP_NORMAL = 12
 
@@ -40,7 +44,7 @@ function searchBTCitizen(){
     let error = [1]
 
     document.getElementById("textField").value = "searching for 5 seconds"
-    EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth_Insecure, searchTime, error)
+    EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth, searchTime, error)
 }
 
 function citizenDeviceReceiver(device){
@@ -57,7 +61,7 @@ function connectBTCitizen(){
     let name = document.getElementById("textField").value;
     let btaddress = deviceTable[name]
 
-    let result = EloCitizenPrinterManager.connect(CMP_PORT_Bluetooth_Insecure,btaddress)
+    let result = EloCitizenPrinterManager.connect(CMP_PORT_Bluetooth,btaddress)
     if (result == CMP_SUCCESS){
         document.getElementById("CitizenPrinterAvailable").value = "printer ready"
     }
