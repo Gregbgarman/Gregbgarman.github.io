@@ -62,7 +62,7 @@ function connectBTCitizen(){
     //let btaddress = deviceTable[name]
     let btaddress = document.getElementById("textField").value
 
-    let result = EloCitizenPrinterManager.connect(CMP_PORT_Bluetooth,btaddress)
+    let result = EloCitizenPrinterManager.connect(CMP_PORT_Bluetooth_Insecure,btaddress)
     if (result == CMP_SUCCESS){
         document.getElementById("CitizenPrinterAvailable").value = "printer ready"
     }
