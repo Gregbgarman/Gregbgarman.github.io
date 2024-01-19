@@ -47,7 +47,6 @@ function searchBTCitizen(){
 }
 
 function citizenDeviceReceiver(device){
-    if 
     
     let deviceObj = JSON.parse(device)
     let name = deviceObj["name"]
