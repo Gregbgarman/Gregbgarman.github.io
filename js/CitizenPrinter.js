@@ -75,7 +75,8 @@ function connectBTCitizen(){
 
     let result = EloCitizenPrinterManager.connect(CMP_PORT_Bluetooth_Insecure, btaddress)
     if (result == CMP_SUCCESS){
-        document.getElementById("CitizenPrinterAvailable").value = "printer ready"
+        document.getElementById("CitizenPrinterAvailable").innerHTML = "printer ready"
+        document.getElementById("textField").value = ""
     }
     else{
         document.getElementById("textField").value = "error connecting"
@@ -86,6 +87,7 @@ function connectUSBCitizen(){
     let result = EloCitizenPrinterManager.connect(CMP_PORT_USB)
     if (result == CMP_SUCCESS){
         document.getElementById("CitizenPrinterAvailable").value = "printer ready"
+        document.getElementById("textField").value = ""
     }
     else{
         document.getElementById("textField").value = "error connecting"
@@ -166,7 +168,8 @@ function printImageCitizen(){
 function disconnectCitizen(){
     let result = EloCitizenPrinterManager.disconnect()
     if (result == CMP_SUCCESS){
-        document.getElementById("CitizenPrinterAvailable").value = "printer offline"        
+        document.getElementById("CitizenPrinterAvailable").innerHTML = "printer offline"
+        document.getElementById("textField").value = ""
     }
     else{
         document.getElementById("textField").value = "error disconnecting"
