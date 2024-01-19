@@ -39,7 +39,6 @@ function searchBTCitizen(){
     deviceArray = []
     EloCitizenPrinterManager.setDeviceCallback("citizenDeviceReceiver")    //setting callback to receive discovered devices. Added to prevent thread freezing
     
-    let CMP_PORT_Bluetooth_Insecure = 2
     let searchTime = 5
     let error = [1]
 
@@ -52,14 +51,15 @@ function citizenDeviceReceiver(device){
     let name = deviceObj["name"]
     let btaddress = deviceObj["btaddress"]
 
-    deviceTable[name] = btaddress
-    deviceArray.push(name)
-    document.getElementById("textField").value = deviceArray
+   // deviceTable[name] = btaddress
+   // deviceArray.push(name)
+    document.getElementById("textField").value = btaddress
 }
 
 function connectBTCitizen(){
-    let name = document.getElementById("textField").value;
-    let btaddress = deviceTable[name]
+    //let name = document.getElementById("textField").value
+    //let btaddress = deviceTable[name]
+    let btaddress = document.getElementById("textField").value
 
     let result = EloCitizenPrinterManager.connect(CMP_PORT_Bluetooth,btaddress)
     if (result == CMP_SUCCESS){
