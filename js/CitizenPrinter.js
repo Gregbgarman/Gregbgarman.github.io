@@ -6,6 +6,10 @@ document.getElementById("printReceipt1Citizen").addEventListener("click", printR
 document.getElementById("printReceipt2Citizen").addEventListener("click", printReceipt2Citizen)
 document.getElementById("printImageCitizen").addEventListener("click", printImageCitizen)
 document.getElementById("disconnectCitizen").addEventListener("click", disconnectCitizen)
+document.getElementById("showBTPairedPrinters").addEventListener("click", showBTPairedPrinters)
+
+
+
 
 const ESC = "\u001b"
 
@@ -55,6 +59,13 @@ function citizenDeviceReceiver(device){
    // deviceTable[name] = btaddress
    // deviceArray.push(name)
     document.getElementById("textField").value = btaddress
+}
+
+function showBTPairedPrinters(){
+    EloCitizenPrinterManager.setDeviceCallback("citizenDeviceReceiver")
+    let searchTime = 0    //search time of 0 is used in Citizen API for detecting already paired devices
+    let error = [1]
+    EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth, searchTime, error)
 }
 
 function connectBTCitizen(){
