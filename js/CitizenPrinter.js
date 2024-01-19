@@ -47,7 +47,7 @@ function searchBTCitizen(){
     let error = [1]
 
     document.getElementById("textField").value = "searching for 5 seconds"
-    EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth, searchTime, error)
+    EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth_Insecure, searchTime, error)
 }
 
 function citizenDeviceReceiver(device){
@@ -65,7 +65,7 @@ function showBTPairedPrinters(){
     EloCitizenPrinterManager.setDeviceCallback("citizenDeviceReceiver")
     let searchTime = 0    //search time of 0 is used in Citizen API for detecting already paired devices
     let error = [1]
-    EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth, searchTime, error)
+    EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth_Insecure, searchTime, error)
 }
 
 function connectBTCitizen(){
@@ -73,7 +73,7 @@ function connectBTCitizen(){
     //let btaddress = deviceTable[name]
     let btaddress = document.getElementById("textField").value
 
-    let result = EloCitizenPrinterManager.connect(CMP_PORT_Bluetooth_Insecure,btaddress)
+    let result = EloCitizenPrinterManager.connect(CMP_PORT_Bluetooth_Insecure, btaddress)
     if (result == CMP_SUCCESS){
         document.getElementById("CitizenPrinterAvailable").value = "printer ready"
     }
