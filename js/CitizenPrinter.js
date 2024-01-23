@@ -61,13 +61,12 @@ function citizenDeviceReceiver(device){
     
     let deviceObj = JSON.parse(device)
     let name = deviceObj["name"]
-    let btaddress = deviceObj["btaddress"]
+    let btaddress = deviceObj["address"]
 
     if (name.includes("cmp") || name.includes("CMP")){    //using as criteria to filter out search results
         deviceTable[name] = btaddress
         deviceArray.push(name)
-        //document.getElementById("textField").value = deviceArray
-        document.getElementById("textField").value = btaddress
+        document.getElementById("textField").value = deviceArray
     }
 }
 
