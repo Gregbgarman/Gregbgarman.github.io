@@ -7,8 +7,8 @@ document.getElementById("printReceipt2Citizen").addEventListener("click", printR
 document.getElementById("printImageCitizen").addEventListener("click", printImageCitizen)
 document.getElementById("disconnectCitizen").addEventListener("click", disconnectCitizen)
 document.getElementById("showBTPairedPrinters").addEventListener("click", showBTPairedPrinters)
-
-
+document.getElementById("pairOverBluetoothCitizen").addEventListener("click", pairOverBluetoothCitizen)
+    
 
 
 const ESC = "\u001b"
@@ -41,13 +41,13 @@ let deviceArray = []
 function searchBTCitizen(){
     deviceTable = {}
     deviceArray = []
-    EloCitizenPrinterManager.setDeviceCallback("citizenDeviceReceiver")    //setting callback to receive discovered devices. Added to prevent thread freezing
+    EloCitizenPrinterManager.setBluetoothSearchListener("citizenDeviceReceiver")    //setting callback to receive discovered devices. Added to prevent thread freezing
     
-    let searchTime = 5
-    let error = [1]
+   // let searchTime = 5
+   // let error = [1]
 
-    document.getElementById("textField").value = "searching for 5 seconds"
-    EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth_Insecure, searchTime, error)
+   // document.getElementById("textField").value = "searching for 5 seconds"
+   // EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth_Insecure, searchTime, error)
 }
 
 function citizenDeviceReceiver(device){
@@ -56,27 +56,65 @@ function citizenDeviceReceiver(device){
     let name = deviceObj["name"]
     let btaddress = deviceObj["btaddress"]
 
-   // deviceTable[name] = btaddress
-   // deviceArray.push(name)
-    document.getElementById("textField").value = btaddress
+    if (name.includes("cmp") || name.includes("CMP")){    //using as criteria to filter out search results
+        deviceTable[name] = btaddress
+        deviceArray.push(name)
+        document.getElementById("textField").value = deviceArray
+    }
+}
+
+function pairOverBluetoothCitizen(){
+     let deviceName = document.getElementById("textField").value
+     let deviceAddress =  deviceTable[deviceName]
+     if (deviceAddress == undefined){
+          document.getElementById("textField").value = "invalid device"
+          return
+     }
+      if(EloCitizenPrinterManager.pairBluetoothDevice(deviceAddress)){
+           document.getElementById("textField").value = "pairing device"
+      }
+      else{
+           document.getElementById("textField").value = "error pairing device"
+      }
 }
 
 function showBTPairedPrinters(){
-    EloCitizenPrinterManager.setDeviceCallback("citizenDeviceReceiver")
-    let searchTime = 0    //search time of 0 is used in Citizen API for detecting already paired devices
-    let error = [1]
-    EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth_Insecure, searchTime, error)
+     let devices = EloCitizenPrinterManager.getBluetoothPairedDevices()
+     if (devices == "[]" || devices == ""){
+          document.getElementById("textField").value = "no devices found"
+          return
+     }
+
+     let pairedDevices = []
+     deviceTable = {}
+     deviceArray = JSON.parse(devices)
+     for (let i = 0;i<deviceArray.length;i++){
+         let device = deviceArray[i]
+
+         let name = device["name"]
+         let address = device["address"]
+         deviceTable[name] = address
+         pairedDevices.push(name)
+         
+    }
+     document.getElementById("textField").value = pairedDevices
+
+
+    
+    
+ //   let searchTime = 0    //search time of 0 is used in Citizen API for detecting already paired devices
+ //   let error = [1]
+ //   EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth_Insecure, searchTime, error)
 }
 
 function connectBTCitizen(){
-    //let name = document.getElementById("textField").value
-    //let btaddress = deviceTable[name]
-    let btaddress = document.getElementById("textField").value
+    let name = document.getElementById("textField").value
+    let btaddress = deviceTable[name]
+    //let btaddress = document.getElementById("textField").value
 
     let result = EloCitizenPrinterManager.connect(CMP_PORT_Bluetooth_Insecure, btaddress)
     if (result == CMP_SUCCESS){
-        document.getElementById("CitizenPrinterAvailable").innerHTML = "printer ready"
-        document.getElementById("textField").value = ""
+        document.getElementById("textField").value = "printer ready"
     }
     else{
         document.getElementById("textField").value = "error connecting"
@@ -168,8 +206,7 @@ function printImageCitizen(){
 function disconnectCitizen(){
     let result = EloCitizenPrinterManager.disconnect()
     if (result == CMP_SUCCESS){
-        document.getElementById("CitizenPrinterAvailable").innerHTML = "printer offline"
-        document.getElementById("textField").value = ""
+        document.getElementById("textField").value = "printer disconnected"
     }
     else{
         document.getElementById("textField").value = "error disconnecting"
