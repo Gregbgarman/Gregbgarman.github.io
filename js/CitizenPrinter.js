@@ -66,7 +66,8 @@ function citizenDeviceReceiver(device){
     if (name.includes("cmp") || name.includes("CMP")){    //using as criteria to filter out search results
         deviceTable[name] = btaddress
         deviceArray.push(name)
-        document.getElementById("textField").value = deviceArray
+        //document.getElementById("textField").value = deviceArray
+        document.getElementById("textField").value = deviceTable
     }
 }
 
