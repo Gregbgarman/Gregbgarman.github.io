@@ -41,7 +41,14 @@ let deviceArray = []
 function searchBTCitizen(){
     deviceTable = {}
     deviceArray = []
-    EloCitizenPrinterManager.setBluetoothSearchListener("citizenDeviceReceiver")    //setting callback to receive discovered devices. Added to prevent thread freezing
+    EloCitizenPrinterManager.setBluetoothSearchListener("citizenDeviceReceiver")
+    if( EloCitizenPrinterManager.discoverBluetoothDevices()){
+        document.getElementById("textField").value = "searching for 12 seconds"
+    }
+    else{
+        document.getElementById("textField").value = "search not in progress"
+    }
+    
     
    // let searchTime = 5
    // let error = [1]
