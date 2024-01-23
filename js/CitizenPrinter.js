@@ -67,7 +67,7 @@ function citizenDeviceReceiver(device){
         deviceTable[name] = btaddress
         deviceArray.push(name)
         //document.getElementById("textField").value = deviceArray
-        document.getElementById("textField").value = deviceTable
+        document.getElementById("textField").value = btaddress
     }
 }
 
