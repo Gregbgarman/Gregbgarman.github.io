@@ -58,6 +58,7 @@ function setOnReadyCallbacks(){
 }
 
 function onCitizenPrinterReady(serviceBound){
+    document.getElementById("CitizenPrinterAvailable").innerHTML = "Printer Offline"
     if (serviceBound === "true"){
     	document.getElementById("CitizenPrinterHeader").style.color = '#008000'
     }
