@@ -79,7 +79,8 @@ function pairOverBluetoothCitizen(){
           return
      }
       if(EloCitizenPrinterManager.pairBluetoothDevice(deviceAddress)){
-           document.getElementById("textField").value = "pairing device"
+           document.getElementById("CitizenPrinterAvailable").innerHTML = "Printer Ready"
+	   document.getElementById("textField").value = ""
       }
       else{
            document.getElementById("textField").value = "error pairing device"
@@ -271,7 +272,8 @@ function printImageCitizen(){
 function disconnectCitizen(){
     let result = EloCitizenPrinterManager.disconnect()
     if (result == CMP_SUCCESS){
-        document.getElementById("textField").value = "printer disconnected"
+        document.getElementById("CitizenPrinterAvailable").innerHTML = "Printer Offline"
+	document.getElementById("textField").value = ""
     }
     else{
         document.getElementById("textField").value = "error disconnecting"
