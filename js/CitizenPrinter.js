@@ -132,12 +132,11 @@ function connectBTCitizen(){
 function connectUSBCitizen(){
     let result = EloCitizenPrinterManager.connect(CMP_PORT_USB)
     if (result == CMP_SUCCESS){
-        document.getElementById("CitizenPrinterAvailable").value = "printer ready"
-        document.getElementById("textField").value = ""
+        document.getElementById("textField").value = "printer ready"
     }
     else{
         document.getElementById("textField").value = "error connecting"
-    }
+    } 
 }
 
 function checkCitizenConnected(){
