@@ -42,8 +42,7 @@ let deviceArray = []
 function searchBTCitizen(){
     deviceTable = {}
     deviceArray = []
-    EloCitizenPrinterManager.setBluetoothSearchListener("citizenDeviceReceiver")
-    if( EloCitizenPrinterManager.discoverBluetoothDevices()){
+    if( EloCitizenPrinterManager.discoverBluetoothDevices("citizenDeviceReceiver")){
         document.getElementById("textField").value = "searching for 12 seconds"
     }
     else{
