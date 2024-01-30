@@ -174,7 +174,7 @@ function printReceipt1Citizen(){
     EloCitizenPrinterManager.printNormal(ESC + "|uC" + "Tax(8%)                  $2.40" + ESC + "|lF");
     EloCitizenPrinterManager.printNormal(ESC + "|bC" + ESC + "|2C" + "Total    $32.40" + ESC + "|lF" + ESC + "|lF");
     EloCitizenPrinterManager.printNormal(ESC + "|bC" + "Payment                  $50.00" + ESC + "|lF");
-    EloCitizenPrinterManager.printNormal(ESC + "|bC" + "Change                   $17.60" + ESC + "|lF");
+    EloCitizenPrinterManager.printNormal(ESC + "|bC" + "Change                   $17.60" + ESC + "|lF" + ESC + "|lF");
     EloCitizenPrinterManager.printNormal("Come back and see us!!" + ESC + "|lF" + ESC + "|lF");
     EloCitizenPrinterManager.printQRCode( "https://www.elotouch.com", 4, CMP_QRCODE_EC_LEVEL_L, CMP_ALIGNMENT_LEFT );
     EloCitizenPrinterManager.cutPaper(CMP_CUT_PARTIAL_PREFEED );
