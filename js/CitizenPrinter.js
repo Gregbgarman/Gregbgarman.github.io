@@ -42,20 +42,34 @@ let deviceArray = []
 function searchBTCitizen(){
     deviceTable = {}
     deviceArray = []
+
+	/*
     if( EloCitizenPrinterManager.discoverBluetoothDevices("citizenDeviceReceiver")){
         document.getElementById("textField").value = "searching for 12 seconds"
     }
     else{
         document.getElementById("textField").value = "search not in progress"
     }
-    
-    
-   // let searchTime = 5
-   // let error = [1]
+    */
 
-   // document.getElementById("textField").value = "searching for 5 seconds"
-   // EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth_Insecure, searchTime, error)
+	document.getElementById("textField").value = "search for 10 seconds"
+    
+   
+    let error = [1]
+
+   
+    EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth, 10, error,"testCallback")
 }
+
+function testCallback(device){
+    let deviceObj = JSON.parse(device)
+    let name = deviceObj["name"]
+    let btaddress = deviceObj["btaddress"]
+
+	document.getElementById("textField").value = name + ":" + btaddress
+
+}
+
 
 function citizenDeviceReceiver(device){
     
