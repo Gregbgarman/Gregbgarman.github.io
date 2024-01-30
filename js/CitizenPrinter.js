@@ -52,21 +52,19 @@ function searchBTCitizen(){
     }
     */
 
-	document.getElementById("textField").value = "search for 10 seconds"
+	document.getElementById("textField").value = "search for 10 Zeconds"
     
    
     let error = [1]
 
    
-    EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth, 10, error,"testCallback")
+    EloCitizenPrinterManager.searchESCPOSPrinter(CMP_PORT_Bluetooth, 10, error,"testCallback")
 }
 
 function testCallback(device){
-    let deviceObj = JSON.parse(device)
-    let name = deviceObj["name"]
-    let btaddress = deviceObj["btaddress"]
+    
 
-	document.getElementById("textField").value = name + ":" + btaddress
+	document.getElementById("textField").value = device
 
 }
 
