@@ -17,7 +17,6 @@ const CMP_SUCCESS = 0
 const CMP_STS_NORMAL = 0
 const CMP_E_DISCONNECT = 1002
 
-const CMP_PORT_Bluetooth = 1
 const CMP_PORT_Bluetooth_Insecure = 2
 const CMP_PORT_USB = 3
 
@@ -42,32 +41,13 @@ let deviceArray = []
 function searchBTCitizen(){
     deviceTable = {}
     deviceArray = []
-
-	/*
     if( EloCitizenPrinterManager.discoverBluetoothDevices("citizenDeviceReceiver")){
         document.getElementById("textField").value = "searching for 12 seconds"
     }
     else{
         document.getElementById("textField").value = "search not in progress"
     }
-    */
-
-	document.getElementById("textField").value = "search for 10 Zeconds"
-    
-   
-    let error = [1]
-
-   
-    EloCitizenPrinterManager.searchESCPOSPrinter(CMP_PORT_Bluetooth, 10, error,"testCallback")
 }
-
-function testCallback(device){
-    
-
-	document.getElementById("textField").value = device
-
-}
-
 
 function citizenDeviceReceiver(device){
     
