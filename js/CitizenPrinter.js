@@ -70,7 +70,7 @@ function deviceCallback(devices){
              var device = devices[i]
 	      document.getElementById("textField").value = device
          }
-     }
+     
 
 
 /*	
