@@ -64,7 +64,7 @@ EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth_Insecure, 10, r
 
 function deviceCallback(devices){
     //parameter contains discovered devices in array of JSON objects  "[{"deviceName":deviceName,"bdAddress":bluetoothDeviceAddress,"ipAddress":ipAddress, "macAddress":macAddress}]"
-    var deviceArray = JSON.parse(device)
+    var deviceArray = JSON.parse(devices)
     for (var i = 0 ; i < deviceArray.length ; i++){
         var device = deviceArray[i]
         var name = device["deviceName"]
