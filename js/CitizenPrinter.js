@@ -57,13 +57,23 @@ const CMP_PORT_Bluetooth_Insecure = 2
 var result = [1]
 
 
-EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth_Insecure, 10, result, "deviceCallback")
-
+EloCitizenPrinterManager.searchESCPOSPrinter(CMP_PORT_Bluetooth_Insecure, 10, result, "deviceCallback")
+	      document.getElementById("textField").value = "new test"
 	
 }
 
+
+
 function deviceCallback(devices){
-    //parameter contains discovered devices in array of JSON objects  "[{"deviceName":deviceName,"bdAddress":bluetoothDeviceAddress,"ipAddress":ipAddress, "macAddress":macAddress}]"
+         //parameter contains discovered devices in array of strings "["device1","device2"]"
+         for (var i = 0 ; i < devices.length ; i++){
+             var device = devices[i]
+	      document.getElementById("textField").value = device
+         }
+     }
+
+
+/*	
     var deviceArray = JSON.parse(devices)
 	let res = ""
     for (var i = 0 ; i < deviceArray.length ; i++){
@@ -80,6 +90,7 @@ function deviceCallback(devices){
 	    res += macAddress
     }
      document.getElementById("textField").value = "result is " + res
+     */
 }
 
 
