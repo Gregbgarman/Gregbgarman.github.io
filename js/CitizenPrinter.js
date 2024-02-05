@@ -68,11 +68,14 @@ function deviceCallback(devices){
          //parameter contains discovered devices in array of strings "["device1","device2"]"
 
 	 devices = JSON.parse(devices)
+	 let res = ""
          for (var i = 0 ; i < devices.length ; i++){
              var device = devices[i]
-	      document.getElementById("textField").value = device
+		 res += device + " ,"
+	      
          }
-     
+
+	document.getElementById("textField").value = res
 
 
 /*	
