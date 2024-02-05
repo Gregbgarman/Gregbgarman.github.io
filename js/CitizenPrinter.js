@@ -39,7 +39,8 @@ let deviceTable = {}
 let deviceArray = []
 
 function searchBTCitizen(){
-	
+
+	/*
     deviceTable = {}
     deviceArray = []
     if( EloCitizenPrinterManager.discoverBluetoothDevices("citizenDeviceReceiver")){
@@ -48,7 +49,7 @@ function searchBTCitizen(){
     else{
         document.getElementById("textField").value = "search not in progress"
     }
-    
+    */
 
 
 //testing stuff here
@@ -137,8 +138,8 @@ function pairOverBluetoothCitizen(){
 }
 
 function showBTPairedPrinters(){
-     let devices = EloCitizenPrinterManager.getBluetoothPairedDevices()
-     if (devices == "[]" || devices == ""){
+     let devices = EloCitizenPrinterManager.getPairedBluetoothDevices()
+     if (devices == "[]"){
           document.getElementById("textField").value = "no devices found"
           return
      }
