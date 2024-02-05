@@ -39,7 +39,7 @@ let deviceTable = {}
 let deviceArray = []
 
 function searchBTCitizen(){
-	/*
+	
     deviceTable = {}
     deviceArray = []
     if( EloCitizenPrinterManager.discoverBluetoothDevices("citizenDeviceReceiver")){
@@ -48,17 +48,17 @@ function searchBTCitizen(){
     else{
         document.getElementById("textField").value = "search not in progress"
     }
-    */
+    
 
 
 //testing stuff here
 	
-const CMP_PORT_Bluetooth_Insecure = 2
-var result = [1]
+//const CMP_PORT_Bluetooth_Insecure = 2
+//var result = [1]
 
 
-EloCitizenPrinterManager.searchESCPOSPrinter(CMP_PORT_Bluetooth_Insecure, 10, result, "deviceCallback")
-	      document.getElementById("textField").value = "new test"
+//EloCitizenPrinterManager.searchESCPOSPrinter(CMP_PORT_Bluetooth_Insecure, 10, result, "deviceCallback")
+//	      document.getElementById("textField").value = "new test"
 	
 }
 
