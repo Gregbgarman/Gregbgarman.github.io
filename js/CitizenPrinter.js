@@ -53,12 +53,12 @@ function searchBTCitizen(){
 
 //testing stuff here
 	
-//const CMP_PORT_Bluetooth_Insecure = 2
-//var result = [1]
+const CMP_PORT_Bluetooth_Insecure = 2
+var result = [1]
 
 
-//EloCitizenPrinterManager.searchESCPOSPrinter(CMP_PORT_Bluetooth_Insecure, 10, result, "deviceCallback")
-//	      document.getElementById("textField").value = "new test"
+EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth_Insecure, 10, result, "deviceCallback")
+	      document.getElementById("textField").value = "new test"
 	
 }
 
@@ -66,7 +66,7 @@ function searchBTCitizen(){
 
 function deviceCallback(devices){
          //parameter contains discovered devices in array of strings "["device1","device2"]"
-
+/*
 	 devices = JSON.parse(devices)
 	 let res = ""
          for (var i = 0 ; i < devices.length ; i++){
@@ -76,9 +76,9 @@ function deviceCallback(devices){
          }
 
 	document.getElementById("textField").value = res
+*/
 
-
-/*	
+	
     var deviceArray = JSON.parse(devices)
 	let res = ""
     for (var i = 0 ; i < deviceArray.length ; i++){
@@ -88,14 +88,13 @@ function deviceCallback(devices){
         var ipaddress = device["ipAddress"]
         var macAddress = device["macAddress"]
 
-	    res += device + " ," 
 	    res += name +  " ,"
 	    res += btaddress +  " ,"
 	    res += ipaddress +  " ,"
-	    res += macAddress
+	    res += macAddress + " ,"
     }
      document.getElementById("textField").value = "result is " + res
-     */
+     
 }
 
 
