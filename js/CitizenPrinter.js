@@ -39,6 +39,7 @@ let deviceTable = {}
 let deviceArray = []
 
 function searchBTCitizen(){
+	/*
     deviceTable = {}
     deviceArray = []
     if( EloCitizenPrinterManager.discoverBluetoothDevices("citizenDeviceReceiver")){
@@ -47,7 +48,43 @@ function searchBTCitizen(){
     else{
         document.getElementById("textField").value = "search not in progress"
     }
+    */
+
+
+//testing stuff here
+	
+const CMP_PORT_Bluetooth_Insecure = 2
+var result = [1]
+
+
+EloCitizenPrinterManager.searchCitizenPrinter(CMP_PORT_Bluetooth_Insecure, 10, result, "deviceCallback")
+
+	
 }
+
+function deviceCallback(devices){
+    //parameter contains discovered devices in array of JSON objects  "[{"deviceName":deviceName,"bdAddress":bluetoothDeviceAddress,"ipAddress":ipAddress, "macAddress":macAddress}]"
+    var deviceArray = JSON.parse(device)
+    for (var i = 0 ; i < deviceArray.length ; i++){
+        var device = deviceArray[i]
+        var name = device["deviceName"]
+        var btaddress = device["bdAddress"]
+        var ipaddress = device["ipAddress"]
+        var macAddress = device["macAddress"]
+    }
+     document.getElementById("textField").value = deviceArray
+}
+
+
+
+
+
+
+
+
+
+
+
 
 function citizenDeviceReceiver(device){
     
