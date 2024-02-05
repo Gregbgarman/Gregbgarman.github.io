@@ -29,6 +29,7 @@ let RED = "#FF0000"
 
 
 window.onload = function() {
+	document.getElementById("textField").value = "window on load called"
   setOnReadyCallbacks()
 };
 
@@ -36,7 +37,9 @@ function setOnReadyCallbacks(){
 	
    try{
 	    EloCitizenPrinterManager.initialize("onCitizenPrinterReady")
-	    document.getElementById("CitizenPrinterAvailable").innerHTML = "initialize called"
+
+
+	   
 	  
 	//   EloCitizenManagerESCPOS.initialize("onCitizenESCPOSReady")
         //   EloCitizenManagerCPCL.initialize("onCitizenCPCLReady")
