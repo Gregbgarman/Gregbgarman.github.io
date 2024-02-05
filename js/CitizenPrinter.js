@@ -66,6 +66,8 @@ EloCitizenPrinterManager.searchESCPOSPrinter(CMP_PORT_Bluetooth_Insecure, 10, re
 
 function deviceCallback(devices){
          //parameter contains discovered devices in array of strings "["device1","device2"]"
+
+	 devices = JSON.parse(devices)
          for (var i = 0 ; i < devices.length ; i++){
              var device = devices[i]
 	      document.getElementById("textField").value = device
