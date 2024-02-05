@@ -36,6 +36,7 @@ function setOnReadyCallbacks(){
 	
    try{
 	    EloCitizenPrinterManager.initialize("onCitizenPrinterReady")
+	    document.getElementById("CitizenPrinterAvailable").innerHTML = "initialize called"
 	  
 	//   EloCitizenManagerESCPOS.initialize("onCitizenESCPOSReady")
         //   EloCitizenManagerCPCL.initialize("onCitizenCPCLReady")
