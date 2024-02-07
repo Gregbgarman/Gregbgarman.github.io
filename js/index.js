@@ -65,6 +65,10 @@ function onCitizenPrinterReady(serviceBound){
     document.getElementById("CitizenPrinterAvailable").innerHTML = "Printer Offline"
     if (serviceBound === "true"){
     	document.getElementById("CitizenPrinterHeader").style.color = '#008000'
+	if (EloCitizenPrinterManager.printerCheck() == CMP_SUCCESS){
+            document.getElementById("CitizenPrinterAvailable").innerHTML = "Printer Ready"
+	}
+	
     }
     else{
 	document.getElementById("CitizenPrinterHeader").style.color = RED
