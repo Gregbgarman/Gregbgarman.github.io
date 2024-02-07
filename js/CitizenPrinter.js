@@ -8,6 +8,10 @@ document.getElementById("printImageCitizen").addEventListener("click", printImag
 document.getElementById("disconnectCitizen").addEventListener("click", disconnectCitizen)
 document.getElementById("showBTPairedPrinters").addEventListener("click", showBTPairedPrinters)
 document.getElementById("pairOverBluetoothCitizen").addEventListener("click", pairOverBluetoothCitizen)
+
+document.getElementById("connectWifiCitizen").addEventListener("click", connectWifiCitizen)
+
+
     
 
 
@@ -17,6 +21,7 @@ const CMP_SUCCESS = 0
 const CMP_STS_NORMAL = 0
 const CMP_E_DISCONNECT = 1002
 
+const CMP_PORT_WiFi = 0
 const CMP_PORT_Bluetooth_Insecure = 2
 const CMP_PORT_USB = 3
 
@@ -49,16 +54,26 @@ function searchBTCitizen(){
     else{
         document.getElementById("textField").value = "search not in progress"
     }
-    
+}
 
+function connectWifiCitizen(){
+    let printerIpAddress = document.getElementById("textField").value
+    let result = EloCitizenPrinterManager.connect(CMP_PORT_WiFi, printerIpAddress)
+    if (result == CMP_SUCCESS){
+	document.getElementById("CitizenPrinterAvailable").innerHTML = "Printer Ready"
+	document.getElementById("textField").value = ""
+    }
+    else{
+        document.getElementById("textField").value = "error connecting"
+    } 
 
-
-	
 }
 
 
 
-function deviceCallback(devices){
+function deviceCallback(devices){	//just using for testing other search API's
+
+	
          //parameter contains discovered devices in array of strings "["device1","device2"]"
 
 	 devices = JSON.parse(devices)
