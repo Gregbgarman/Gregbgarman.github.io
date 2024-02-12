@@ -1,14 +1,18 @@
 /*
 document.getElementById("connectCitizenPrinter").addEventListener("click", connectCitizenPrinter)
 document.getElementById("disconnectCitizenPrinter").addEventListener("click", disconnectCitizenPrinter)
-document.getElementById("printSampleCitizenReceipt1").addEventListener("click", printSampleCitizenReceipt1)
+
 document.getElementById("printSampleCitizenReceipt2").addEventListener("click", printSampleCitizenReceipt2)
 document.getElementById("showBTPairedDevicesCitizen").addEventListener("click", showBTPairedDevicesCitizen)
 document.getElementById("isCitizenBTConnected").addEventListener("click", isCitizenBTConnected)
 document.getElementById("printCitizenImage").addEventListener("click", printCitizenImage)
 document.getElementById("runBluetoothDiscovery").addEventListener("click", runBluetoothDiscovery)
-document.getElementById("pairOverBluetooth").addEventListener("click", pairOverBluetooth)
+
 */
+document.getElementById("printSampleCitizenReceipt1").addEventListener("click", printSampleCitizenReceipt1)
+document.getElementById("pairOverBluetooth").addEventListener("click", pairOverBluetoothh)
+
+
 
 
 let pairedDeviceAddressTable = {}
@@ -64,7 +68,7 @@ function DeviceReceiver(device){          //actively receives discovered bluetoo
      }
 }
 
-function pairOverBluetooth(){          //tied to button. Extra API added by Elo
+function pairOverBluetoothh(){          //tied to button. Extra API added by Elo
 EloCitizenManagerESCPOS.connectBluetoothPort("0C:43:14:58:22:C6")
 /*
     
@@ -135,7 +139,7 @@ function disconnectCitizenPrinter(){          //tied to button
 }
 
 function printSampleCitizenReceipt1(){          //tied to button
-    if (printReceipt1() == CMP_SUCCESS){
+    if (printReceipt_1() == CMP_SUCCESS){
          document.getElementById("textField").value = "print success"
     }
      else{
@@ -144,7 +148,7 @@ function printSampleCitizenReceipt1(){          //tied to button
 
 }
 
-function printReceipt1(){
+function printReceipt_1(){
   var sts =  EloCitizenManagerESCPOS.printerCheck();
   if(sts != CMP_SUCCESS) {
       document.getElementById("textField").value = "Printer check fail"
