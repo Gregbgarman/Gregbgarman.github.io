@@ -4,14 +4,14 @@ document.getElementById("disconnectCitizenPrinter").addEventListener("click", di
 
 document.getElementById("printSampleCitizenReceipt2").addEventListener("click", printSampleCitizenReceipt2)
 document.getElementById("showBTPairedDevicesCitizen").addEventListener("click", showBTPairedDevicesCitizen)
-document.getElementById("isCitizenBTConnected").addEventListener("click", isCitizenBTConnected)
+
 document.getElementById("printCitizenImage").addEventListener("click", printCitizenImage)
 document.getElementById("runBluetoothDiscovery").addEventListener("click", runBluetoothDiscovery)
 
 */
 document.getElementById("printSampleCitizenReceipt1").addEventListener("click", printSampleCitizenReceipt1)
 document.getElementById("pairOverBluetooth").addEventListener("click", pairOverBluetoothh)
-
+document.getElementById("isCitizenBTConnected").addEventListener("click", isCitizenBTConnected)
 
 
 
@@ -125,6 +125,7 @@ function connectCitizenPrinter(){          //tied to button
 }
 
 function isCitizenBTConnected(){          //tied to button
+     console.log("is citizen bt connected called");
      document.getElementById("textField").value = EloCitizenManagerESCPOS.isBluetoothPortConnected()
 }
 
