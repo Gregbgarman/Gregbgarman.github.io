@@ -14,7 +14,7 @@ function mycallbackprolific(isbound){
 function prolificInit(){
     if (!EloProlificAdapterManager.PL2303USBFeatureSupported()) {
         document.getElementById("textField").value = "usb feature not supported"
-        return
+        //return
     }
     EloProlificAdapterManager.enumerate()
 }
