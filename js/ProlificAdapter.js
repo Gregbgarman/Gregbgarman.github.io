@@ -19,6 +19,13 @@ function prolificInit(){
     if(EloProlificAdapterManager.enumerate()){
         document.getElementById("textField").value = "device found"
     }
+     
+    if (EloProlificAdapterManager.isConnected()){
+        document.getElementById("textField").value = "connected"
+    }
+    else{
+        document.getElementById("textField").value = "not connected"
+    }
 }
 
 
