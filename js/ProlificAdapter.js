@@ -14,7 +14,7 @@ function mycallbackprolific(isbound){
 function prolificOpen(){
     let array = new Uint8Array([1,2,3,4,5]);
   
-    document.getElementById("textField").value = EloProlificAdapterManager.write(array)
+    document.getElementById("textField").value = EloProlificAdapterManager.write2(array)
 
     
 }
