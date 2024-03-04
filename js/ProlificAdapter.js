@@ -12,11 +12,13 @@ function mycallbackprolific(isbound){
 }
 
 function prolificInit(){
-    if (!EloProlificAdapterManager.PL2303USBFeatureSupported()) {
+    if (EloProlificAdapterManager.PL2303USBFeatureSupported()) {
         document.getElementById("textField").value = "usb feature not supported"
-        //return
+        return
     }
-    EloProlificAdapterManager.enumerate()
+    if(EloProlificAdapterManager.enumerate()){
+        document.getElementById("textField").value = "device found"
+    }
 }
 
 
