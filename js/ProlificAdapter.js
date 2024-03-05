@@ -21,10 +21,10 @@ function prolificInit(){
     }
      
     if (EloProlificAdapterManager.isConnected()){
-        document.getElementById("textField").value = "connected"
+   //     document.getElementById("textField").value = "connected"
     }
     else{
-        document.getElementById("textField").value = "not connected"
+     //   document.getElementById("textField").value = "not connected"
     }
 }
 
