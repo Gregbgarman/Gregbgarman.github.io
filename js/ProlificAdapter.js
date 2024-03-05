@@ -47,7 +47,7 @@ function prolificInit(){
 
 
      
-    }, millisecondsToWait);
+    }, waitTime);
      
     
 }
