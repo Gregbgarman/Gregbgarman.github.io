@@ -20,8 +20,10 @@ function prolificInit(){
         document.getElementById("textField").value = "no device found"
         return
     }
-     
-    if (EloProlificAdapterManager.isConnected()){
+
+    var waitTime = 1500;
+    setTimeout(function() {
+        if (EloProlificAdapterManager.isConnected()){
         let mBaudrate = "B9600"
         let timeout = 700
         if (!EloProlificAdapterManager.InitByBaudRate(mBaudrate,timeout)){
@@ -42,6 +44,12 @@ function prolificInit(){
     else{
         document.getElementById("textField").value = "Connect failed"
     }
+
+
+     
+    }, millisecondsToWait);
+     
+    
 }
 
 
