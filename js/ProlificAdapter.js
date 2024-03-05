@@ -16,9 +16,9 @@ function prolificInit(){
         document.getElementById("textField").value = "usb feature not supported"
         return
     }
-    if(EloProlificAdapterManager.enumerate()){
+  //  if(EloProlificAdapterManager.enumerate()){
         document.getElementById("textField").value = "device found"
-    }
+  //  }
      
     if (EloProlificAdapterManager.isConnected()){
    //     document.getElementById("textField").value = "connected"
