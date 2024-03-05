@@ -12,6 +12,7 @@ function mycallbackprolific(isbound){
 }
 
 function prolificInit(){
+    document.getElementById("textField").value = "Init Begin"
     if (!EloProlificAdapterManager.PL2303USBFeatureSupported()) {
         document.getElementById("textField").value = "usb feature not supported"
         return
@@ -54,10 +55,10 @@ function prolificInit(){
 
 
 function prolificOpen(){
-    let array = new Uint8Array([1,2,3,4,5]);
+    let array = new Uint8Array([1]);
   
-    //document.getElementById("textField").value = EloProlificAdapterManager.write(array)
-    document.getElementById("textField").value = EloProlificAdapterManager.write("asdfds")
+    document.getElementById("textField").value = EloProlificAdapterManager.write(array)
+    //document.getElementById("textField").value = EloProlificAdapterManager.write("asdfds")
 
     
 }
