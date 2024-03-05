@@ -12,19 +12,35 @@ function mycallbackprolific(isbound){
 }
 
 function prolificInit(){
-    if (EloProlificAdapterManager.PL2303USBFeatureSupported()) {
+    if (!EloProlificAdapterManager.PL2303USBFeatureSupported()) {
         document.getElementById("textField").value = "usb feature not supported"
         return
     }
-  //  if(EloProlificAdapterManager.enumerate()){
-        document.getElementById("textField").value = "device found"
-  //  }
+    if(!EloProlificAdapterManager.enumerate()){
+        document.getElementById("textField").value = "no device found"
+        return
+    }
      
     if (EloProlificAdapterManager.isConnected()){
-   //     document.getElementById("textField").value = "connected"
+        let mBaudrate = "B9600"
+        let timeout = 700
+        if (!EloProlificAdapterManager.InitByBaudRate(mBaudrate,timeout)){
+            if(!EloProlificAdapterManager.PL2303Device_IsHasPermission()) {
+                document.getElementById("textField").value = "missing permission"
+                return
+            }
+
+            if(EloProlificAdapterManager.PL2303Device_IsHasPermission() && (!EloProlificAdapterManager.PL2303Device_IsSupportChip())) {
+                document.getElementById("textField").value = "cannot open, maybe this chip has no support"
+                return
+            }
+        }
+        else{
+            document.getElementById("textField").value = "connect Success"
+        }
     }
     else{
-     //   document.getElementById("textField").value = "not connected"
+        document.getElementById("textField").value = "Connect failed"
     }
 }
 
