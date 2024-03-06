@@ -1,7 +1,7 @@
 document.getElementById("prolificInit").addEventListener("click", prolificInit)
 document.getElementById("prolificSetBaudRate").addEventListener("click", prolificSetBaudRate)
 document.getElementById("prolificWrite").addEventListener("click", prolificWrite)
-//document.getElementById("prolificEnd").addEventListener("click", prolificEnd)
+document.getElementById("prolificEnd").addEventListener("click", prolificEnd)
 
 
 EloProlificAdapterManager.initialize("mycallbackprolific")
@@ -11,7 +11,6 @@ function mycallbackprolific(isbound){
         document.getElementById("textField").value = "service bound adapter"
     }
 }
-
 
 /*
 follows same setup flow as in SDK sample app by Prolific
@@ -33,29 +32,30 @@ function prolificInit(){
     }, waitTime);
 }
 
-
 function openUsbSerial(){
     if (EloProlificAdapterManager.isConnected()){
         let mBaudrate = "B9600"
-            let timeout = 700
-            if (!EloProlificAdapterManager.InitByBaudRate(mBaudrate,timeout)){
-                if(!EloProlificAdapterManager.PL2303Device_IsHasPermission()) {
-                    document.getElementById("textField").value = "missing permission"              
-                }
-                if(EloProlificAdapterManager.PL2303Device_IsHasPermission() && (!EloProlificAdapterManager.PL2303Device_IsSupportChip())) {
-                    document.getElementById("textField").value = "cannot open, maybe this chip has no support"
-                }
-            }
-            else{
-                document.getElementById("textField").value = "connect Success"
-            }
-        }
+        let timeout = 700
+        if (!EloProlificAdapterManager.InitByBaudRate(mBaudrate,timeout)){
+            if(!EloProlificAdapterManager.PL2303Device_IsHasPermission()) {
+                document.getElementById("textField").value = "missing permission"              
+             }
+            if(EloProlificAdapterManager.PL2303Device_IsHasPermission() && (!EloProlificAdapterManager.PL2303Device_IsSupportChip())) {
+                 document.getElementById("textField").value = "cannot open, maybe this chip has no support"
+             }
+         }
         else{
-            document.getElementById("textField").value = "Connect failed"
-        }
+            document.getElementById("textField").value = "connect Success"
+         }
+    }
+    else{
+        document.getElementById("textField").value = "Connect failed"
+     }
 }
 
-
+/*
+A different baud rate may need to be set for drawer to open. 19200 is set in this function.
+*/
 function prolificSetBaudRate(){
     let baudRate = "B19200"
     let dataBits = "D8"
@@ -74,7 +74,8 @@ function prolificSetBaudRate(){
 
 
 /*
-write() should open cash drawer - also resembling behavior in SDK sample app where user is to enter text.
+write() appears to open cash drawer - prolificWrite() resembles behavior in SDK sample app where user is to enter text and then
+it is converted to bytes.
 */
 function prolificWrite(){
     let text = document.getElementById("textField").value
@@ -96,4 +97,5 @@ function prolificWrite(){
 
 function prolificEnd(){
     EloProlificAdapterManager.end()
+    document.getElementById("textField").value = "end called"
 }
