@@ -1,6 +1,6 @@
-document.getElementById("prolificWrite").addEventListener("click", prolificWrite)
 document.getElementById("prolificInit").addEventListener("click", prolificInit)
 document.getElementById("prolificSetBaudRate").addEventListener("click", prolificSetBaudRate)
+document.getElementById("prolificWrite").addEventListener("click", prolificWrite)
 //document.getElementById("prolificEnd").addEventListener("click", prolificEnd)
 
 
@@ -12,21 +12,27 @@ function mycallbackprolific(isbound){
     }
 }
 
-function prolificSetBaudRate(){
-    let baudRate = "B19200"
-    let dataBits = "D8"
-    let stopBits = "S1"
-    let parity = "NONE"
-    let flowControl = "OFF"
 
-    let res = EloProlificAdapterManager.setup(baudRate, dataBits, stopBits, parity, flowControl);
-    if (res < 0){
-        document.getElementById("textField").value = "failure"
+/*
+follows same setup flow as in SDK sample app by Prolific
+*/
+function prolificInit(){
+    document.getElementById("textField").value = "Init Begin"
+    if (!EloProlificAdapterManager.PL2303USBFeatureSupported()) {
+        document.getElementById("textField").value = "usb feature not supported"
+        return
     }
-    else{
-        document.getElementById("textField").value = "baud rate set to 19200"
+    if(!EloProlificAdapterManager.enumerate()){
+        document.getElementById("textField").value = "no device found"
+        return
     }
+
+    var waitTime = 1500;
+    setTimeout(function() {
+        openUsbSerial()
+    }, waitTime);
 }
+
 
 function openUsbSerial(){
     if (EloProlificAdapterManager.isConnected()){
@@ -49,25 +55,23 @@ function openUsbSerial(){
         }
 }
 
-/*
-follows same setup flow as in SDK sample app by Prolific
-*/
-function prolificInit(){
-    document.getElementById("textField").value = "Init Begin"
-    if (!EloProlificAdapterManager.PL2303USBFeatureSupported()) {
-        document.getElementById("textField").value = "usb feature not supported"
-        return
-    }
-    if(!EloProlificAdapterManager.enumerate()){
-        document.getElementById("textField").value = "no device found"
-        return
-    }
 
-    var waitTime = 1500;
-    setTimeout(function() {
-        openUsbSerial()
-    }, waitTime);
+function prolificSetBaudRate(){
+    let baudRate = "B19200"
+    let dataBits = "D8"
+    let stopBits = "S1"
+    let parity = "NONE"
+    let flowControl = "OFF"
+
+    let res = EloProlificAdapterManager.setup(baudRate, dataBits, stopBits, parity, flowControl);
+    if (res < 0){
+        document.getElementById("textField").value = "failure"
+    }
+    else{
+        document.getElementById("textField").value = "baud rate set to 19200"
+    }
 }
+
 
 /*
 write() should open cash drawer - also resembling behavior in SDK sample app where user is to enter text.
@@ -81,7 +85,6 @@ function prolificWrite(){
     let utf8Encode = new TextEncoder();
     let array = utf8Encode.encode(text);
 
-  
     let res = EloProlificAdapterManager.write(array)
     if (res < 0){
         document.getElementById("textField").value = "write error"
@@ -94,4 +97,3 @@ function prolificWrite(){
 function prolificEnd(){
     EloProlificAdapterManager.end()
 }
-
