@@ -3,7 +3,7 @@ document.getElementById("prolificInit").addEventListener("click", prolificInit)
 document.getElementById("prolificSetBaudRate").addEventListener("click", prolificSetBaudRate)
 
 
-
+  
 
 EloProlificAdapterManager.initialize("mycallbackprolific")
 
