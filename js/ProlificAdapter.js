@@ -1,7 +1,7 @@
 document.getElementById("prolificWrite").addEventListener("click", prolificWrite)
 document.getElementById("prolificInit").addEventListener("click", prolificInit)
 document.getElementById("prolificSetBaudRate").addEventListener("click", prolificSetBaudRate)
-document.getElementById("prolificEnd").addEventListener("click", prolificEnd)
+//document.getElementById("prolificEnd").addEventListener("click", prolificEnd)
 
 
 EloProlificAdapterManager.initialize("mycallbackprolific")
