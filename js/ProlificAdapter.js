@@ -25,7 +25,7 @@ function prolificInit(){
     var waitTime = 1500;
     setTimeout(function() {
         if (EloProlificAdapterManager.isConnected()){
-            let mBaudrate = "B9600"
+            let mBaudrate = "B19200"
             let timeout = 700
             if (!EloProlificAdapterManager.InitByBaudRate(mBaudrate,timeout)){
                 if(!EloProlificAdapterManager.PL2303Device_IsHasPermission()) {
