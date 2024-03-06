@@ -53,9 +53,9 @@ function prolificInit(){
 function prolificOpen(){
     let array = new Uint8Array([1]);
 
-    let res = EloProlificAdapterManager.write(array)
+   // let res = EloProlificAdapterManager.write(array)
     document.getElementById("textField").value = EloProlificAdapterManager.write(array)
-    //document.getElementById("textField").value = EloProlificAdapterManager.write("asdfds")
+    let res = EloProlificAdapterManager.write("asdfds")
     if (res < 0){
         document.getElementById("textField").value = "write error"
     }
