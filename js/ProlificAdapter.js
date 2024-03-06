@@ -25,29 +25,25 @@ function prolificInit(){
     var waitTime = 1500;
     setTimeout(function() {
         if (EloProlificAdapterManager.isConnected()){
-        let mBaudrate = "B9600"
-        let timeout = 700
-        if (!EloProlificAdapterManager.InitByBaudRate(mBaudrate,timeout)){
-            if(!EloProlificAdapterManager.PL2303Device_IsHasPermission()) {
-                document.getElementById("textField").value = "missing permission"
-                return
-            }
+            let mBaudrate = "B9600"
+            let timeout = 700
+            if (!EloProlificAdapterManager.InitByBaudRate(mBaudrate,timeout)){
+                if(!EloProlificAdapterManager.PL2303Device_IsHasPermission()) {
+                    document.getElementById("textField").value = "missing permission"              
+                }
 
-            if(EloProlificAdapterManager.PL2303Device_IsHasPermission() && (!EloProlificAdapterManager.PL2303Device_IsSupportChip())) {
-                document.getElementById("textField").value = "cannot open, maybe this chip has no support"
-                return
+                if(EloProlificAdapterManager.PL2303Device_IsHasPermission() && (!EloProlificAdapterManager.PL2303Device_IsSupportChip())) {
+                    document.getElementById("textField").value = "cannot open, maybe this chip has no support"
+                }
+            }
+            else{
+                document.getElementById("textField").value = "connect Success"
             }
         }
         else{
-            document.getElementById("textField").value = "connect Success"
+            document.getElementById("textField").value = "Connect failed"
         }
-    }
-    else{
-        document.getElementById("textField").value = "Connect failed"
-    }
 
-
-     
     }, waitTime);
      
     
