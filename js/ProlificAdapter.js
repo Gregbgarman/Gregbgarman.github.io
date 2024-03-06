@@ -70,17 +70,16 @@ function prolificInit(){
 }
 
 /*
-write() should open cash drawer - also resembling behavior in SDK sample app where user is to enter text. Created additional API
-writeWithString() to be able to accept a string parameter and 
+write() should open cash drawer - also resembling behavior in SDK sample app where user is to enter text.
 */
 function prolificWrite(){
     let text = document.getElementById("textField").value
     if (text.length == 0){
         document.getElementById("textField").value = "provide input on line"
-        //return
+        return
     }
     let utf8Encode = new TextEncoder();
-    let array = utf8Encode.encode("abc");
+    let array = utf8Encode.encode(text);
 
   
     let res = EloProlificAdapterManager.write(array)
