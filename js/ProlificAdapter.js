@@ -20,12 +20,12 @@ function prolificSetBaudRate(){
     let parity = "NONE"
     let flowControl = "OFF"
 
-    let res =EloProlificAdapterManager.setup(baudRate, dataBits, stopBits, parity, flowControl);
+    let res = EloProlificAdapterManager.setup(baudRate, dataBits, stopBits, parity, flowControl);
     if (res < 0){
-        document.getElementById("textField").value = "fail to setup"
+        document.getElementById("textField").value = "failure"
     }
     else{
-        document.getElementById("textField").value = "new baud rate set to 19200"
+        document.getElementById("textField").value = "baud rate set to 19200"
     }
 }
 
