@@ -1,13 +1,31 @@
-document.getElementById("prolificOpen").addEventListener("click", prolificOpen)
+document.getElementById("prolificWrite").addEventListener("click", prolificWrite)
 document.getElementById("prolificInit").addEventListener("click", prolificInit)
+document.getElementById("prolificSetBaudRate").addEventListener("click", prolificSetBaudRate)
 
 
 
- EloProlificAdapterManager.initialize("mycallbackprolific")
+
+EloProlificAdapterManager.initialize("mycallbackprolific")
 
 function mycallbackprolific(isbound){
     if (isbound == "true"){
         document.getElementById("textField").value = "service bound adapter"
+    }
+}
+
+function prolificSetBaudRate(){
+    let baudRate = "B19200"
+    let dataBits = "D8"
+    let stopBits = "S1"
+    let parity = "NONE"
+    let flowControl = "OFF"
+
+    let res =EloProlificAdapterManager.setup(baudRate, dataBits, stopBits, parity, flowControl);
+    if (res < 0){
+        document.getElementById("textField").value = "fail to setup"
+    }
+    else{
+        document.getElementById("textField").value = "new baud rate set to 19200"
     }
 }
 
@@ -25,7 +43,7 @@ function prolificInit(){
     var waitTime = 1500;
     setTimeout(function() {
         if (EloProlificAdapterManager.isConnected()){
-            let mBaudrate = "B19200"
+            let mBaudrate = "B9600"
             let timeout = 700
             if (!EloProlificAdapterManager.InitByBaudRate(mBaudrate,timeout)){
                 if(!EloProlificAdapterManager.PL2303Device_IsHasPermission()) {
@@ -50,7 +68,7 @@ function prolificInit(){
 }
 
 
-function prolificOpen(){
+function prolificWrite(){
     let array = new Uint8Array([1]);
 
    // let res = EloProlificAdapterManager.write(array)
