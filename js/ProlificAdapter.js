@@ -54,10 +54,10 @@ function openUsbSerial(){
 }
 
 /*
-A different baud rate may need to be set for drawer to open. 19200 is set in this function.
+A different baud rate may need to be set for drawer to open.
 */
 function prolificSetBaudRate(){
-    let baudRate = "B19200"
+    let baudRate = "B9600"
     let dataBits = "D8"
     let stopBits = "S1"
     let parity = "NONE"
@@ -68,7 +68,7 @@ function prolificSetBaudRate(){
         document.getElementById("textField").value = "failure"
     }
     else{
-        document.getElementById("textField").value = "baud rate set to 19200"
+        document.getElementById("textField").value = "baud rate set to " + baudRate
     }
 }
 
