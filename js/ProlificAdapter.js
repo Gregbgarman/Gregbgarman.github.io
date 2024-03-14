@@ -3,6 +3,13 @@ document.getElementById("prolificSetBaudRate").addEventListener("click", prolifi
 document.getElementById("prolificWrite").addEventListener("click", prolificWrite)
 document.getElementById("prolificEnd").addEventListener("click", prolificEnd)
 
+document.getElementById("btnEnumerate").addEventListener("click", btnEnumerate)
+document.getElementById("btnConnected").addEventListener("click", btnConnected)
+
+
+
+
+
 
 EloProlificAdapterManager.initialize("mycallbackprolific")
 
@@ -99,3 +106,14 @@ function prolificEnd(){
     EloProlificAdapterManager.end()
     document.getElementById("textField").value = "end called"
 }
+
+
+
+
+function btnEnumerate(){
+     document.getElementById("textField").value = EloProlificAdapterManager.enumerate()
+}
+function btnConnected(){
+     document.getElementById("textField").value = EloProlificAdapterManager.isConnected()
+}
+
