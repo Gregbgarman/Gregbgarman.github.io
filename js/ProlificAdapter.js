@@ -4,7 +4,7 @@ document.getElementById("prolificWrite").addEventListener("click", prolificWrite
 document.getElementById("prolificEnd").addEventListener("click", prolificEnd)
 
 document.getElementById("btnEnumerate").addEventListener("click", btnEnumerate)
-document.getElementById("btnConnected").addEventListener("click", btnConnected)
+document.getElementById("btnConnected").addEventListener("click", btnConnected)  
 
 
 
