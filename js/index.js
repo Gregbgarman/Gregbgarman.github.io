@@ -65,6 +65,13 @@ function setOnReadyCallbacks(){
     }
 }
 
+function mycallbackprolific(isbound){
+    if (isbound == "true"){
+        document.getElementById("textField").value = "service bound adapter"
+        document.getElementById("textField").value = "enumerate is: " + EloProlificAdapterManager.enumerate()
+    }
+}
+
 function onCitizenPrinterReady(serviceBound){
     document.getElementById("CitizenPrinterAvailable").innerHTML = "Printer Offline"
     if (serviceBound === "true"){
