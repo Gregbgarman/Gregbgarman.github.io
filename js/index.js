@@ -42,7 +42,7 @@ function setOnReadyCallbacks(){
 
 	   
 	  
-	   EloCitizenManagerESCPOS.initialize("onCitizenESCPOSReady")
+	  // EloCitizenManagerESCPOS.initialize("onCitizenESCPOSReady")
         //   EloCitizenManagerCPCL.initialize("onCitizenCPCLReady")
 	   
 
