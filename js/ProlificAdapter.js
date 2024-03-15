@@ -11,7 +11,6 @@ document.getElementById("btnConnected").addEventListener("click", btnConnected)
 
 
 
-EloProlificAdapterManager.initialize("mycallbackprolific")
 
 function mycallbackprolific(isbound){
     if (isbound == "true"){
