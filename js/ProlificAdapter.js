@@ -12,12 +12,7 @@ document.getElementById("btnConnected").addEventListener("click", btnConnected)
 
 
 
-function mycallbackprolific(isbound){
-    if (isbound == "true"){
-        document.getElementById("textField").value = "service bound adapter"
-        document.getElementById("textField").value = "enumerate is: " + EloProlificAdapterManager.enumerate()
-    }
-}
+
 
 /*
 follows same setup flow as in SDK sample app by Prolific
