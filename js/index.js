@@ -36,6 +36,9 @@ window.onload = function() {
 function setOnReadyCallbacks(){
 	
    try{
+
+          EloProlificAdapterManager.initialize("mycallbackprolific")
+	   
 	   
 //	    EloCitizenPrinterManager.initialize("onCitizenPrinterReady")
 
