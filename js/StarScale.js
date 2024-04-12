@@ -1,4 +1,3 @@
-/*
 document.getElementById("beginScan").addEventListener("click", beginScan)
 document.getElementById("connectScale").addEventListener("click", connectScale)
 document.getElementById("disconnectScale").addEventListener("click", disconnectScale)
@@ -6,7 +5,6 @@ document.getElementById("setContOutput").addEventListener("click", setContinousO
 document.getElementById("setStableOutput").addEventListener("click", setStableOutput)
 document.getElementById("getDeviceInfo").addEventListener("click", getDeviceInfo)
 document.getElementById("seeMoreData").addEventListener("click", seeMoreData)
-*/
 
 let DevicesFound = ''
 let DeviceTable = []
@@ -55,11 +53,6 @@ class ScaleInfo{
 }
 
 
-//window.onload = function() {                    
-  // restoreScale()
-//}
-
-
 function beginScan(){
     if (scaleConnected){
        document.getElementById("textField").size = DEFAULT_SIZE
@@ -105,9 +98,8 @@ function connectScale(){
        }
    }
     
-   if (scaleInfo === ''){   //|| scaleInfo.getIdentifier() === ''){
+   if (scaleInfo === ''){
         document.getElementById("textField").value = "Scale not found"
-       // scaleInfo = ""
         return
    }
    
@@ -126,7 +118,7 @@ function connectScale(){
    document.getElementById("textField").value = "Scale Connecting..."  
 }
 
-function seeMoreData(){    
+function seeMoreData(){
     if (!scaleConnected){
        document.getElementById("textField").value = "No scale connected"
        return
@@ -134,7 +126,7 @@ function seeMoreData(){
     
     if (SeeMoreData){
         SeeMoreData = false
-        document.getElementById("seeMoreData").innerHTML = "Show More Data"       
+        document.getElementById("seeMoreData").innerHTML = "Show More Data"
     }
     else{
         SeeMoreData = true
