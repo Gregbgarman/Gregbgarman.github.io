@@ -29,7 +29,6 @@ C. When the capture client's connection state has changed.
 
 */
 
-/*
 document.getElementById("initService").addEventListener("click", initService)
 document.getElementById("showScanCode").addEventListener("click", showScanCode)
 document.getElementById("searchBluetooth").addEventListener("click", searchBluetooth)
@@ -39,30 +38,12 @@ document.getElementById("runScanner").addEventListener("click", runScanner)
 document.getElementById("disableScanning").addEventListener("click", disableScanning)
 document.getElementById("getBatteryLevel").addEventListener("click", getBatteryLevel)
 document.getElementById("rejectScans").addEventListener("click", rejectScans)
-*/
+
 
 
 let PairCodeShown = false
 let BluetoothDevices = []
 let RejectAllScans = false
-
-let saucey = "sauce"
-
-//window.onload = function() {
-  //EloSocketMobileManager.initialize("onSocketReady")
-//};
-
-/*
-function onSocketReady(){
- if (EloSocketMobileManager.getDeviceName() === ''){
-      document.getElementById("scannerAvailable").innerHTML = "Scanner Unavailable"
-   }
-   else{
-      document.getElementById("scannerAvailable").innerHTML = "Scanner Ready"
-   }
-}
-*/
-
 
 ////////////////////////////////////////////////
 // Begin functions dealing with connecting scanner to Elo device
@@ -80,7 +61,7 @@ function showScanCode(){           //step 2. Reveal a special Qr code on this we
      }
      else{                        
          document.getElementById("appmodeqrcode").style.visibility = 'hidden'
-         document.getElementById("showScanCode").innerHTML="1.Show Pair Code Below"
+         document.getElementById("showScanCode").innerHTML="2.Show Pair Code Below"
          PairCodeShown = false
      }
 }
@@ -120,9 +101,7 @@ function connectBluetooth(){
     let BTDevice = document.getElementById("textField").value              //Reading the BT device name found after searching bluetooth
     let success =  EloSocketMobileManager.connectBluetooth(BTDevice)       //Passing BT name to connect to the device
     if (success){
-        document.getElementById("textField").value = "Connecting...Wait for beep"
-       
-        //enableScanning()   COULD ADD HERE TO HAVE UI UPDATE WHEN BT CONNECTS
+        document.getElementById("textField").value = "Connecting...Wait for beep" 
     }
     else{
         document.getElementById("textField").value =  "Failed. Try again"
@@ -137,10 +116,10 @@ function enableScanning(){
     let success1 = EloSocketMobileManager.setClientListener("DeviceStateCallback")        //set listener to receive device state changes (see below) 
     let success2 = EloSocketMobileManager.connectClient("ConnStateCallback")                              
     if (success1 && success2){
-//       document.getElementById("textField").value =  "Waiting for device"
+       document.getElementById("textField").value =  "Waiting for device"
     }
     else{
-//       document.getElementById("textField").value =  "Failed"   
+       document.getElementById("textField").value =  "Failed"   
     }
 }
 
@@ -171,7 +150,7 @@ function ConnStateCallback(ConnState){
    if (ConnState === "CONNECTING"){
         //client is connecting
    }
-   else if (ConnState === "CONNECTED"){      
+   else if (ConnState === "CONNECTED"){
        // client is now usable      
    }
    else if (ConnState === "DISCONNECTING"){
@@ -222,7 +201,7 @@ function getBatteryLevel(){        //activated by button press
 }
 
 function BatteryLevelReceiver(BatteryLevel){     //**THIS DOES NOT PROVIDE CONTINUOUS BATTERY UPDATES IN REAL TIME
-                                                //**MUST CALL ABOVE FUNCTION EVERYTIME TO GET BATTERY LEVEL
+                                                 //**MUST CALL ABOVE FUNCTION EVERYTIME TO GET BATTERY LEVEL
     if (BatteryLevel === -1){
           document.getElementById("textField").value = "Error finding battery %"
     }
