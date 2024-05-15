@@ -30,7 +30,17 @@ function unregisterHoneywellListener() {
 }
 
 function activateBCR() {
-    EloHoneywellBarcodeManager.activeBcr();
+    
+    EloHoneywellBarcodeManager.disactiveBcr();
+    
+     var waitTime = 5000;
+    setTimeout(function() {
+        EloHoneywellBarcodeManager.activeBcr();
+    }, waitTime);
+
+
+    
+    
 }
 
 function deactivateBCR() {
