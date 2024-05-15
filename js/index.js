@@ -37,6 +37,9 @@ function setOnReadyCallbacks(){
 	
    try{
 
+ EloHoneywellBarcodeManager.initialize("onHoneywellReady")
+	   
+
        //   EloProlificAdapterManager.initialize("mycallbackprolific")
 	   
 	   
@@ -51,16 +54,16 @@ function setOnReadyCallbacks(){
 
  //   EloPeripheralManager.initialize("onPeripheralManagerReady")
  //   EloEpsonPrinterManager.initialize("onEpsonReady")
-  //  EloHoneywellBarcodeManager.initialize("onHoneywellReady")
+   
   //  EloZebraBarcodeManager.initialize("onZebraReady")
    // EloHandHeldBarcodeManager.initialize("onHandheldReady")
-    EloSocketMobileManager.initialize("onSocketReady")
+ //   EloSocketMobileManager.initialize("onSocketReady")
     }catch(error){
 	   document.getElementById("textField").value = "exception thrown"
    }
    try{
     //EloStarPrinterManager.initialize("onStarPrinterReady")
-    EloStarScaleManager.initialize("onScaleReady")
+   // EloStarScaleManager.initialize("onScaleReady")
     }catch(error){
     }
 }
