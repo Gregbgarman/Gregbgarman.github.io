@@ -34,7 +34,7 @@ window.onload = function() {
 function setOnReadyCallbacks(){
 
     try{
-        EloPeripheralManager.initialize("onPeripheralManagerReady")
+ //       EloPeripheralManager.initialize("onPeripheralManagerReady")
     }catch(error){
 	/*
 	 Make sure Webview Hardware Access toggle is enabled
@@ -43,7 +43,7 @@ function setOnReadyCallbacks(){
     }
 
     try{
-        EloEpsonPrinterManager.initialize("onEpsonReady")
+  //      EloEpsonPrinterManager.initialize("onEpsonReady")
     }catch(error){
         /*
          Make sure Webview Hardware Access toggle is enabled
@@ -61,7 +61,7 @@ function setOnReadyCallbacks(){
     }
 
     try{
-	EloZebraBarcodeManager.initialize("onZebraReady")
+	///EloZebraBarcodeManager.initialize("onZebraReady")
     }catch(error){
        /*
          Make sure Webview Hardware Access toggle is enabled
@@ -70,7 +70,7 @@ function setOnReadyCallbacks(){
     }
 
     try{
-        EloHandHeldBarcodeManager.initialize("onHandheldReady")
+    //    EloHandHeldBarcodeManager.initialize("onHandheldReady")
     }catch(error){
        /*
          Make sure Webview Hardware Access toggle is enabled
@@ -79,7 +79,7 @@ function setOnReadyCallbacks(){
     }
 
     try{
-        EloSocketMobileManager.initialize("onSocketReady")
+    //    EloSocketMobileManager.initialize("onSocketReady")
     }catch(error){
        /*
          Make sure Webview Hardware Access toggle is enabled
@@ -88,7 +88,7 @@ function setOnReadyCallbacks(){
     }
 
     try{
-        EloCitizenPrinterManager.initialize("onCitizenPrinterReady")
+    ///    EloCitizenPrinterManager.initialize("onCitizenPrinterReady")
     }catch(error){
         /*
          Make sure Webview Hardware Access toggle is enabled
@@ -97,7 +97,7 @@ function setOnReadyCallbacks(){
     }
 
     try{
-        EloProlificAdapterManager.initialize("onProlificAdapterReady")
+    //    EloProlificAdapterManager.initialize("onProlificAdapterReady")
     }catch(error){
        /*
          Make sure Webview Hardware Access toggle is enabled
@@ -106,7 +106,7 @@ function setOnReadyCallbacks(){
     }
 
     try{
-        EloStarPrinterManager.initialize("onStarPrinterReady")
+   //     EloStarPrinterManager.initialize("onStarPrinterReady")
     }catch(error){
 	/*
 	Make sure Star Hardware Access toggle is enabled
@@ -115,7 +115,7 @@ function setOnReadyCallbacks(){
     }
 
     try{
-        EloStarScaleManager.initialize("onScaleReady")
+   ///     EloStarScaleManager.initialize("onScaleReady")
     }catch(error){
         /*
         Make sure Star Hardware Access toggle is enabled
