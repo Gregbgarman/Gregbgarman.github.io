@@ -125,7 +125,9 @@ function setOnReadyCallbacks(){
 
 	try{
             EloPR1000PrinterManager.Printer.initialize("onPR1000PrinterReady")
+	    
     }catch(error){
+		document.getElementById("textField").value = "exception initializing"
        /*
          Make sure Webview Hardware Access toggle is enabled
          from Eloview or device settings app and Elo device on correct firmware.
