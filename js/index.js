@@ -122,7 +122,26 @@ function setOnReadyCallbacks(){
         in device settings app and Elo device on correct firmware.
         */
     }
+
+	try{
+            EloPR1000PrinterManager.Printer.initialize("onPR1000PrinterReady")
+    }catch(error){
+       /*
+         Make sure Webview Hardware Access toggle is enabled
+         from Eloview or device settings app and Elo device on correct firmware.
+        */
+    }
 }
+
+function onPR1000PrinterReady(serviceBound){
+    if (serviceBound === "true"){
+        document.getElementById("pr1000Header").style.color = COLOR_GREEN
+    }
+    else{
+        document.getElementById("pr1000Header").style.color = COLOR_RED
+    }
+}
+
 
 function onProlificAdapterReady(serviceBound){
     if (serviceBound === "true"){
