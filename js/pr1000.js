@@ -3,9 +3,9 @@ document.getElementById("PR1000_getUSBPrinters").addEventListener("click", getPR
 
 
 function connectPR1000(){
-    EloPR1000PrinterManager.Printer.connect("sdfds")
+    EloPR1000PrinterManager.connect("sdfds")
 }
 
 function getPR1000UsbPrinters(){
-    EloPR1000PrinterManager.Printer.getAvailableUsbPrinters()
+    EloPR1000PrinterManager.getAvailableUsbPrinters()
 }
