@@ -15,20 +15,21 @@ function getPR1000UsbPrinters(){
     
     let printerArray = EloPR1000PrinterManager.getAvailableUsbPrinters()
     console.log("array is " + printerArray);
-    /*
+    
     for (let i = 0; i < printerArray.length; i++){
         let printerObj = JSON.parse(printerArray[i])
+        console.log("object is " + printerObj);
 
-        let deviceName = printerObj.deviceName
-        let vendorId = printerObj.vendorId
-        let productId = printerObj.productId
+        let deviceName = printerObj["deviceName"]
+       // let vendorId = printerObj.vendorId
+       // let productId = printerObj.productId
         console.log("devicename is " + deviceName);
-        console.log("vendorId is " + vendorId);
-        console.log("productId is " + productId);
+       // console.log("vendorId is " + vendorId);
+       // console.log("productId is " + productId);
         
     }
     console.log("the end" );
-    */
+    
 }
 
 function barcodeTestPR1000(){
