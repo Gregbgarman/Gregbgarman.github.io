@@ -21,9 +21,10 @@ function getPR1000UsbPrinters(){
     
     for (let i = 0; i < printerArray.length; i++){
         let printerObj = printerArray[i]
-        deviceName = printerObj["deviceName"]
+        
         let vendorId = printerObj.vendorId
         let productId = printerObj.productId
+        deviceName = printerObj.deviceName
         console.log("devicename is " + deviceName);
         console.log("vendorId is " + vendorId);
         console.log("productId is " + productId);        
