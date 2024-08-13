@@ -12,7 +12,9 @@ function connectPR1000(){
 }
 
 function getPR1000UsbPrinters(){
+    
     let printerArray = EloPR1000PrinterManager.getAvailableUsbPrinters()
+    /*
     for (let i = 0; i < printerArray.length; i++){
         let printerObj = JSON.parse(printerArray[i])
 
@@ -25,6 +27,7 @@ function getPR1000UsbPrinters(){
         
     }
     console.log("the end" );
+    */
 }
 
 function barcodeTestPR1000(){
