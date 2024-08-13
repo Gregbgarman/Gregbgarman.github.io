@@ -34,7 +34,7 @@ function getPR1000UsbPrinters(){
 }
 
 function beepTestPR1000(){
-    let beep = EloPR1000EscCmdManager.getBeepCmd()
+    let beep = new UInt16Array(EloPR1000EscCmdManager.getBeepCmd())
     console.log("beep is " + beep)
     //EloPR1000EscCmdManager.append(beep)
     //let commands = EloPR1000EscCmdManager.getAppendCmds()
