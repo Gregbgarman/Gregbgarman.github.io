@@ -4,7 +4,7 @@ document.getElementById("PR1000_getUSBPrinters").addEventListener("click", getPR
 document.getElementById("PR1000_barcode_test").addEventListener("click", barcodeTestPR1000)
 
 
-
+let selectedPrinter = ""
 
 
 function connectPR1000(){
@@ -12,7 +12,19 @@ function connectPR1000(){
 }
 
 function getPR1000UsbPrinters(){
-    EloPR1000PrinterManager.getAvailableUsbPrinters()
+    let printerArray = EloPR1000PrinterManager.getAvailableUsbPrinters()
+    for (int i = 0; i < printerArray.length; i++){
+        let printerObj = JSON.parse(printerArray[i])
+
+        let deviceName = printerObj.deviceName
+        let vendorId = printerObj.vendorId
+        let productId = printerObj.productId
+        console.log("devicename is " + deviceName);
+        console.log("vendorId is " + vendorId);
+        console.log("productId is " + productId);
+        
+    }
+    console.log("the end" );
 }
 
 function barcodeTestPR1000(){
