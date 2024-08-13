@@ -41,8 +41,8 @@ function beepTestPR1000(){
     //let commands = EloPR1000EscCmdManager.getAppendCmds()
     EloPR1000PrinterManager.writeMsgAsync(EloPR1000EscCmdManager.getAppendCmds())
 
-  //  let command = EloPR1000EscCmdManager.getCRCmd()
-  //   console.log("command is " + command)
+    EloPR1000EscCmdManager.getCRCmd()
+     console.log("command ran ")
 
     /*
 pr1000EscCmd.append(pr1000EscCmd.getBeepCmd());
