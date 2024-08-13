@@ -34,14 +34,20 @@ function getPR1000UsbPrinters(){
 }
 
 function beepTestPR1000(){
-    let beep = new UInt16Array(EloPR1000EscCmdManager.getBeepCmd())
+    let beep = EloPR1000EscCmdManager.getBeepCmd()
     console.log("beep is " + beep)
-    //EloPR1000EscCmdManager.append(beep)
+    EloPR1000EscCmdManager.append(beep)
+    
     //let commands = EloPR1000EscCmdManager.getAppendCmds()
-    //EloPR1000PrinterManager.writeMsgAsync(EloPR1000EscCmdManager.getAppendCmds())
+    EloPR1000PrinterManager.writeMsgAsync(EloPR1000EscCmdManager.getAppendCmds())
 
     let command = EloPR1000EscCmdManager.getCRCmd()
      console.log("command is " + command)
+
+    /*
+pr1000EscCmd.append(pr1000EscCmd.getBeepCmd());
+        pr1000Printer.writeMsgAsync(pr1000EscCmd.getAppendCmds());
+    */
 }
 
 function barcodeTestPR1000(){
