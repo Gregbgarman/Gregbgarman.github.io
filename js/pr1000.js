@@ -13,7 +13,7 @@ function connectPR1000(){
 
 function getPR1000UsbPrinters(){
     let printerArray = EloPR1000PrinterManager.getAvailableUsbPrinters()
-    for (int i = 0; i < printerArray.length; i++){
+    for (let i = 0; i < printerArray.length; i++){
         let printerObj = JSON.parse(printerArray[i])
 
         let deviceName = printerObj.deviceName
