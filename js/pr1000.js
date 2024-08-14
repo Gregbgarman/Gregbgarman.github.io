@@ -4,6 +4,8 @@ document.getElementById("PR1000_getUSBPrinters").addEventListener("click", getPR
 document.getElementById("PR1000_barcode_test").addEventListener("click", barcodeTestPR1000)
 document.getElementById("PR1000_beep_test").addEventListener("click", beepTestPR1000)
 
+document.getElementById("PR1000_image_test").addEventListener("click", imageTestPR1000)
+
 
 
 
@@ -52,6 +54,10 @@ pr1000EscCmd.append(pr1000EscCmd.getBeepCmd());
 
 function barcodeTestPR1000(){
     EloPR1000BarcodeManager.test()
+}
+
+function imageTestPR1000(){
+
 }
 
 
