@@ -63,9 +63,9 @@ function connectPR1000(){
 
 function getStatusPR1000(){
 
-EloPR1000BarcodeManager.setQrcodeDotSize(5)
+//EloPR1000BarcodeManager.setQrcodeDotSize(5)
     
-    //EloPR1000TextSettingManager.setAlign(1)
+    EloPR1000TextSettingManager.setDoubleHeight(1)
 
 }
 
