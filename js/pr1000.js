@@ -53,11 +53,13 @@ pr1000EscCmd.append(pr1000EscCmd.getBeepCmd());
 }
 
 function barcodeTestPR1000(){
-    EloPR1000EscCmdManager.gregTest(EloPR1000EscCmdManager)
+        EloPR1000EscCmdManager.gregTest()
+
     
     console.log(typeof EloPR1000EscCmdManager);
 
-    
+        EloPR1000EscCmdManager.gregTest(EloPR1000EscCmdManager)
+
 }
 
 function imageTestPR1000(){
