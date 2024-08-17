@@ -51,6 +51,13 @@ const BarcodeType = {
     QR_CODE: 11
 }
 
+const BarcodeStringPosition = {
+    NONE: 0,
+    ABOVE_BARCODE: 1,
+    BELOW_BARCODE: 2,
+    ABOVE_BELOW_BARCODE: 3
+}
+
 
         
 function getPR1000UsbPrinters(){
@@ -88,6 +95,43 @@ function getStatusPR1000(){
 //EloPR1000BarcodeManager.setQrcodeDotSize(5)
     
     EloPR1000TextSettingManager.setDoubleHeight(1)
+
+}
+
+
+
+function drawerTestPR1000(){
+     EloPR1000EscCmdManager.addOpenMoneyBoxCmd()
+     EloPR1000PrinterManager.writeMsgAsync(EloPR1000EscCmdManager)
+}
+
+function beepTestPR1000(){
+    EloPR1000EscCmdManager.addBeepCmd()
+    EloPR1000PrinterManager.writeMsgAsync(EloPR1000EscCmdManager)
+    
+}
+
+function barcodeTestPR1000(){
+
+     EloPR1000BarcodeManager.setBarcodeStringPosition(BarcodeStringPosition.BELOW_BARCODE)
+     EloPR1000BarcodeManager.setHeightInDot(72)
+     EloPR1000BarcodeManager.setBarcodeWidth(3)
+     EloPR1000EscCmdManager.addBarcodeCmd(BarcodeType.CODE128, EloPR1000BarcodeManager, "123456789")
+     EloPR1000EscCmdManager.addLFCRCmd()
+     EloPR1000EscCmdManager.addLFCRCmd()
+     EloPR1000EscCmdManager.addCmdCutNew()
+     EloPR1000PrinterManager.writeMsgAsync(EloPR1000EscCmdManager)
+}
+
+function imageTestPR1000(){
+
+}
+
+function disconnectPR1000(){
+
+}
+
+function resetDataTypes(){
 
 }
 
@@ -182,76 +226,6 @@ function textTestPR1000(){
     EloPR1000EscCmdManager.addAllCutCmd()
     EloPR1000EscCmdManager.addEndCmd()
     EloPR1000PrinterManager.writeMsgAsync(EloPR1000EscCmdManager)
-
-  
-    
-/*
-    
-
-        //add qr code here
-
-        PR1000EscCmd.PR1000BarcodeSetting barcodeSetting = pr1000EscCmd.barcodeSetting;
-        barcodeSetting.setQrcodeDotSize(5);//accept value: Esc(1~15),
-        barcodeSetting.setQrcodeEccLevel(PR1000PrinterEnum.QrcodeEccLevel.L);
-sdfds        pr1000EscCmd.append(pr1000EscCmd.getBarcodeCmd(PR1000PrinterEnum.BarcodeType.QR_CODE, barcodeSetting, "https://www.elotouch.com/"));
-
-
-        //EloPR1000EscCmd.addLFCRCmd();     void function does not return
-
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getAllCutCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getEndCmd());
-
-        Log.d("gregor","length end is " + pr1000EscCmd.getAppendCmds().length);
-
-        Log.d("gregor","quick check length " + pr1000EscCmd.getLFCRCmd().length);
-
-        pr1000Printer.writeMsgAsync(pr1000EscCmd.getAppendCmds());
-*/
-    
-
-}
-
-function drawerTestPR1000(){
-     EloPR1000EscCmdManager.addOpenMoneyBoxCmd()
-     EloPR1000PrinterManager.writeMsgAsync(EloPR1000EscCmdManager)
-}
-
-function beepTestPR1000(){
-    EloPR1000EscCmdManager.addBeepCmd()
-    EloPR1000PrinterManager.writeMsgAsync(EloPR1000EscCmdManager)
-    
-}
-
-function barcodeTestPR1000(){
-        //EloPR1000EscCmdManager.gregTest()
-
-    
-    console.log(typeof EloPR1000EscCmdManager);
-
-     console.log("rerun")
-     //   EloPR1000EscCmdManager.gregTest2(EloPR1000EscCmdManager)
-    //EloPR1000EscCmdManager.gregTest2(EloPR1000EscCmdManager.toString())
-
-    EloPR1000EscCmdManager.gregTest(EloPR1000EscCmdManager)
-     EloPR1000EscCmdManager.gregTest("sauce")
-
-   // EloPR1000EscCmdManager.gregTest(EloPR1000PrinterManager)
-
-}
-
-function imageTestPR1000(){
-
-}
-
-function disconnectPR1000(){
-
 }
 
 
