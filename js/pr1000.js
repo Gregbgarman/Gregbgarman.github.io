@@ -59,12 +59,12 @@ function barcodeTestPR1000(){
     console.log(typeof EloPR1000EscCmdManager);
 
      console.log("rerun")
-        EloPR1000EscCmdManager.gregTest2("h")
-    EloPR1000EscCmdManager.gregTest2(EloPR1000EscCmdManager.toString())
+        EloPR1000EscCmdManager.gregTest2(EloPR1000EscCmdManager)
+    //EloPR1000EscCmdManager.gregTest2(EloPR1000EscCmdManager.toString())
 
-    EloPR1000EscCmdManager.gregTest(EloPR1000EscCmdManager)
+   // EloPR1000EscCmdManager.gregTest(EloPR1000EscCmdManager)
 
-    EloPR1000EscCmdManager.gregTest(EloPR1000PrinterManager)
+   // EloPR1000EscCmdManager.gregTest(EloPR1000PrinterManager)
 
 }
 
