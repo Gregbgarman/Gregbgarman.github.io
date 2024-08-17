@@ -88,6 +88,13 @@ function textTestPR1000(){
     EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"2:45PM    6/25/2024")
     EloPR1000EscCmdManager.addLFCRCmd()
     EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"--------------------------------------")
+
+
+     EloPR1000EscCmdManager.addAllCutCmd()
+     EloPR1000EscCmdManager.addEndCmd()
+     EloPR1000PrinterManager.writeMsgAsync(EloPR1000EscCmdManager)
+
+ 
     
    
     
