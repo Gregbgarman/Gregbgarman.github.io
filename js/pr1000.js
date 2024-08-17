@@ -22,9 +22,9 @@ function getPR1000UsbPrinters(){
         let vendorId = printerObj.vendorId
         let productId = printerObj.productId
         deviceName = printerObj.deviceName
-        console.log("devicename is " + deviceName);
-        console.log("vendorId is " + vendorId);
-        console.log("productId is " + productId);        
+        console.log("devicename: " + deviceName);
+        console.log("vendorId: " + vendorId);
+        console.log("productId: " + productId);        
     }
     document.getElementById("textField").value = deviceName
     
