@@ -102,12 +102,12 @@ function getStatusPR1000(){
 
 function drawerTestPR1000(){
      EloPR1000EscCmdManager.addOpenMoneyBoxCmd()
-     EloPR1000PrinterManager.writeMsgAsync(EloPR1000EscCmdManager)
+     EloPR1000PrinterManager.runEscCmds(EloPR1000EscCmdManager)
 }
 
 function beepTestPR1000(){
     EloPR1000EscCmdManager.addBeepCmd()
-    EloPR1000PrinterManager.writeMsgAsync(EloPR1000EscCmdManager)
+    EloPR1000PrinterManager.runEscCmds(EloPR1000EscCmdManager)
     
 }
 
@@ -120,7 +120,7 @@ function barcodeTestPR1000(){
      EloPR1000EscCmdManager.addLFCRCmd()
      EloPR1000EscCmdManager.addLFCRCmd()
      EloPR1000EscCmdManager.addCmdCutNew()
-     EloPR1000PrinterManager.writeMsgAsync(EloPR1000EscCmdManager)
+     EloPR1000PrinterManager.runEscCmds(EloPR1000EscCmdManager)
 }
 
 function imageTestPR1000(){
@@ -225,7 +225,7 @@ function textTestPR1000(){
     EloPR1000EscCmdManager.addLFCRCmd()
     EloPR1000EscCmdManager.addAllCutCmd()
     EloPR1000EscCmdManager.addEndCmd()
-    EloPR1000PrinterManager.writeMsgAsync(EloPR1000EscCmdManager)
+    EloPR1000PrinterManager.runEscCmds(EloPR1000EscCmdManager)
 }
 
 
