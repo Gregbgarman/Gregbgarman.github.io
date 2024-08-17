@@ -11,8 +11,8 @@ document.getElementById("PR1000_disconnect").addEventListener("click",disconnect
     
 
 const SettingEnum = {
-    Disable: 0,
-    Enable: 1,
+    Enable: 0,
+    Disable: 1,
     NoSetting: 2
 }
 
@@ -30,25 +30,25 @@ const ESCFontTypeEnum = {
 }
 
 const QrcodeEccLevel = {
-   H: 0,
-   L: 1,
-   M: 2,
-   Q: 3,
+   L: 0,
+   M: 1,
+   Q: 2,
+   H: 3,
 }
 
 const BarcodeType = {
-    CODABAR: 0,
-    CODE128: 1,
-    CODE39: 2,
-    CODE93: 3,
-    EAN13: 4,
-    EAN14: 5,
-    EAN8: 6,
-    GS1: 7,
-    ITF: 8,
-    QR_CODE: 9,
-    UPC_A: 10,
-    UPC_E: 11
+    UPC_A: 0,
+    UPC_E: 1,
+    EAN13: 2,
+    EAN14: 3,
+    EAN8: 4,
+    CODE39: 5,
+    ITF: 6,
+    CODABAR: 7,
+    CODE39: 8,
+    CODE128: 9,
+    GS1: 10,
+    QR_CODE: 11
 }
 
 
@@ -114,6 +114,7 @@ function textTestPR1000(){
     EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"2:45PM    6/25/2024")
     EloPR1000EscCmdManager.addLFCRCmd()
     EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"--------------------------------------")
+    EloPR1000EscCmdManager.addLFCRCmd()
     
 
     EloPR1000TextSettingManager.setAlign(CommonEnum.ALIGN_MIDDLE)
@@ -140,11 +141,13 @@ function textTestPR1000(){
     EloPR1000EscCmdManager.addLFCRCmd()
     EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"Tax            1.34")
     EloPR1000EscCmdManager.addLFCRCmd()
+    
     EloPR1000TextSettingManager.setBold(SettingEnum.Enable)
     EloPR1000TextSettingManager.setDoubleWidth(SettingEnum.Enable)
     EloPR1000TextSettingManager.setDoubleHeight(SettingEnum.Enable)
     EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"Total 20.59")
     EloPR1000EscCmdManager.addLFCRCmd()
+    
     EloPR1000TextSettingManager.setDoubleWidth(SettingEnum.Disable)
     EloPR1000TextSettingManager.setDoubleHeight(SettingEnum.Disable)
     EloPR1000TextSettingManager.setBold(SettingEnum.Disable)
