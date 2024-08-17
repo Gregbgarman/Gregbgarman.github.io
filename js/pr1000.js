@@ -64,6 +64,8 @@ function barcodeTestPR1000(){
 
     EloPR1000EscCmdManager.gregTest(EloPR1000EscCmdManager)
 
+    EloPR1000EscCmdManager.gregTest(EloPR1000PrinterManager)
+
 }
 
 function imageTestPR1000(){
