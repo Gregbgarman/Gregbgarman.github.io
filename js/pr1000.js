@@ -29,6 +29,28 @@ const ESCFontTypeEnum = {
     FONT_D_8x16: 3
 }
 
+const QrcodeEccLevel = {
+   H: 0,
+   L: 1,
+   M: 2,
+   Q: 3,
+}
+
+const BarcodeType = {
+    CODABAR: 0,
+    CODE128: 1,
+    CODE39: 2,
+    CODE93: 3,
+    EAN13: 4,
+    EAN14: 5,
+    EAN8: 6,
+    GS1: 7,
+    ITF: 8,
+    QR_CODE: 9,
+    UPC_A: 10,
+    UPC_E: 11
+}
+
 
         
 function getPR1000UsbPrinters(){
@@ -92,98 +114,76 @@ function textTestPR1000(){
     EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"2:45PM    6/25/2024")
     EloPR1000EscCmdManager.addLFCRCmd()
     EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"--------------------------------------")
-
-
-     EloPR1000EscCmdManager.addAllCutCmd()
-     EloPR1000EscCmdManager.addEndCmd()
-     EloPR1000PrinterManager.writeMsgAsync(EloPR1000EscCmdManager)
-
- 
     
-   
+
+    EloPR1000TextSettingManager.setAlign(CommonEnum.ALIGN_MIDDLE)
+    EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"Guest 1")
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000TextSettingManager.setAlign(CommonEnum.ALIGN_LEFT)
+    EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"1 pizza                        6.50")
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"1 soda                         2.75")
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000TextSettingManager.setAlign(CommonEnum.ALIGN_MIDDLE)
+    EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"Guest 2")
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000TextSettingManager.setAlign(CommonEnum.ALIGN_LEFT)
+    EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"1 milkshake                    6.00")
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"1 french fries                 4.00")
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"--------------------------------------")
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000TextSettingManager.setAlign(CommonEnum.ALIGN_RIGHT)
+    EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"Subtotal      19.25")
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"Tax            1.34")
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000TextSettingManager.setBold(SettingEnum.Enable)
+    EloPR1000TextSettingManager.setDoubleWidth(SettingEnum.Enable)
+    EloPR1000TextSettingManager.setDoubleHeight(SettingEnum.Enable)
+    EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"Total 20.59")
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000TextSettingManager.setDoubleWidth(SettingEnum.Disable)
+    EloPR1000TextSettingManager.setDoubleHeight(SettingEnum.Disable)
+    EloPR1000TextSettingManager.setBold(SettingEnum.Disable)
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000TextSettingManager.setAlign(CommonEnum.ALIGN_LEFT)
+    EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"Let us know how we did!")
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"Take our survey within")
+    EloPR1000TextSettingManager.setUnderline(SettingEnum.Enable)
+    EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager," 10 days ")
+    EloPR1000TextSettingManager.setUnderline(SettingEnum.Disable)
+    EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"and get entered to ")
+    EloPR1000TextSettingManager.setIsAntiWhite(SettingEnum.Enable)
+    EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"win a prize! ")
+    EloPR1000TextSettingManager.setIsAntiWhite(SettingEnum.Disable)
+    EloPR1000EscCmdManager.addTextCmd(EloPR1000TextSettingManager,"Scan the Qr code below to start!")
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000EscCmdManager.addLFCRCmd()
+
+    //add qr code
+    EloPR1000BarcodeManager.setQrcodeDotSize(5)
+    EloPR1000BarcodeManager.setQrcodeEccLevel(QrcodeEccLevel.L)
+    EloPR1000EscCmdManager.addBarcodeCmd(BarcodeType.QR_CODE, EloPR1000BarcodeManager, "https://www.elotouch.com/")
+    
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000EscCmdManager.addLFCRCmd()
+    EloPR1000EscCmdManager.addAllCutCmd()
+    EloPR1000EscCmdManager.addEndCmd()
+    EloPR1000PrinterManager.writeMsgAsync(EloPR1000EscCmdManager)
+
+  
     
 /*
- PR1000EscCmd pr1000EscCmd = new PR1000EscCmd();
-        PR1000EscCmd.PR1000TextSetting textSetting = pr1000EscCmd.textSetting;
-        String charsetName = "UTF-8";
-
-        pr1000EscCmd.append(pr1000EscCmd.getHeaderCmd());
-        pr1000EscCmd.setCharSetName(charsetName);
-        textSetting.setAlign(PR1000PrinterEnum.CommonEnum.ALIGN_MIDDLE);
-        textSetting.setEscFontType(PR1000PrinterEnum.ESCFontTypeEnum.FONT_A_12x24);
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"Test Receipt"));
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"123 Address"));
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"Knoxville, TN"));
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append( pr1000EscCmd.getLFCRCmd());
-
-        textSetting.setAlign(PR1000PrinterEnum.CommonEnum.ALIGN_LEFT);
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"Table 21"));
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"Server John Doe"));
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"2:45PM    6/25/2024"));
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"--------------------------------------"));
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-
-        textSetting.setAlign(PR1000PrinterEnum.CommonEnum.ALIGN_MIDDLE);
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"Guest 1"));
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-
-        textSetting.setAlign(PR1000PrinterEnum.CommonEnum.ALIGN_LEFT);
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"1 pizza                        6.50"));
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"1 soda                         2.75"));
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-
-        textSetting.setAlign(PR1000PrinterEnum.CommonEnum.ALIGN_MIDDLE);
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"Guest 2"));
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-
-        textSetting.setAlign(PR1000PrinterEnum.CommonEnum.ALIGN_LEFT);
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"1 milkshake                    6.00"));
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"1 french fries                 4.00"));
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"--------------------------------------"));
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-
-        textSetting.setAlign(PR1000PrinterEnum.CommonEnum.ALIGN_RIGHT);
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"Subtotal      19.25"));
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"Tax            1.34"));
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-
-        Log.d("gregor","length mid is " + pr1000EscCmd.getAppendCmds().length);
-
-        textSetting.setBold(PR1000PrinterEnum.SettingEnum.Enable);
-        textSetting.setDoubleWidth(PR1000PrinterEnum.SettingEnum.Enable);
-        textSetting.setDoubleHeight(PR1000PrinterEnum.SettingEnum.Enable);
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"Total 20.59"));
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        textSetting.setBold(PR1000PrinterEnum.SettingEnum.Disable);
-        textSetting.setDoubleWidth(PR1000PrinterEnum.SettingEnum.Disable);
-        textSetting.setDoubleHeight(PR1000PrinterEnum.SettingEnum.Disable);
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-
-        textSetting.setAlign(PR1000PrinterEnum.CommonEnum.ALIGN_LEFT);
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"Let us know how we did!"));
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"Take our survey within"));
-        textSetting.setUnderline(PR1000PrinterEnum.SettingEnum.Enable);
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting," 10 days "));
-        textSetting.setUnderline(PR1000PrinterEnum.SettingEnum.Disable);
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"and get entered to "));
-        textSetting.setIsAntiWhite(PR1000PrinterEnum.SettingEnum.Enable);
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"win a prize! "));
-        textSetting.setIsAntiWhite(PR1000PrinterEnum.SettingEnum.Disable);
-        pr1000EscCmd.append(pr1000EscCmd.getTextCmd(textSetting,"Scan the Qr code below to start!"));
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
-        pr1000EscCmd.append(pr1000EscCmd.getLFCRCmd());
+    
 
         //add qr code here
 
