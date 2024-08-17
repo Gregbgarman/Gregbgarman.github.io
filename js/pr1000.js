@@ -63,6 +63,8 @@ function connectPR1000(){
 
 function getStatusPR1000(){
 
+    EloPR1000TextSettingManager.setAlign(1)
+
 }
 
 function textTestPR1000(){
