@@ -138,7 +138,7 @@ function imageTestPR1000(){
     
     EloPR1000CommonSettingManager.setAlign(CommonEnum.ALIGN_MIDDLE)
     EloPR1000BitmapSettingManager.setBmpPrintMode(BmpPrintMode.MODE_MULTI_COLOR)
-    EloPR1000BitmapSettingManager.setBitmapLimitWidth(120)
+    EloPR1000BitmapSettingManager.setBitmapLimitWidth(200)
     EloPR1000EscCmdManager.addBitmapCmd(EloPR1000BitmapSettingManager,eloImage)
     EloPR1000EscCmdManager.addLFCRCmd()
     EloPR1000EscCmdManager.addCmdCutNew()
