@@ -64,6 +64,13 @@ const BmpPrintMode = Object.freeze({
     MODE_MULTI_COLOR: 2
 })
 
+const ConnectState = Object.freeze({
+    CONNECT_STATE_INTERRUPTED: 0,
+    CONNECT_STATE_SUCCESS: 1   
+})
+
+
+
         
 function getPR1000UsbPrinters(){
     
@@ -92,7 +99,42 @@ function getPR1000WifiPrinters(){
 
 function connectPR1000(){
     let printer = document.getElementById("textField").value
+    document.getElementById("textField").value = "connecting..."
+
+    EloPR1000PrinterManager.addUsbAttachDetachListener("attachDetachCallback")
+    EloPR1000PrinterManager.addConnectListener("connectCallback")
+    
     EloPR1000PrinterManager.connect(printer)
+}
+
+function connectCallback(status){
+    if (status == ConnectState.CONNECT_STATE_SUCCESS){
+        document.getElementById("textField").value = "connected!"
+    }
+    else if (status == ConnectState.CONNECT_STATE_INTERRUPTED){
+         document.getElementById("textField").value = "Disconnected!"
+    }    
+}
+
+function attachDetachCallback(isAttached){
+    if (isAttached == true){
+        console.log("attached is true")
+    }
+    else if (isAttached == false){
+ console.log("attached is false")
+    }
+    else if (isAttached == "true"){
+console.log("attached is true - string")
+    }
+
+    else if (isAttached == "false"){
+console.log("attached is false - string")
+
+    }
+    else{
+ console.log("attached is else")
+    }
+
 }
 
 function getStatusPR1000(){
