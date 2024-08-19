@@ -10,33 +10,33 @@ document.getElementById("PR1000_drawer_test").addEventListener("click",drawerTes
 document.getElementById("PR1000_disconnect").addEventListener("click",disconnectPR1000)
     
 
-const SettingEnum = {
+const SettingEnum = Object.freeze({
     Enable: 0,
     Disable: 1,
     NoSetting: 2
-}
+})
 
-const CommonEnum = {
+const CommonEnum = Object.freeze({
     ALIGN_LEFT: 0,
     ALIGN_MIDDLE: 1,
     ALIGN_RIGHT: 2    
-}
+})
 
-const ESCFontTypeEnum = {
+const ESCFontTypeEnum = Object.freeze({
     FONT_A_12x24: 0,
     FONT_B_9x24: 1,
     FONT_C_9x17: 2,
     FONT_D_8x16: 3
-}
+})
 
-const QrcodeEccLevel = {
+const QrcodeEccLevel = Object.freeze({
    L: 0,
    M: 1,
    Q: 2,
    H: 3,
-}
+})
 
-const BarcodeType = {
+const BarcodeType = Object.freeze({
     UPC_A: 0,
     UPC_E: 1,
     EAN13: 2,
@@ -49,20 +49,20 @@ const BarcodeType = {
     CODE128: 9,
     GS1: 10,
     QR_CODE: 11
-}
+})
 
-const BarcodeStringPosition = {
+const BarcodeStringPosition = Object.freeze({
     NONE: 0,
     ABOVE_BARCODE: 1,
     BELOW_BARCODE: 2,
     ABOVE_BELOW_BARCODE: 3
-}
+})
 
-const BmpPrintMode = {
+const BmpPrintMode = Object.freeze({
     MODE_SINGLE_COLOR: 0,
     MODE_SINGLE_FAST: 1,
     MODE_MULTI_COLOR: 2
-}
+})
 
         
 function getPR1000UsbPrinters(){
