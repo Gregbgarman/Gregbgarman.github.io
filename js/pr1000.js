@@ -109,11 +109,12 @@ function connectPR1000(){
 
 function connectCallback(status){
     if (status == ConnectState.CONNECT_STATE_SUCCESS){
-        document.getElementById("textField").value = "connected!"
+         document.getElementById("PR1000Available").innerHTML = "Printer Ready"                
     }
     else if (status == ConnectState.CONNECT_STATE_INTERRUPTED){
-         document.getElementById("textField").value = "Disconnected!"
-    }    
+         document.getElementById("PR1000Available").innerHTML = "Printer Offline"
+    }
+    document.getElementById("textField").value = ""
 }
 
 function attachDetachCallback(isAttached){
