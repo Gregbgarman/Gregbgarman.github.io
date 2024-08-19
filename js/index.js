@@ -136,6 +136,11 @@ function setOnReadyCallbacks(){
 }
 
 function onPR1000PrinterReady(serviceBound){
+    if (serviceBound == true){
+        console.log("gregor - servicebound is true")
+    }
+
+	
     if (serviceBound === "true"){
         document.getElementById("pr1000Header").style.color = COLOR_GREEN
     }
