@@ -93,53 +93,55 @@ function getPR1000UsbPrinters(){
 
 
 function getPR1000WifiPrinters(){
+    document.getElementById("textField").value = "searching..."
 
 }
 
 
 function connectPR1000(){
+    if (EloPR1000PrinterManager.getConnectedDevice() != ""){
+        document.getElementById("textField").value = "device already connected"
+        return
+    }
+    
     let printer = document.getElementById("textField").value
     document.getElementById("textField").value = "connecting..."
 
-    EloPR1000PrinterManager.addUsbAttachDetachListener("attachDetachCallback")
+    if (EloPR1000PrinterManager.getConnectedDevice().contains("USB")){
+        EloPR1000PrinterManager.addUsbAttachDetachListener("attachDetachCallback")
+    }
     EloPR1000PrinterManager.addConnectListener("connectCallback")
+    EloPR1000PrinterManager.addStatusListener("statusCallback")
     
     EloPR1000PrinterManager.connect(printer)
 }
 
-function connectCallback(status){
-    if (status == ConnectState.CONNECT_STATE_SUCCESS){
-         document.getElementById("PR1000Available").innerHTML = "Printer Ready"                
+function connectCallback(state){
+    if (state == ConnectState.CONNECT_STATE_SUCCESS){
+         
+        
+         document.getElementById("PR1000Available").innerHTML = "Printer Connected"
+         //run a status check here?
     }
-    else if (status == ConnectState.CONNECT_STATE_INTERRUPTED){
+    else if (state== ConnectState.CONNECT_STATE_INTERRUPTED){
          document.getElementById("PR1000Available").innerHTML = "Printer Offline"
     }
     document.getElementById("textField").value = ""
 }
 
-function attachDetachCallback(isAttached){
-
-console.log("attached value is " + isAttached)
-    console.log(typeof isAttached)
+function statusCallback(status){
     
-    if (isAttached == true){
+
+}
+
+function attachDetachCallback(isAttached){
+    if (isAttached){
         console.log("attached is true")
     }
-    else if (isAttached == false){
- console.log("attached is false")
-    }
-    else if (isAttached == "true"){
-console.log("attached is true - string")
-    }
-
-    else if (isAttached == "false"){
-console.log("attached is false - string")
-
-    }
     else{
- console.log("attached is else")
+        console.log("attached is false")
+        EloPR1000PrinterManager.disconnect()
     }
-
 }
 
 function getStatusPR1000(){
@@ -194,7 +196,6 @@ function imageTestPR1000(){
 
 function disconnectPR1000(){
     EloPR1000PrinterManager.disconnect()
-
 }
 
 function clearCommands(){
