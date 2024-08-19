@@ -120,6 +120,7 @@ function connectCallback(status){
 function attachDetachCallback(isAttached){
 
 console.log("attached value is " + isAttached)
+    console.log(typeof isAttached)
     
     if (isAttached == true){
         console.log("attached is true")
