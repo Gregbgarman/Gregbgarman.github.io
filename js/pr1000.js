@@ -144,7 +144,7 @@ function connectPR1000(){
     EloPR1000PrinterManager.addConnectListener("connectCallback")
     //EloPR1000PrinterManager.addStatusListener("statusCallback")
 
-    if (printer.contains("USB")){
+    if (printer.includes("USB")){
         EloPR1000PrinterManager.addUsbAttachDetachListener("attachDetachCallback")
         EloPR1000PrinterManager.connectUsb(printer)
     }
