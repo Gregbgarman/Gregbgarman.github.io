@@ -8,7 +8,10 @@ document.getElementById("PR1000_text_test").addEventListener("click",textTestPR1
 document.getElementById("PR1000_status_test").addEventListener("click",getStatusPR1000)
 document.getElementById("PR1000_drawer_test").addEventListener("click",drawerTestPR1000)
 document.getElementById("PR1000_disconnect").addEventListener("click",disconnectPR1000)
-    
+
+const SCAN_START = 1001
+const SCAN_FINISH = 1002
+const SCAN_ERROR = 1003
 
 const SettingEnum = Object.freeze({
     Enable: 0,
@@ -94,13 +97,33 @@ function getPR1000UsbPrinters(){
 
 function getPR1000WifiPrinters(){
     EloPR1000PrinterManager.scanIpPrinters("ipDeviceReceiver")
-    document.getElementById("textField").value = "searching..."
 }
 
 function ipDeviceReceiver(msg,devices){
-console.log("greg - msg is " + msg)
-    console.log("greg-devices are " + devices)
+    if (msg == SCAN_START){
+        document.getElementById("textField").value = "scanning..."
+    }
+    else if (msg == SCAN_FINISH){
+        document.getElementById("textField").value = "scan finish"
+        let printerArray = JSON.parse(devices)
 
+        for (let i = 0; i < printerArray.length; i++){
+             let printer = printerArray[i]
+
+             let ipAddress = printer.ip
+             let port = printer.port
+             let mac = printer.mac
+             let dhcpEnable = printer.dhcp_enable
+
+             document.getElementById("textField").value = ipAddress + ":" + port
+
+        }
+        
+
+    }
+    else if (msg == SCAN_ERROR){
+        document.getElementById("textField").value = "scan error"
+    }
 }
 
 
@@ -111,15 +134,28 @@ function connectPR1000(){
     }
     
     let printer = document.getElementById("textField").value
+
+    if (printer == ""){
+        return
+    }
+    
     document.getElementById("textField").value = "connecting..."
 
-    if (EloPR1000PrinterManager.getConnectedDevice().contains("USB")){
-        EloPR1000PrinterManager.addUsbAttachDetachListener("attachDetachCallback")
-    }
     EloPR1000PrinterManager.addConnectListener("connectCallback")
     EloPR1000PrinterManager.addStatusListener("statusCallback")
+
+    if (printer.contains("USB")){
+        EloPR1000PrinterManager.addUsbAttachDetachListener("attachDetachCallback")
+        EloPR1000PrinterManager.connectUsb(printer)
+    }
+    else {
+        let ipAddress = printer.substring(0, printer.indexOf(':'))
+        let port = printer.substring(printer.indexOf(':') + 1, printer.length)
+        connectIp(ipAddress,port)
+    }
     
-    EloPR1000PrinterManager.connectUsb(printer)
+    
+   
 }
 
 function connectCallback(state){
