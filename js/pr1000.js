@@ -164,7 +164,7 @@ function connectPR1000(){
         let port = Number(printer.substring(printer.indexOf(':') + 1, printer.length))
 
         console.log("the port type is " + typeof port)
-        connectIp(ipAddress,9100)
+        EloPR1000PrinterManager.connectIp(ipAddress, port)
     }
     
     
