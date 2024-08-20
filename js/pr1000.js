@@ -113,7 +113,7 @@ function connectPR1000(){
     EloPR1000PrinterManager.addConnectListener("connectCallback")
     EloPR1000PrinterManager.addStatusListener("statusCallback")
     
-    EloPR1000PrinterManager.connect(printer)
+    EloPR1000PrinterManager.connectUsb(printer)
 }
 
 function connectCallback(state){
