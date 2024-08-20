@@ -142,7 +142,7 @@ function connectPR1000(){
     document.getElementById("textField").value = "connecting..."
 
     EloPR1000PrinterManager.addConnectListener("connectCallback")
-    EloPR1000PrinterManager.addStatusListener("statusCallback")
+    //EloPR1000PrinterManager.addStatusListener("statusCallback")
 
     if (printer.contains("USB")){
         EloPR1000PrinterManager.addUsbAttachDetachListener("attachDetachCallback")
