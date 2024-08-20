@@ -111,9 +111,20 @@ function ipDeviceReceiver(msg,devices){
              let printer = printerArray[i]
 
              let ipAddress = printer.ip
+
+ console.log("ipAddress " + typeof ipAddress)
+            
              let port = printer.port
+
+            console.log("port type is " + typeof port)
+            
              let mac = printer.mac
+
+ console.log("mac type is " + mac)
+
+            
              let dhcpEnable = printer.dhcp_enable
+            console.log("dhcpEnable type is " + typeof dhcpEnable)
 
              document.getElementById("textField").value = ipAddress + ":" + port
 
