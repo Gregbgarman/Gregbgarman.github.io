@@ -153,8 +153,7 @@ function connectPR1000(){
     document.getElementById("textField").value = "connecting..."
 
     EloPR1000PrinterManager.addConnectListener("connectCallback")
-    //EloPR1000PrinterManager.addStatusListener("statusCallback")
-
+    
     if (printer.includes("USB")){
         EloPR1000PrinterManager.addUsbAttachDetachListener("attachDetachCallback")
         EloPR1000PrinterManager.connectUsb(printer)
@@ -163,12 +162,9 @@ function connectPR1000(){
         let ipAddress = printer.substring(0, printer.indexOf(':'))
         let port = Number(printer.substring(printer.indexOf(':') + 1, printer.length))
 
-        console.log("the port type is " + typeof port)
         EloPR1000PrinterManager.connectIp(ipAddress, port)
     }
-    
-    
-   
+  
 }
 
 function connectCallback(state){
@@ -176,7 +172,7 @@ function connectCallback(state){
          
         
          document.getElementById("PR1000Available").innerHTML = "Printer Connected"
-         //run a status check here?
+         EloPR1000PrinterManager.addStatusListener("statusCallback")
     }
     else if (state== ConnectState.CONNECT_STATE_INTERRUPTED){
          document.getElementById("PR1000Available").innerHTML = "Printer Offline"
@@ -200,6 +196,13 @@ function attachDetachCallback(isAttached){
 }
 
 function getStatusPR1000(){
+    if (EloPR1000PrinterManager.getConnectedDevice() == ""){
+        document.getElementById("textField").value = "no device connected"
+        return
+    }
+
+    
+    
 
 //EloPR1000BarcodeManager.setQrcodeDotSize(5)
     
