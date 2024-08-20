@@ -164,7 +164,7 @@ function connectPR1000(){
         let port = Number(printer.substring(printer.indexOf(':') + 1, printer.length))
 
         console.log("the port type is " + typeof port)
-        connectIp(ipAddress,port)
+        connectIp(ipAddress,9100)
     }
     
     
