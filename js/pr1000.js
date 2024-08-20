@@ -93,7 +93,13 @@ function getPR1000UsbPrinters(){
 
 
 function getPR1000WifiPrinters(){
+    EloPR1000PrinterManager.scanIpPrinters("ipDeviceReceiver")
     document.getElementById("textField").value = "searching..."
+}
+
+function ipDeviceReceiver(msg,devices){
+console.log("greg - msg is " + msg)
+    console.log("greg-devices are " + devices)
 
 }
 
