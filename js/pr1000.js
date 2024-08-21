@@ -158,7 +158,7 @@ function connectPR1000(){
         EloPR1000PrinterManager.addUsbAttachDetachListener("attachDetachCallback")
         EloPR1000PrinterManager.connectUsb(printer)
     }
-    else {
+    else {        //connecting over internet
         let ipAddress = printer.substring(0, printer.indexOf(':'))
         let port = Number(printer.substring(printer.indexOf(':') + 1, printer.length))
 
@@ -168,11 +168,9 @@ function connectPR1000(){
 }
 
 function connectCallback(state){
-    if (state == ConnectState.CONNECT_STATE_SUCCESS){
-         
-        
+    if (state == ConnectState.CONNECT_STATE_SUCCESS){                 
          document.getElementById("PR1000Available").innerHTML = "Printer Connected"
-         EloPR1000PrinterManager.addStatusListener("statusCallback")
+         EloPR1000PrinterManager.addPrinterStatusListener("statusCallback")
     }
     else if (state== ConnectState.CONNECT_STATE_INTERRUPTED){
          document.getElementById("PR1000Available").innerHTML = "Printer Offline"
@@ -181,8 +179,7 @@ function connectCallback(state){
 }
 
 function statusCallback(status){
-    
-
+    document.getElementById("textField").value = status
 }
 
 function attachDetachCallback(isAttached){
@@ -196,21 +193,16 @@ function attachDetachCallback(isAttached){
 }
 
 function getStatusPR1000(){
+    clearCommands()
     if (EloPR1000PrinterManager.getConnectedDevice() == ""){
         document.getElementById("textField").value = "no device connected"
         return
     }
 
-    
-    
-
-//EloPR1000BarcodeManager.setQrcodeDotSize(5)
-    
-    EloPR1000TextSettingManager.setDoubleHeight(1)
-
+    let Offline_status = 1
+    EloPR1000EscCmdManager.addPrinterStatus(Offline_status)
+    EloPR1000PrinterManager.runEscCmds(EloPR1000EscCmdManager)
 }
-
-
 
 function drawerTestPR1000(){
      clearCommands()
@@ -221,8 +213,7 @@ function drawerTestPR1000(){
 function beepTestPR1000(){
     clearCommands()
     EloPR1000EscCmdManager.addBeepCmd()
-    EloPR1000PrinterManager.runEscCmds(EloPR1000EscCmdManager)
-    
+    EloPR1000PrinterManager.runEscCmds(EloPR1000EscCmdManager)    
 }
 
 function barcodeTestPR1000(){
