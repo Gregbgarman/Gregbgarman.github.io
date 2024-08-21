@@ -104,8 +104,11 @@ function ipDeviceReceiver(msg,devices){
         document.getElementById("textField").value = "scanning..."
     }
     else if (msg == SCAN_FINISH){
-        document.getElementById("textField").value = "scan finish"
         let printerArray = JSON.parse(devices)
+
+        if (printerArray.length == 0){
+            document.getElementById("textField").value = "scan finish - no devices found"
+        }
 
         for (let i = 0; i < printerArray.length; i++){
              let printer = printerArray[i]
