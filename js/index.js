@@ -51,14 +51,7 @@ function setOnReadyCallbacks(){
         */
     }
 
-    try{
-        EloHoneywellBarcodeManager.initialize("onHoneywellReady")
-    }catch(error){
-       /*
-         Make sure Webview Hardware Access toggle is enabled
-         from Eloview or device settings app and Elo device on correct firmware.
-        */
-    }
+  
 
     try{
 	///EloZebraBarcodeManager.initialize("onZebraReady")
@@ -133,6 +126,17 @@ function setOnReadyCallbacks(){
          from Eloview or device settings app and Elo device on correct firmware.
         */
     }
+
+
+  try{
+        EloHoneywellBarcodeManager.initialize("onHoneywellReady")
+    }catch(error){
+       /*
+         Make sure Webview Hardware Access toggle is enabled
+         from Eloview or device settings app and Elo device on correct firmware.
+        */
+    }
+	
 }
 
 function onPR1000PrinterReady(serviceBound){
