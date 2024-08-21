@@ -156,7 +156,7 @@ function connectPR1000(){
 function connectCallback(state){
     if (state == ConnectState.CONNECT_STATE_SUCCESS){                 
          document.getElementById("PR1000Available").innerHTML = "Printer Connected"
-         //EloPR1000PrinterManager.addPrinterStatusListener("statusCallback")
+         EloPR1000PrinterManager.addPrinterStatusListener("statusCallback")
     }
     else if (state== ConnectState.CONNECT_STATE_INTERRUPTED){
          document.getElementById("PR1000Available").innerHTML = "Printer Offline"
@@ -184,8 +184,6 @@ function getStatusPR1000(){
         document.getElementById("textField").value = "no device connected"
         return
     }
-
-    EloPR1000PrinterManager.addPrinterStatusListener("statusCallback")
 
     let Offline_status = 1
     EloPR1000EscCmdManager.addPrinterStatus(Offline_status)
