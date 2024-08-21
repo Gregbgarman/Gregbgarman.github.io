@@ -111,26 +111,12 @@ function ipDeviceReceiver(msg,devices){
              let printer = printerArray[i]
 
              let ipAddress = printer.ip
-
- console.log("ipAddress " + typeof ipAddress)
-            
              let port = printer.port
-
-            console.log("port type is " + typeof port)
-            
              let mac = printer.mac
-
- console.log("mac type is " + mac)
-
-            
              let dhcpEnable = printer.dhcp_enable
-            console.log("dhcpEnable type is " + typeof dhcpEnable)
-
-             document.getElementById("textField").value = ipAddress + ":" + port
-
-        }
         
-
+             document.getElementById("textField").value = ipAddress + ":" + port
+        }
     }
     else if (msg == SCAN_ERROR){
         document.getElementById("textField").value = "scan error"
@@ -170,7 +156,7 @@ function connectPR1000(){
 function connectCallback(state){
     if (state == ConnectState.CONNECT_STATE_SUCCESS){                 
          document.getElementById("PR1000Available").innerHTML = "Printer Connected"
-         EloPR1000PrinterManager.addPrinterStatusListener("statusCallback")
+         //EloPR1000PrinterManager.addPrinterStatusListener("statusCallback")
     }
     else if (state== ConnectState.CONNECT_STATE_INTERRUPTED){
          document.getElementById("PR1000Available").innerHTML = "Printer Offline"
@@ -198,6 +184,8 @@ function getStatusPR1000(){
         document.getElementById("textField").value = "no device connected"
         return
     }
+
+    EloPR1000PrinterManager.addPrinterStatusListener("statusCallback")
 
     let Offline_status = 1
     EloPR1000EscCmdManager.addPrinterStatus(Offline_status)
