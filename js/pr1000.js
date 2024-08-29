@@ -170,10 +170,10 @@ function connectCallback(state){
 function statusCallback(printerReady, statusMsg){
     console.log("statusCallback running")
     if (printerReady){
-        document.getElementById("textField").value = status
+        document.getElementById("textField").value = statusMsg
     }
     else{
-        document.getElementById("textField").value = "Error: " + status
+        document.getElementById("textField").value = "Error: " + statusMsg
     }   
 }
 
