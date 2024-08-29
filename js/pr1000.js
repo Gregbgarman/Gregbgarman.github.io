@@ -99,7 +99,7 @@ function getPR1000WifiPrinters(){
     EloPR1000PrinterManager.scanIpPrinters("ipDeviceReceiver")
 }
 
-function ipDeviceReceiver(msg,devices){
+function ipDeviceReceiver(msg, devices){
     if (msg == SCAN_START){
         document.getElementById("textField").value = "scanning..."
     }
@@ -161,14 +161,19 @@ function connectCallback(state){
          document.getElementById("PR1000Available").innerHTML = "Printer Connected"
          EloPR1000PrinterManager.addPrinterStatusListener("statusCallback")
     }
-    else if (state== ConnectState.CONNECT_STATE_INTERRUPTED){
+    else if (state == ConnectState.CONNECT_STATE_INTERRUPTED){
          document.getElementById("PR1000Available").innerHTML = "Printer Offline"
     }
     document.getElementById("textField").value = ""
 }
 
-function statusCallback(status){
-    document.getElementById("textField").value = status
+function statusCallback(printerReady, statusMsg){
+    if (printerReady){
+        document.getElementById("textField").value = status
+    }
+    else{
+        document.getElementById("textField").value = "Error: " + status
+    }   
 }
 
 function attachDetachCallback(isAttached){
@@ -188,8 +193,7 @@ function getStatusPR1000(){
         return
     }
 
-    let Offline_status = 1
-    EloPR1000EscCmdManager.addPrinterStatus(Offline_status)
+    EloPR1000EscCmdManager.addPrinterStatus()
     EloPR1000PrinterManager.runEscCmds(EloPR1000EscCmdManager)
 }
 
