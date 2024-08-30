@@ -140,11 +140,7 @@ function setOnReadyCallbacks(){
 }
 
 function onPR1000PrinterReady(serviceBound){
-    if (serviceBound == true){
-        console.log("gregor - servicebound is true")
-    }
-
-	
+    document.getElementById("PR1000Available").innerHTML = "Printer Offline"
     if (serviceBound === "true"){
         document.getElementById("pr1000Header").style.color = COLOR_GREEN
     }
