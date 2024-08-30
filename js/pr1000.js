@@ -100,6 +100,7 @@ function getPR1000WifiPrinters(){
 }
 
 function ipDeviceReceiver(msg, devices){
+    console.log("ipdevice receiver type is " + typeof msg)
     if (msg == SCAN_START){
         document.getElementById("textField").value = "scanning..."
     }
