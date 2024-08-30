@@ -179,15 +179,12 @@ function statusCallback(printerReady, statusMsg){
 }
 
 function attachDetachCallback(isAttached){
-
-console.log("attach detach - isAttached is " + isAttached + " and the type is " + typeof isAttached)
-    
     if (isAttached == "true"){
         console.log("attached is true")
     }
     else{
-        console.log("attached is false")
         EloPR1000PrinterManager.disconnect()
+        document.getElementById("textField").value = "USB device detached"
     }
 }
 
