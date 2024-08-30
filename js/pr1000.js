@@ -170,7 +170,7 @@ function connectCallback(state){
 
 function statusCallback(printerReady, statusMsg){
     console.log("statusCallback running")
-    if (printerReady){
+    if (printerReady == "true"){
         document.getElementById("textField").value = statusMsg
     }
     else{
@@ -182,7 +182,7 @@ function attachDetachCallback(isAttached){
 
 console.log("attach detach - isAttached is " + isAttached + " and the type is " + typeof isAttached)
     
-    if (isAttached){
+    if (isAttached == "true"){
         console.log("attached is true")
     }
     else{
