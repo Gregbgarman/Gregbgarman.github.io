@@ -103,7 +103,9 @@ function getPR1000UsbPrinters(){
 
 
 function getPR1000WifiPrinters(){
-    EloPR1000PrinterManager.scanIpPrinters("ipDeviceReceiver")
+    //EloPR1000PrinterManager.scanIpPrinters("ipDeviceReceiver")
+    EloPR1000BarcodeManager.addHeaderCmd()
+    
 }
 
 function ipDeviceReceiver(msg, devices){
@@ -236,7 +238,7 @@ function barcodeTestPR1000(){
     }
 
      clearCommands()
-    EloPR1000BarcodeManager.setEscBarcodeFont(ESCBarcodeFontTypeEnum.BARFONT_A_12x24)
+     EloPR1000BarcodeManager.setEscBarcodeFont(ESCBarcodeFontTypeEnum.BARFONT_A_12x24)
      EloPR1000BarcodeManager.setBarcodeStringPosition(BarcodeStringPosition.BELOW_BARCODE)
      EloPR1000BarcodeManager.setBarcodeWidth(3)
      EloPR1000EscCmdManager.addHeaderCmd()
