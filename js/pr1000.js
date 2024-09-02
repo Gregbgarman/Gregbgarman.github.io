@@ -72,6 +72,13 @@ const ConnectState = Object.freeze({
     CONNECT_STATE_SUCCESS: 1   
 })
 
+const ESCBarcodeFontTypeEnum = Object.freeze({
+    BARFONT_A_12x24: 0,
+    BARFONT_B_9x17: 1   
+})
+
+
+
 
 
         
@@ -229,6 +236,7 @@ function barcodeTestPR1000(){
     }
 
      clearCommands()
+    EloPR1000BarcodeManager.setEscBarcodeFont(ESCBarcodeFontTypeEnum.BARFONT_A_12x24)
      EloPR1000BarcodeManager.setBarcodeStringPosition(BarcodeStringPosition.BELOW_BARCODE)
      EloPR1000BarcodeManager.setBarcodeWidth(3)
      EloPR1000EscCmdManager.addHeaderCmd()
