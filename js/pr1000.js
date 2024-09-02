@@ -230,7 +230,6 @@ function barcodeTestPR1000(){
 
      clearCommands()
      EloPR1000BarcodeManager.setBarcodeStringPosition(BarcodeStringPosition.BELOW_BARCODE)
-     EloPR1000BarcodeManager.setHeightInDot(72)
      EloPR1000BarcodeManager.setBarcodeWidth(3)
      EloPR1000EscCmdManager.addHeaderCmd()
      EloPR1000EscCmdManager.addBarcodeCmd(BarcodeType.CODE128, EloPR1000BarcodeManager, "123456789")
