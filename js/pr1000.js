@@ -268,7 +268,7 @@ function imageTestPR1000(){
     EloPR1000EscCmdManager.addLFCRCmd()
     EloPR1000EscCmdManager.addCmdCutNew()
     
-    EloPR1000EscCmdManager.getEndCmd()
+    EloPR1000EscCmdManager.addEndCmd()
     
     EloPR1000PrinterManager.runEscCmds(EloPR1000EscCmdManager)
 
@@ -298,6 +298,7 @@ function textTestPR1000(){
     }
     
     clearCommands()
+    
     let charset = "UTF-8"
     
     EloPR1000EscCmdManager.addHeaderCmd()
