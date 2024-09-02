@@ -373,7 +373,7 @@ function textTestPR1000(){
     EloPR1000EscCmdManager.addLFCRCmd()
     EloPR1000EscCmdManager.addLFCRCmd()
     EloPR1000EscCmdManager.addCmdCutNew()
-    EloPR1000EscCmdManager.addEndCmd()
+    //EloPR1000EscCmdManager.addEndCmd()
     EloPR1000PrinterManager.runEscCmds(EloPR1000EscCmdManager)
 }
 
