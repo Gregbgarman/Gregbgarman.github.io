@@ -33,6 +33,19 @@ window.onload = function() {
 
 function setOnReadyCallbacks(){
 
+	try{
+      //      EloPR1000PrinterManager.initialize("onPR1000PrinterReady")
+	    
+    }catch(error){
+		document.getElementById("textField").value = "exception initializing"
+       /*
+         Make sure Webview Hardware Access toggle is enabled
+         from Eloview or device settings app and Elo device on correct firmware.
+        */
+    }
+
+	
+
     try{
  //       EloPeripheralManager.initialize("onPeripheralManagerReady")
     }catch(error){
@@ -116,16 +129,7 @@ function setOnReadyCallbacks(){
         */
     }
 
-	try{
-            EloPR1000PrinterManager.initialize("onPR1000PrinterReady")
-	    
-    }catch(error){
-		document.getElementById("textField").value = "exception initializing"
-       /*
-         Make sure Webview Hardware Access toggle is enabled
-         from Eloview or device settings app and Elo device on correct firmware.
-        */
-    }
+
 
 
   try{
