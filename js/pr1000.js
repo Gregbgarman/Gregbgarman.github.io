@@ -220,10 +220,10 @@ function drawerTestPR1000(){
 }
 
 function beepTestPR1000(){
-    if (EloPR1000PrinterManager.getConnectedDevice() == ""){
-        document.getElementById("textField").value = "no device connected"
-        return
-    }
+    //if (EloPR1000PrinterManager.getConnectedDevice() == ""){
+      ///  document.getElementById("textField").value = "no device connected"
+     //   return
+ //   }
 
     
     clearCommands()
