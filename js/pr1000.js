@@ -106,6 +106,7 @@ function getPR1000WifiPrinters(){
     //EloPR1000PrinterManager.scanIpPrinters("ipDeviceReceiver")
     //EloPR1000BarcodeManager.connectUsb(document.getElementById("textField").value)
     //EloPR1000BarcodeManager.addOpenMoneyBoxCmd()
+    console.log("gregor - running")
     let res = EloPeripheralManager.getSysProperty("ro.boot.hw.model")
     console.log("property is " + res)
 }
