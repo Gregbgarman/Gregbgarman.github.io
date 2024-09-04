@@ -47,7 +47,7 @@ function setOnReadyCallbacks(){
 	
 
     try{
- //       EloPeripheralManager.initialize("onPeripheralManagerReady")
+        EloPeripheralManager.initialize("onPeripheralManagerReady")
     }catch(error){
 	/*
 	 Make sure Webview Hardware Access toggle is enabled
@@ -276,16 +276,16 @@ function onHandheldReady(serviceBound){
 
 function onPeripheralManagerReady(serviceBound){
   if (serviceBound === "true"){
-    document.getElementById("DevUtilityHeader").style.color = COLOR_GREEN
-    document.getElementById("SLKHeader").style.color = COLOR_GREEN
-    document.getElementById("SLK2Header").style.color = COLOR_GREEN
-    document.getElementById("CDHeader").style.color = COLOR_GREEN
+   // document.getElementById("DevUtilityHeader").style.color = COLOR_GREEN
+   // document.getElementById("SLKHeader").style.color = COLOR_GREEN
+   // document.getElementById("SLK2Header").style.color = COLOR_GREEN
+   // document.getElementById("CDHeader").style.color = COLOR_GREEN
   }
   else{
-    document.getElementById("DevUtilityHeader").style.color = COLOR_RED
-    document.getElementById("SLKHeader").style.color = COLOR_RED
-    document.getElementById("SLK2Header").style.color = COLOR_RED
-    document.getElementById("CDHeader").style.color = COLOR_RED 
+ //   document.getElementById("DevUtilityHeader").style.color = COLOR_RED
+ //   document.getElementById("SLKHeader").style.color = COLOR_RED
+ //   document.getElementById("SLK2Header").style.color = COLOR_RED
+ //   document.getElementById("CDHeader").style.color = COLOR_RED 
   }
 }
 
