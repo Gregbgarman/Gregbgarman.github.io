@@ -34,7 +34,7 @@ window.onload = function() {
 function setOnReadyCallbacks(){
 
 	try{
-            EloPR1000PrinterManager.initialize("onPR1000PrinterReady")
+           // EloPR1000PrinterManager.initialize("onPR1000PrinterReady")
 	    
     }catch(error){
 		document.getElementById("textField").value = "exception initializing"
