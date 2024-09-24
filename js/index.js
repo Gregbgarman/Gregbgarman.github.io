@@ -233,6 +233,9 @@ function onStarPrinterReady(serviceBound){
 
 function onHoneywellReady(serviceBound){
   if (serviceBound === "true"){
+
+EloHoneywellBarcodeManager.spaghetti()
+	  
       document.getElementById("HoneywellHeader").style.color = COLOR_GREEN
 
       var honeywellAvailable = EloHoneywellBarcodeManager.isBcrOn();
