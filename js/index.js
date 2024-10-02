@@ -23,11 +23,14 @@ function setOnReadyCallbacks(){
 function onHoneywellReady(serviceBound){
   if (serviceBound === "true"){
       document.getElementById("HoneywellHeader").style.color = COLOR_GREEN
-      var waitTime = 3000;
+
+EloHoneywellBarcodeManager.registerHoneywellListener("myCallback");
+	  
+      var waitTime = 5000;
         setTimeout(function() {
             EloHoneywellBarcodeManager.activeBcr();
             checkAvailableDevices();
-	    EloHoneywellBarcodeManager.registerHoneywellListener("myCallback");
+	    
         }, waitTime);
   }
   else{
