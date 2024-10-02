@@ -23,7 +23,18 @@ function setOnReadyCallbacks(){
 function onHoneywellReady(serviceBound){
   if (serviceBound === "true"){
       document.getElementById("HoneywellHeader").style.color = COLOR_GREEN
+      var waitTime = 3000;
+        setTimeout(function() {
+            EloHoneywellBarcodeManager.activeBcr();
+            checkAvailableDevices();
+        }, waitTime);
+  }
+  else{
+    document.getElementById("HoneywellHeader").style.color = COLOR_RED
+  }
+}
 
+function checkAvailableDevices(){
       var honeywellAvailable = EloHoneywellBarcodeManager.isBcrOn();
       console.log("Honeywell BCR is Available [" + honeywellAvailable + "]");
       if(honeywellAvailable == true){
@@ -31,14 +42,5 @@ function onHoneywellReady(serviceBound){
       } else {
         document.getElementById("honeywellBarcodeAvailable").innerHTML = "Honeywell is Disconnected";
       }
-  }
-  else{
-    document.getElementById("HoneywellHeader").style.color = COLOR_RED
-  }
 }
 
-
-
-
-
-}
