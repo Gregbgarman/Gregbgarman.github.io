@@ -27,6 +27,7 @@ function onHoneywellReady(serviceBound){
         setTimeout(function() {
             EloHoneywellBarcodeManager.activeBcr();
             checkAvailableDevices();
+	    EloHoneywellBarcodeManager.registerHoneywellListener("BCRCallback");
         }, waitTime);
   }
   else{
@@ -42,5 +43,13 @@ function checkAvailableDevices(){
       } else {
         document.getElementById("honeywellBarcodeAvailable").innerHTML = "Honeywell is Disconnected";
       }
+}
+
+function BCRCallback(state, data) {
+    if(state != 0){
+        document.getElementById("textField").value = "BCR Read Failure";
+    } else {
+        document.getElementById("textField").value = data;
+    }
 }
 
