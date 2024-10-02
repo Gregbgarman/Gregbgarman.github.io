@@ -143,6 +143,26 @@ function setOnReadyCallbacks(){
 	
 }
 
+function onHoneywellReady(serviceBound){
+  if (serviceBound === "true"){
+      document.getElementById("HoneywellHeader").style.color = COLOR_GREEN
+
+      var honeywellAvailable = EloHoneywellBarcodeManager.isBcrOn();
+      console.log("Honeywell BCR is Available [" + honeywellAvailable + "]");
+      if(honeywellAvailable == true){
+        document.getElementById("honeywellBarcodeAvailable").innerHTML = "Honeywell is Connected";
+      } else {
+        document.getElementById("honeywellBarcodeAvailable").innerHTML = "Honeywell is Disconnected";
+      }
+  }
+  else{
+    document.getElementById("HoneywellHeader").style.color = COLOR_RED
+  }
+}
+
+
+
+
 function onPR1000PrinterReady(serviceBound){
     document.getElementById("PR1000Available").innerHTML = "Printer Offline"
     if (serviceBound === "true"){
@@ -231,25 +251,7 @@ function onStarPrinterReady(serviceBound){
   }
 }
 
-function onHoneywellReady(serviceBound){
-  if (serviceBound === "true"){
 
-EloHoneywellBarcodeManager.spaghetti()
-	  
-      document.getElementById("HoneywellHeader").style.color = COLOR_GREEN
-
-      var honeywellAvailable = EloHoneywellBarcodeManager.isBcrOn();
-      console.log("Honeywell BCR is Available [" + honeywellAvailable + "]");
-      if(honeywellAvailable == true){
-        document.getElementById("honeywellBarcodeAvailable").innerHTML = "Honeywell is Connected";
-      } else {
-        document.getElementById("honeywellBarcodeAvailable").innerHTML = "Honeywell is Disconnected";
-      }
-  }
-  else{
-    document.getElementById("HoneywellHeader").style.color = COLOR_RED
-  }
-}
 
 function onZebraReady(serviceBound){
   if (serviceBound === "true"){
