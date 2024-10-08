@@ -103,16 +103,10 @@ function getPR1000UsbPrinters(){
 
 
 function getPR1000WifiPrinters(){
-    //EloPR1000PrinterManager.scanIpPrinters("ipDeviceReceiver")
-    //EloPR1000BarcodeManager.connectUsb(document.getElementById("textField").value)
-    //EloPR1000BarcodeManager.addOpenMoneyBoxCmd()
-    console.log("gregor - running")
-    let res = EloPeripheralManager.getSysProperty("ro.boot.hw.model")
-    console.log("property is " + res)
+    EloPR1000PrinterManager.scanIpPrinters("ipDeviceReceiver")
 }
 
 function ipDeviceReceiver(msg, devices){
-    console.log("ipdevice receiver type is " + typeof msg)
     if (msg == SCAN_START){
         document.getElementById("textField").value = "scanning..."
     }
@@ -181,7 +175,6 @@ function connectCallback(state){
 }
 
 function statusCallback(printerReady, statusMsg){
-    console.log("statusCallback running")
     if (printerReady == "true"){
         document.getElementById("textField").value = statusMsg
     }
@@ -223,10 +216,10 @@ function drawerTestPR1000(){
 }
 
 function beepTestPR1000(){
-    //if (EloPR1000PrinterManager.getConnectedDevice() == ""){
-      ///  document.getElementById("textField").value = "no device connected"
-     //   return
- //   }
+    if (EloPR1000PrinterManager.getConnectedDevice() == ""){
+        document.getElementById("textField").value = "no device connected"
+        return
+    }
 
     
     clearCommands()
@@ -270,9 +263,6 @@ function imageTestPR1000(){
     EloPR1000EscCmdManager.addBitmapCmd(EloPR1000BitmapSettingManager,eloImage)   
     EloPR1000EscCmdManager.addLFCRCmd()
     EloPR1000EscCmdManager.addCmdCutNew()
-    
-   
-    
     EloPR1000PrinterManager.runEscCmds(EloPR1000EscCmdManager)
 
 }
@@ -390,8 +380,5 @@ function textTestPR1000(){
     EloPR1000EscCmdManager.addLFCRCmd()
     EloPR1000EscCmdManager.addLFCRCmd()
     EloPR1000EscCmdManager.addCmdCutNew()
-    //EloPR1000EscCmdManager.addEndCmd()
     EloPR1000PrinterManager.runEscCmds(EloPR1000EscCmdManager)
 }
-
-
