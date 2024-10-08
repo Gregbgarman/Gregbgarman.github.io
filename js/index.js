@@ -10,15 +10,47 @@ function setOnReadyCallbacks(){
 
 
   try{
-        EloHoneywellBarcodeManager.initialize("onHoneywellReady")
+   //     EloHoneywellBarcodeManager.initialize("onHoneywellReady")
     }catch(error){
        /*
          Make sure Webview Hardware Access toggle is enabled
          from Eloview or device settings app and Elo device on correct firmware.
         */
     }
+
+
+	 try{
+       EloPR1000PrinterManager.initialize("onPR1000PrinterReady")
+    }catch(error){
+       /*
+         Make sure Webview Hardware Access toggle is enabled
+         from Eloview or device settings app and Elo device on correct firmware.
+        */
+    }
+
 	
 }
+
+
+function onPR1000PrinterReady(serviceBound){
+    if (serviceBound === "true"){
+        document.getElementById("pr1000Header").style.color = COLOR_GREEN
+        if (EloPR1000PrinterManager.getConnectedDevice() != ""){
+            document.getElementById("PR1000Available").innerHTML = "Printer Connected"
+        }
+        else{
+            document.getElementById("PR1000Available").innerHTML = "Printer Offline"
+        }
+    }
+    else{
+        document.getElementById("PR1000Available").innerHTML = "Printer Offline"
+        document.getElementById("pr1000Header").style.color = COLOR_RED
+    }
+}
+
+
+
+
 
 function onHoneywellReady(serviceBound){
   if (serviceBound === "true"){
