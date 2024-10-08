@@ -10,7 +10,7 @@ function setOnReadyCallbacks(){
 
 
   try{
-   //     EloHoneywellBarcodeManager.initialize("onHoneywellReady")
+        EloHoneywellBarcodeManager.initialize("onHoneywellReady")
     }catch(error){
        /*
          Make sure Webview Hardware Access toggle is enabled
@@ -20,7 +20,7 @@ function setOnReadyCallbacks(){
 
 
 	 try{
-       EloPR1000PrinterManager.initialize("onPR1000PrinterReady")
+      // EloPR1000PrinterManager.initialize("onPR1000PrinterReady")
     }catch(error){
        /*
          Make sure Webview Hardware Access toggle is enabled
@@ -56,6 +56,7 @@ function onHoneywellReady(serviceBound){
   if (serviceBound === "true"){
       document.getElementById("HoneywellHeader").style.color = COLOR_GREEN
 
+	  /*
 EloHoneywellBarcodeManager.registerHoneywellListener("myCallback");
 	  
       var waitTime = 5000;
@@ -64,6 +65,7 @@ EloHoneywellBarcodeManager.registerHoneywellListener("myCallback");
             checkAvailableDevices();
 	    
         }, waitTime);
+	*/
   }
   else{
     document.getElementById("HoneywellHeader").style.color = COLOR_RED
