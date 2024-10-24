@@ -10,7 +10,7 @@ function setOnReadyCallbacks(){
 
 
   try{
-        EloHoneywellBarcodeManager.initialize("onHoneywellReadyy")
+        EloHoneywellBarcodeManager.initialize("onHoneywellReady")
     }catch(error){
        /*
          Make sure Webview Hardware Access toggle is enabled
