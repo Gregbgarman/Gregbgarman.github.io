@@ -52,8 +52,8 @@ function onPR1000PrinterReady(serviceBound){
 
 
 
-function onHoneywellReady(serviceBound){
-  if (serviceBound === "true"){
+function onHoneywellReady(connected){
+  if (connected === "true"){
       document.getElementById("HoneywellHeader").style.color = COLOR_GREEN
 
 	  /*
