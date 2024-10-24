@@ -55,7 +55,7 @@ function onPR1000PrinterReady(serviceBound){
 function onHoneywellReady(connected){
   if (connected === "true"){
       document.getElementById("HoneywellHeader").style.color = COLOR_GREEN
-
+console.log("gregtest")
 	  /*
 EloHoneywellBarcodeManager.registerHoneywellListener("myCallback");
 	  
