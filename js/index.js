@@ -29,6 +29,7 @@ function setOnReadyCallbacks(){
     }
 
 	try{
+		console.log("gregor - init periphearl manager")
         EloPeripheralManager.initialize("onManagerReady")
     }catch(error){
        /*
