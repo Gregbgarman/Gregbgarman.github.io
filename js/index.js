@@ -41,7 +41,7 @@ function setOnReadyCallbacks(){
 }
 
 function onManagerReady(serviceBound){
-
+console.log("gregor - manager ready and servicebound is " + serviceBound)
 }
 
 
