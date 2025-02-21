@@ -11,6 +11,7 @@ document.getElementById("slkrightoff").addEventListener("click", slkrightoff)
 
 
 function slktopred(){
+    console.log("gregor - button pressed for")
     EloPeripheralManager.setLightByPort(0 , 0 , true)
 }
 
