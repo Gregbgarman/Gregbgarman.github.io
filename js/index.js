@@ -43,6 +43,7 @@ function setOnReadyCallbacks(){
 }
 
 function onManagerReady(serviceBound){
+	document.getElementById("textField").value = "manager initialized is " + serviceBound
 console.log("gregor - manager ready and servicebound is " + serviceBound)
 }
 
