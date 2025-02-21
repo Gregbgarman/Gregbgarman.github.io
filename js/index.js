@@ -3,6 +3,7 @@
 const COLOR_RED = '#FF0000'
 const COLOR_GREEN = '#008000'
 window.onload = function() {
+	console.log("gregor - window on load")
   setOnReadyCallbacks()
 };
 
