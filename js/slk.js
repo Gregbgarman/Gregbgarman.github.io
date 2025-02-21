@@ -1,4 +1,6 @@
 document.getElementById("slktopred").addEventListener("click", slktopred)
+
+
 document.getElementById("slktopblue").addEventListener("click", slktopblue)
 document.getElementById("slktopgreen").addEventListener("click", slktopgreen)
 document.getElementById("slktopflashing").addEventListener("click", slktopflashing)
@@ -11,7 +13,7 @@ document.getElementById("slkrightoff").addEventListener("click", slkrightoff)
 
 
 function slktopred(){
-    console.log("gregor - button pressed for")
+    document.getElementById("textField").value = "button clicked"
     EloPeripheralManager.setLightByPort(0 , 0 , true)
 }
 
