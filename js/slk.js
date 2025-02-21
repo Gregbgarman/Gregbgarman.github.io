@@ -1,6 +1,6 @@
 document.getElementById("slktopred").addEventListener("click", slktopred)
 
-/*
+
 document.getElementById("slktopblue").addEventListener("click", slktopblue)
 document.getElementById("slktopgreen").addEventListener("click", slktopgreen)
 document.getElementById("slktopflashing").addEventListener("click", slktopflashing)
@@ -10,7 +10,7 @@ document.getElementById("slkrightblue").addEventListener("click", slkrightblue)
 document.getElementById("slkrightgreen").addEventListener("click", slkrightgreen)
 document.getElementById("slkrightflashing").addEventListener("click",slkrightflashing)
 document.getElementById("slkrightoff").addEventListener("click", slkrightoff)
-*/
+
 
 function slktopred(){
     document.getElementById("textField").value = "button clicked"
