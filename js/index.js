@@ -28,7 +28,20 @@ function setOnReadyCallbacks(){
         */
     }
 
+	try{
+        EloPeripheralManager.initialize("onManagerReady")
+    }catch(error){
+       /*
+         Make sure Webview Hardware Access toggle is enabled
+         from Eloview or device settings app and Elo device on correct firmware.
+        */
+    }
+
 	
+}
+
+function onManagerReady(serviceBound){
+
 }
 
 
