@@ -10,7 +10,7 @@ document.getElementById("slkrightgreen").addEventListener("click", slkrightgreen
 document.getElementById("slkrightflashing").addEventListener("click",slkrightflashing)
 document.getElementById("slkrightoff").addEventListener("click", slkrightoff)
 
-document.getElementById("slklefttred").addEventListener("click", slkleftred)
+document.getElementById("slkleftred").addEventListener("click", slkleftred)
 document.getElementById("slkleftblue").addEventListener("click", slkleftblue)
 document.getElementById("slkleftgreen").addEventListener("click", slkleftgreen)
 document.getElementById("slkleftflashing").addEventListener("click",slkleftflashing)
