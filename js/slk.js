@@ -43,6 +43,8 @@ EloPeripheralManager.setLightByPort(PORT_TOP , 0 , false)
 
 function slkrightred(){
 EloPeripheralManager.setLightByPort(PORT_RIGHT , 0 , true)
+
+    document.getElementById("textField").value = "port is " + PORT_RIGHT
 }
 
 function slkrightblue(){
