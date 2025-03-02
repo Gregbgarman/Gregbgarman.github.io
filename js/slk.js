@@ -14,7 +14,7 @@ document.getElementById("slkrightoff").addEventListener("click", slkrightoff)
 
 function slktopred(){
     document.getElementById("textField").value = "button clicked"
-    EloPeripheralManager.setLightByPort(0 , 0 , true)
+    EloPeripheralManager.setLightByPort(1 , 0 , true)
 }
 
 function slktopblue(){
