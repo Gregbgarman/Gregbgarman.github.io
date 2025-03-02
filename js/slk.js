@@ -16,7 +16,7 @@ let port_top = 5
 let port_right = 4
 
 function slktopred(){
-    document.getElementById("textField").value = "button clicked"
+    document.getElementById("textField").value = "port is " + port_top
     EloPeripheralManager.setLightByPort(port_top , 0 , true)
 }
 
