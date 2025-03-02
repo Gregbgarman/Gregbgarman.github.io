@@ -60,6 +60,33 @@ EloPeripheralManager.setLightByPort(PORT_TOP , 0 , false)
 
 
 
+function slkrightred(){
+EloPeripheralManager.setLightByPort(PORT_RIGHT , 0 , true)
+
+    document.getElementById("textField").value = "port is " + PORT_RIGHT
+}
+
+function slkrightblue(){
+    document.getElementById("textField").value = "port is " + PORT_RIGHT
+EloPeripheralManager.setLightByPort(PORT_RIGHT , 8 , true)
+}
+
+function slkrightgreen(){
+    document.getElementById("textField").value = "port is " + PORT_RIGHT
+EloPeripheralManager.setLightByPort(PORT_RIGHT , 7 , true)
+}
+
+function slkrightflashing(){
+    document.getElementById("textField").value = "port is " + PORT_RIGHT
+EloPeripheralManager.setFlashingByPort(PORT_RIGHT, 0, 250, true)
+}
+
+function slkrightoff(){
+    document.getElementById("textField").value = "port is " + PORT_RIGHT
+EloPeripheralManager.setLightByPort(PORT_RIGHT, 0 , false)
+}
+
+
 
 function slkbottomred(){
 EloPeripheralManager.setLightByPort(PORT_BOTTOM , 0 , true)
