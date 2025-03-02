@@ -14,44 +14,44 @@ document.getElementById("slkrightoff").addEventListener("click", slkrightoff)
 
 function slktopred(){
     document.getElementById("textField").value = "button clicked"
-    EloPeripheralManager.setLightByPort(1 , 0 , true)
+    EloPeripheralManager.setLightByPort(4 , 0 , true)
 }
 
 function slktopblue(){
-EloPeripheralManager.setLightByPort(1 , 8 , true)
+EloPeripheralManager.setLightByPort(4 , 8 , true)
 }
 
 function slktopgreen(){
-EloPeripheralManager.setLightByPort(0 , 7 , true)
+EloPeripheralManager.setLightByPort(4 , 7 , true)
 }
 
 function slktopflashing(){
-EloPeripheralManager.setFlashingByPort(0, 0, 250, true)
+EloPeripheralManager.setFlashingByPort(4, 0, 250, true)
 }
 
 function slktopoff(){
-EloPeripheralManager.setLightByPort(0 , 0 , false)
+EloPeripheralManager.setLightByPort(4 , 0 , false)
 }
 
 
 function slkrightred(){
-EloPeripheralManager.setLightByPort(1 , 0 , true)
+EloPeripheralManager.setLightByPort(5 , 0 , true)
 }
 
 function slkrightblue(){
-EloPeripheralManager.setLightByPort(1 , 8 , true)
+EloPeripheralManager.setLightByPort(5 , 8 , true)
 }
 
 function slkrightgreen(){
-EloPeripheralManager.setLightByPort(1 , 7 , true)
+EloPeripheralManager.setLightByPort(5 , 7 , true)
 }
 
 function slkrightflashing(){
-EloPeripheralManager.setFlashingByPort(1, 0, 250, true)
+EloPeripheralManager.setFlashingByPort(5, 0, 250, true)
 }
 
 function slkrightoff(){
-EloPeripheralManager.setLightByPort(1 , 0 , false)
+EloPeripheralManager.setLightByPort(5 , 0 , false)
 }
 
     
