@@ -18,7 +18,7 @@ function slktopred(){
 }
 
 function slktopblue(){
-EloPeripheralManager.setLightByPort(0 , 8 , true)
+EloPeripheralManager.setLightByPort(1 , 8 , true)
 }
 
 function slktopgreen(){
