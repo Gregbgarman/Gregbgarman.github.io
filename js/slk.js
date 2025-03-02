@@ -11,50 +11,54 @@ document.getElementById("slkrightgreen").addEventListener("click", slkrightgreen
 document.getElementById("slkrightflashing").addEventListener("click",slkrightflashing)
 document.getElementById("slkrightoff").addEventListener("click", slkrightoff)
 
+const PORT_TOP = 5
+const PORT_RIGHT = 4
 
-let port_top = 5
-let port_right = 4
+
+
+
 
 function slktopred(){
-    document.getElementById("textField").value = "port is " + port_top
-    EloPeripheralManager.setLightByPort(port_top , 0 , true)
+    
+    EloPeripheralManager.setLightByPort(PORT_TOP , 0 , true)
+    document.getElementById("textField").value = "port is " + PORT_TOP
 }
 
 function slktopblue(){
-EloPeripheralManager.setLightByPort(port_top , 8 , true)
+EloPeripheralManager.setLightByPort(PORT_TOP , 8 , true)
 }
 
 function slktopgreen(){
-EloPeripheralManager.setLightByPort(port_top , 7 , true)
+EloPeripheralManager.setLightByPort(PORT_TOP , 7 , true)
 }
 
 function slktopflashing(){
-EloPeripheralManager.setFlashingByPort(port_top, 0, 250, true)
+EloPeripheralManager.setFlashingByPort(PORT_TOP, 0, 250, true)
 }
 
 function slktopoff(){
-EloPeripheralManager.setLightByPort(port_top , 0 , false)
+EloPeripheralManager.setLightByPort(PORT_TOP , 0 , false)
 }
 
 
 function slkrightred(){
-EloPeripheralManager.setLightByPort(port_right , 0 , true)
+EloPeripheralManager.setLightByPort(PORT_RIGHT , 0 , true)
 }
 
 function slkrightblue(){
-EloPeripheralManager.setLightByPort(port_right , 8 , true)
+EloPeripheralManager.setLightByPort(PORT_RIGHT , 8 , true)
 }
 
 function slkrightgreen(){
-EloPeripheralManager.setLightByPort(port_right , 7 , true)
+EloPeripheralManager.setLightByPort(PORT_RIGHT , 7 , true)
 }
 
 function slkrightflashing(){
-EloPeripheralManager.setFlashingByPort(port_right, 0, 250, true)
+EloPeripheralManager.setFlashingByPort(PORT_RIGHT, 0, 250, true)
 }
 
 function slkrightoff(){
-EloPeripheralManager.setLightByPort(port_right, 0 , false)
+EloPeripheralManager.setLightByPort(PORT_RIGHT, 0 , false)
 }
 
     
