@@ -28,8 +28,8 @@ document.getElementById("slkbottomoff").addEventListener("click", slkbottomoff)
 
 
 
-const PORT_TOP = 5
-const PORT_RIGHT = 4
+const PORT_TOP = 4
+const PORT_RIGHT = 5
 const PORT_LEFT = 3
 const PORT_BOTTOM = 6
 
